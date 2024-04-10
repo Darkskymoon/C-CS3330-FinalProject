@@ -3,6 +3,8 @@ package menus;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -11,10 +13,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class StartMenu extends JFrame{
 	
 	private JPanel contentPane;
+	JButton btnStartGame;
+	JButton btnCredits;
+	JButton btnInfo;
+	Color buttonColor = Color.white;
+	Color buttonColorPressed = new Color(226, 221, 250);
+
 	
 	public StartMenu() {
 		//sets background color of startMenu screen
@@ -49,13 +59,65 @@ public class StartMenu extends JFrame{
 		FightSimulatorTitle();
 
 		
+		btnStartGame.addMouseListener(new MouseAdapter() {
+			//change button when mouse is hovered over it
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnStartGame.setBackground(buttonColorPressed);
+				btnStartGame.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+				
+				Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
+				btnStartGame.setFont(buttonFont);
+			}
+			//reset button after mouse leaves
+			public void mouseExited(MouseEvent e) {
+				btnStartGame.setBackground(buttonColor);
+				Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
+				btnStartGame.setFont(buttonFont);
+			}
+		});
+		
+		btnInfo.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnInfo.setBackground(buttonColorPressed);
+				btnInfo.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+				
+				Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
+				btnInfo.setFont(buttonFont);
+			}
+			public void mouseExited(MouseEvent e) {
+				btnInfo.setBackground(buttonColor);
+				Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
+				btnInfo.setFont(buttonFont);
+			}
+		});
+		
+		btnCredits.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnCredits.setBackground(buttonColorPressed);
+				btnCredits.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+				
+				Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
+				btnCredits.setFont(buttonFont);
+			}
+			public void mouseExited(MouseEvent e) {
+				btnCredits.setBackground(buttonColor);
+				Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
+				btnCredits.setFont(buttonFont);
+			}
+		});
+		
 	}
-	
+
 	private void initializeButtons() {
 		//make button variables
-		JButton btnStartGame = new JButton("Start Game");
-		JButton btnCredits = new JButton("Credits");
-		JButton btnInfo = new JButton("Game Info");
+		btnStartGame = new JButton("Start Game");
+
+		btnCredits = new JButton("Credits");
+		btnInfo = new JButton("Game Info");
 		
 		//set bounds of the buttons
 		int btnXPos = 300;
@@ -71,12 +133,21 @@ public class StartMenu extends JFrame{
 		Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
 		//Start Game button
 		btnStartGame.setFont(buttonFont);
+		btnStartGame.setBackground(buttonColor);
+		btnStartGame.setFocusPainted(false);
+		btnStartGame.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		
 		//Credits Button
 		btnCredits.setFont(buttonFont);
+		btnCredits.setBackground(buttonColor);
+		btnCredits.setFocusPainted(false);
+		btnCredits.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		
 		//Info Button
 		btnInfo.setFont(buttonFont);
+		btnInfo.setBackground(buttonColor);
+		btnInfo.setFocusPainted(false);
+		btnCredits.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		
 		
 		/////////////////Action Listeners/////////////////////
