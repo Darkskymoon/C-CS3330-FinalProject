@@ -5,6 +5,7 @@ public abstract class Entity {
 	
 	//entity stats
 	protected float hp;
+	protected float maxHP;
 	protected int strength;
 	protected int defense; 
 	protected int brains;
@@ -13,8 +14,12 @@ public abstract class Entity {
 	
 	protected int xp;
 	
-	//TODO
-	public int calculateTotalDamage() {
+	/**
+	 * Gets the total damage dealt from weapon damage
+	 * @return
+	 */
+	public float calculateTotalDamageDealt() {
+		//TODO: going to be a call to weapondamage()??
 		return 0;
 	}
 	
@@ -63,6 +68,43 @@ public abstract class Entity {
 			else {
 				return -4;
 			}
+	}
+	
+	
+	/**
+	 * TODO: this is a temporary method until the strategy design pattern is implemented
+	 * Takes the value of the damage passed in and calculates the negative value 
+	 * Then adjusts the entities hp.
+	 * @param damageValue value that the entities hp should be adjusted
+	 * @return 
+	 */
+	public float damageRecieved(float damageValue) {
+		//gets the absolute value of the damage passed in
+		float total = Math.abs(damageValue);
+		//gets the negative value of the damage
+		total = 0-total;
+		return calculateNewHP(total);
+	}
+	
+	/**
+	 * Calculates the hp of an entity based on a passed in value
+	 * @param valueToAdjustBy value that the HP is adjusted by
+	 * @return float representing the new HP of the enemy.
+	 */
+	public float calculateNewHP(float valueToAdjustBy) {
+		//sets the HP to 0 if the hp goes below 0
+		if(hp + valueToAdjustBy <0) {
+			hp=0;
+			return 0;
+		}
+		//sets the HP to the max hp if it goes above the maxHP
+		else if (hp+valueToAdjustBy> maxHP) {
+			hp=maxHP;
+			return maxHP;
+		}
+		//default adjustment to HP
+		hp = valueToAdjustBy;
+		return hp + valueToAdjustBy;
 	}
 	
 	//getters and setters for all the fields
