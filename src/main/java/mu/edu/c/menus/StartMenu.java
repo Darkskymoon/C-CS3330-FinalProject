@@ -24,6 +24,18 @@ public class StartMenu extends JFrame{
 	JButton btnInfo;
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
+	
+	public StartMenu() {
+		//sets the title of the startMenu window
+		setTitle("Battle Simulator");
+		
+		//sets the default close operation
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.add(new MainPanel());
+	}
+	
+	/*
 
 	
 	public StartMenu() {
@@ -195,6 +207,7 @@ public class StartMenu extends JFrame{
 		TitleLabel.setBounds(labelXPos, labelYPos, labelWidth, labelHeight);
 		contentPane.add(TitleLabel);
 	}
+	*/
 	
 	
 }
