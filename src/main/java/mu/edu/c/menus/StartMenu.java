@@ -1,4 +1,4 @@
-package menus;
+package mu.edu.c.menus;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

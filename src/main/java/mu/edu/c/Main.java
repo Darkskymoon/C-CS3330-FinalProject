@@ -2,7 +2,7 @@ package mu.edu.c;
 
 import javax.swing.SwingUtilities;
 
-import menus.StartMenu;
+import mu.edu.c.menus.StartMenu;
 
 public class Main {
 
