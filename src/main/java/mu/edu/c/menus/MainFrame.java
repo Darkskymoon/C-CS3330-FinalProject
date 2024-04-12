@@ -3,6 +3,7 @@ package mu.edu.c.menus;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,7 +17,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class StartMenu extends JFrame{
+public class MainFrame extends JFrame{
 	
 	private JPanel contentPane;
 	JButton btnStartGame;
@@ -25,7 +26,7 @@ public class StartMenu extends JFrame{
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	public StartMenu() {
+	public MainFrame() {
 		//sets the title of the startMenu window
 		setTitle("Battle Simulator");
 		
@@ -33,9 +34,10 @@ public class StartMenu extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.setBounds(0, 0, 1000, 1000);
+		this.setMinimumSize(new Dimension(1000, 1000));
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		this.add(new MainPanel());
+		this.add(new MainMenuPanel());
 	}
 	
 	/*

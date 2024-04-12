@@ -1,6 +1,7 @@
 package mu.edu.c.menus;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class MainPanel extends JPanel{
+public class MainMenuPanel extends JPanel{
 	
 	JButton btnStartGame;
 	JButton btnCredits;
@@ -25,11 +26,10 @@ public class MainPanel extends JPanel{
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	public MainPanel(){
+	public MainMenuPanel(){
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
-			
 			
 			this.setBackground(new Color(45, 44, 65));
 			
@@ -37,7 +37,8 @@ public class MainPanel extends JPanel{
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
 	        gbc.anchor = GridBagConstraints.NORTH;
 
-	        add(FightSimulatorTitle(), gbc);
+	        gbc.insets = new Insets(100, 30, 0, 30);
+	        this.add(FightSimulatorTitle(), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -47,10 +48,15 @@ public class MainPanel extends JPanel{
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
-			gbc.insets = new Insets(10, 10, 10, 10);
-	        buttons.add(btnStartGame, gbc);
-	        buttons.add(btnCredits, gbc);
-	        buttons.add(btnInfo, gbc);
+			
+			GridBagConstraints gbc2 = new GridBagConstraints();
+			gbc2.gridwidth = GridBagConstraints.REMAINDER;
+			gbc2.insets = new Insets(10, 0, 10, 0);
+			gbc2.anchor = GridBagConstraints.CENTER;
+		    gbc2.fill = GridBagConstraints.HORIZONTAL;
+	        buttons.add(btnStartGame, gbc2);
+	        buttons.add(btnCredits, gbc2);
+	        buttons.add(btnInfo, gbc2);
 
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
@@ -89,44 +95,23 @@ public class MainPanel extends JPanel{
 				}
 			});
 			
+			
 		}
 
 		private void initializeButtons(GridBagConstraints gbc) {
+			
 			//make button variables
 			btnStartGame = new JButton("Start Game");
-
 			btnCredits = new JButton("Credits");
 			btnInfo = new JButton("Game Info");
 			
-			//set bounds of the buttons
-			int btnXPos = 300;
-			int btnYPos = 150;
-			int btnWidth= 400;
-			int btnHeight= 375;
-			
-			btnStartGame.setBounds(btnXPos, btnYPos, btnWidth, btnHeight);
-			btnCredits.setBounds(btnXPos, btnYPos+85*2, btnWidth, btnHeight);
-			btnInfo.setBounds(btnXPos, btnYPos+85, btnWidth, btnHeight);
-			
 			////////////////////Set visuals for buttons////////////////////
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
-			//Start Game button
-			btnStartGame.setFont(buttonFont);
-			btnStartGame.setBackground(buttonColor);
-			btnStartGame.setFocusPainted(false);
-			btnStartGame.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			//Credits Button
-			btnCredits.setFont(buttonFont);
-			btnCredits.setBackground(buttonColor);
-			btnCredits.setFocusPainted(false);
-			btnCredits.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+			SetUpButton(btnStartGame);
+			SetUpButton(btnInfo);
+			SetUpButton(btnCredits);
 			
-			//Info Button
-			btnInfo.setFont(buttonFont);
-			btnInfo.setBackground(buttonColor);
-			btnInfo.setFocusPainted(false);
-			btnCredits.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 			
 			
 			/////////////////Action Listeners/////////////////////
@@ -152,26 +137,36 @@ public class MainPanel extends JPanel{
 			
 		}
 		
+		private void SetUpButton(JButton btn) {
+			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
+			
+			//Start Game button
+			btn.setFont(buttonFont);
+			btn.setBackground(buttonColor);
+			btn.setFocusPainted(false);
+			btn.setPreferredSize(new Dimension(200, 100));
+			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+		}
+		
 
 		private JLabel FightSimulatorTitle() {
 			JLabel TitleLabel = new JLabel("Fight Simulator");
 			TitleLabel.setForeground(new Color(255, 255, 255));
-			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 24));
+			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
 			
 			return TitleLabel;
 		}
 		
 		private void buttonEntered(JButton button) {
 			button.setBackground(buttonColorPressed);
-			button.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 			
-			Font buttonFont = new Font("Yu Gothic Medium", Font.PLAIN, 16);
+			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 20);
 			button.setFont(buttonFont);
 		}
 		
 		private void buttonExited(JButton button) {
 			button.setBackground(buttonColor);
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
+			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			button.setFont(buttonFont);
 		}
 }
