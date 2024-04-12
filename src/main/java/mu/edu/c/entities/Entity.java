@@ -12,7 +12,19 @@ public abstract class Entity {
 	
 	//TODO add weapon 
 	
+	
 	protected int xp;
+	
+	public Entity(float maxHP, int Strength, int defense, int brains) {
+		this.hp =maxHP;
+		this.maxHP = maxHP;
+		
+		this.strength = strength;
+		this.defense = defense;
+		this.brains = brains;
+		this.xp = 0;
+		
+	}
 	
 	/**
 	 * Gets the total damage dealt from weapon damage
