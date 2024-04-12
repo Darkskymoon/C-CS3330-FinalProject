@@ -32,6 +32,9 @@ public class StartMenu extends JFrame{
 		//sets the default close operation
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		this.setBounds(0, 0, 1000, 1000);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 		this.add(new MainPanel());
 	}
 	

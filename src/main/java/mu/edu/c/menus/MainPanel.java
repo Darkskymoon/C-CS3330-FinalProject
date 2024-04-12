@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,6 +47,7 @@ public class MainPanel extends JPanel{
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
+			gbc.insets = new Insets(10, 10, 10, 10);
 	        buttons.add(btnStartGame, gbc);
 	        buttons.add(btnCredits, gbc);
 	        buttons.add(btnInfo, gbc);
@@ -58,17 +60,11 @@ public class MainPanel extends JPanel{
 				//change button when mouse is hovered over it
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnStartGame.setBackground(buttonColorPressed);
-					btnStartGame.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-					
-					Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-					btnStartGame.setFont(buttonFont);
+					buttonEntered(btnStartGame);
 				}
 				//reset button after mouse leaves
 				public void mouseExited(MouseEvent e) {
-					btnStartGame.setBackground(buttonColor);
-					Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
-					btnStartGame.setFont(buttonFont);
+					buttonExited(btnStartGame);
 				}
 			});
 			
@@ -76,32 +72,20 @@ public class MainPanel extends JPanel{
 				
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnInfo.setBackground(buttonColorPressed);
-					btnInfo.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-					
-					Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-					btnInfo.setFont(buttonFont);
+					buttonEntered(btnInfo);
 				}
 				public void mouseExited(MouseEvent e) {
-					btnInfo.setBackground(buttonColor);
-					Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
-					btnInfo.setFont(buttonFont);
+					buttonExited(btnInfo);
 				}
 			});
 			
 			btnCredits.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnCredits.setBackground(buttonColorPressed);
-					btnCredits.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-					
-					Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-					btnCredits.setFont(buttonFont);
+					buttonEntered(btnCredits);
 				}
 				public void mouseExited(MouseEvent e) {
-					btnCredits.setBackground(buttonColor);
-					Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
-					btnCredits.setFont(buttonFont);
+					buttonExited(btnCredits);
 				}
 			});
 			
@@ -117,8 +101,8 @@ public class MainPanel extends JPanel{
 			//set bounds of the buttons
 			int btnXPos = 300;
 			int btnYPos = 150;
-			int btnWidth=200;
-			int btnHeight=75;
+			int btnWidth= 400;
+			int btnHeight= 375;
 			
 			btnStartGame.setBounds(btnXPos, btnYPos, btnWidth, btnHeight);
 			btnCredits.setBounds(btnXPos, btnYPos+85*2, btnWidth, btnHeight);
@@ -166,7 +150,6 @@ public class MainPanel extends JPanel{
 			
 			
 			
-			
 		}
 		
 
@@ -176,5 +159,19 @@ public class MainPanel extends JPanel{
 			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 24));
 			
 			return TitleLabel;
+		}
+		
+		private void buttonEntered(JButton button) {
+			button.setBackground(buttonColorPressed);
+			button.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+			
+			Font buttonFont = new Font("Yu Gothic Medium", Font.PLAIN, 16);
+			button.setFont(buttonFont);
+		}
+		
+		private void buttonExited(JButton button) {
+			button.setBackground(buttonColor);
+			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 14);
+			button.setFont(buttonFont);
 		}
 }
