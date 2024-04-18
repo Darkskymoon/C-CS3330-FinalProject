@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class MainMenuPanel extends JPanel{
+public class MainMenuView extends JPanel{
 	
 	JButton btnStartGame;
 	JButton btnCredits;
@@ -26,7 +26,7 @@ public class MainMenuPanel extends JPanel{
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	public MainMenuPanel(){
+	public MainMenuView(){
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
@@ -51,7 +51,7 @@ public class MainMenuPanel extends JPanel{
 			
 			GridBagConstraints gbc2 = new GridBagConstraints();
 			gbc2.gridwidth = GridBagConstraints.REMAINDER;
-			gbc2.insets = new Insets(10, 0, 10, 0);
+			gbc2.insets = new Insets(0, 0, 20, 0);
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.HORIZONTAL;
 	        buttons.add(btnStartGame, gbc2);
@@ -114,26 +114,6 @@ public class MainMenuPanel extends JPanel{
 			
 			
 			
-			/////////////////Action Listeners/////////////////////
-			//StartGame 
-			btnStartGame.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			
-			//Credits
-			btnCredits.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			
-			//Info
-			btnInfo.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			
-			
 			
 		}
 		
@@ -168,5 +148,10 @@ public class MainMenuPanel extends JPanel{
 			button.setBackground(buttonColor);
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			button.setFont(buttonFont);
+		}
+		
+		public void addInfoButtonListener(ActionListener listener) {
+			btnInfo.addActionListener(listener);
+			System.out.println("HHHEYEYEEYY");
 		}
 }
