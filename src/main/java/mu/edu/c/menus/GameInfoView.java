@@ -23,6 +23,7 @@ public class GameInfoView extends JPanel{
 	JButton btnViewWeapons;
 	JButton btnViewEnemies;
 	JButton btnViewCharacters;
+	JButton btnBack;
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
@@ -37,7 +38,7 @@ public class GameInfoView extends JPanel{
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
 	        gbc.anchor = GridBagConstraints.NORTH;
 
-	        gbc.insets = new Insets(100, 30, 0, 30);
+	        gbc.insets = new Insets(50, 30, 0, 30);
 	        this.add(GameInfoTitle(), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
@@ -57,7 +58,8 @@ public class GameInfoView extends JPanel{
 	        buttons.add(btnViewWeapons, gbc2);
 	        buttons.add(btnViewEnemies, gbc2);
 	        buttons.add(btnViewCharacters, gbc2);
-
+	        buttons.add(btnBack, gbc2);
+	        
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
 			
@@ -95,6 +97,16 @@ public class GameInfoView extends JPanel{
 				}
 			});
 			
+			btnBack.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					buttonEntered(btnBack);
+				}
+				public void mouseExited(MouseEvent e) {
+					buttonExited(btnBack);
+				}
+			});
+			
 			
 		}
 
@@ -104,6 +116,7 @@ public class GameInfoView extends JPanel{
 			btnViewWeapons = new JButton("View All Weapons");
 			btnViewEnemies = new JButton("View All Enemies");
 			btnViewCharacters = new JButton("View All Characters");
+			btnBack = new JButton("Back");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
@@ -111,7 +124,7 @@ public class GameInfoView extends JPanel{
 			SetUpButton(btnViewWeapons);
 			SetUpButton(btnViewCharacters);
 			SetUpButton(btnViewEnemies);
-			
+			SetUpButton(btnBack);
 			
 			
 			/////////////////Action Listeners/////////////////////
@@ -132,6 +145,13 @@ public class GameInfoView extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
+			
+			//Back
+			btnBack.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			
 			
 			
 			
@@ -160,7 +180,7 @@ public class GameInfoView extends JPanel{
 		private void buttonEntered(JButton button) {
 			button.setBackground(buttonColorPressed);
 			
-			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 20);
+			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 16);
 			button.setFont(buttonFont);
 		}
 		
@@ -168,6 +188,10 @@ public class GameInfoView extends JPanel{
 			button.setBackground(buttonColor);
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			button.setFont(buttonFont);
+		}
+		
+		public void addBackButtonListener(ActionListener listener) {
+			btnBack.addActionListener(listener);
 		}
 }
 

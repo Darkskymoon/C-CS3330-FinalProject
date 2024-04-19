@@ -21,6 +21,7 @@ public class MainController {
 		this.mainMenuView = mainMenuView;
 		this.gameInfoView = new GameInfoView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
+		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
 	public class SwitchScreenToGameInfoView implements ActionListener {
@@ -28,6 +29,15 @@ public class MainController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			switchPanel(gameInfoView);
+		}
+		
+	}
+	
+	public class SwitchScreenToMainMenuView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			switchPanel(mainMenuView);
 		}
 		
 	}

@@ -140,7 +140,7 @@ public class MainMenuView extends JPanel{
 		private void buttonEntered(JButton button) {
 			button.setBackground(buttonColorPressed);
 			
-			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 20);
+			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 16);
 			button.setFont(buttonFont);
 		}
 		
@@ -152,6 +152,5 @@ public class MainMenuView extends JPanel{
 		
 		public void addInfoButtonListener(ActionListener listener) {
 			btnInfo.addActionListener(listener);
-			System.out.println("HHHEYEYEEYY");
 		}
 }
