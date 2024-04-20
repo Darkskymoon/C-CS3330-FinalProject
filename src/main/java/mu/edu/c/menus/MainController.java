@@ -14,30 +14,58 @@ public class MainController {
 	private Container contentPane;
 	private MainMenuView mainMenuView;
 	private GameInfoView gameInfoView;
+	private StartGameView startGameView;
 	
 	public MainController(MainFrame mainFrame, MainMenuView mainMenuView) {
 		this.mainFrame = mainFrame;
 		this.contentPane = mainFrame.getContentPane();
 		this.mainMenuView = mainMenuView;
-		this.gameInfoView = new GameInfoView();
+		
+		refreshMainMenuView();
+	}
+	
+	public void refreshMainMenuView() {
+		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
+		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
+	}
+	
+	public void refreshGameInfoView() {
+		this.gameInfoView = new GameInfoView();
 		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
-	public class SwitchScreenToGameInfoView implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			switchPanel(gameInfoView);
-		}
-		
+	public void refreshStartGameView() {
+		this.startGameView = new StartGameView();
+		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
 	public class SwitchScreenToMainMenuView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			refreshMainMenuView();
 			switchPanel(mainMenuView);
+		}
+		
+	}
+	
+	public class SwitchScreenToGameInfoView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshGameInfoView();
+			switchPanel(gameInfoView);
+		}
+		
+	}
+	
+	public class SwitchScreenToStartGameView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshStartGameView();
+			switchPanel(startGameView);
 		}
 		
 	}

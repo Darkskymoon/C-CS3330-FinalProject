@@ -62,40 +62,23 @@ public class MainMenuView extends JPanel{
 	        add(buttons, gbc);
 			
 			
-			btnStartGame.addMouseListener(new MouseAdapter() {
-				//change button when mouse is hovered over it
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					buttonEntered(btnStartGame);
-				}
-				//reset button after mouse leaves
-				public void mouseExited(MouseEvent e) {
-					buttonExited(btnStartGame);
-				}
-			});
-			
-			btnInfo.addMouseListener(new MouseAdapter() {
+	        applyEnteredExitedActions(btnStartGame);
+	        applyEnteredExitedActions(btnCredits);
+	        applyEnteredExitedActions(btnInfo);
+	        
 				
+		}
+	
+		private void applyEnteredExitedActions(JButton button) {
+			button.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					buttonEntered(btnInfo);
+					buttonEntered(button);
 				}
 				public void mouseExited(MouseEvent e) {
-					buttonExited(btnInfo);
+					buttonExited(button);
 				}
 			});
-			
-			btnCredits.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					buttonEntered(btnCredits);
-				}
-				public void mouseExited(MouseEvent e) {
-					buttonExited(btnCredits);
-				}
-			});
-			
-			
 		}
 
 		private void initializeButtons(GridBagConstraints gbc) {
@@ -152,5 +135,9 @@ public class MainMenuView extends JPanel{
 		
 		public void addInfoButtonListener(ActionListener listener) {
 			btnInfo.addActionListener(listener);
+		}
+		
+		public void addStartGameButtonListener(ActionListener listener) {
+			btnStartGame.addActionListener(listener);
 		}
 }
