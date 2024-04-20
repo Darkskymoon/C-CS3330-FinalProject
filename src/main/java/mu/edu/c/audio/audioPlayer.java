@@ -17,6 +17,11 @@ public class audioPlayer {
             File file = new File("./src/main/resources/audio/"+audioFile+".wav");
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(file));
+            
+            FloatControl gainControl = 
+    			    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+    		gainControl.setValue(sysVolume);
+   
             clip.start();
         } catch (Exception e) {
             System.err.println(e);
