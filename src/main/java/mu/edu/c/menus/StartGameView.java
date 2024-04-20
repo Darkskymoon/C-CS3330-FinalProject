@@ -79,10 +79,6 @@ public class StartGameView extends JPanel{
 	        
 	        add(btnBack);
 			
-			
-			
-			
-			
 		}
 	
 		private void applyEnteredExitedActions(JButton button) {
@@ -127,7 +123,6 @@ public class StartGameView extends JPanel{
 			SetUpButton(btnDelete3);
 			
 			SetUpButton(btnBack);
-			
 			
 		}
 		
@@ -183,8 +178,9 @@ public class StartGameView extends JPanel{
 			btnBack.addActionListener(listener);
 		}
 		
-		public void addLoad2Listener(ActionListener listener) {
-			btnLoad2.addActionListener(listener);
+		public void addLoad1ButtonListener(ActionListener listener) {
+			btnLoad1.addActionListener(listener);
 		}
+		// add button redirects here
 }
 
