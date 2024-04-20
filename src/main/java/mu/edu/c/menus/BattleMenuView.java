@@ -145,7 +145,7 @@ public class BattleMenuView extends JPanel {
 			btn.setFont(buttonFont);
 			btn.setBackground(buttonColor);
 			btn.setFocusPainted(false);
-			btn.setPreferredSize(new Dimension(200, 150));
+			btn.setPreferredSize(new Dimension(300, 150));
 			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		}
 		
