@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mu.edu.c.audio.audioPlayer;
+
 public class MainMenuView extends JPanel{
 	
 	JButton btnStartGame;
@@ -66,7 +68,7 @@ public class MainMenuView extends JPanel{
 	        applyEnteredExitedActions(btnCredits);
 	        applyEnteredExitedActions(btnInfo);
 	        
-				
+			audioPlayer.setTrack("MainGameSound");
 		}
 	
 		private void applyEnteredExitedActions(JButton button) {
