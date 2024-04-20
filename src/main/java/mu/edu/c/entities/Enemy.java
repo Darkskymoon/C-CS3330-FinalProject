@@ -10,6 +10,7 @@ public class Enemy extends Entity{
 	public Enemy(float maxHP, int Strength, int defense, int brains) {
 		
 		super(maxHP, Strength, defense, brains);
+		descriptors = new ArrayList<>();
 		descriptors.add("evil");
 		descriptors.add("devious");
 		descriptors.add("plotting");

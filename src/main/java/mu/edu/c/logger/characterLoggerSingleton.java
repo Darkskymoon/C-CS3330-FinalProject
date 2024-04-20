@@ -1,6 +1,10 @@
 package mu.edu.c.logger;
 
+import com.google.gson.Gson;
+
+import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Entity;
+import mu.edu.c.logger.GSON.GsonAdapter;
 
 //Author: Zoe 
 public class characterLoggerSingleton {
@@ -27,7 +31,21 @@ public class characterLoggerSingleton {
 		return instance;
 	}
 	
-	public boolean logCharacterData(Entity entity) {
+	
+	/**
+	 * creates json objects of the character and writes that to the file.
+	 * @param character
+	 * @return
+	 */
+	public boolean logCharacterData(Character character) {
+		
+		//convert the object to json string
+		Gson gson = new Gson();
+		String jsonString= gson.toJson(character);
+		
+		GsonAdapter adapter = new GsonAdapter();
+		adapter.writeJson(this.logFilePath, jsonString);
+		
 		return false;
 	}
 
