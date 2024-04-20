@@ -15,6 +15,8 @@ public class MainController {
 	private MainMenuView mainMenuView;
 	private GameInfoView gameInfoView;
 	private StartGameView startGameView;
+	private CreditMenuView creditMenuView;
+	private BattleMenuView battleMenuView;
 	private CreateCharacterView createCharacterView;
 	// add the new class here
 	
@@ -30,6 +32,7 @@ public class MainController {
 		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
 		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
+		mainMenuView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 	}
 	
 	public void refreshGameInfoView() {
@@ -41,6 +44,16 @@ public class MainController {
 		this.startGameView = new StartGameView();
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
 		startGameView.addLoad1ButtonListener(new SwitchScreenToCreateCaracter());
+		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());
+	}
+	
+	public void refreshCreditMenuView() {
+		this.creditMenuView = new CreditMenuView();
+		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
+	}
+	
+	public void refreshBattleMenuView() {
+		this.battleMenuView = new BattleMenuView();
 	}
 	
 	public void refreshCreateCharacterView() {
@@ -77,6 +90,26 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			refreshStartGameView();
 			switchPanel(startGameView);
+		}
+		
+	}
+	
+	public class SwitchScreenToCreditMenuView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshCreditMenuView();
+			switchPanel(creditMenuView);
+		}
+		
+	}
+	
+	public class SwitchScreenToBattleMenuView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshBattleMenuView();
+			switchPanel(battleMenuView);
 		}
 		
 	}

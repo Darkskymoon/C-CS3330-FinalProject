@@ -184,6 +184,10 @@ public class StartGameView extends JPanel{
 		public void addLoad1ButtonListener(ActionListener listener) {
 			btnLoad1.addActionListener(listener);
 		}
+		
+		public void addLoad2Listener(ActionListener listener) {
+			btnLoad2.addActionListener(listener);
+		}
 		// add button redirects here
 }
 
