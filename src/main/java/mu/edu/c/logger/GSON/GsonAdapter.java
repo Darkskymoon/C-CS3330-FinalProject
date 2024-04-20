@@ -43,6 +43,7 @@ public class GsonAdapter{
 			gson.toJson(jsonContent, writer);
 			return true;
 		}catch (JsonIOException | IOException e) {
+			e.printStackTrace();
 			return false;
 			
 		}

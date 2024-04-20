@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Entity;
+import mu.edu.c.entities.Player;
 import mu.edu.c.logger.GSON.GsonAdapter;
 
 //Author: Zoe 
@@ -12,7 +13,7 @@ public class characterLoggerSingleton {
 	private static characterLoggerSingleton instance = null;
 	
 	//Creates a filepath for the logger file
-	private final static String logFilePath = "./main/resources/characterLogger.txt";
+	private final static String logFilePath = "src/main/resources/characterLogger.json";
 	
 	//constructor 
 	private characterLoggerSingleton() {
@@ -37,14 +38,15 @@ public class characterLoggerSingleton {
 	 * @param character
 	 * @return
 	 */
-	public boolean logCharacterData(Character character) {
+	public boolean logCharacterData(Player player) {
 		
 		//convert the object to json string
 		Gson gson = new Gson();
-		String jsonString= gson.toJson(character);
+		String jsonString= gson.toJson(player);
+//		System.out.println(jsonString);
 		
 		GsonAdapter adapter = new GsonAdapter();
-		adapter.writeJson(this.logFilePath, jsonString);
+		adapter.writeJson(logFilePath, jsonString);
 		
 		return false;
 	}

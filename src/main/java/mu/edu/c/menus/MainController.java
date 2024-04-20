@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import mu.edu.c.entities.Player;
+import mu.edu.c.logger.characterLoggerSingleton;
+
 public class MainController {
 	
 	private MainFrame mainFrame;
@@ -125,15 +128,21 @@ public class MainController {
 	}
 	
 	/**
-	 * Action listener for the submit button for actionListener
+	 * Writes a character to the character file.
 	 */
 	public class CreateCharacterSubmit implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated
-			System.out.println("hey");
-//			String name = createCharacterView.nameField.getText();
-//			Character characterObj = new Character(1, 2, 3, 4,name);
+			//Gets the character name
+			String name = createCharacterView.nameField.getText();
+			
+			//creates the character/player object
+			//TODO: temporarily sets the other stats to placeholder values
+			Player characterObj = new Player(1, 2, 3, 4, name);
+			
+			//gets the logger instance and writes the characterObj to the file.
+			characterLoggerSingleton logger =characterLoggerSingleton.getInstance();
+			logger.logCharacterData(characterObj);
 //			
 		}
 		
