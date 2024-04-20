@@ -46,6 +46,7 @@ public class MainController {
 	public void refreshCreateCharacterView() {
 		this.createCharacterView = new CreateCharacterView();
 		createCharacterView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
 	}
     //	add refresh view and then underneath add button listeners
 	
@@ -90,6 +91,21 @@ public class MainController {
 	
 	}
 	
+	/**
+	 * Action listener for the submit button for actionListener
+	 */
+	public class CreateCharacterSubmit implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated
+			System.out.println("hey");
+//			String name = createCharacterView.nameField.getText();
+//			Character characterObj = new Character(1, 2, 3, 4,name);
+//			
+		}
+		
+	}
+	
 	public void switchPanel(JPanel panel) {
 		contentPane.removeAll();
 		contentPane.add(panel);
@@ -101,5 +117,8 @@ public class MainController {
 		switchPanel(mainMenuView);
 		mainFrame.setVisible(true);
 	}
+	
+
+
 
 }

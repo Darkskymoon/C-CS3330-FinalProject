@@ -1,11 +1,11 @@
 package mu.edu.c.entities;
 
-public class Character extends Entity {
+public class Player extends Entity {
 	
 	private int attributePoints;
 
-	public Character(float maxHP, int Strength, int defense, int brains) {
-		super(maxHP, Strength, defense, brains);
+	public Player(float maxHP, int Strength, int defense, int brains, String Name) {
+		super(maxHP, Strength, defense, brains, Name);
 		setAttributePoints(0);
 	}
 

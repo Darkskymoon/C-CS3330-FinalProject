@@ -9,13 +9,14 @@ public abstract class Entity {
 	protected int strength;
 	protected int defense; 
 	protected int brains;
+	protected String Name;
 	
 	//TODO add weapon 
 	
 	
 	protected int xp;
 	
-	public Entity(float maxHP, int Strength, int defense, int brains) {
+	public Entity(float maxHP, int Strength, int defense, int brains, String Name) {
 		this.hp = maxHP;
 		this.maxHP = maxHP;
 		
@@ -23,6 +24,8 @@ public abstract class Entity {
 		this.defense = defense;
 		this.brains = brains;
 		this.xp = 0;
+		
+		this.Name = Name;
 		
 	}
 	

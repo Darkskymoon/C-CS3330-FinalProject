@@ -142,4 +142,13 @@ public class CreateCharacterView extends JPanel {
     public void addBackButtonListener(ActionListener listener) {
         btnBack.addActionListener(listener);
     }
+    
+    
+    /**
+     * Action listener for when the submit button gets pressed.
+     * @param listener
+     */
+    public void addSubmitButtonListener(ActionListener listener) {
+    	btnSubmit.addActionListener(listener);
+    }
 }
