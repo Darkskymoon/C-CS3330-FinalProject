@@ -15,8 +15,8 @@ public class MainController {
 	private MainMenuView mainMenuView;
 	private GameInfoView gameInfoView;
 	private StartGameView startGameView;
-	private CreditMenuView creditMenuView;
-	private BattleMenuView battleMenuView;
+	private CreateCharacterView createCharacterView;
+	// add the new class here
 	
 	public MainController(MainFrame mainFrame, MainMenuView mainMenuView) {
 		this.mainFrame = mainFrame;
@@ -30,7 +30,6 @@ public class MainController {
 		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
 		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
-		mainMenuView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 	}
 	
 	public void refreshGameInfoView() {
@@ -41,17 +40,16 @@ public class MainController {
 	public void refreshStartGameView() {
 		this.startGameView = new StartGameView();
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
-		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());
+		startGameView.addLoad1ButtonListener(new SwitchScreenToCreateCaracter());
 	}
 	
-	public void refreshCreditMenuView() {
-		this.creditMenuView = new CreditMenuView();
-		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
+	public void refreshCreateCharacterView() {
+		this.createCharacterView = new CreateCharacterView();
+		createCharacterView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
 	}
+    //	add refresh view and then underneath add button listeners
 	
-	public void refreshBattleMenuView() {
-		this.battleMenuView = new BattleMenuView();
-	}
 	
 	public class SwitchScreenToMainMenuView implements ActionListener {
 
@@ -83,22 +81,27 @@ public class MainController {
 		
 	}
 	
-	public class SwitchScreenToCreditMenuView implements ActionListener {
+	public class SwitchScreenToCreateCaracter implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			refreshCreditMenuView();
-			switchPanel(creditMenuView);
+			refreshCreateCharacterView();
+			switchPanel(createCharacterView);
 		}
-		
+	
 	}
 	
-	public class SwitchScreenToBattleMenuView implements ActionListener {
-
+	/**
+	 * Action listener for the submit button for actionListener
+	 */
+	public class CreateCharacterSubmit implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			refreshBattleMenuView();
-			switchPanel(battleMenuView);
+			// TODO Auto-generated
+			System.out.println("hey");
+//			String name = createCharacterView.nameField.getText();
+//			Character characterObj = new Character(1, 2, 3, 4,name);
+//			
 		}
 		
 	}
@@ -114,5 +117,8 @@ public class MainController {
 		switchPanel(mainMenuView);
 		mainFrame.setVisible(true);
 	}
+	
+
+
 
 }

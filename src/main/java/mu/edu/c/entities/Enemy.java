@@ -7,9 +7,12 @@ public class Enemy extends Entity{
 	//array to hold adjectives that describes an enemy
 	ArrayList<String> descriptors;
 
-	public Enemy(float maxHP, int Strength, int defense, int brains) {
+	public Enemy(float maxHP, int Strength, int defense, int brains, String Name) {
 		
-		super(maxHP, Strength, defense, brains);
+		super(maxHP, Strength, defense, brains, Name);
+		
+		//Adds some basic descriptors
+		descriptors = new ArrayList<>();
 		descriptors.add("evil");
 		descriptors.add("devious");
 		descriptors.add("plotting");
@@ -18,6 +21,13 @@ public class Enemy extends Entity{
 	
 	
 	
+	/**
+	 * This method adds descriptors to the enemy 
+	 * @param adjective
+	 */
+	public void AddDescriptors(String adjective) {
+		descriptors.add(adjective);
+	}
 	
 
 }
