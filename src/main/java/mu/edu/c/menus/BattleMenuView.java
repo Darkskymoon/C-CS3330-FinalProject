@@ -54,16 +54,18 @@ public class BattleMenuView extends JPanel {
 			
 			GridBagConstraints gbc2 = new GridBagConstraints();
 			gbc2.gridwidth = GridBagConstraints.REMAINDER;
-			gbc2.insets = new Insets(0, 0, 0, 0);
+			gbc2.insets = new Insets(10, 10, 10, 10);
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.BOTH;
 		    
+		    GridBagConstraints gbc4 = new GridBagConstraints();
+		    gbc4.insets = new Insets(10, 10, 10, 10);
 		    
-		    buttons.add(btnCharacterName);
-	        buttons.add(btnBattleText);
+		    buttons.add(btnCharacterName, gbc4);
+	        buttons.add(btnBattleText, gbc4);
 	        buttons.add(btnEnemyName, gbc2);
-	        buttons.add(btnCharacterHP);
-	        buttons.add(btnRoll);
+	        buttons.add(btnCharacterHP, gbc4);
+	        buttons.add(btnRoll, gbc4);
 	        buttons.add(btnEnemyHP, gbc2);
 	        
 	        gbc.weighty = 1;
@@ -71,15 +73,9 @@ public class BattleMenuView extends JPanel {
 	        
 	        JPanel buttons2 = new JPanel(new GridBagLayout());
 			buttons2.setBackground(new Color(45, 44, 65));
-	        
-	        GridBagConstraints gbc3 = new GridBagConstraints();
-			gbc3.gridwidth = GridBagConstraints.REMAINDER;
-			gbc3.insets = new Insets(0, 0, 0, 0);
-			gbc3.anchor = GridBagConstraints.CENTER;
-		    gbc3.fill = GridBagConstraints.BOTH;
 			
-			buttons2.add(btnNormalAttack);
-			buttons2.add(btnSpecialAttack);
+			buttons2.add(btnNormalAttack, gbc4);
+			buttons2.add(btnSpecialAttack, gbc4);
 			add(buttons2, gbc);
 			
 			
@@ -149,7 +145,7 @@ public class BattleMenuView extends JPanel {
 			btn.setFont(buttonFont);
 			btn.setBackground(buttonColor);
 			btn.setFocusPainted(false);
-			btn.setPreferredSize(new Dimension(200, 100));
+			btn.setPreferredSize(new Dimension(200, 150));
 			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		}
 		
