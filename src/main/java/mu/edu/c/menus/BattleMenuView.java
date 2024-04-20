@@ -5,36 +5,32 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class StartGameView extends JPanel{
+public class BattleMenuView extends JPanel {
 	
-	JButton btnSave1;
-	JButton btnSave2;
-	JButton btnSave3;
-	JButton btnLoad1;
-	JButton btnLoad2;
-	JButton btnLoad3;
-	JButton btnDelete1;
-	JButton btnDelete2;
-	JButton btnDelete3;
-	JButton btnBack;
+	JButton btnCharacterName;
+	JButton btnBattleText;
+	JButton btnEnemyName;
+	JButton btnCharacterHP;
+	JButton btnEnemyHP;
+	JButton btnRoll;
+	JButton btnNormalAttack;
+	JButton btnSpecialAttack;
+	
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	public StartGameView(){
+	public BattleMenuView(){
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
@@ -46,7 +42,6 @@ public class StartGameView extends JPanel{
 	        gbc.anchor = GridBagConstraints.NORTH;
 
 	        gbc.insets = new Insets(50, 30, 0, 30);
-	        this.add(startGameTitle(), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -64,23 +59,28 @@ public class StartGameView extends JPanel{
 		    gbc2.fill = GridBagConstraints.BOTH;
 		    
 		    
-		    buttons.add(btnLoad1);
-	        buttons.add(btnSave1);
-	        buttons.add(btnDelete1, gbc2);
-	        buttons.add(btnLoad2);
-	        buttons.add(btnSave2);
-	        buttons.add(btnDelete2, gbc2);
-	        buttons.add(btnLoad3);
-	        buttons.add(btnSave3);
-	        buttons.add(btnDelete3, gbc2);
+		    buttons.add(btnCharacterName);
+	        buttons.add(btnBattleText);
+	        buttons.add(btnEnemyName, gbc2);
+	        buttons.add(btnCharacterHP);
+	        buttons.add(btnRoll);
+	        buttons.add(btnEnemyHP, gbc2);
 	        
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
 	        
-	        add(btnBack);
+	        JPanel buttons2 = new JPanel(new GridBagLayout());
+			buttons2.setBackground(new Color(45, 44, 65));
+	        
+	        GridBagConstraints gbc3 = new GridBagConstraints();
+			gbc3.gridwidth = GridBagConstraints.REMAINDER;
+			gbc3.insets = new Insets(0, 0, 0, 0);
+			gbc3.anchor = GridBagConstraints.CENTER;
+		    gbc3.fill = GridBagConstraints.BOTH;
 			
-			
-			
+			buttons2.add(btnNormalAttack);
+			buttons2.add(btnSpecialAttack);
+			add(buttons2, gbc);
 			
 			
 		}
@@ -100,33 +100,29 @@ public class StartGameView extends JPanel{
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnSave1 = new JButton("Save 1");
-			btnSave2 = new JButton("Save 2");
-			btnSave3 = new JButton("Save 3");
-			btnLoad1 = new JButton("Load 1");
-			btnLoad2 = new JButton("Load 2");
-			btnLoad3 = new JButton("Load 3");
-			btnDelete1 = new JButton("Delete 1");
-			btnDelete2 = new JButton("Delete 2");
-			btnDelete3 = new JButton("Delete 3");
-			btnBack = new JButton("Back");
+			btnCharacterName = new JButton("Character");
+			btnBattleText = new JButton("END OF DAYS");
+			btnEnemyName = new JButton("Enemy");
+			btnCharacterHP = new JButton("HP: 100");
+			btnEnemyHP = new JButton("HP: 97");
+			btnRoll = new JButton("Roll");
+			btnNormalAttack = new JButton("Normal Attack");
+			btnSpecialAttack = new JButton("Special Attack");
+			
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			SetUpButton(btnSave1);
-			SetUpButton(btnSave2);
-			SetUpButton(btnSave3);
+			SetUpButton(btnCharacterName);
+			SetUpButton(btnBattleText);
+			SetUpButton(btnEnemyName);
 			
-			SetUpButton(btnLoad1);
-			SetUpButton(btnLoad2);
-			SetUpButton(btnLoad3);
+			SetUpButton(btnCharacterHP);
+			SetUpButton(btnEnemyHP);
+			SetUpButton(btnRoll);
 			
-			SetUpButton(btnDelete1);
-			SetUpButton(btnDelete2);
-			SetUpButton(btnDelete3);
-			
-			SetUpButton(btnBack);
+			SetUpButton(btnNormalAttack);
+			SetUpButton(btnSpecialAttack);
 			
 			
 		}
@@ -157,14 +153,6 @@ public class StartGameView extends JPanel{
 			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		}
 		
-
-		private JLabel startGameTitle() {
-			JLabel TitleLabel = new JLabel("Start Game");
-			TitleLabel.setForeground(new Color(255, 255, 255));
-			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
-			
-			return TitleLabel;
-		}
 		
 		private void buttonEntered(JButton button) {
 			button.setBackground(buttonColorPressed);
@@ -178,13 +166,5 @@ public class StartGameView extends JPanel{
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			button.setFont(buttonFont);
 		}
-		
-		public void addBackButtonListener(ActionListener listener) {
-			btnBack.addActionListener(listener);
-		}
-		
-		public void addLoad2Listener(ActionListener listener) {
-			btnLoad2.addActionListener(listener);
-		}
-}
 
+}

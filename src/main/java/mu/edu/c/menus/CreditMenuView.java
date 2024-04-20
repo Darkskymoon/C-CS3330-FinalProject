@@ -51,21 +51,6 @@ public class CreditMenuView extends JPanel{
 	        //initialize Buttons (start and credits)
 			initializeButtons(gbc);
 			
-			JPanel buttons = new JPanel(new GridBagLayout());
-			buttons.setBackground(new Color(45, 44, 65));
-			
-//			GridBagConstraints gbc2 = new GridBagConstraints();
-//			gbc2.gridwidth = GridBagConstraints.REMAINDER;
-//			gbc2.insets = new Insets(0, 0, 20, 0);
-//			gbc2.anchor = GridBagConstraints.CENTER;
-//		    gbc2.fill = GridBagConstraints.HORIZONTAL;
-//	        buttons.add(btnStartGame, gbc2);
-//	        buttons.add(btnCredits, gbc2);
-//	        buttons.add(btnInfo, gbc2);
-//
-//	        gbc.weighty = 1;
-//	        add(buttons, gbc);
-			
 			add(textPane, gbc);
 	        add(btnBack, gbc);
 			
@@ -90,14 +75,17 @@ public class CreditMenuView extends JPanel{
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			btnBack = new JButton("Back");
+			textPane = new JTextPane();
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
 			SetUpButton(btnBack);
+			SetUpTextPane(textPane);
 			
-			textPane = new JTextPane();
-			
+		}
+		
+		private void SetUpTextPane(JTextPane textPane) {
 			StyledDocument doc = textPane.getStyledDocument();
 			SimpleAttributeSet center = new SimpleAttributeSet();
 			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
@@ -112,10 +100,6 @@ public class CreditMenuView extends JPanel{
 			textPane.setFont(textPaneFont);
 			
 			textPane.setForeground(Color.white);
-			
-			
-			
-			
 		}
 		
 		private void SetUpButton(JButton btn) {
