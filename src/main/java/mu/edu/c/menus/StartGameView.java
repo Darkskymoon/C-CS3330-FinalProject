@@ -129,7 +129,6 @@ public class StartGameView extends JPanel{
 			SetUpButton(btnBack);
 			
 			
-			
 		}
 		
 		private void SetUpLabel(JLabel label) {

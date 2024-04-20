@@ -15,6 +15,7 @@ public class MainController {
 	private MainMenuView mainMenuView;
 	private GameInfoView gameInfoView;
 	private StartGameView startGameView;
+	private CreditMenuView creditMenuView;
 	
 	public MainController(MainFrame mainFrame, MainMenuView mainMenuView) {
 		this.mainFrame = mainFrame;
@@ -28,6 +29,7 @@ public class MainController {
 		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
 		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
+		mainMenuView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 	}
 	
 	public void refreshGameInfoView() {
@@ -38,6 +40,11 @@ public class MainController {
 	public void refreshStartGameView() {
 		this.startGameView = new StartGameView();
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
+	}
+	
+	public void refreshCreditMenuView() {
+		this.creditMenuView = new CreditMenuView();
+		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
 	public class SwitchScreenToMainMenuView implements ActionListener {
@@ -66,6 +73,16 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			refreshStartGameView();
 			switchPanel(startGameView);
+		}
+		
+	}
+	
+	public class SwitchScreenToCreditMenuView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshCreditMenuView();
+			switchPanel(creditMenuView);
 		}
 		
 	}

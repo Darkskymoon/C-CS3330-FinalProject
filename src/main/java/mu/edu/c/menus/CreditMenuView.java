@@ -16,17 +16,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
-public class MainMenuView extends JPanel{
+public class CreditMenuView extends JPanel{
 	
-	JButton btnStartGame;
-	JButton btnCredits;
-	JButton btnInfo;
+	JButton btnBack;
+	JTextPane textPane;
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	public MainMenuView(){
+	public CreditMenuView(){
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
@@ -37,8 +42,8 @@ public class MainMenuView extends JPanel{
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
 	        gbc.anchor = GridBagConstraints.NORTH;
 
-	        gbc.insets = new Insets(100, 30, 0, 30);
-	        this.add(FightSimulatorTitle(), gbc);
+	        gbc.insets = new Insets(50, 30, 0, 30);
+	        this.add(CreditTitle(), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -49,22 +54,23 @@ public class MainMenuView extends JPanel{
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
 			
-			GridBagConstraints gbc2 = new GridBagConstraints();
-			gbc2.gridwidth = GridBagConstraints.REMAINDER;
-			gbc2.insets = new Insets(0, 0, 20, 0);
-			gbc2.anchor = GridBagConstraints.CENTER;
-		    gbc2.fill = GridBagConstraints.HORIZONTAL;
-	        buttons.add(btnStartGame, gbc2);
-	        buttons.add(btnCredits, gbc2);
-	        buttons.add(btnInfo, gbc2);
-
-	        gbc.weighty = 1;
-	        add(buttons, gbc);
+//			GridBagConstraints gbc2 = new GridBagConstraints();
+//			gbc2.gridwidth = GridBagConstraints.REMAINDER;
+//			gbc2.insets = new Insets(0, 0, 20, 0);
+//			gbc2.anchor = GridBagConstraints.CENTER;
+//		    gbc2.fill = GridBagConstraints.HORIZONTAL;
+//	        buttons.add(btnStartGame, gbc2);
+//	        buttons.add(btnCredits, gbc2);
+//	        buttons.add(btnInfo, gbc2);
+//
+//	        gbc.weighty = 1;
+//	        add(buttons, gbc);
+			
+			add(textPane, gbc);
+	        add(btnBack, gbc);
 			
 			
-	        applyEnteredExitedActions(btnStartGame);
-	        applyEnteredExitedActions(btnCredits);
-	        applyEnteredExitedActions(btnInfo);
+	        applyEnteredExitedActions(btnBack);
 	        
 				
 		}
@@ -83,17 +89,29 @@ public class MainMenuView extends JPanel{
 
 		private void initializeButtons(GridBagConstraints gbc) {
 			
-			//make button variables
-			btnStartGame = new JButton("Start Game");
-			btnCredits = new JButton("Credits");
-			btnInfo = new JButton("Game Info");
+			btnBack = new JButton("Back");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			SetUpButton(btnStartGame);
-			SetUpButton(btnInfo);
-			SetUpButton(btnCredits);
+			SetUpButton(btnBack);
+			
+			textPane = new JTextPane();
+			
+			StyledDocument doc = textPane.getStyledDocument();
+			SimpleAttributeSet center = new SimpleAttributeSet();
+			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+			doc.setParagraphAttributes(0, doc.getLength(), center, false);
+			
+			
+			textPane.setText("John Lin\nAndo Pepe\nZoe Strassner\nRyan Wahle");
+			textPane.setBackground(new Color(45, 44, 65));
+			textPane.setBorder(BorderFactory.createEmptyBorder());
+			
+			Font textPaneFont= new Font("Yu Gothic Medium", Font.PLAIN, 26);
+			textPane.setFont(textPaneFont);
+			
+			textPane.setForeground(Color.white);
 			
 			
 			
@@ -112,8 +130,8 @@ public class MainMenuView extends JPanel{
 		}
 		
 
-		private JLabel FightSimulatorTitle() {
-			JLabel TitleLabel = new JLabel("Fight Simulator");
+		private JLabel CreditTitle() {
+			JLabel TitleLabel = new JLabel("Credit");
 			TitleLabel.setForeground(new Color(255, 255, 255));
 			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
 			
@@ -133,15 +151,7 @@ public class MainMenuView extends JPanel{
 			button.setFont(buttonFont);
 		}
 		
-		public void addInfoButtonListener(ActionListener listener) {
-			btnInfo.addActionListener(listener);
-		}
-		
-		public void addStartGameButtonListener(ActionListener listener) {
-			btnStartGame.addActionListener(listener);
-		}
-		
-		public void addCreditButtonListener(ActionListener listener) {
-			btnCredits.addActionListener(listener);
+		public void addBackButtonListener(ActionListener listener) {
+			btnBack.addActionListener(listener);
 		}
 }
