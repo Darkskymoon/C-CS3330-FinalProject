@@ -56,7 +56,7 @@ public class BattleMenuView extends JPanel {
 			gbc2.gridwidth = GridBagConstraints.REMAINDER;
 			gbc2.insets = new Insets(10, 10, 10, 10);
 			gbc2.anchor = GridBagConstraints.CENTER;
-		    gbc2.fill = GridBagConstraints.BOTH;
+		    gbc2.fill = GridBagConstraints.HORIZONTAL;
 		    
 		    GridBagConstraints gbc4 = new GridBagConstraints();
 		    gbc4.insets = new Insets(10, 10, 10, 10);
@@ -68,7 +68,6 @@ public class BattleMenuView extends JPanel {
 	        buttons.add(btnRoll, gbc4);
 	        buttons.add(btnEnemyHP, gbc2);
 	        
-	        gbc.weighty = 1;
 	        add(buttons, gbc);
 	        
 	        JPanel buttons2 = new JPanel(new GridBagLayout());
