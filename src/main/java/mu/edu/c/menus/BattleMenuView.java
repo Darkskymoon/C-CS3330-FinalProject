@@ -16,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mu.edu.c.battles.Battle;
+import mu.edu.c.entities.Player;
+
 public class BattleMenuView extends JPanel {
 	
 	JButton btnCharacterName;
@@ -30,7 +33,10 @@ public class BattleMenuView extends JPanel {
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	public BattleMenuView(){
+	Battle battle;
+	
+	public BattleMenuView(Battle battle){
+			this.battle = battle;
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
@@ -95,10 +101,10 @@ public class BattleMenuView extends JPanel {
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnCharacterName = new JButton("Character");
+			btnCharacterName = new JButton(battle.getPlayerName());
 			btnBattleText = new JButton("END OF DAYS");
 			btnEnemyName = new JButton("Enemy");
-			btnCharacterHP = new JButton("HP: 100");
+			btnCharacterHP = new JButton(battle.getPlayerHP()+ "/"+battle.getPlayerMaxHP());
 			btnEnemyHP = new JButton("HP: 97");
 			btnRoll = new JButton("Roll");
 			btnNormalAttack = new JButton("Normal Attack");

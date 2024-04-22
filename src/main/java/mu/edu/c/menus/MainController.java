@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.characterLoggerSingleton;
 
@@ -55,8 +56,9 @@ public class MainController {
 		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
-	public void refreshBattleMenuView() {
-		this.battleMenuView = new BattleMenuView();
+	public void refreshBattleMenuView(Player player) {
+		Battle battle = new Battle(player);
+		this.battleMenuView = new BattleMenuView(battle);
 	}
 	
 	public void refreshCreateCharacterView() {
@@ -111,7 +113,7 @@ public class MainController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			refreshBattleMenuView();
+			refreshBattleMenuView(null);
 			switchPanel(battleMenuView);
 		}
 		
@@ -139,10 +141,16 @@ public class MainController {
 			//creates the character/player object
 			//TODO: temporarily sets the other stats to placeholder values
 			Player characterObj = new Player(1, 2, 3, 4, name);
-			
 			//gets the logger instance and writes the characterObj to the file.
 			characterLoggerSingleton logger =characterLoggerSingleton.getInstance();
 			logger.logCharacterData(characterObj);
+			
+			//Switch to battle screen and use character just created
+			refreshBattleMenuView(characterObj);
+			switchPanel(battleMenuView);
+			
+			
+			
 //			
 		}
 		

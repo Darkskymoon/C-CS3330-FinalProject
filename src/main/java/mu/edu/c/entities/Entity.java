@@ -124,11 +124,11 @@ public abstract class Entity {
 	
 	//getters and setters for all the fields
 	public String getName() {
-		return name;
+		return Name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.Name = name;
 	}
 
 	public float getHp() {
@@ -171,7 +171,21 @@ public abstract class Entity {
 		this.xp = xp;
 	}
 	
-	
+	public float getMaxHP() {
+		return maxHP;
+	}
+
+	public void setMaxHP(float maxHP) {
+		this.maxHP = maxHP;
+	}
+
+	//TODO: Fix the toString
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "name: " +Name
+				+ "HP: " + maxHP;
+	}
 	
 	
 	
