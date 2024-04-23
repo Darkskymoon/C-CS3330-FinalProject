@@ -81,7 +81,7 @@ public class MainController {
 	 */
 	public void refreshBattleMenuView(Player player) {
 		Battle battle = new Battle(player);
-		this.battleMenuView = new BattleMenuView(battle);
+		this.battleMenuView = new BattleMenuView(player.getName(), player.getHp(), player.getMaxHP());
 	}
 	
 	/**

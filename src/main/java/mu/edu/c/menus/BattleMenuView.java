@@ -21,22 +21,23 @@ import mu.edu.c.entities.Player;
 
 public class BattleMenuView extends JPanel {
 	
-	JButton btnCharacterName;
-	JButton btnBattleText;
-	JButton btnEnemyName;
-	JButton btnCharacterHP;
-	JButton btnEnemyHP;
-	JButton btnRoll;
-	JButton btnNormalAttack;
-	JButton btnSpecialAttack;
+	private JButton btnCharacterName;
+	private JButton btnBattleText;
+	private JButton btnEnemyName;
+	private JButton btnCharacterHP;
+	private JButton btnEnemyHP;
+	private JButton btnRoll;
+	private JButton btnNormalAttack;
+	private JButton btnSpecialAttack;
+	
+	private JLabel LabelRoll;
 	
 	Color buttonColor = Color.white;
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
-	Battle battle;
 	
-	public BattleMenuView(Battle battle){
-			this.battle = battle;
+	public BattleMenuView(String CharacterName, float characterCurrentHP,float characterMaxHP){
+			
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
@@ -53,7 +54,7 @@ public class BattleMenuView extends JPanel {
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
 	        
 	        //initialize Buttons (start and credits)
-			initializeButtons(gbc);
+			initializeButtons(gbc, CharacterName, characterCurrentHP, characterMaxHP);
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
@@ -76,6 +77,11 @@ public class BattleMenuView extends JPanel {
 	        
 	        add(buttons, gbc);
 	        
+	        JPanel LabelContainer = new JPanel(new GridBagLayout());
+	        LabelRoll=new JLabel("roll");
+	        LabelRoll.setForeground(Color.black);
+	        LabelContainer.add(LabelRoll, gbc2);
+	        add(LabelContainer, gbc);
 	        
 	        JPanel buttons2 = new JPanel(new GridBagLayout());
 			buttons2.setBackground(new Color(45, 44, 65));
@@ -99,13 +105,13 @@ public class BattleMenuView extends JPanel {
 			});
 		}
 
-		private void initializeButtons(GridBagConstraints gbc) {
+		private void initializeButtons(GridBagConstraints gbc, String charName, float charHP, float charMaxHP) {
 			
 			//make button variables
-			btnCharacterName = new JButton(battle.getPlayerName());
+			btnCharacterName = new JButton(charName);
 			btnBattleText = new JButton("END OF DAYS");
 			btnEnemyName = new JButton("Enemy");
-			btnCharacterHP = new JButton(battle.getPlayerHP()+ "/"+battle.getPlayerMaxHP());
+			btnCharacterHP = new JButton(charHP+ "/"+charMaxHP);
 			btnEnemyHP = new JButton("HP: 97");
 			btnRoll = new JButton("Roll");
 			btnNormalAttack = new JButton("Normal Attack");
