@@ -76,6 +76,7 @@ public class BattleMenuView extends JPanel {
 	        
 	        add(buttons, gbc);
 	        
+	        
 	        JPanel buttons2 = new JPanel(new GridBagLayout());
 			buttons2.setBackground(new Color(45, 44, 65));
 			
