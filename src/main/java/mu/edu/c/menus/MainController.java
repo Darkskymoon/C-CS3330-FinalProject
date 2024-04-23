@@ -12,6 +12,9 @@ import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.characterLoggerSingleton;
 
+/**
+ * Main Controller of the MVC architecture, managing interface between models and views
+ */
 public class MainController {
 	
 	private MainFrame mainFrame;
@@ -24,6 +27,11 @@ public class MainController {
 	private CreateCharacterView createCharacterView;
 	// add the new class here
 	
+	/**
+	 * Constructer which requires MainFrame and MainMenuView objects. 
+	 * @param mainFrame
+	 * @param mainMenuView
+	 */
 	public MainController(MainFrame mainFrame, MainMenuView mainMenuView) {
 		this.mainFrame = mainFrame;
 		this.contentPane = mainFrame.getContentPane();
@@ -32,6 +40,9 @@ public class MainController {
 		refreshMainMenuView();
 	}
 	
+	/**
+	 * Refreshes MainMenuView by recreating object and adding button listeners to view
+	 */
 	public void refreshMainMenuView() {
 		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
@@ -39,11 +50,17 @@ public class MainController {
 		mainMenuView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 	}
 	
+	/**
+	 * Refreshes GameInfoView by recreating object and adding button listeners to view
+	 */
 	public void refreshGameInfoView() {
 		this.gameInfoView = new GameInfoView();
 		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
+	/**
+	 * Refreshes StartGameView by recreating object and adding button listeners to view
+	 */
 	public void refreshStartGameView() {
 		this.startGameView = new StartGameView();
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -51,16 +68,25 @@ public class MainController {
 		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());
 	}
 	
+	/**
+	 * Refreshes CreditMenuView by recreating object and adding button listeners to view
+	 */
 	public void refreshCreditMenuView() {
 		this.creditMenuView = new CreditMenuView();
 		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
+	/**
+	 * Refreshes BattleMenuView by recreating object and adding button listeners to view
+	 */
 	public void refreshBattleMenuView(Player player) {
 		Battle battle = new Battle(player);
 		this.battleMenuView = new BattleMenuView(battle);
 	}
 	
+	/**
+	 * Refreshes CreateCharacterView by recreating object and adding button listeners to view
+	 */
 	public void refreshCreateCharacterView() {
 		this.createCharacterView = new CreateCharacterView();
 		createCharacterView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -68,7 +94,9 @@ public class MainController {
 	}
     //	add refresh view and then underneath add button listeners
 	
-	
+	/**
+	 * Refreshes MainMenuView and switches current panel to it
+	 */
 	public class SwitchScreenToMainMenuView implements ActionListener {
 
 		@Override
@@ -79,6 +107,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Refreshes GameInfoView and switches current panel to it
+	 */
 	public class SwitchScreenToGameInfoView implements ActionListener {
 
 		@Override
@@ -89,6 +120,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Refreshes StartGameView and switches current panel to it
+	 */
 	public class SwitchScreenToStartGameView implements ActionListener {
 
 		@Override
@@ -99,6 +133,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Refreshes CreditMenuView and switches current panel to it
+	 */
 	public class SwitchScreenToCreditMenuView implements ActionListener {
 
 		@Override
@@ -109,6 +146,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Refreshes BattleMenuView and switches current panel to it
+	 */
 	public class SwitchScreenToBattleMenuView implements ActionListener {
 
 		@Override
@@ -119,6 +159,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Refreshes CreateCharacterView and switches current panel to it
+	 */
 	public class SwitchScreenToCreateCaracter implements ActionListener {
 
 		@Override
@@ -156,6 +199,10 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Takes a JPanel object and switches the Main JFrame to the panel.
+	 * @param panel
+	 */
 	public void switchPanel(JPanel panel) {
 		contentPane.removeAll();
 		contentPane.add(panel);
@@ -163,6 +210,9 @@ public class MainController {
 		mainFrame.repaint();
 	}
 	
+	/**
+	 * Initiates the controller by switching the panel to the mainMenuView and setting the mainFrame visible
+	 */
 	public void initiate() {
 		switchPanel(mainMenuView);
 		mainFrame.setVisible(true);
