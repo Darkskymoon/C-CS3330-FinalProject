@@ -218,8 +218,11 @@ public class MainController {
 			logger.logCharacterData(characterObj);
 			
 			//Switch to battle screen and use character just created
-			refreshBattleMenuView(characterObj);
-			switchPanel(battleMenuView);	
+			
+			refreshStartGameView();
+			switchPanel(startGameView);
+//			refreshBattleMenuView(characterObj);
+//			switchPanel(battleMenuView);	
 		}
 		
 	}
