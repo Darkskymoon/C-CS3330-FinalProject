@@ -17,6 +17,7 @@ import mu.edu.c.logger.characterLoggerSingleton;
  */
 public class MainController {
 	
+	//Views
 	private MainFrame mainFrame;
 	private Container contentPane;
 	private MainMenuView mainMenuView;
@@ -27,7 +28,10 @@ public class MainController {
 	private CreateCharacterView createCharacterView;
 	// add the new class here
 	
+	//Models
 	private Battle battleModel;
+	//TODO- Is this right?
+	private Player currentPlayer;
 	
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
@@ -66,12 +70,28 @@ public class MainController {
 	public void refreshStartGameView() {
 		this.startGameView = new StartGameView();
 		
-		//TODO: should load in to the first slot the character
+		//reads in the current save (if it exists) TODO: try catch
 		characterLoggerSingleton logger = characterLoggerSingleton.getInstance();
-		logger.readCharacterData();
+		this.currentPlayer =logger.readCharacterData();
+		
+		
+		//If the first player doesn't exist, just set it to create a character
+		if(this.currentPlayer == null) {
+			startGameView.setLoad1Text("Create a New Character");
+			startGameView.addLoad1ButtonListener(new SwitchScreenToCreateCaracter());
+			startGameView.setNewCharHide();
+			
+		}else { //Otherwise, if the first player does exist, set the load button to route to battle with that character
+			//sets the button to the character's name
+			startGameView.setLoad1Text(this.currentPlayer.getName());
+			startGameView.addLoad1ButtonListener(new SwitchScreenToBattleMenuView());
+			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCaracter());
+			//TODO: FIX BUG THAT CAUSES CREATING A NEW CHARACTER WITH THE NEW CHARACTER BUTTON
+			
+		}
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
-		startGameView.addLoad1ButtonListener(new SwitchScreenToCreateCaracter());
-		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());
+		
+//		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());
 	}
 	
 	/**
@@ -87,7 +107,7 @@ public class MainController {
 	 */
 	public void refreshBattleMenuView(Player player) {
 		this.battleModel = new Battle(player);
-		this.battleMenuView = new BattleMenuView(player.getName(), player.getHp(), player.getMaxHP());
+		this.battleMenuView = new BattleMenuView(this.currentPlayer.getName(), this.currentPlayer.getHp(), this.currentPlayer.getMaxHP());
 		battleMenuView.addRollButtonListener(new BattleMenuRollButtonListener());
 		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
@@ -182,7 +202,7 @@ public class MainController {
 	}
 	
 	/**
-	 * Writes a character to the character file.
+	 * Writes a character to the character file. TODO: t
 	 */
 	public class CreateCharacterSubmit implements ActionListener{
 		@Override
@@ -203,6 +223,10 @@ public class MainController {
 		}
 		
 	}
+	
+	////////////////////////////////////////////////////////////////////
+	//                  BATTLE MENU LISTENERS                         //
+	////////////////////////////////////////////////////////////////////
 	
 	public class BattleMenuRollButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
@@ -242,6 +266,20 @@ public class MainController {
 			
 		}
 	}
+	/////////////////////////////////////////////////////////////////////
+	//////////////// END OF BATTLE MENU LISTENERS ///////////////////////
+	////////////////////////////////////////////////////////////////////
+	
+	////////////////////////////////////////////////////////////////////
+	////////////////// START MENU LISTENERS ///////////////////////////
+	///////////////////////////////////////////////////////////////////
+	
+	
+	/////////////////////////////////////////////////////////////////////
+	//////////////// END OF START MENU LISTENERS  ///////////////////////
+	////////////////////////////////////////////////////////////////////
+	
+	
 	/**
 	 * Takes a JPanel object and switches the Main JFrame to the panel.
 	 * @param panel

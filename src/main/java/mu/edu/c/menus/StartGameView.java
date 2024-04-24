@@ -22,18 +22,21 @@ import mu.edu.c.audio.audioPlayer;
 
 public class StartGameView extends JPanel{
 	
-	JButton btnSave1;
-	JButton btnSave2;
-	JButton btnSave3;
-	JButton btnLoad1;
-	JButton btnLoad2;
-	JButton btnLoad3;
-	JButton btnDelete1;
-	JButton btnDelete2;
-	JButton btnDelete3;
-	JButton btnBack;
-	Color buttonColor = Color.white;
-	Color buttonColorPressed = new Color(226, 221, 250);
+//	private JButton btnSave1;
+//	private JButton btnSave2;
+//	private JButton btnSave3;
+	private JButton btnLoad1;
+//	private JButton btnLoad2;
+//	private JButton btnLoad3;
+//	private JButton btnDelete1;
+//	private JButton btnDelete2;
+//	private JButton btnDelete3;
+	
+	private JButton BtnNewChar;
+	
+	private JButton btnBack;
+	private Color buttonColor = Color.white;
+	private Color buttonColorPressed = new Color(226, 221, 250);
 	
 	public StartGameView(){
 			audioPlayer.stopTrack();
@@ -66,14 +69,16 @@ public class StartGameView extends JPanel{
 		    
 		    
 		    buttons.add(btnLoad1);
-	        buttons.add(btnSave1);
-	        buttons.add(btnDelete1, gbc2);
-	        buttons.add(btnLoad2);
-	        buttons.add(btnSave2);
-	        buttons.add(btnDelete2, gbc2);
-	        buttons.add(btnLoad3);
-	        buttons.add(btnSave3);
-	        buttons.add(btnDelete3, gbc2);
+//	        buttons.add(btnSave1);
+//	        buttons.add(btnDelete1, gbc2);
+//	        buttons.add(btnLoad2);
+//	        buttons.add(btnSave2);
+//	        buttons.add(btnDelete2, gbc2);
+//	        buttons.add(btnLoad3);
+//	        buttons.add(btnSave3);
+//	        buttons.add(btnDelete3, gbc2);
+		    
+		    buttons.add(BtnNewChar);
 	        
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
@@ -99,33 +104,37 @@ public class StartGameView extends JPanel{
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnSave1 = new JButton("Save 1");
-			btnSave2 = new JButton("Save 2");
-			btnSave3 = new JButton("Save 3");
+//			btnSave1 = new JButton("Save 1");
+//			btnSave2 = new JButton("Save 2");
+//			btnSave3 = new JButton("Save 3");
 			btnLoad1 = new JButton("Load 1");
-			btnLoad2 = new JButton("Load 2");
-			btnLoad3 = new JButton("Load 3");
-			btnDelete1 = new JButton("Delete 1");
-			btnDelete2 = new JButton("Delete 2");
-			btnDelete3 = new JButton("Delete 3");
+//			btnLoad2 = new JButton("Load 2");
+//			btnLoad3 = new JButton("Load 3");
+//			btnDelete1 = new JButton("Delete 1");
+//			btnDelete2 = new JButton("Delete 2");
+//			btnDelete3 = new JButton("Delete 3");
 			btnBack = new JButton("Back");
+			
+			BtnNewChar = new JButton("Create another character");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			SetUpButton(btnSave1);
-			SetUpButton(btnSave2);
-			SetUpButton(btnSave3);
+//			SetUpButton(btnSave1);
+//			SetUpButton(btnSave2);
+//			SetUpButton(btnSave3);
 			
 			SetUpButton(btnLoad1);
-			SetUpButton(btnLoad2);
-			SetUpButton(btnLoad3);
-			
-			SetUpButton(btnDelete1);
-			SetUpButton(btnDelete2);
-			SetUpButton(btnDelete3);
+//			SetUpButton(btnLoad2);
+//			SetUpButton(btnLoad3);
+//			
+//			SetUpButton(btnDelete1);
+//			SetUpButton(btnDelete2);
+//			SetUpButton(btnDelete3);
 			
 			SetUpButton(btnBack);
+			
+			SetUpButton(BtnNewChar);
 			
 		}
 		
@@ -177,6 +186,11 @@ public class StartGameView extends JPanel{
 			button.setFont(buttonFont);
 		}
 		
+		
+		/////////////////////////////////////////////////////////////////////////
+		//////////////// LISTENER SECTION ///////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////
+		
 		public void addBackButtonListener(ActionListener listener) {
 			btnBack.addActionListener(listener);
 		}
@@ -185,9 +199,38 @@ public class StartGameView extends JPanel{
 			btnLoad1.addActionListener(listener);
 		}
 		
-		public void addLoad2Listener(ActionListener listener) {
-			btnLoad2.addActionListener(listener);
+//		public void addLoad2Listener(ActionListener listener) {
+//			btnLoad2.addActionListener(listener);
+//		}
+		
+		public void addBtnNewCharListener(ActionListener listener) {
+			BtnNewChar.addActionListener(listener);
 		}
 		// add button redirects here
+		
+		
+		//////////////////////////////////////////////////////////////////////////
+		//////////////// SETTER SECTION //////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * Sets the text on the load 1 button
+		 * @param Text text to set the button to
+		 */
+		public void setLoad1Text(String Text) {
+			this.btnLoad1.setText(Text);
+			
+		}
+		
+		public void setNewCharHide() {
+			this.BtnNewChar.setVisible(false);
+			setNewCharDisable();
+		}
+		public void setNewCharDisable() {
+			this.BtnNewChar.setEnabled(false);
+		}
+		public void setNewCharEnable() {
+			this.BtnNewChar.setEnabled(true);
+		}
 }
 
