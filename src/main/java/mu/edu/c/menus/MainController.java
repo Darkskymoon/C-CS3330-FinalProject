@@ -85,6 +85,8 @@ public class MainController {
 		this.battleModel = new Battle(player);
 		this.battleMenuView = new BattleMenuView(player.getName(), player.getHp(), player.getMaxHP());
 		battleMenuView.addRollButtonListener(new BattleMenuRollButtonListener());
+		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
+		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
 	}
 	
 	/**
@@ -199,6 +201,36 @@ public class MainController {
 	}
 	
 	public class BattleMenuRollButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			//Roll for current battle
+			int roll = battleModel.roll();
+			battleMenuView.setRollLabel(roll);
+			
+		}
+	}
+	
+	/**
+	 * the action listener for the Normal attack button listener
+	 */
+	public class BattleMenuNormalAttackButtonListener implements ActionListener{
+		/**
+		 * Rolls a number then sets the roll Label equal to that result
+		 */
+		public void actionPerformed(ActionEvent e) {
+			//Roll for current battle
+			int roll = battleModel.roll();
+			battleMenuView.setRollLabel(roll);
+			
+		}
+	}
+	
+	/**
+	 * the action listener for the special attack button listener
+	 */
+	public class BattleMenuSpecialAttackButtonListener implements ActionListener{
+		/**
+		 * Rolls a number then sets the roll Label equal to that result
+		 */
 		public void actionPerformed(ActionEvent e) {
 			//Roll for current battle
 			int roll = battleModel.roll();

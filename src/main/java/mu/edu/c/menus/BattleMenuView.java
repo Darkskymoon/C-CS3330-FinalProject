@@ -78,7 +78,7 @@ public class BattleMenuView extends JPanel {
 	        add(buttons, gbc);
 	        
 	        JPanel LabelContainer = new JPanel(new GridBagLayout());
-	        LabelRoll=new JLabel("roll");
+	        LabelRoll=new JLabel("roll to hit");
 	        LabelRoll.setForeground(Color.black);
 	        LabelContainer.add(LabelRoll, gbc2);
 	        add(LabelContainer, gbc);
@@ -179,8 +179,26 @@ public class BattleMenuView extends JPanel {
 			this.LabelRoll.setText(String.valueOf(roll));
 		}
 		
+		
+		//TODO remove roll button
 	    public void addRollButtonListener(ActionListener listener) {
 	        btnRoll.addActionListener(listener);
 	    }
+	    
+	    /**
+	     * Adds an action listener for normalAttackListener
+	     * @param listener
+	     */
+	    public void addbtnNormalAttackListener(ActionListener listener) {
+	        btnNormalAttack.addActionListener(listener);
+	    }
+	    /**
+	     * Adds an action listener for specialAttackListener
+	     * @param listener
+	     */
+	    public void addbtnSpecialAttackListener(ActionListener listener) {
+	        btnSpecialAttack.addActionListener(listener);
+	    }
+
 
 }
