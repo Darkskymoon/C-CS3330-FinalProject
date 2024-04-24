@@ -1,6 +1,7 @@
 package mu.edu.c.battles;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
@@ -33,6 +34,16 @@ public class Battle {
 	}
 	public float getPlayerHP() {
 		return player.getHp();
+	}
+	
+	
+	/**
+	 * Rolls a number between 1 and 20
+	 * @return a number between 1 and 20
+	 */
+	public int roll() {
+		Random rand = new Random();
+		return rand.nextInt(20)+1;
 	}
 
 }

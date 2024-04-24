@@ -174,5 +174,13 @@ public class BattleMenuView extends JPanel {
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			button.setFont(buttonFont);
 		}
+		
+		public void setRollLabel(int roll) {
+			this.LabelRoll.setText(String.valueOf(roll));
+		}
+		
+	    public void addRollButtonListener(ActionListener listener) {
+	        btnRoll.addActionListener(listener);
+	    }
 
 }
