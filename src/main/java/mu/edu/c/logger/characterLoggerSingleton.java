@@ -1,5 +1,9 @@
 package mu.edu.c.logger;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import com.google.gson.Gson;
 
 import mu.edu.c.entities.Enemy;
@@ -43,7 +47,6 @@ public class characterLoggerSingleton {
 		//convert the object to json string
 		Gson gson = new Gson();
 		String jsonString= gson.toJson(player);
-//		System.out.println(jsonString);
 		
 		GsonAdapter adapter = new GsonAdapter();
 		adapter.writeJson(logFilePath, jsonString);
@@ -51,6 +54,20 @@ public class characterLoggerSingleton {
 		return false;
 	}
 	
-	
+	/**
+	 * This reads the current character from the logged character file. It uses the code discussed in class
+	 * @return false if unsuccessful, true if successful
+	 */
+	public Player readCharacterData() {
+		GsonAdapter adapter = new GsonAdapter();
+		Gson gson = new Gson();
+		//gets the jsontxt
+		String jsontxt =adapter.readJson(logFilePath);
+		
+		//creates a player object from the json
+		Player player = gson.fromJson(jsontxt, Player.class);
+		return player;
+
+	}
 
 }

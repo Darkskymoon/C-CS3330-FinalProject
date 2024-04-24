@@ -65,6 +65,10 @@ public class MainController {
 	 */
 	public void refreshStartGameView() {
 		this.startGameView = new StartGameView();
+		
+		//TODO: should load in to the first slot the character
+		characterLoggerSingleton logger = characterLoggerSingleton.getInstance();
+		logger.readCharacterData();
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
 		startGameView.addLoad1ButtonListener(new SwitchScreenToCreateCaracter());
 		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());

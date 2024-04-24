@@ -26,6 +26,7 @@ public class GsonAdapter{
 	 */
 	public String readJson(String fileName) {
 		try {
+			
 			//read in the file
 			byte[] bytes = Files.readAllBytes(Paths.get(fileName));
 			return new String(bytes);
@@ -37,10 +38,15 @@ public class GsonAdapter{
 	}
 	
 
+	/**
+	 * Writes Json to a file using gson.
+	 * @param fileName the file to write to
+	 * @param jsonContent the json string to write 
+	 * @return boolean indicating success: true==success; false==failure
+	 */
 	public boolean writeJson(String fileName, String jsonContent) {
-		//filewriter is passed true to APPEND rather than overwrite
-		try(FileWriter writer = new FileWriter(fileName, true)){
-			gson.toJson(jsonContent, writer);
+		try(FileWriter writer = new FileWriter(fileName)){
+			writer.write(jsonContent);
 			return true;
 		}catch (JsonIOException | IOException e) {
 			e.printStackTrace();
