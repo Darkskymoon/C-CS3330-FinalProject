@@ -27,6 +27,8 @@ public class MainController {
 	private CreateCharacterView createCharacterView;
 	// add the new class here
 	
+	private Battle battleModel;
+	
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
 	 * @param mainFrame
@@ -80,8 +82,11 @@ public class MainController {
 	 * Refreshes BattleMenuView by recreating object and adding button listeners to view
 	 */
 	public void refreshBattleMenuView(Player player) {
-		Battle battle = new Battle(player);
-		this.battleMenuView = new BattleMenuView(battle);
+		this.battleModel = new Battle(player);
+		this.battleMenuView = new BattleMenuView(player.getName(), player.getHp(), player.getMaxHP());
+		battleMenuView.addRollButtonListener(new BattleMenuRollButtonListener());
+		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
+		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
 	}
 	
 	/**
@@ -190,15 +195,49 @@ public class MainController {
 			
 			//Switch to battle screen and use character just created
 			refreshBattleMenuView(characterObj);
-			switchPanel(battleMenuView);
-			
-			
-			
-//			
+			switchPanel(battleMenuView);	
 		}
 		
 	}
 	
+	public class BattleMenuRollButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			//Roll for current battle
+			int roll = battleModel.roll();
+			battleMenuView.setRollLabel(roll);
+			
+		}
+	}
+	
+	/**
+	 * the action listener for the Normal attack button listener
+	 */
+	public class BattleMenuNormalAttackButtonListener implements ActionListener{
+		/**
+		 * Rolls a number then sets the roll Label equal to that result
+		 */
+		public void actionPerformed(ActionEvent e) {
+			//Roll for current battle
+			int roll = battleModel.roll();
+			battleMenuView.setRollLabel(roll);
+			
+		}
+	}
+	
+	/**
+	 * the action listener for the special attack button listener
+	 */
+	public class BattleMenuSpecialAttackButtonListener implements ActionListener{
+		/**
+		 * Rolls a number then sets the roll Label equal to that result
+		 */
+		public void actionPerformed(ActionEvent e) {
+			//Roll for current battle
+			int roll = battleModel.roll();
+			battleMenuView.setRollLabel(roll);
+			
+		}
+	}
 	/**
 	 * Takes a JPanel object and switches the Main JFrame to the panel.
 	 * @param panel
