@@ -16,10 +16,9 @@ public abstract class Entity {
 	
 	protected int xp;
 	
-	public Entity(float maxHP, int Strength, int defense, int brains, String Name) {
+	public Entity(float maxHP, int strength, int defense, int brains, String Name) {
 		this.hp = maxHP;
 		this.maxHP = maxHP;
-		
 		this.strength = strength;
 		this.defense = defense;
 		this.brains = brains;
@@ -118,8 +117,8 @@ public abstract class Entity {
 			return maxHP;
 		}
 		//default adjustment to HP
-		hp = valueToAdjustBy;
-		return hp + valueToAdjustBy;
+		hp += valueToAdjustBy;
+		return hp;
 	}
 	
 	//getters and setters for all the fields
@@ -183,8 +182,8 @@ public abstract class Entity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "name: " +Name
-				+ "HP: " + maxHP;
+		return "Name: " +Name
+				+ " HP: " + maxHP;
 	}
 	
 	

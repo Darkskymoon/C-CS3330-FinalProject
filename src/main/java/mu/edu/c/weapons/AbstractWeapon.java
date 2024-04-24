@@ -47,6 +47,4 @@ public abstract class AbstractWeapon implements IWeapon {
 	}
 	
 	
-	
-	
 }
