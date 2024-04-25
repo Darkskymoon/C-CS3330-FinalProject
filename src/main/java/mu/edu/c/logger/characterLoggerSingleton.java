@@ -49,7 +49,9 @@ public class characterLoggerSingleton {
 		String jsonString= gson.toJson(player);
 		
 		GsonAdapter adapter = new GsonAdapter();
-		adapter.writeJson(logFilePath, jsonString);
+		
+		//overwrite previous character
+		adapter.writeJson(logFilePath, jsonString, 0);
 		
 		return false;
 	}

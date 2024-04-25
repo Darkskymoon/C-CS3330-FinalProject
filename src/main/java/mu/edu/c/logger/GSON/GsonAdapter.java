@@ -56,39 +56,54 @@ public class GsonAdapter{
 	 * This method reads in all of the Json in the file
 	 * TODO:implement
 	 * @param fileName the filepath string
-	 * @return arraylist of all of the json objects (as strings)
+	 * @return arraylist of all of the json objects (as strings), null on failure
 	 */
 	public ArrayList<String> readAllJson(String fileName) {
-//		try {
-//			Arraylist<String>
-//			//open file scanner
-//			Scanner fileScanner = new Scanner(new FileInputStream(fileName));
-//			
-//			//check to see if file is empty
-//			if(!fileScanner.hasNextLine()){
-//				return null;
-//			}
-//			
-//			
-//			//read in the lines
-//			while(fileScanner.hasNextLine()) {
-//				String string = fileScanner.nextLine();
-//				
-//				
-//			}
-//		}
-		return null;
+		try {
+			ArrayList<String> result = new ArrayList<>();
+			//open file scanner
+			Scanner fileScanner = new Scanner(new FileInputStream(fileName));
+			
+			//check to see if file is empty
+			if(!fileScanner.hasNextLine()){
+				return null;
+			}
+			
+			
+			//read in the lines
+			while(fileScanner.hasNextLine()) {
+				String string = fileScanner.nextLine();
+				result.add(string);
+				}
+			
+			//close and return results
+			fileScanner.close();
+			return result;
+			}
+		catch (Exception e) {
+			return null;
+		}
 	}
+	
 	
 
 	/**
 	 * Writes Json to a file using gson.
 	 * @param fileName the file to write to
 	 * @param jsonContent the json string to write 
+	 * @param option 1 to append, everything else to overwrite
 	 * @return boolean indicating success: true==success; false==failure
 	 */
-	public boolean writeJson(String fileName, String jsonContent) {
-		try(FileWriter writer = new FileWriter(fileName)){
+	public boolean writeJson(String fileName, String jsonContent, int option) {
+		try {
+			
+			FileWriter writer;
+			if(option == 1) {	//append mode
+				writer = new FileWriter(fileName, true);
+			}
+			else { //overwrite mode
+				writer = new FileWriter(fileName);
+			}
 			writer.write(jsonContent+"\n");
 			writer.close();
 			return true;
