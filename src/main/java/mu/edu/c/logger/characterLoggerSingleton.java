@@ -63,6 +63,7 @@ public class characterLoggerSingleton {
 		Gson gson = new Gson();
 		//gets the jsontxt
 		String jsontxt =adapter.readJson(logFilePath);
+		System.out.println(jsontxt);
 		
 		//creates a player object from the json
 		Player player = gson.fromJson(jsontxt, Player.class);
