@@ -12,6 +12,10 @@ public class audioPlayer {
 	static Clip backgroundTrack;
 	static float sysVolume = -20;
 	
+	/**
+	 * Takes audioFile string and plays the audio from that clip
+	 * @param audioFile
+	 */
 	public static void playAudio(String audioFile) {
         try {
             File file = new File("./src/main/resources/audio/"+audioFile+".wav");
@@ -28,11 +32,16 @@ public class audioPlayer {
         }
     }
 	
+	/**
+	 * Takes audioFile string and sets the track to it, looping continuously
+	 * @param audioFile
+	 */
 	public static void setTrack(String audioFile) {
         try {
         	if(backgroundTrack != null) {
         		backgroundTrack.close();
         	}
+        	
             File file = new File("./src/main/resources/audio/"+audioFile+".wav");
             backgroundTrack = AudioSystem.getClip();
             backgroundTrack.open(AudioSystem.getAudioInputStream(file));
@@ -44,6 +53,10 @@ public class audioPlayer {
         }
     }
 	
+	/**
+	 * Takes float volume and sets the track volume
+	 * @param volume
+	 */
 	public static void setTrackVolume(float volume) {
 		
 		sysVolume = volume;
@@ -52,6 +65,9 @@ public class audioPlayer {
 			gainControl.setValue(volume); // Change volume by offset decibels.
 	}
 	
+	/**
+	 * Stops the current track
+	 */
 	public static void stopTrack() {
 			
 		if(backgroundTrack != null) {
