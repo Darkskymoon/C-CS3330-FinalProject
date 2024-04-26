@@ -36,7 +36,7 @@ public class BattleMenuView extends JPanel {
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
 	
-	public BattleMenuView(String CharacterName, float characterCurrentHP,float characterMaxHP){
+	public BattleMenuView(){
 			
 			
 			setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -54,7 +54,7 @@ public class BattleMenuView extends JPanel {
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
 	        
 	        //initialize Buttons (start and credits)
-			initializeButtons(gbc, CharacterName, characterCurrentHP, characterMaxHP);
+			initializeButtons(gbc);
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
@@ -105,13 +105,13 @@ public class BattleMenuView extends JPanel {
 			});
 		}
 
-		private void initializeButtons(GridBagConstraints gbc, String charName, float charHP, float charMaxHP) {
+		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnCharacterName = new JButton(charName);
+			btnCharacterName = new JButton("charName");
 			btnBattleText = new JButton("END OF DAYS");
 			btnEnemyName = new JButton("Enemy");
-			btnCharacterHP = new JButton(charHP+ "/"+charMaxHP);
+			btnCharacterHP = new JButton("TEMPHP");
 			btnEnemyHP = new JButton("HP: 97");
 			btnRoll = new JButton("Roll");
 			btnNormalAttack = new JButton("Normal Attack");
@@ -203,6 +203,23 @@ public class BattleMenuView extends JPanel {
 		public void setRollLabel(int roll) {
 			this.LabelRoll.setText(String.valueOf(roll));
 		}
+		public void setbtnEnemyName(String name) {
+			this.btnEnemyName.setText(String.valueOf(name));
+		}
+		
+		public void setbtnEnemyHP(float hp, float max) {
+			this.btnEnemyHP.setText(String.valueOf(hp+ "/"+max));
+		}
+		
+		public void setbtnCharacterName(String name) {
+			this.btnCharacterName.setText(String.valueOf(name));
+		}
+		
+		public void setbtnCharacterHP(float charHP, float charMaxHP) {
+			this.btnCharacterHP.setText(String.valueOf(charHP+ "/"+charMaxHP));
+		}
+		
+		
 		
 		
 		

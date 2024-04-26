@@ -87,7 +87,6 @@ public class MainController {
 			startGameView.setLoad1Text(this.currentPlayer.getName());
 			startGameView.addLoad1ButtonListener(new SwitchScreenToBattleMenuView());
 			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCaracter());
-			//TODO: FIX BUG THAT CAUSES CREATING A NEW CHARACTER WITH THE NEW CHARACTER BUTTON
 			
 		}
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -106,13 +105,21 @@ public class MainController {
 	/**
 	 * Refreshes BattleMenuView by recreating object and adding button listeners to view
 	 */
-	public void refreshBattleMenuView(Player player) {
-		this.battleModel = new Battle(player);
-		this.battleMenuView = new BattleMenuView(this.currentPlayer.getName(), this.currentPlayer.getHp(), this.currentPlayer.getMaxHP());
+	public void refreshBattleMenuView() {
+		this.battleModel = new Battle(this.currentPlayer);
+		this.battleMenuView = new BattleMenuView();
 		
-		//set all possible enemies in the battle model
+		//initialize enemies
 		this.battleModel.initializeEnemies();
 		
+		//set the buttons
+		this.battleMenuView.setbtnCharacterHP(this.battleModel.getPlayerHP(), this.battleModel.getPlayerMaxHP());
+		this.battleMenuView.setbtnCharacterName(this.battleModel.getPlayerName());
+		this.battleMenuView.setbtnEnemyName(this.battleModel.getCurrentEnemyName());
+		this.battleMenuView.setbtnEnemyHP(this.battleModel.getCurrentEnemyCurrentHP(), this.battleModel.getCurrentEnemyMaxHP());
+		
+		
+		//add listeners
 		battleMenuView.addRollButtonListener(new BattleMenuRollButtonListener());
 		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
@@ -187,7 +194,7 @@ public class MainController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			refreshBattleMenuView(null);
+			refreshBattleMenuView();
 			switchPanel(battleMenuView);
 		}
 		
@@ -207,7 +214,7 @@ public class MainController {
 	}
 	
 	/**
-	 * Writes a character to the character file. TODO: t
+	 * Writes a character to the character file. TODO: 
 	 */
 	public class CreateCharacterSubmit implements ActionListener{
 		@Override

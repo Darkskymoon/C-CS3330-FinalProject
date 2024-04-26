@@ -20,6 +20,7 @@ public class Battle {
 	
 	public Battle(Player player) {
 		this.player = player;
+		System.out.println(player);
 		//TODO this should read in all saved enemies
 		this.setPossibleEnemies(new ArrayList<>());
 		
@@ -172,4 +173,6 @@ public class Battle {
 		this.CurrentEnemy.setHp(newValue);
 		
 	}
+	
+	
 }
