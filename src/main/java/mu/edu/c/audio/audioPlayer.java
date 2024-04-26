@@ -1,23 +1,35 @@
 package mu.edu.c.audio;
 
 import java.io.File;
+import java.util.ArrayList;
 
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.*;
 
 
-public class audioPlayer {
+public class AudioPlayer {
 	static Clip backgroundTrack;
 	static float sysVolume = -20;
+	static ArrayList<Clip> currentSounds;
 	
 	/**
-	 * Takes audioFile string and plays the audio from that clip
-	 * @param audioFile
+	 * Initializes the AudioPlayer. 
+	 * Only needs to be ran once across the program.
 	 */
-	public static void playAudio(String audioFile) {
-        try {
+	public AudioPlayer() {
+		if (currentSounds == null) {
+			currentSounds = new ArrayList<Clip>();
+		}
+	}
+
+	/**
+	 * Takes the name of the wav audioFile to play and plays it once.
+	 * @param audioFile
+	 * @return Clip
+	 */
+	public static Clip playAudio(String audioFile) {
+		try {
             File file = new File("./src/main/resources/audio/"+audioFile+".wav");
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(file));
@@ -25,15 +37,17 @@ public class audioPlayer {
             FloatControl gainControl = 
     			    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
     		gainControl.setValue(sysVolume);
-   
+    		currentSounds.addFirst(clip);
             clip.start();
+            return clip;
         } catch (Exception e) {
             System.err.println(e);
+            return null;
         }
     }
 	
 	/**
-	 * Takes audioFile string and sets the track to it, looping continuously
+	 * Takes the name of the wav audioFile to play and loops it continuously.
 	 * @param audioFile
 	 */
 	public static void setTrack(String audioFile) {
@@ -54,7 +68,7 @@ public class audioPlayer {
     }
 	
 	/**
-	 * Takes float volume and sets the track volume
+	 * Takes float volume (in decibels) and sets the track volume.
 	 * @param volume
 	 */
 	public static void setTrackVolume(float volume) {
@@ -73,5 +87,26 @@ public class audioPlayer {
 		if(backgroundTrack != null) {
 			backgroundTrack.close();
 		}
+	}
+	
+	/**
+	 * Stops any audio played with playAudio.
+	 */
+	public static void stopAudio() {
+		for(int i=currentSounds.size()-1; i>=0; i--){ 
+			if (currentSounds.get(i).isRunning()) {
+				currentSounds.get(i).stop();
+			}
+			currentSounds.remove(i);
+		}
+
+	}
+
+	/**
+	 * Stops any audio played with playAudio and stops the current track.
+	 */
+	public static void stopAllAudio() {
+		stopTrack();
+		stopAudio();
 	}
 }

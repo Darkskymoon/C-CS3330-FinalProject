@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import mu.edu.c.audio.audioPlayer;
+import mu.edu.c.audio.AudioPlayer;
 
 public class MainMenuView extends JPanel{
 	
@@ -29,7 +29,7 @@ public class MainMenuView extends JPanel{
 	Color buttonColorPressed = new Color(226, 221, 250);
 	
 	public MainMenuView(){
-			
+			AudioPlayer.stopAllAudio();
 			setBorder(new EmptyBorder(10, 10, 10, 10));
 	        setLayout(new GridBagLayout());
 			
@@ -68,7 +68,7 @@ public class MainMenuView extends JPanel{
 	        applyEnteredExitedActions(btnCredits);
 	        applyEnteredExitedActions(btnInfo);
 	        
-			audioPlayer.setTrack("MainGameSound");
+			AudioPlayer.setTrack("MainGameSound");
 		}
 	
 		private void applyEnteredExitedActions(JButton button) {
