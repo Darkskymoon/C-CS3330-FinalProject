@@ -48,9 +48,13 @@ public class EnemyLoggerSingleton {
 			GsonAdapter adapter = new GsonAdapter();
 			
 			//append the Json to the file
-			adapter.writeJson(logFilePath, jsonString, 1);
+			boolean flag =adapter.writeJson(logFilePath, jsonString, 1);
+			if(flag ==false) {
+				return false;
+			}
 			
-			return false;
+			
+			return true;
 		}
 		
 		/**
@@ -114,8 +118,9 @@ public class EnemyLoggerSingleton {
 		/**
 		 * Resets the enemy Json file to contain all of the base monsters
 		 * NOTE: this will erase everything else in the file.
+		 * @return true if success, false if failure
 		 */
-		private void ResetEnemyFile() {
+		private boolean ResetEnemyFile() {
 			//create the base enemy objects
 			Enemy Enemy[]= {new Enemy(1, 2, 3, 4, "Zombie"),
 					new Enemy(2, 5, 10, 15, "Vampire"),
@@ -130,9 +135,13 @@ public class EnemyLoggerSingleton {
 			
 			//put the enemy objects in the logger
 			for(int i=0; i<Enemy.length; i++) {
-				logEnemyData(Enemy[i]);
+				boolean flag =logEnemyData(Enemy[i]);
+				if(flag ==false) {
+					return false;
+				}
 				
 			}
+			return true;
 
 			
 			

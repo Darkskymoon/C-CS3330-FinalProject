@@ -51,21 +51,26 @@ public class characterLoggerSingleton {
 		GsonAdapter adapter = new GsonAdapter();
 		
 		//overwrite previous character
-		adapter.writeJson(logFilePath, jsonString, 0);
-		
-		return false;
+		boolean flag = adapter.writeJson(logFilePath, jsonString, 0);
+		if(flag == false) {
+			return false;
+		}
+		return true;
 	}
 	
 	/**
 	 * This reads the current character from the logged character file. It uses the code discussed in class
-	 * @return false if unsuccessful, true if successful
+	 * @return null if failed, player is successful
 	 */
 	public Player readCharacterData() {
 		GsonAdapter adapter = new GsonAdapter();
 		Gson gson = new Gson();
 		//gets the jsontxt
 		String jsontxt =adapter.readJson(logFilePath);
-		System.out.println(jsontxt);
+		if(jsontxt ==null) {
+			return null;
+		}
+//		System.out.println(jsontxt);
 		
 		//creates a player object from the json
 		Player player = gson.fromJson(jsontxt, Player.class);
