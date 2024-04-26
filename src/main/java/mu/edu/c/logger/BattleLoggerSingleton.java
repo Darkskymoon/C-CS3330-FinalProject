@@ -57,9 +57,9 @@ public class BattleLoggerSingleton {
 		}
 		/**
 		 * Reads in all of the battle stored in a file and converts them to objects
-		 * @return an arraylist of enemy objects representing the JSON Enemy log
+		 * @return an arraylist of battle objects representing the JSON battle log
 		 */
-		public ArrayList<Battle> readAllEnemyData() {
+		public ArrayList<Battle> readAllBattleData() {
 			GsonAdapter adapter = new GsonAdapter();
 			Gson gson = new Gson();
 			

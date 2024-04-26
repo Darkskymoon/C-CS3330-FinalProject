@@ -5,6 +5,7 @@ import java.util.Random;
 
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
+import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
 /**
  * This class represents a battle 
@@ -70,6 +71,8 @@ public class Battle {
 		return true;
 	}
 	
+	
+
 	////////////////////////////////////////////////
 	//Setters and Getters
 	/////////////////////////////////////////////////
@@ -172,6 +175,12 @@ public class Battle {
 	public void setCurrentEnemyCurrentHP(float newValue) {
 		this.CurrentEnemy.setHp(newValue);
 		
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getPlayerName() + " vs " + this.getCurrentEnemyName();
 	}
 	
 	
