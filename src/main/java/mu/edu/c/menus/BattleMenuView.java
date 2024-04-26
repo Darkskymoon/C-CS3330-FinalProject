@@ -175,10 +175,7 @@ public class BattleMenuView extends JPanel {
 			button.setFont(buttonFont);
 		}
 		
-		public void setRollLabel(int roll) {
-			this.LabelRoll.setText(String.valueOf(roll));
-		}
-		
+
 		
 		//TODO remove roll button
 	    public void addRollButtonListener(ActionListener listener) {
@@ -200,5 +197,14 @@ public class BattleMenuView extends JPanel {
 	        btnSpecialAttack.addActionListener(listener);
 	    }
 
+	    /////////////////////////////////////////////////////////////////
+	    // Getters and Setters
+	    /////////////////////////////////////////////////////////////////
+		public void setRollLabel(int roll) {
+			this.LabelRoll.setText(String.valueOf(roll));
+		}
+		
+		
+		
 
 }

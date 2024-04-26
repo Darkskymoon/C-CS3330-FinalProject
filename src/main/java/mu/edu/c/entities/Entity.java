@@ -1,5 +1,8 @@
 package mu.edu.c.entities;
 
+import mu.edu.c.weapons.IWeapon;
+import mu.edu.c.weapons.SwordWeapon;
+
 public abstract class Entity {
 	protected String name;
 	
@@ -12,6 +15,7 @@ public abstract class Entity {
 	protected String Name;
 	
 	//TODO add weapon 
+	//protected IWeapon weaponStrategy = new SwordWeapon("Basic Sword", 1, 2, 1);
 	
 	
 	protected int xp;
@@ -25,6 +29,9 @@ public abstract class Entity {
 		this.xp = 0;
 		
 		this.Name = Name;
+		
+		//equip with basic sword weapon
+		//this.weaponStrategy = new SwordWeapon("Basic Sword", 1, 2, 1);
 		
 	}
 	

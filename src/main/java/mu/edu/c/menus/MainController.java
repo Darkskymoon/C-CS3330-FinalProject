@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
+import mu.edu.c.logger.EnemyLoggerSingleton;
 import mu.edu.c.logger.characterLoggerSingleton;
 
 /**
@@ -108,6 +109,10 @@ public class MainController {
 	public void refreshBattleMenuView(Player player) {
 		this.battleModel = new Battle(player);
 		this.battleMenuView = new BattleMenuView(this.currentPlayer.getName(), this.currentPlayer.getHp(), this.currentPlayer.getMaxHP());
+		
+		//set all possible enemies in the battle model
+		this.battleModel.initializeEnemies();
+		
 		battleMenuView.addRollButtonListener(new BattleMenuRollButtonListener());
 		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());

@@ -82,9 +82,14 @@ public class EnemyLoggerSingleton {
 			//reads in the file
 			Enemies = adapter.readAllJson(logFilePath);
 			
-			//Enemies is empty/readAllJson failed
+			//Enemies is empty/readAllJson failed - initialize the file
 			if(Enemies==null) {
-				return null;
+				ResetEnemyFile();
+				Enemies = adapter.readAllJson(logFilePath);
+				if(Enemies ==null) { //if still empty at this point, return null. Something else went wrong
+					return null;
+				}
+						
 			}
 			
 			
@@ -110,7 +115,7 @@ public class EnemyLoggerSingleton {
 		 * Resets the enemy Json file to contain all of the base monsters
 		 * NOTE: this will erase everything else in the file.
 		 */
-		public void ResetEnemyFile() {
+		private void ResetEnemyFile() {
 			//create the base enemy objects
 			Enemy Enemy[]= {new Enemy(1, 2, 3, 4, "Zombie"),
 					new Enemy(2, 5, 10, 15, "Vampire"),
