@@ -1,4 +1,7 @@
 package mu.edu.c.entities;
+
+import mu.edu.c.weapons.IWeapon;
+
 /**
  * The entity factory method class is a way of creating enemies and players in one place
  */
@@ -27,6 +30,11 @@ public class EntityFactoryMethod {
 	 */
 	public Player createPlayer(float maxHP, int strength, int defense, int brains, String Name) {
 		return new Player(maxHP, strength, defense, brains, Name);
+	}
+	
+
+	public Player createPlayerWithWeapon(float maxHP, int strength, int defense, int brains, String Name, IWeapon strategy) {
+		return new Player(maxHP, strength, defense, brains, Name, strategy);
 	}
 
 }

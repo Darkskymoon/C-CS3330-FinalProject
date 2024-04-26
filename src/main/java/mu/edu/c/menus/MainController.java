@@ -12,7 +12,7 @@ import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
-import mu.edu.c.logger.characterLoggerSingleton;
+import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
  * Main Controller of the MVC architecture, managing interface between models and views
@@ -73,7 +73,7 @@ public class MainController {
 		this.startGameView = new StartGameView();
 		
 		//reads in the current save (if it exists) TODO: try catch
-		characterLoggerSingleton logger = characterLoggerSingleton.getInstance();
+		CharacterLoggerSingleton logger = CharacterLoggerSingleton.getInstance();
 		this.currentPlayer =logger.readCharacterData();
 		
 		
@@ -232,7 +232,7 @@ public class MainController {
 			//TODO: temporarily sets the other stats to placeholder values
 			Player characterObj = new Player(1, 2, 3, 4, name);
 			//gets the logger instance and writes the characterObj to the file.
-			characterLoggerSingleton logger =characterLoggerSingleton.getInstance();
+			CharacterLoggerSingleton logger =CharacterLoggerSingleton.getInstance();
 			logger.logCharacterData(characterObj);
 			
 			//Switch to battle screen and use character just created

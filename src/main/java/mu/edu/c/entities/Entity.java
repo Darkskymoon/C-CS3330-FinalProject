@@ -15,12 +15,36 @@ public abstract class Entity {
 	protected String Name;
 	
 	//TODO add weapon 
-	//protected IWeapon weaponStrategy = new SwordWeapon("Basic Sword", 1, 2, 1);
+	protected IWeapon weaponStrategy = new SwordWeapon("Basic Sword", 1, 2, 1);
 	
 	
 	protected int xp;
 	
+	/**
+	 * This constructor constructs a player without a weapon strategy and auto-creates a default weapon
+	 * @param maxHP
+	 * @param strength
+	 * @param defense
+	 * @param brains
+	 * @param Name
+	 */
 	public Entity(float maxHP, int strength, int defense, int brains, String Name) {
+		
+		//call alternate constructor with default weapon
+		this(maxHP, strength, defense, brains, Name, new SwordWeapon("Basic Sword", 1, 2, 1));
+	}
+	
+	/**
+	 * This constructor constructs a player with a weapon strategy
+	 * @param maxHP
+	 * @param strength
+	 * @param defense
+	 * @param brains
+	 * @param name
+	 * @param weaponStrategy
+	 */
+	public Entity(float maxHP, int strength, int defense, int brains, String name, IWeapon weaponStrategy) {
+		//Set basic stats
 		this.hp = maxHP;
 		this.maxHP = maxHP;
 		this.strength = strength;
@@ -28,10 +52,10 @@ public abstract class Entity {
 		this.brains = brains;
 		this.xp = 0;
 		
-		this.Name = Name;
+		this.Name = name;
 		
-		//equip with basic sword weapon
-		//this.weaponStrategy = new SwordWeapon("Basic Sword", 1, 2, 1);
+		//set the weapon strategy
+		this.weaponStrategy=weaponStrategy;
 		
 	}
 	
@@ -127,6 +151,7 @@ public abstract class Entity {
 		hp += valueToAdjustBy;
 		return hp;
 	}
+	
 	
 	//getters and setters for all the fields
 	public String getName() {

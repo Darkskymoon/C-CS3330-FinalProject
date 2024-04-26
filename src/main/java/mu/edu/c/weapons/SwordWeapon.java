@@ -2,10 +2,11 @@ package mu.edu.c.weapons;
 
 import mu.edu.c.entities.Entity;
 
-public class SwordWeapon extends AbstractWeapon {
+public class SwordWeapon extends AbstractWeapon implements IWeapon {
 
 	public SwordWeapon(String name, int simpleDamage, int specialDamage, float scaler) {
 		super(name, simpleDamage, specialDamage, scaler);
+		this.weapontype = WeaponType.SWORD;
 	}
 
 	@Override

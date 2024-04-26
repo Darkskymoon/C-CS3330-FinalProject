@@ -6,6 +6,7 @@ public class MagicWeapon extends AbstractWeapon {
 	
 	public MagicWeapon(String name, int simpleDamage, int specialDamage, float scaler) {
 		super(name, simpleDamage, specialDamage, scaler);
+		this.weapontype = WeaponType.MAGIC;
 	}
 
 	@Override

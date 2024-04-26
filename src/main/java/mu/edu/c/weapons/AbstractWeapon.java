@@ -5,6 +5,7 @@ public abstract class AbstractWeapon implements IWeapon {
 	private int simpleDamage;
 	private int specialDamage;
 	private float scaler;
+	protected WeaponType weapontype;
 	
 	public AbstractWeapon(String name, int simpleDamage, int specialDamage, float scaler) {
 		super();

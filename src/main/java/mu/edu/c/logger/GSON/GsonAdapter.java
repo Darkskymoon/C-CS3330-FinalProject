@@ -1,6 +1,7 @@
 package mu.edu.c.logger.GSON;
 
 import java.io.FileInputStream;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+
 
 /**
  * This method is an adapter to json to Gson. 
