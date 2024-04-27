@@ -173,8 +173,6 @@ public class EnemyLoggerSingleton {
 				
 				//gets descriptors
 				JSONArray tempDescriptors = jsonParser.getJSONArray("descriptors");
-				System.out.println(tempDescriptors);
-				Iterator<Object> it =tempDescriptors.iterator(); //TODO: What's up with having to use object
 				
 				for(int i =0; i<tempDescriptors.length(); i++) {
 					try {
@@ -185,8 +183,7 @@ public class EnemyLoggerSingleton {
 					}
 				}
 
-				
-				System.out.println(descriptors);
+	
 				
 
 			}catch(JSONException e) {
@@ -234,16 +231,12 @@ public class EnemyLoggerSingleton {
 			}else {
 				weapon = null;
 			}
-			
-		
+
 			//create Enemy
 			EntityFactoryMethod entityFactory =new EntityFactoryMethod();
-			Enemy enemy=entityFactory.createEnemy(maxHP, strength, defense, brains, weaponName, descriptors, weapon);
+			Enemy enemy=entityFactory.createEnemy(maxHP, strength, defense, brains, name, descriptors, weapon);
 			
 			return enemy;
-		
-			
-			
 		}
 		
 		/**

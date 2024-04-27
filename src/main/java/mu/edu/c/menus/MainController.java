@@ -114,8 +114,8 @@ public class MainController {
 		
 		//initialize enemies
 		this.battleModel.initializeEnemies();
-		currentEnemy = this.battleModel.getCurrentEnemy();
-		
+		this.currentEnemy = this.battleModel.getCurrentEnemy();
+
 		//save the battle at the beginning
 		BattleLoggerSingleton battleLogger = BattleLoggerSingleton.getInstance();
 		battleLogger.logBattleData(this.battleModel);
@@ -227,7 +227,7 @@ public class MainController {
 	public class CreateCharacterSubmit implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//Gets the character name
+			//Gets the character name TODO create getter for this
 			String name = createCharacterView.nameField.getText();
 			
 			//creates the character/player object

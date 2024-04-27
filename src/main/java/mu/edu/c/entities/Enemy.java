@@ -83,10 +83,6 @@ public class Enemy extends Entity{
 		while(descriptorIterator.hasNext()) {
 			AddDescriptors(descriptorIterator.next());
 		}
-//		for(int i =0; i<descriptors.size(); i++) {
-//			System.out.println(descriptors.get(i));
-//			AddDescriptors(descriptors.get(i));
-//		}
 	}
 	
 	
@@ -99,7 +95,6 @@ public class Enemy extends Entity{
 	 * true on success
 	 */
 	public boolean AddDescriptors(String adjective) {
-		System.out.println(adjective);
 		if(adjective ==null) {
 			return false;
 		}

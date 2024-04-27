@@ -15,15 +15,32 @@ public class Battle {
 	private Player player;
 	
 	//all of the enemies in possible in combat
-	private ArrayList<Enemy> PossibleEnemies;
+	//private ArrayList<Enemy> PossibleEnemies;
 	
 	private Enemy CurrentEnemy;
 	
+	/**
+	 * Constructor for building a battle based on pre-existing
+	 * player and enemy. This constructor is meant for reading in pre-existing
+	 * battles 
+	 * @param player
+	 * @param enemy
+	 */
+	public Battle(Player player, Enemy enemy) {
+		this.player= player;
+		this.CurrentEnemy= enemy;
+	}
+	/**
+	 * Constructor for only building a battle based on a player
+	 * This constructor is meant to only be used when initializing a NEW battle
+	 * not for reading in an existing battle
+	 * @param player the player to set as the player for combat
+	 */
 	public Battle(Player player) {
 		this.player = player;
 //		System.out.println(player);
-		//TODO this should read in all saved enemies
-		this.setPossibleEnemies(new ArrayList<>());
+		//TODO this should read in all saved enemies and set the current enemy
+		setCurrentEnemy();
 		
 	}
 	
@@ -57,7 +74,7 @@ public class Battle {
 	 */
 	public boolean initializeEnemies() {
 		//set all possible enemies
-		setPossibleEnemies();
+		//createPossibleEnemies();
 		
 		//sets the current enemy
 		boolean CurrentEnemyFlag = setCurrentEnemy();
@@ -77,33 +94,33 @@ public class Battle {
 	//Setters and Getters
 	/////////////////////////////////////////////////
 	
-	/**
-	 * Gets all possible enemies that could have occurred in the battle
-	 * @return arraylist of all enemies
-	 */
-	public ArrayList<Enemy> getPossibleEnemies() {
-		return PossibleEnemies;
-	}
-
-	/**
-	 * sets all possible enemies that can occur in the battle
-	 * @param possibleEnemies the enemies that can occur in the battle
-	 */
-	public void setPossibleEnemies(ArrayList<Enemy> possibleEnemies) {
-		PossibleEnemies = possibleEnemies;
-	}
+//	/**
+//	 * Gets all possible enemies that could have occurred in the battle
+//	 * @return arraylist of all enemies
+//	 */
+//	public ArrayList<Enemy> getPossibleEnemies() {
+//		return PossibleEnemies;
+//	}
+//
+//	/**
+//	 * sets all possible enemies that can occur in the battle
+//	 * @param possibleEnemies the enemies that can occur in the battle
+//	 */
+//	public void setPossibleEnemies(ArrayList<Enemy> possibleEnemies) {
+//		PossibleEnemies = possibleEnemies;
+//	}
 	
 	/**
 	 * Sets all possible enemies that can occur in battle from reading in from the file.
 	 */
-	public boolean setPossibleEnemies() {
+	private ArrayList<Enemy> createPossibleEnemies() {
 		ArrayList<Enemy> enemies = EnemyLoggerSingleton.getInstance().readAllEnemyData();
 		if(enemies == null) { //reading failed
-			return false;
+			return null;
 		}
 		
-		setPossibleEnemies(enemies);
-		return true;
+		//setPossibleEnemies(enemies);
+		return enemies;
 	}
 	
 
@@ -123,24 +140,37 @@ public class Battle {
 	public boolean setCurrentEnemy() {
 		Random rand = new Random();
 		
-		//This should never happen but, in case it does,
-		//This re-reads in all possible enemies, which if it is empty, will be populated with some
-		//sample monsters
+		//Gets all the current available enemies
+		ArrayList<Enemy> PossibleEnemies = createPossibleEnemies();
+	
+		
+		//No enemies to choose from, so set to a placeholder enemy
+		//This code should be unreachable since enemies will be generated in createPossibleEnemies
+		//if the file is null
+		//indicates a failure 
 		if(PossibleEnemies.isEmpty()) {
-			boolean setPossibleFlag =setPossibleEnemies();
-			if(setPossibleFlag ==false) { //reading failed
-				return false;
-			}
+			this.CurrentEnemy=new Enemy(1, 1, 1, 1, "PlaceHolder enemy");
+			return false;
 		}
 		//Generates a random number using rand(max-min) +min formula
-		int max = this.PossibleEnemies.size()-1;
+		int max = PossibleEnemies.size()-1;
 		int min = 0;
 		int index =rand.nextInt(max-min)+min;
 		
 		//gets a random enemy
-		this.CurrentEnemy=this.PossibleEnemies.get(index);
+		this.CurrentEnemy=PossibleEnemies.get(index);
 		
 		return true;
+	}
+	
+	/**
+	 * sets the current enemy based on a passed enemy	
+	 * @param enemy what to set the current enemy to	
+	 * @return null if current enemy has been set to null (failure), the current enemy if successfull
+	 */
+	public Enemy setCurrentEnemy(Enemy enemy) {
+		this.CurrentEnemy = enemy;
+		return this.CurrentEnemy;
 	}
 	
 	/**
