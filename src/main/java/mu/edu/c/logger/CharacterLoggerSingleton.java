@@ -70,8 +70,8 @@ public class CharacterLoggerSingleton {
 	}
 	
 	/**
-	 * TODO: split this method, currently it is very large
-	 * This reads the current character from the logged character file. It uses the code discussed in class
+	 *
+	 * This reads the current character from the logged character file.
 	 * @return null if failed, player is successful
 	 */
 	public Player readCharacterData() {
@@ -81,8 +81,21 @@ public class CharacterLoggerSingleton {
 		
 		//gets the jsontxt
 		String jsontxt =adapter.readJson(logFilePath);
+		Player player =readCharacter(jsontxt);
+		return player;
+		
 	
 
+		
+
+	}
+	
+	/**
+	 * creates a player object based on a Json string
+	 * @param jsontxt string to turn into a player
+	 * @return Player object
+	 */
+	public Player readCharacter(String jsontxt) {
 		if(jsontxt ==null) { //nothing to read in
 			return null;
 		}
@@ -182,7 +195,7 @@ public class CharacterLoggerSingleton {
 		}
 	
 		return player;
-
+		
 	}
 
 }
