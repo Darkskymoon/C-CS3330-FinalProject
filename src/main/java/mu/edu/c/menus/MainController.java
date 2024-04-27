@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import mu.edu.c.battles.Battle;
+import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
@@ -34,6 +35,7 @@ public class MainController {
 	private Battle battleModel;
 	//TODO- Is this right?
 	private Player currentPlayer;
+	private Enemy currentEnemy;
 	
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
@@ -110,18 +112,18 @@ public class MainController {
 		this.battleModel = new Battle(this.currentPlayer);
 		this.battleMenuView = new BattleMenuView();
 		
-		
 		//initialize enemies
 		this.battleModel.initializeEnemies();
+		currentEnemy = this.battleModel.getCurrentEnemy();
 		
 		//save the battle at the beginning
 		BattleLoggerSingleton battleLogger = BattleLoggerSingleton.getInstance();
 		battleLogger.logBattleData(this.battleModel);
 		
 		//set the buttons
-		this.battleMenuView.setbtnCharacterHP(this.battleModel.getPlayerHP(), this.battleModel.getPlayerMaxHP());
 		this.battleMenuView.setbtnCharacterName(this.battleModel.getPlayerName());
 		this.battleMenuView.setbtnEnemyName(this.battleModel.getCurrentEnemyName());
+		this.battleMenuView.setbtnCharacterHP(this.battleModel.getPlayerHP(), this.battleModel.getPlayerMaxHP());
 		this.battleMenuView.setbtnEnemyHP(this.battleModel.getCurrentEnemyCurrentHP(), this.battleModel.getCurrentEnemyMaxHP());
 		
 		
@@ -249,7 +251,7 @@ public class MainController {
 	//                  BATTLE MENU LISTENERS                         //
 	////////////////////////////////////////////////////////////////////
 	
-	public class BattleMenuSurrenderButtonListener implements ActionListener{
+	public class BattleMenuSurrenderButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			refreshMainMenuView();
 			switchPanel(mainMenuView);
@@ -267,7 +269,11 @@ public class MainController {
 			//Roll for current battle
 			int roll = battleModel.roll();
 			battleMenuView.setRollLabel(roll);
-			
+			System.out.println(currentEnemy.getHp());
+			currentPlayer.simpleAttack(currentEnemy);
+			System.out.println(currentEnemy.getHp());
+			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
+			battleMenuView.setbtnEnemyHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
 		}
 	}
 	
@@ -282,6 +288,9 @@ public class MainController {
 			//Roll for current battle
 			int roll = battleModel.roll();
 			battleMenuView.setRollLabel(roll);
+			currentPlayer.specialAttack(currentEnemy);
+			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
+			battleMenuView.setbtnEnemyHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
 			
 		}
 	}

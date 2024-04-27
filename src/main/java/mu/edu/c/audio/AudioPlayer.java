@@ -10,7 +10,7 @@ import javax.sound.sampled.*;
 
 public class AudioPlayer {
 	static Clip backgroundTrack;
-	static float sysVolume = -20;
+	static float sysVolume = -80;
 	static ArrayList<Clip> currentSounds;
 	
 	/**

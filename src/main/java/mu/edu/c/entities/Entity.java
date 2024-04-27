@@ -152,6 +152,22 @@ public abstract class Entity {
 		return hp;
 	}
 	
+	/**
+	 * Performs simple attack on enemy using weapon
+	 * @param enemy
+	 */
+	public void simpleAttack(Entity enemy) {
+		weaponStrategy.simpleAttack(this, enemy);
+	}
+	
+	/**
+	 * Performs special attack on enemy using weapon
+	 * @param enemy
+	 */
+	public void specialAttack(Entity enemy) {
+		weaponStrategy.specialAttack(this, enemy);
+	}
+	
 	
 	//getters and setters for all the fields
 	public String getName() {
