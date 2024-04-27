@@ -1,4 +1,4 @@
-package mu.edu.c.menus;
+package mu.edu.c.views;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,7 +19,7 @@ public class CreateCharacterView extends JPanel {
     JLabel nameLabel = new JLabel("Name:");
     
     // Text Fields
-    JTextField nameField = new JTextField(20);
+    private JTextField nameField = new JTextField(20);
     
     //TODO
     // attribute points remaining 
@@ -63,12 +63,12 @@ public class CreateCharacterView extends JPanel {
         gbc2.anchor = GridBagConstraints.CENTER;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
 
-        buttonsPanel.add(nameField, gbc2);
+        buttonsPanel.add(getNameField(), gbc2);
         buttonsPanel.add(btnSubmit, gbc2);
         buttonsPanel.add(btnBack, gbc2);
         
         // Decrease the size of the nameField
-        nameField.setPreferredSize(new Dimension(100, 50));
+        getNameField().setPreferredSize(new Dimension(100, 50));
 
         // Set layout
         setLayout(new GridLayout(3, 1));
@@ -151,4 +151,12 @@ public class CreateCharacterView extends JPanel {
     public void addSubmitButtonListener(ActionListener listener) {
     	btnSubmit.addActionListener(listener);
     }
+
+	public JTextField getNameField() {
+		return nameField;
+	}
+
+	public void setNameField(JTextField nameField) {
+		this.nameField = nameField;
+	}
 }

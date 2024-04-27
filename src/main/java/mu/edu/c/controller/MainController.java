@@ -1,4 +1,4 @@
-package mu.edu.c.menus;
+package mu.edu.c.controller;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -14,6 +14,13 @@ import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
+import mu.edu.c.views.BattleMenuView;
+import mu.edu.c.views.CreateCharacterView;
+import mu.edu.c.views.CreditMenuView;
+import mu.edu.c.views.GameInfoView;
+import mu.edu.c.views.MainFrame;
+import mu.edu.c.views.MainMenuView;
+import mu.edu.c.views.StartGameView;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
@@ -229,7 +236,7 @@ public class MainController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//Gets the character name TODO create getter for this
-			String name = createCharacterView.nameField.getText();
+			String name = createCharacterView.getNameField().getText();
 			
 			//creates the character/player object
 			//TODO: temporarily sets the other stats to placeholder values

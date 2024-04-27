@@ -1,4 +1,4 @@
-package mu.edu.c.menus;
+package mu.edu.c.views;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -98,8 +98,6 @@ public class GameInfoView extends JPanel{
 			SetUpButton(btnViewCharacters);
 			SetUpButton(btnViewEnemies);
 			SetUpButton(btnBack);
-			
-			
 			
 		}
 		
