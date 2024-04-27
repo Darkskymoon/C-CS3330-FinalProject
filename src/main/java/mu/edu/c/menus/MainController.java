@@ -269,11 +269,9 @@ public class MainController {
 			//Roll for current battle
 			int roll = battleModel.roll();
 			battleMenuView.setRollLabel(roll);
-			System.out.println(currentEnemy.getHp());
 			currentPlayer.simpleAttack(currentEnemy);
-			System.out.println(currentEnemy.getHp());
 			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
-			battleMenuView.setbtnEnemyHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
+			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
 		}
 	}
 	
@@ -290,7 +288,7 @@ public class MainController {
 			battleMenuView.setRollLabel(roll);
 			currentPlayer.specialAttack(currentEnemy);
 			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
-			battleMenuView.setbtnEnemyHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
+			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
 			
 		}
 	}
