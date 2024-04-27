@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import mu.edu.c.entities.Player;
 import mu.edu.c.views.BattleMenuView;
+import mu.edu.c.views.CreateCharacterView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
 import mu.edu.c.views.MainMenuView;
@@ -124,6 +125,26 @@ class MainControllerTest {
 		refreshBattleMenuViewMethod.invoke(mainController);
 		
 		BattleMenuView view2 = (BattleMenuView) mainBattleMenuField.get(mainController);
+		
+		assertNotEquals(view, view2);
+		
+	}
+	
+	@Test
+	void testRefreshCreateCharacterView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+		String methodString = "refreshCreateCharacterView"; 
+        Class[] parameterType = null; 
+        
+		Method refreshCreateCharacterViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
+		Field mainCreateCharacterField = mainController.getClass().getDeclaredField("createCharacterView");
+		
+		refreshCreateCharacterViewMethod.setAccessible(true);
+		mainCreateCharacterField.setAccessible(true);
+		
+		CreateCharacterView view = (CreateCharacterView) mainCreateCharacterField.get(mainController);
+		refreshCreateCharacterViewMethod.invoke(mainController);
+		
+		CreateCharacterView view2 = (CreateCharacterView) mainCreateCharacterField.get(mainController);
 		
 		assertNotEquals(view, view2);
 		
