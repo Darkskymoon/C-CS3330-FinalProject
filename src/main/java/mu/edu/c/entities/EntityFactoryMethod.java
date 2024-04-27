@@ -1,5 +1,7 @@
 package mu.edu.c.entities;
 
+import java.util.ArrayList;
+
 import mu.edu.c.weapons.IWeapon;
 
 /**
@@ -14,11 +16,37 @@ public class EntityFactoryMethod {
 	}
 	
 	/**
-	 * Constructs an Enemy instance
+	 * Constructs an Enemy instance without descriptors
 	 * @return instance of enemy
 	 */
 	public Enemy createEnemy(float maxHP, int strength, int defense, int brains, String name) {
 		return new Enemy(maxHP, strength, defense, brains, name);
+		
+	}
+	
+	/**
+	 * Constructs an Enemy instance that takes descriptors
+	 * @return instance of enemy
+	 */
+	public Enemy createEnemy(float maxHP, int strength, int defense, int brains, String name, ArrayList<String> descriptors) {
+		return new Enemy(maxHP, strength, defense, brains, name, descriptors);
+		
+	}
+	/**
+	 * Constructs an Enemy instance that takes descriptors and weapon
+	 * @return instance of enemy
+	 */
+	public Enemy createEnemy(float maxHP, int strength, int defense, int brains, String name, ArrayList<String> descriptors, IWeapon weapon) {
+		return new Enemy(maxHP, strength, defense, brains, name, descriptors, weapon);
+		
+	}
+	
+	/**
+	 * Constructs an Enemy instance that takes weapons but no descriptor
+	 * @return instance of enemy
+	 */
+	public Enemy createEnemy(float maxHP, int strength, int defense, int brains, String name, IWeapon weapon) {
+		return new Enemy(maxHP, strength, defense, brains, name, weapon);
 		
 	}
 	

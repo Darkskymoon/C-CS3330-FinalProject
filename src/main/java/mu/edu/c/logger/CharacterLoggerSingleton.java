@@ -144,18 +144,18 @@ public class CharacterLoggerSingleton {
 		int specialDamage;
 		float scaler;
 		try {
-			JSONObject obj2 = jsonParser.getJSONObject("weaponStrategy");
+			JSONObject weaponJson = jsonParser.getJSONObject("weaponStrategy");
 		
 		//get weapon name 
-		WeaponName =obj2.getString("name");
+		WeaponName =weaponJson.getString("name");
 		//get weapon simple damage
-		simpleDmg = obj2.getInt("simpleDamage");
+		simpleDmg = weaponJson.getInt("simpleDamage");
 		//get weapon special damage
-		specialDamage = obj2.getInt("specialDamage");
+		specialDamage = weaponJson.getInt("specialDamage");
 		//get weapon scalar
-		scaler = obj2.getFloat("scaler");
+		scaler = weaponJson.getFloat("scaler");
 		//get weapon type
-		weaponType =obj2.getEnum(WeaponType.class, "weapontype");
+		weaponType =weaponJson.getEnum(WeaponType.class, "weapontype");
 		}catch (JSONException e){
 			//set weapon values to null and -1 to indicate nothing had been read in
 			weaponType = null;
