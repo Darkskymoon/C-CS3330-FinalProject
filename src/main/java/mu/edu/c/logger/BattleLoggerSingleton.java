@@ -3,6 +3,9 @@ package mu.edu.c.logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.gson.Gson;
 
 import mu.edu.c.battles.Battle;
@@ -71,23 +74,71 @@ public class BattleLoggerSingleton {
 				return null;
 			}
 			
-			ArrayList<Battle> BattleObjects = new ArrayList<>();
+			ArrayList<Battle> battleObjects = new ArrayList<>();
 			
 			//Iterates through the arraylist to turn all the strings into enemies
-			Iterator<String> BattleIterator =battleStrings.iterator();
-			while(BattleIterator.hasNext()) {
-				BattleObjects.add(gson.fromJson(BattleIterator.next(), Battle.class));
+			Iterator<String> battleIterator =battleStrings.iterator();
+			while(battleIterator.hasNext()) {
+				battleObjects.add(readSingleBattle(battleIterator.next()));
+				//BattleObjects.add(gson.fromJson(BattleIterator.next(), Battle.class));
 				
 			}
 			
 			//If the arraylist is empty, then return null to indicate error
-			if(BattleObjects.isEmpty()) { //failure
+			if(battleObjects.isEmpty()) { //failure
 				return null;
 			}
 			
 			//Finally, return the arraylist containing all the monsters
-			return BattleObjects;
+			return battleObjects;
+		}
+		
+		/**
+		 * reads in a single battle and converts it to a battle object
+		 * @param txtJson json representing the battle
+		 * @return constructed battle object or null if failed
+		 */
+		private Battle readSingleBattle(String txtJson) {
+			//each battle consists of a player and an enemy
+			
+			
+			//constructs needed variables
+			JSONObject jsonParser;
+			Player player;
+			Enemy enemy;
+			Battle battle;
+			//gets all the needed loggers
+			EnemyLoggerSingleton enemyLogger = EnemyLoggerSingleton.getInstance();
+			CharacterLoggerSingleton charLogger = CharacterLoggerSingleton.getInstance();
+			try {
+				jsonParser = new JSONObject(txtJson);
+				
+				//get the player object
+				JSONObject playerJson = jsonParser.getJSONObject("player");
+				//convert the json to a string so that it can be passed to readCharacter
+				String playerJsonTxt =playerJson.toString();
+				
+				player = charLogger.readCharacter(playerJsonTxt);
+				
+				//get the enemy object
+				JSONObject enemyJson = jsonParser.getJSONObject("CurrentEnemy");
+				String enemyJsonTxt = enemyJson.toString();
+				enemy= enemyLogger.readEnemyFromJson(enemyJsonTxt);
+				
+				
+			} catch(JSONException e) {
+				return null;
+			}
+			
+			if(enemy == null || player == null) {
+				return null;
+			}
+			battle = new Battle(player, enemy);
+			
+			return battle;
 		}
 
 
 }
+
+	
