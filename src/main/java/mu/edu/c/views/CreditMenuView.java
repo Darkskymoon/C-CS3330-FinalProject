@@ -24,17 +24,13 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-public class CreditMenuView extends JPanel{
+public class CreditMenuView extends ParentView {
 	
 	JButton btnBack;
 	JTextPane textPane;
-	Color buttonColor = Color.white;
-	Color buttonColorPressed = new Color(226, 221, 250);
 	
 	public CreditMenuView(){
 			
-			setBorder(new EmptyBorder(10, 10, 10, 10));
-	        setLayout(new GridBagLayout());
 			
 			this.setBackground(new Color(45, 44, 65));
 			
@@ -54,23 +50,10 @@ public class CreditMenuView extends JPanel{
 			add(textPane, gbc);
 	        add(btnBack, gbc);
 			
-			
-	        applyEnteredExitedActions(btnBack);
 	        
 				
 		}
 	
-		private void applyEnteredExitedActions(JButton button) {
-			button.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					buttonEntered(button);
-				}
-				public void mouseExited(MouseEvent e) {
-					buttonExited(button);
-				}
-			});
-		}
 
 		private void initializeButtons(GridBagConstraints gbc) {
 			
@@ -102,16 +85,6 @@ public class CreditMenuView extends JPanel{
 			textPane.setForeground(Color.white);
 		}
 		
-		private void SetUpButton(JButton btn) {
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			
-			//Start Game button
-			btn.setFont(buttonFont);
-			btn.setBackground(buttonColor);
-			btn.setFocusPainted(false);
-			btn.setPreferredSize(new Dimension(200, 100));
-			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-		}
 		
 
 		private JLabel CreditTitle() {
@@ -120,19 +93,6 @@ public class CreditMenuView extends JPanel{
 			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
 			
 			return TitleLabel;
-		}
-		
-		private void buttonEntered(JButton button) {
-			button.setBackground(buttonColorPressed);
-			
-			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 16);
-			button.setFont(buttonFont);
-		}
-		
-		private void buttonExited(JButton button) {
-			button.setBackground(buttonColor);
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			button.setFont(buttonFont);
 		}
 		
 		public void addBackButtonListener(ActionListener listener) {

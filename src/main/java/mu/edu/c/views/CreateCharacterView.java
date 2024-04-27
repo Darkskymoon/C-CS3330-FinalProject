@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class CreateCharacterView extends JPanel {
+public class CreateCharacterView extends ParentView {
     // Labels
     JLabel nameLabel = new JLabel("Name:");
     
@@ -29,18 +29,8 @@ public class CreateCharacterView extends JPanel {
     // Buttons for submission and navigation
     JButton btnSubmit;
     JButton btnBack;
-    
-    // Color styling
-    Color buttonColor = Color.white;
-    Color buttonColorPressed = new Color(226, 221, 250);
 
     public CreateCharacterView() {
-        // Set panel boundaries
-        setBorder(new EmptyBorder(10, 10, 10, 10));
-        setLayout(new GridBagLayout());
-
-        // Set panel color
-        this.setBackground(new Color(45, 44, 65));
 
         // Set up panel layout 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -70,21 +60,7 @@ public class CreateCharacterView extends JPanel {
         // Decrease the size of the nameField
         getNameField().setPreferredSize(new Dimension(100, 50));
 
-        // Set layout
-        setLayout(new GridLayout(3, 1));
         add(buttonsPanel);
-    }
-    
-    private void applyEnteredExitedActions(JButton button) {
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                buttonEntered(button);
-            }
-            public void mouseExited(MouseEvent e) {
-                buttonExited(button);
-            }
-        });
     }
 
     private void initializeButtons() {
@@ -105,20 +81,6 @@ public class CreateCharacterView extends JPanel {
         });
     }
     
-    private void SetUpButton(JButton btn) {
-        Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-        
-        // Customize button appearance
-        btn.setFont(buttonFont);
-        btn.setBackground(buttonColor);
-        btn.setFocusPainted(false);
-        btn.setPreferredSize(new Dimension(200, 50)); // Adjust button size as needed
-        btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-        
-        // Apply mouse hover effects
-        applyEnteredExitedActions(btn);
-    }
-    
     private JLabel CreateCharacterTitle() {
         JLabel titleLabel = new JLabel("Character Creation");
         titleLabel.setForeground(new Color(255, 255, 255));
@@ -126,18 +88,6 @@ public class CreateCharacterView extends JPanel {
         return titleLabel;
     }
     
-    private void buttonEntered(JButton button) {
-        button.setBackground(buttonColorPressed);
-        
-        Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 16);
-        button.setFont(buttonFont);
-    }
-    
-    private void buttonExited(JButton button) {
-        button.setBackground(buttonColor);
-        Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-        button.setFont(buttonFont);
-    }
     
     public void addBackButtonListener(ActionListener listener) {
         btnBack.addActionListener(listener);

@@ -19,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
 
-public class BattleMenuView extends JPanel {
+public class BattleMenuView extends ParentView {
 	
 	private JButton btnCharacterName;
 	private JButton btnBattleText;
@@ -32,17 +32,9 @@ public class BattleMenuView extends JPanel {
 	
 	private JLabel LabelRoll;
 	
-	Color buttonColor = Color.white;
-	Color buttonColorPressed = new Color(226, 221, 250);
-	
 	
 	public BattleMenuView(){
 			
-			
-			setBorder(new EmptyBorder(10, 10, 10, 10));
-	        setLayout(new GridBagLayout());
-			
-			this.setBackground(new Color(45, 44, 65));
 			
 			GridBagConstraints gbc = new GridBagConstraints();
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -94,17 +86,6 @@ public class BattleMenuView extends JPanel {
 			
 		}
 	
-		private void applyEnteredExitedActions(JButton button) {
-			button.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					buttonEntered(button);
-				}
-				public void mouseExited(MouseEvent e) {
-					buttonExited(button);
-				}
-			});
-		}
 
 		private void initializeButtons(GridBagConstraints gbc) {
 			
@@ -122,16 +103,19 @@ public class BattleMenuView extends JPanel {
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			SetUpButton(btnCharacterName);
-			SetUpButton(btnBattleText);
-			SetUpButton(btnEnemyName);
+			double displayScaler = 1.4;
+			double attackScaler = 1.6;
 			
-			SetUpButton(btnCharacterHP);
-			SetUpButton(btnEnemyHP);
-			SetUpButton(btnSurrender);
+			SetUpButtonCustomSize(btnCharacterName, displayScaler);
+			SetUpButtonCustomSize(btnBattleText, displayScaler);
+			SetUpButtonCustomSize(btnEnemyName, displayScaler);
 			
-			SetUpButton(btnNormalAttack);
-			SetUpButton(btnSpecialAttack);
+			SetUpButtonCustomSize(btnCharacterHP, displayScaler);
+			SetUpButtonCustomSize(btnEnemyHP, displayScaler);
+			SetUpButtonCustomSize(btnSurrender, displayScaler);
+			
+			SetUpButtonCustomSize(btnNormalAttack, attackScaler);
+			SetUpButtonCustomSize(btnSpecialAttack, attackScaler);
 			
 			
 		}
@@ -150,31 +134,6 @@ public class BattleMenuView extends JPanel {
 			label.setFont(buttonFont);
 		}
 		
-		private void SetUpButton(JButton btn) {
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			applyEnteredExitedActions(btn);
-			
-			//Start Game button
-			btn.setFont(buttonFont);
-			btn.setBackground(buttonColor);
-			btn.setFocusPainted(false);
-			btn.setPreferredSize(new Dimension(300, 150));
-			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-		}
-		
-		
-		private void buttonEntered(JButton button) {
-			button.setBackground(buttonColorPressed);
-			
-			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 16);
-			button.setFont(buttonFont);
-		}
-		
-		private void buttonExited(JButton button) {
-			button.setBackground(buttonColor);
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			button.setFont(buttonFont);
-		}
 		
 
 		

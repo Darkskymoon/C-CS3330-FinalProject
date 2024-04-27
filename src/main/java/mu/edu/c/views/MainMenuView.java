@@ -20,20 +20,14 @@ import javax.swing.border.EmptyBorder;
 
 import mu.edu.c.audio.AudioPlayer;
 
-public class MainMenuView extends JPanel{
+public class MainMenuView extends ParentView {
 	
 	JButton btnStartGame;
 	JButton btnCredits;
 	JButton btnInfo;
-	Color buttonColor = Color.white;
-	Color buttonColorPressed = new Color(226, 221, 250);
 	
 	public MainMenuView(){
 			AudioPlayer.stopAllAudio();
-			setBorder(new EmptyBorder(10, 10, 10, 10));
-	        setLayout(new GridBagLayout());
-			
-			this.setBackground(new Color(45, 44, 65));
 			
 			GridBagConstraints gbc = new GridBagConstraints();
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -63,24 +57,7 @@ public class MainMenuView extends JPanel{
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
 			
-			
-	        applyEnteredExitedActions(btnStartGame);
-	        applyEnteredExitedActions(btnCredits);
-	        applyEnteredExitedActions(btnInfo);
-	        
 			AudioPlayer.setTrack("MainGameSound");
-		}
-	
-		private void applyEnteredExitedActions(JButton button) {
-			button.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					buttonEntered(button);
-				}
-				public void mouseExited(MouseEvent e) {
-					buttonExited(button);
-				}
-			});
 		}
 
 		private void initializeButtons(GridBagConstraints gbc) {
@@ -97,20 +74,6 @@ public class MainMenuView extends JPanel{
 			SetUpButton(btnInfo);
 			SetUpButton(btnCredits);
 			
-			
-			
-			
-		}
-		
-		private void SetUpButton(JButton btn) {
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			
-			//Start Game button
-			btn.setFont(buttonFont);
-			btn.setBackground(buttonColor);
-			btn.setFocusPainted(false);
-			btn.setPreferredSize(new Dimension(200, 100));
-			btn.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		}
 		
 
@@ -122,18 +85,6 @@ public class MainMenuView extends JPanel{
 			return TitleLabel;
 		}
 		
-		private void buttonEntered(JButton button) {
-			button.setBackground(buttonColorPressed);
-			
-			Font buttonFont = new Font("Yu Gothic Medium", Font.BOLD, 16);
-			button.setFont(buttonFont);
-		}
-		
-		private void buttonExited(JButton button) {
-			button.setBackground(buttonColor);
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			button.setFont(buttonFont);
-		}
 		
 		public void addInfoButtonListener(ActionListener listener) {
 			btnInfo.addActionListener(listener);
