@@ -15,9 +15,8 @@ public abstract class Entity {
 	protected String Name;
 	
 	//TODO add weapon 
-	protected IWeapon weaponStrategy = new SwordWeapon("Basic Sword", 1, 2, 1);
-	
-	
+	protected IWeapon weaponStrategy = new SwordWeapon("Excalibur", 10, 20, 2);
+
 	protected int xp;
 	
 	/**
@@ -224,6 +223,14 @@ public abstract class Entity {
 
 	public void setMaxHP(float maxHP) {
 		this.maxHP = maxHP;
+	}
+	
+	public IWeapon getWeaponStrategy() {
+		return weaponStrategy;
+	}
+
+	public void setWeaponStrategy(IWeapon weaponStrategy) {
+		this.weaponStrategy = weaponStrategy;
 	}
 
 	//TODO: Fix the toString
