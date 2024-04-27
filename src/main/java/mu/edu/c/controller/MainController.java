@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
+import mu.edu.c.audio.AudioPlayer;
 import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
@@ -50,10 +52,11 @@ public class MainController {
 	 * @param mainFrame
 	 * @param mainMenuView
 	 */
-	public MainController(MainFrame mainFrame, MainMenuView mainMenuView) {
-		this.mainFrame = mainFrame;
+	public MainController() {
+		new AudioPlayer();
+		mainFrame = new MainFrame();
+		mainMenuView = new MainMenuView();
 		this.contentPane = mainFrame.getContentPane();
-		this.mainMenuView = mainMenuView;
 		
 		refreshMainMenuView();
 	}
@@ -329,8 +332,12 @@ public class MainController {
 	 * Initiates the controller by switching the panel to the mainMenuView and setting the mainFrame visible
 	 */
 	public void initiate() {
-		switchPanel(mainMenuView);
-		mainFrame.setVisible(true);
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {	
+				switchPanel(mainMenuView);
+				mainFrame.setVisible(true);
+			}
+		});
 	}
 	
 

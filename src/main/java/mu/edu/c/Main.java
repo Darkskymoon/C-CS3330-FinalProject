@@ -12,18 +12,8 @@ import mu.edu.c.views.MainMenuView;
 public class Main {
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {		
-				new AudioPlayer();
-				MainFrame mainFrame = new MainFrame();
-				MainMenuView mainMenuView = new MainMenuView();
-				MainController mainController = new MainController(mainFrame, mainMenuView);
-				mainController.initiate();
-			}
-			
-			
-		});
-
+		MainController mainController = new MainController();
+		mainController.initiate();
 
 	}
 
