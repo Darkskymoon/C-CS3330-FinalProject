@@ -126,7 +126,7 @@ public class MainController {
 		
 		
 		//add listeners
-		battleMenuView.addRollButtonListener(new BattleMenuRollButtonListener());
+		battleMenuView.addSurrenderButtonListener(new BattleMenuSurrenderButtonListener());
 		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
 	}
@@ -249,12 +249,10 @@ public class MainController {
 	//                  BATTLE MENU LISTENERS                         //
 	////////////////////////////////////////////////////////////////////
 	
-	public class BattleMenuRollButtonListener implements ActionListener{
+	public class BattleMenuSurrenderButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			//Roll for current battle
-			int roll = battleModel.roll();
-			battleMenuView.setRollLabel(roll);
-			
+			refreshMainMenuView();
+			switchPanel(mainMenuView);
 		}
 	}
 	

@@ -13,8 +13,6 @@ public class EntityFactoryMethod {
 		
 	}
 	
-	
-	
 	/**
 	 * Constructs an Enemy instance
 	 * @return instance of enemy

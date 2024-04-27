@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 class CharacterLoggerSingletonTest {
 
+	
+	
 	@Test
 	void test() {
 		fail("Not yet implemented");

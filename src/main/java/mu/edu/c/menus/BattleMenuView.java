@@ -26,7 +26,7 @@ public class BattleMenuView extends JPanel {
 	private JButton btnEnemyName;
 	private JButton btnCharacterHP;
 	private JButton btnEnemyHP;
-	private JButton btnRoll;
+	private JButton btnSurrender;
 	private JButton btnNormalAttack;
 	private JButton btnSpecialAttack;
 	
@@ -72,12 +72,13 @@ public class BattleMenuView extends JPanel {
 	        buttons.add(btnBattleText, gbc4);
 	        buttons.add(btnEnemyName, gbc2);
 	        buttons.add(btnCharacterHP, gbc4);
-	        buttons.add(btnRoll, gbc4);
+	        buttons.add(btnSurrender, gbc4);
 	        buttons.add(btnEnemyHP, gbc2);
 	        
 	        add(buttons, gbc);
 	        
 	        JPanel LabelContainer = new JPanel(new GridBagLayout());
+	        LabelContainer.setVisible(false);
 	        LabelRoll=new JLabel("roll to hit");
 	        LabelRoll.setForeground(Color.black);
 	        LabelContainer.add(LabelRoll, gbc2);
@@ -113,7 +114,7 @@ public class BattleMenuView extends JPanel {
 			btnEnemyName = new JButton("Enemy");
 			btnCharacterHP = new JButton("TEMPHP");
 			btnEnemyHP = new JButton("HP: 97");
-			btnRoll = new JButton("Roll");
+			btnSurrender = new JButton("Surrender");
 			btnNormalAttack = new JButton("Normal Attack");
 			btnSpecialAttack = new JButton("Special Attack");
 			
@@ -127,7 +128,7 @@ public class BattleMenuView extends JPanel {
 			
 			SetUpButton(btnCharacterHP);
 			SetUpButton(btnEnemyHP);
-			SetUpButton(btnRoll);
+			SetUpButton(btnSurrender);
 			
 			SetUpButton(btnNormalAttack);
 			SetUpButton(btnSpecialAttack);
@@ -178,8 +179,8 @@ public class BattleMenuView extends JPanel {
 
 		
 		//TODO remove roll button
-	    public void addRollButtonListener(ActionListener listener) {
-	        btnRoll.addActionListener(listener);
+	    public void addSurrenderButtonListener(ActionListener listener) {
+	        btnSurrender.addActionListener(listener);
 	    }
 	    
 	    /**
