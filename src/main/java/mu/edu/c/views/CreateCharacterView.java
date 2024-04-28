@@ -25,10 +25,10 @@ public class CreateCharacterView extends ParentView {
     // attribute points remaining 
     // str, def, brains incrementor, decrements attr points
     
-    JButton newBtn;    
+    private JButton newBtn;    
     // Buttons for submission and navigation
-    JButton btnSubmit;
-    JButton btnBack;
+    private JButton btnSubmit;
+    private  JButton btnBack;
 
     public CreateCharacterView() {
 

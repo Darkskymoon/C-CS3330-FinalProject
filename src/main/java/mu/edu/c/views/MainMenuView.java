@@ -22,9 +22,9 @@ import mu.edu.c.audio.AudioPlayer;
 
 public class MainMenuView extends ParentView {
 	
-	JButton btnStartGame;
-	JButton btnCredits;
-	JButton btnInfo;
+	private JButton btnStartGame;
+	private JButton btnCredits;
+	private JButton btnInfo;
 	
 	public MainMenuView(){
 			AudioPlayer.stopAllAudio();

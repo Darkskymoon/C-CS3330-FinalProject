@@ -26,8 +26,8 @@ import javax.swing.text.StyledDocument;
 
 public class CreditMenuView extends ParentView {
 	
-	JButton btnBack;
-	JTextPane textPane;
+	private JButton btnBack;
+	private JTextPane textPane;
 	
 	public CreditMenuView(){
 			

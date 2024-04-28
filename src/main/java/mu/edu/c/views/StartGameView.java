@@ -22,18 +22,8 @@ import mu.edu.c.audio.AudioPlayer;
 
 public class StartGameView extends ParentView{
 	
-//	private JButton btnSave1;
-//	private JButton btnSave2;
-//	private JButton btnSave3;
 	private JButton btnLoad1;
-//	private JButton btnLoad2;
-//	private JButton btnLoad3;
-//	private JButton btnDelete1;
-//	private JButton btnDelete2;
-//	private JButton btnDelete3;
-	
 	private JButton BtnNewChar;
-	
 	private JButton btnBack;
 	
 	public StartGameView(){
@@ -63,14 +53,6 @@ public class StartGameView extends ParentView{
 		    
 		    
 		    buttons.add(btnLoad1);
-//	        buttons.add(btnSave1);
-//	        buttons.add(btnDelete1, gbc2);
-//	        buttons.add(btnLoad2);
-//	        buttons.add(btnSave2);
-//	        buttons.add(btnDelete2, gbc2);
-//	        buttons.add(btnLoad3);
-//	        buttons.add(btnSave3);
-//	        buttons.add(btnDelete3, gbc2);
 		    
 		    buttons.add(BtnNewChar);
 	        
@@ -86,36 +68,16 @@ public class StartGameView extends ParentView{
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-//			btnSave1 = new JButton("Save 1");
-//			btnSave2 = new JButton("Save 2");
-//			btnSave3 = new JButton("Save 3");
 			btnLoad1 = new JButton("Load 1");
-//			btnLoad2 = new JButton("Load 2");
-//			btnLoad3 = new JButton("Load 3");
-//			btnDelete1 = new JButton("Delete 1");
-//			btnDelete2 = new JButton("Delete 2");
-//			btnDelete3 = new JButton("Delete 3");
 			btnBack = new JButton("Back");
-			
 			BtnNewChar = new JButton("Create another character");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-//			SetUpButton(btnSave1);
-//			SetUpButton(btnSave2);
-//			SetUpButton(btnSave3);
 			
 			SetUpButton(btnLoad1);
-//			SetUpButton(btnLoad2);
-//			SetUpButton(btnLoad3);
-//			
-//			SetUpButton(btnDelete1);
-//			SetUpButton(btnDelete2);
-//			SetUpButton(btnDelete3);
-			
 			SetUpButton(btnBack);
-			
 			SetUpButton(BtnNewChar);
 			
 		}

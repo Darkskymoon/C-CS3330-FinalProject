@@ -15,8 +15,8 @@ import javax.swing.border.EmptyBorder;
 public class ParentView extends JPanel {
 	
 	// Button Colors
-	Color buttonColor = Color.white;
-	Color buttonColorPressed = new Color(226, 221, 250);
+	protected final Color buttonColor = Color.white;
+	protected final Color buttonColorPressed = new Color(226, 221, 250);
 
 	/**
 	 * Sets up Parent View with border, layout, and custom background color

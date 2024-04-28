@@ -17,15 +17,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
 	
-	private JPanel contentPane;
-	JButton btnStartGame;
-	JButton btnCredits;
-	JButton btnInfo;
-	Color buttonColor = Color.white;
-	Color buttonColorPressed = new Color(226, 221, 250);
-	
+
 	public MainFrame() {
 		//sets the title of the startMenu window
 		setTitle("Battle Simulator");

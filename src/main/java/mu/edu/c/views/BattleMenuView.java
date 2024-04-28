@@ -178,10 +178,5 @@ public class BattleMenuView extends ParentView {
 		public void setbtnCharacterHP(float charHP, float charMaxHP) {
 			this.btnCharacterHP.setText(String.valueOf(charHP+ "/"+charMaxHP));
 		}
-		
-		
-		
-		
-		
 
 }

@@ -20,10 +20,10 @@ import javax.swing.border.EmptyBorder;
 
 public class GameInfoView extends ParentView {
 	
-	JButton btnViewWeapons;
-	JButton btnViewEnemies;
-	JButton btnViewCharacters;
-	JButton btnBack;
+	private JButton btnViewWeapons;
+	private JButton btnViewEnemies;
+	private JButton btnViewCharacters;
+	private JButton btnBack;
 	
 	public GameInfoView(){
 			
