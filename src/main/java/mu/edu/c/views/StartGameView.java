@@ -34,7 +34,7 @@ public class StartGameView extends ParentView{
 	        gbc.anchor = GridBagConstraints.NORTH;
 
 	        gbc.insets = new Insets(50, 30, 0, 30);
-	        this.add(startGameTitle(), gbc);
+	        this.add(createTitle("Start Game"), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -94,16 +94,6 @@ public class StartGameView extends ParentView{
 			label.setBackground(buttonColor);
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			label.setFont(buttonFont);
-		}
-		
-		
-
-		private JLabel startGameTitle() {
-			JLabel TitleLabel = new JLabel("Start Game");
-			TitleLabel.setForeground(new Color(255, 255, 255));
-			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
-			
-			return TitleLabel;
 		}
 		
 		

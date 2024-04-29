@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -89,5 +90,13 @@ public class ParentView extends JPanel {
 		button.setBackground(buttonColor);
 		Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, button.getFont().getSize());
 		button.setFont(buttonFont);
+	}
+	
+	protected JLabel createTitle(String title) {
+		JLabel TitleLabel = new JLabel(title);
+		TitleLabel.setForeground(new Color(255, 255, 255));
+		TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
+		
+		return TitleLabel;
 	}
 }

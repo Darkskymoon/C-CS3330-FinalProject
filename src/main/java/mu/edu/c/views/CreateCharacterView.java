@@ -37,7 +37,7 @@ public class CreateCharacterView extends ParentView {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0, 0, 50, 0);
-        this.add(CreateCharacterTitle(), gbc);
+        this.add(createTitle("Character Creation"), gbc);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         
@@ -79,13 +79,6 @@ public class CreateCharacterView extends ParentView {
         btnBack.addActionListener(e -> {
             // Handle back button action here
         });
-    }
-    
-    private JLabel CreateCharacterTitle() {
-        JLabel titleLabel = new JLabel("Character Creation");
-        titleLabel.setForeground(new Color(255, 255, 255));
-        titleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70)); // Adjust font size as needed
-        return titleLabel;
     }
     
     

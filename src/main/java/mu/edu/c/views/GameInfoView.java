@@ -32,7 +32,7 @@ public class GameInfoView extends ParentView {
 	        gbc.anchor = GridBagConstraints.NORTH;
 
 	        gbc.insets = new Insets(50, 30, 0, 30);
-	        this.add(GameInfoTitle(), gbc);
+	        this.add(createTitle("Game Info"), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -83,14 +83,6 @@ public class GameInfoView extends ParentView {
 			
 		}
 		
-
-		private JLabel GameInfoTitle() {
-			JLabel TitleLabel = new JLabel("Game Info");
-			TitleLabel.setForeground(new Color(255, 255, 255));
-			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
-			
-			return TitleLabel;
-		}
 		
 		public void addBackButtonListener(ActionListener listener) {
 			btnBack.addActionListener(listener);

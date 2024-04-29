@@ -39,7 +39,7 @@ public class CreditMenuView extends ParentView {
 	        gbc.anchor = GridBagConstraints.NORTH;
 
 	        gbc.insets = new Insets(50, 30, 0, 30);
-	        this.add(CreditTitle(), gbc);
+	        this.add(createTitle("Credits"), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -49,8 +49,6 @@ public class CreditMenuView extends ParentView {
 			
 			add(textPane, gbc);
 	        add(btnBack, gbc);
-			
-	        
 				
 		}
 	
@@ -74,7 +72,6 @@ public class CreditMenuView extends ParentView {
 			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
 			doc.setParagraphAttributes(0, doc.getLength(), center, false);
 			
-			
 			textPane.setText("John Lin\nAndo Pepe\nZoe Strassner\nRyan Wahle");
 			textPane.setBackground(new Color(45, 44, 65));
 			textPane.setBorder(BorderFactory.createEmptyBorder());
@@ -85,15 +82,6 @@ public class CreditMenuView extends ParentView {
 			textPane.setForeground(Color.white);
 		}
 		
-		
-
-		private JLabel CreditTitle() {
-			JLabel TitleLabel = new JLabel("Credit");
-			TitleLabel.setForeground(new Color(255, 255, 255));
-			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
-			
-			return TitleLabel;
-		}
 		
 		public void addBackButtonListener(ActionListener listener) {
 			btnBack.addActionListener(listener);

@@ -34,7 +34,7 @@ public class MainMenuView extends ParentView {
 	        gbc.anchor = GridBagConstraints.NORTH;
 
 	        gbc.insets = new Insets(100, 30, 0, 30);
-	        this.add(FightSimulatorTitle(), gbc);
+	        this.add(createTitle("Fight Simulator"), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -75,16 +75,6 @@ public class MainMenuView extends ParentView {
 			SetUpButton(btnCredits);
 			
 		}
-		
-
-		private JLabel FightSimulatorTitle() {
-			JLabel TitleLabel = new JLabel("Fight Simulator");
-			TitleLabel.setForeground(new Color(255, 255, 255));
-			TitleLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 70));
-			
-			return TitleLabel;
-		}
-		
 		
 		public void addInfoButtonListener(ActionListener listener) {
 			btnInfo.addActionListener(listener);
