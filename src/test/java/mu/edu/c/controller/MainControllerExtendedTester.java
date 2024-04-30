@@ -13,9 +13,9 @@ import mu.edu.c.views.MainFrame;
 import mu.edu.c.views.MainMenuView;
 import mu.edu.c.views.StartGameView;
 
-public class MainControllerExtended extends MainController {
+public class MainControllerExtendedTester extends MainController {
 
-	public MainControllerExtended() {
+	public MainControllerExtendedTester() {
 		super();
 	}
 	

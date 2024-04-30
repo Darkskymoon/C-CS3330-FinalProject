@@ -19,88 +19,52 @@ import mu.edu.c.views.StartGameView;
 
 class MainControllerTest {
 	
-	MainController mainController;
+	MainControllerExtendedTester mainController;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		mainController = new MainController();
+		mainController = new MainControllerExtendedTester();
 	}
 	
 	@Test
-	void testRefreshMainMenuView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		String methodString = "refreshMainMenuView"; 
-        Class[] parameterType = null; 
-        
-		Method refreshMainMenuViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
-		Field mainMenuViewField = mainController.getClass().getDeclaredField("mainMenuView");
+	void testRefreshMainMenuView() {
+		MainMenuView view = mainController.getMainMenuView();
+		mainController.refreshMainMenuView();
 		
-		refreshMainMenuViewMethod.setAccessible(true);
-		mainMenuViewField.setAccessible(true);
-		
-		MainMenuView view = (MainMenuView) mainMenuViewField.get(mainController);
-		refreshMainMenuViewMethod.invoke(mainController);
-		
-		MainMenuView view2 = (MainMenuView) mainMenuViewField.get(mainController);
+		MainMenuView view2 =  mainController.getMainMenuView();
 		
 		assertNotEquals(view, view2);
 		
 	}
 	
 	@Test
-	void testRefreshGameInfoView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		String methodString = "refreshGameInfoView"; 
-        Class[] parameterType = null; 
-        
-		Method refreshGameInfoViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
-		Field mainGameInfoField = mainController.getClass().getDeclaredField("gameInfoView");
+	void testRefreshGameInfoView() {
+		GameInfoView view = mainController.getGameInfoView();
+		mainController.refreshGameInfoView();
 		
-		refreshGameInfoViewMethod.setAccessible(true);
-		mainGameInfoField.setAccessible(true);
-		
-		GameInfoView view = (GameInfoView) mainGameInfoField.get(mainController);
-		refreshGameInfoViewMethod.invoke(mainController);
-		
-		GameInfoView view2 = (GameInfoView) mainGameInfoField.get(mainController);
+		GameInfoView view2 =  mainController.getGameInfoView();
 		
 		assertNotEquals(view, view2);
 		
 	}
 	
 	@Test
-	void testRefreshStartGameView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		String methodString = "refreshStartGameView"; 
-        Class[] parameterType = null; 
-        
-		Method refreshStartGameViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
-		Field mainStartGameField = mainController.getClass().getDeclaredField("startGameView");
+	void testRefreshStartGameView() {
+		StartGameView view = mainController.getStartGameView();
+		mainController.refreshStartGameView();
 		
-		refreshStartGameViewMethod.setAccessible(true);
-		mainStartGameField.setAccessible(true);
-		
-		StartGameView view = (StartGameView) mainStartGameField.get(mainController);
-		refreshStartGameViewMethod.invoke(mainController);
-		
-		StartGameView view2 = (StartGameView) mainStartGameField.get(mainController);
+		StartGameView view2 =  mainController.getStartGameView();
 		
 		assertNotEquals(view, view2);
 		
 	}
 	
 	@Test
-	void testRefreshCreditMenuView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		String methodString = "refreshCreditMenuView"; 
-        Class[] parameterType = null; 
-        
-		Method refreshCreditMenuViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
-		Field mainCreditMenuField = mainController.getClass().getDeclaredField("creditMenuView");
+	void testRefreshCreditMenuView() {
+		CreditMenuView view = mainController.getCreditMenuView();
+		mainController.refreshCreditMenuView();
 		
-		refreshCreditMenuViewMethod.setAccessible(true);
-		mainCreditMenuField.setAccessible(true);
-		
-		CreditMenuView view = (CreditMenuView) mainCreditMenuField.get(mainController);
-		refreshCreditMenuViewMethod.invoke(mainController);
-		
-		CreditMenuView view2 = (CreditMenuView) mainCreditMenuField.get(mainController);
+		CreditMenuView view2 =  mainController.getCreditMenuView();
 		
 		assertNotEquals(view, view2);
 		
@@ -108,43 +72,23 @@ class MainControllerTest {
 	
 	@Test
 	void testRefreshBattleMenuView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		String methodString = "refreshBattleMenuView"; 
-        Class[] parameterType = null; 
-        
-		Method refreshBattleMenuViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
-		Field mainBattleMenuField = mainController.getClass().getDeclaredField("battleMenuView");
-		Field playerField = mainController.getClass().getDeclaredField("currentPlayer");
+		mainController.setCurrentPlayer(new Player(1, 2, 3, 4, "Ryan"));
 		
-		refreshBattleMenuViewMethod.setAccessible(true);
-		mainBattleMenuField.setAccessible(true);
-		playerField.setAccessible(true);
+		BattleMenuView view = mainController.getBattleMenuView();
+		mainController.refreshBattleMenuView();
 		
-		playerField.set(mainController, new Player(1, 2, 3, 4, "Ryan"));
-		
-		BattleMenuView view = (BattleMenuView) mainBattleMenuField.get(mainController);
-		refreshBattleMenuViewMethod.invoke(mainController);
-		
-		BattleMenuView view2 = (BattleMenuView) mainBattleMenuField.get(mainController);
+		BattleMenuView view2 =  mainController.getBattleMenuView();
 		
 		assertNotEquals(view, view2);
 		
 	}
 	
 	@Test
-	void testRefreshCreateCharacterView() throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		String methodString = "refreshCreateCharacterView"; 
-        Class[] parameterType = null; 
-        
-		Method refreshCreateCharacterViewMethod = mainController.getClass().getDeclaredMethod(methodString, parameterType);
-		Field mainCreateCharacterField = mainController.getClass().getDeclaredField("createCharacterView");
+	void testRefreshCreateCharacterView() {
+		CreateCharacterView view = mainController.getCreateCharacterView();
+		mainController.refreshCreateCharacterView();
 		
-		refreshCreateCharacterViewMethod.setAccessible(true);
-		mainCreateCharacterField.setAccessible(true);
-		
-		CreateCharacterView view = (CreateCharacterView) mainCreateCharacterField.get(mainController);
-		refreshCreateCharacterViewMethod.invoke(mainController);
-		
-		CreateCharacterView view2 = (CreateCharacterView) mainCreateCharacterField.get(mainController);
+		CreateCharacterView view2 =  mainController.getCreateCharacterView();
 		
 		assertNotEquals(view, view2);
 		
