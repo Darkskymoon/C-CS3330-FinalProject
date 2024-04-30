@@ -82,21 +82,6 @@ public class StartGameView extends ParentView{
 			
 		}
 		
-		private void SetUpLabel(JLabel label) {
-			Font LabelFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			
-			//Start Game button
-			label.setFont(LabelFont);
-			label.setBackground(buttonColor);
-			label.setPreferredSize(new Dimension(200, 100));
-			label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-			
-			label.setBackground(buttonColor);
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
-			label.setFont(buttonFont);
-		}
-		
-		
 		/////////////////////////////////////////////////////////////////////////
 		//////////////// LISTENER SECTION ///////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////
