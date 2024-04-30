@@ -64,6 +64,7 @@ public class AudioPlayer {
             backgroundTrack.start();
         } catch (Exception e) {
             System.err.println(e);
+    		backgroundTrack = null;
         }
     }
 	
@@ -83,9 +84,10 @@ public class AudioPlayer {
 	 * Stops the current track
 	 */
 	public static void stopTrack() {
-			
+		
 		if(backgroundTrack != null) {
 			backgroundTrack.close();
+			backgroundTrack = null;
 		}
 	}
 	
