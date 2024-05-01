@@ -20,9 +20,11 @@ import mu.edu.c.views.BattleMenuView;
 import mu.edu.c.views.CreateCharacterView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
+import mu.edu.c.views.LoseScreenView;
 import mu.edu.c.views.MainFrame;
 import mu.edu.c.views.MainMenuView;
 import mu.edu.c.views.StartGameView;
+import mu.edu.c.views.WinScreenView;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
@@ -31,21 +33,26 @@ import mu.edu.c.logger.CharacterLoggerSingleton;
 public class MainController {
 	
 	//Views
-	protected MainFrame mainFrame;
-	protected Container contentPane;
-	protected MainMenuView mainMenuView;
-	protected GameInfoView gameInfoView;
-	protected StartGameView startGameView;
-	protected CreditMenuView creditMenuView;
-	protected BattleMenuView battleMenuView;
-	protected CreateCharacterView createCharacterView;
+	private MainFrame mainFrame;
+	private Container contentPane;
+	private MainMenuView mainMenuView;
+	private GameInfoView gameInfoView;
+	private StartGameView startGameView;
+	private CreditMenuView creditMenuView;
+	private BattleMenuView battleMenuView;
+	private CreateCharacterView createCharacterView;
+	private WinScreenView winScreenView;
+	private LoseScreenView loseScreenView;
 	// add the new class here
 	
 	//Models
-	protected Battle battleModel;
+	private Battle battleModel;
 	//TODO- Is this right?
-	protected Player currentPlayer;
-	protected Enemy currentEnemy;
+	private Player currentPlayer;
+	private Enemy currentEnemy;
+	
+	//TODO
+	//implement event triggers that cause the screen to switch to win/lose screen
 	
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
@@ -57,12 +64,14 @@ public class MainController {
 		mainFrame = new MainFrame();
 		mainMenuView = new MainMenuView();
 		this.contentPane = mainFrame.getContentPane();
+		
+		refreshMainMenuView();
 	}
 	
 	/**
 	 * Refreshes MainMenuView by recreating object and adding button listeners to view
 	 */
-	protected void refreshMainMenuView() {
+	private void refreshMainMenuView() {
 		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
 		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
@@ -72,7 +81,7 @@ public class MainController {
 	/**
 	 * Refreshes GameInfoView by recreating object and adding button listeners to view
 	 */
-	protected void refreshGameInfoView() {
+	private void refreshGameInfoView() {
 		this.gameInfoView = new GameInfoView();
 		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
@@ -80,7 +89,7 @@ public class MainController {
 	/**
 	 * Refreshes StartGameView by recreating object and adding button listeners to view
 	 */
-	protected void refreshStartGameView() {
+	private void refreshStartGameView() {
 		this.startGameView = new StartGameView();
 		
 		//reads in the current save (if it exists) TODO: try catch
@@ -109,7 +118,7 @@ public class MainController {
 	/**
 	 * Refreshes CreditMenuView by recreating object and adding button listeners to view
 	 */
-	protected void refreshCreditMenuView() {
+	private void refreshCreditMenuView() {
 		this.creditMenuView = new CreditMenuView();
 		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
 	}
@@ -117,7 +126,7 @@ public class MainController {
 	/**
 	 * Refreshes BattleMenuView by recreating object and adding button listeners to view
 	 */
-	protected void refreshBattleMenuView() {
+	private void refreshBattleMenuView() {
 		this.battleModel = new Battle(this.currentPlayer);
 		this.battleMenuView = new BattleMenuView();
 		
@@ -145,7 +154,7 @@ public class MainController {
 	/**
 	 * Refreshes CreateCharacterView by recreating object and adding button listeners to view
 	 */
-	protected void refreshCreateCharacterView() {
+	private void refreshCreateCharacterView() {
 		this.createCharacterView = new CreateCharacterView();
 		createCharacterView.addBackButtonListener(new SwitchScreenToMainMenuView());
 		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
@@ -153,9 +162,26 @@ public class MainController {
     //	add refresh view and then underneath add button listeners
 	
 	/**
+	 * Refreshes WinScreenView by recreating object and adding button listeners to view
+	 */
+	private void refreshWinScreenView() {
+		this.winScreenView = new WinScreenView();
+		winScreenView.addRestartButtonListener(new SwitchScreenToCreateCaracter());
+		winScreenView.addRetireButtonListener(new SwitchScreenToMainMenuView());
+	}
+	
+	/**
+	 * Refreshes LoseScreenView by recreating object and adding button listeners to view
+	 */
+	private void refreshLoseScreenView() {
+		this.loseScreenView = new LoseScreenView();
+		loseScreenView.addRestartButtonListener(new SwitchScreenToCreateCaracter());
+		loseScreenView.addGiveUpButtonListener(new CreateCharacterSubmit());
+	}
+	/**
 	 * Refreshes MainMenuView and switches current panel to it
 	 */
-	protected class SwitchScreenToMainMenuView implements ActionListener {
+	private class SwitchScreenToMainMenuView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -168,7 +194,7 @@ public class MainController {
 	/**
 	 * Refreshes GameInfoView and switches current panel to it
 	 */
-	protected class SwitchScreenToGameInfoView implements ActionListener {
+	private class SwitchScreenToGameInfoView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -181,7 +207,7 @@ public class MainController {
 	/**
 	 * Refreshes StartGameView and switches current panel to it
 	 */
-	protected class SwitchScreenToStartGameView implements ActionListener {
+	private class SwitchScreenToStartGameView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -194,7 +220,7 @@ public class MainController {
 	/**
 	 * Refreshes CreditMenuView and switches current panel to it
 	 */
-	protected class SwitchScreenToCreditMenuView implements ActionListener {
+	private class SwitchScreenToCreditMenuView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -207,7 +233,7 @@ public class MainController {
 	/**
 	 * Refreshes BattleMenuView and switches current panel to it
 	 */
-	protected class SwitchScreenToBattleMenuView implements ActionListener {
+	private class SwitchScreenToBattleMenuView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -220,7 +246,7 @@ public class MainController {
 	/**
 	 * Refreshes CreateCharacterView and switches current panel to it
 	 */
-	protected class SwitchScreenToCreateCaracter implements ActionListener {
+	private class SwitchScreenToCreateCaracter implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -231,9 +257,35 @@ public class MainController {
 	}
 	
 	/**
+	 * Refreshes MainMenuView and switches current panel to it
+	 */
+	private class SwitchScreenToLoseScreenView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshMainMenuView();
+			switchPanel(loseScreenView);
+		}
+		
+	}
+	
+	/**
+	 * Refreshes MainMenuView and switches current panel to it
+	 */
+	private class SwitchScreenToWinScreenView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshMainMenuView();
+			switchPanel(winScreenView);
+		}
+		
+	}
+	
+	/**
 	 * Writes a character to the character file. TODO: 
 	 */
-	protected class CreateCharacterSubmit implements ActionListener{
+	private class CreateCharacterSubmit implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//Gets the character name TODO create getter for this
@@ -260,7 +312,7 @@ public class MainController {
 	//                  BATTLE MENU LISTENERS                         //
 	////////////////////////////////////////////////////////////////////
 	
-	protected class BattleMenuSurrenderButtonListener implements ActionListener {
+	private class BattleMenuSurrenderButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			refreshMainMenuView();
 			switchPanel(mainMenuView);
@@ -270,7 +322,7 @@ public class MainController {
 	/**
 	 * the action listener for the Normal attack button listener
 	 */
-	protected class BattleMenuNormalAttackButtonListener implements ActionListener{
+	private class BattleMenuNormalAttackButtonListener implements ActionListener{
 		/**
 		 * Rolls a number then sets the roll Label equal to that result
 		 */
@@ -287,7 +339,7 @@ public class MainController {
 	/**
 	 * the action listener for the special attack button listener
 	 */
-	protected class BattleMenuSpecialAttackButtonListener implements ActionListener{
+	private class BattleMenuSpecialAttackButtonListener implements ActionListener{
 		/**
 		 * Rolls a number then sets the roll Label equal to that result
 		 */
@@ -319,7 +371,7 @@ public class MainController {
 	 * Takes a JPanel object and switches the Main JFrame to the panel.
 	 * @param panel
 	 */
-	protected void switchPanel(JPanel panel) {
+	private void switchPanel(JPanel panel) {
 		contentPane.removeAll();
 		contentPane.add(panel);
 		mainFrame.revalidate();
@@ -332,11 +384,13 @@ public class MainController {
 	public void initiate() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {	
-				refreshMainMenuView();
 				switchPanel(mainMenuView);
 				mainFrame.setVisible(true);
 			}
 		});
 	}
+	
+
+
 
 }
