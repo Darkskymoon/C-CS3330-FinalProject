@@ -17,6 +17,7 @@ import mu.edu.c.logger.GSON.GsonAdapter;
 import mu.edu.c.weapons.IWeapon;
 import mu.edu.c.weapons.MagicWeapon;
 import mu.edu.c.weapons.SwordWeapon;
+import mu.edu.c.weapons.WeaponFactoryMethod;
 import mu.edu.c.weapons.WeaponType;
 
 public class EnemyLoggerSingleton {
@@ -150,12 +151,7 @@ public class EnemyLoggerSingleton {
 			ArrayList<String> descriptors = new ArrayList<>();
 			
 			//weapon variables
-			IWeapon weaponStrategy = null;
-			String weaponName = null;
-			int simpleDmg = -1;
-			int specialDamage=-1;
-			float scaler;
-			WeaponType weaponType = null;
+			IWeapon weapon = null;
 			
 			try{
 				//create a json object out the text
@@ -190,47 +186,10 @@ public class EnemyLoggerSingleton {
 				return null;
 			}
 			
-			//read in the weapon information
-			try {
-				JSONObject weaponJson = jsonParser.getJSONObject("weaponStrategy");
+			//reads in the weapon info
+			WeaponFactoryMethod weaponFactory = new WeaponFactoryMethod();
+			weapon = weaponFactory.parseCharacterWeapon(jsonParser);
 			
-				//get weapon name 
-				weaponName =weaponJson.getString("name");
-				//get weapon simple damage
-				simpleDmg = weaponJson.getInt("simpleDamage");
-				//get weapon special damage
-				specialDamage = weaponJson.getInt("specialDamage");
-				//get weapon scalar
-				scaler = weaponJson.getFloat("scaler");
-				//get weapon type
-				weaponType =weaponJson.getEnum(WeaponType.class, "weapontype");
-			}catch (JSONException e){
-				//set weapon values to null and -1 to indicate nothing had been read in
-				weaponType = null;
-				weaponName = null;
-				simpleDmg = -1;
-				specialDamage =-1;
-				scaler=-1;
-			}
-			
-			
-			//builds the weapon from the json
-			//TODO maybe make a weapon factory for this instead???
-			IWeapon weapon;
-			if(weaponType !=null) {
-			
-				if(weaponType.equals(weaponType.SWORD)) {
-					weapon = new SwordWeapon(weaponName, simpleDmg, specialDamage, scaler);
-				}
-				else if (weaponType.equals(weaponType.MAGIC)){
-					weapon = new MagicWeapon(weaponName, simpleDmg, specialDamage, scaler);
-				}
-				else {
-					weapon = null;
-				}
-			}else {
-				weapon = null;
-			}
 
 			//create Enemy
 			EntityFactoryMethod entityFactory =new EntityFactoryMethod();
