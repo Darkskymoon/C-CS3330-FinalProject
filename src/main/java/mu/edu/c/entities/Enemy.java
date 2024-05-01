@@ -45,7 +45,7 @@ public class Enemy extends Entity{
 		super(maxHP, Strength, defense, brains, Name);
 		this.descriptors = new ArrayList<>();
 		for(int i =0; i<descriptors.size(); i++) {
-			AddDescriptors(descriptors.get(i));
+			addDescriptors(descriptors.get(i));
 		}
 	}
 	
@@ -83,7 +83,7 @@ public class Enemy extends Entity{
 		this.descriptors = new ArrayList<>();
 		Iterator<String> descriptorIterator = descriptors.iterator();
 		while(descriptorIterator.hasNext()) {
-			AddDescriptors(descriptorIterator.next());
+			addDescriptors(descriptorIterator.next());
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class Enemy extends Entity{
 	 * false on failure
 	 * true on success
 	 */
-	public boolean AddDescriptors(String adjective) {
+	public boolean addDescriptors(String adjective) {
 		if(adjective ==null) {
 			return false;
 		}
@@ -144,6 +144,30 @@ public class Enemy extends Entity{
 		setDescriptors(enemy.getDescriptors());
 		this.xp = enemy.getXp();
 	
+	}
+	
+	/**
+	 * Tests to see if two enemies are identical from values
+	 * @param other the enemy to test if equal to the current enemy
+	 * @return true if equal, false if not equal
+	 */
+	public boolean equals(Enemy other) {		
+		if(other.brains == this.brains &&
+				other.defense ==this.defense &&
+				other.maxHP == this.maxHP &&
+				other.name.equals(this.name) &&
+				other.strength == this.strength &&
+				other.weaponStrategy ==this.weaponStrategy &&
+				other.xp ==this.xp && 
+				other.getDescriptors().equals(this.getDescriptors())
+				) {
+			
+			return true;
+			
+		}
+		else {
+			return false;
+		}
 	}
 	
 
