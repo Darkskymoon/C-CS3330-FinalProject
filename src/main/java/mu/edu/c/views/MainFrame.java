@@ -30,8 +30,6 @@ public class MainFrame extends JFrame {
 		this.setBounds(0, 0, 1000, 1000);
 		this.setMinimumSize(new Dimension(1200, 1000));
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
-		this.add(new MainMenuView());
 	}
 	
 	

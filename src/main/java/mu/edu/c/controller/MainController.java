@@ -57,8 +57,6 @@ public class MainController {
 		mainFrame = new MainFrame();
 		mainMenuView = new MainMenuView();
 		this.contentPane = mainFrame.getContentPane();
-		
-		refreshMainMenuView();
 	}
 	
 	/**
@@ -334,6 +332,7 @@ public class MainController {
 	public void initiate() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {	
+				refreshMainMenuView();
 				switchPanel(mainMenuView);
 				mainFrame.setVisible(true);
 			}

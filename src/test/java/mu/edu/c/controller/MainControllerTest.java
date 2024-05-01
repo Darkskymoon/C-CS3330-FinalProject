@@ -93,5 +93,25 @@ class MainControllerTest {
 		assertNotEquals(view, view2);
 		
 	}
+	
+	@Test 
+	void testSwitchPanel(){
+		
+		try {
+			mainController.getMainFrame().getContentPane().getComponent(0);
+			fail("MainFrame contentPane should have no components yet");
+		} catch(Exception e) {}
+		
+		mainController.switchPanel(new MainMenuView());
+		
+		try {
+			mainController.getMainFrame().getContentPane().getComponent(0);
+			assertTrue(true);
+		} catch(Exception e) {
+			fail("MainMenuView not added after switchPanel call");
+		}
+
+	}
+	
 
 }
