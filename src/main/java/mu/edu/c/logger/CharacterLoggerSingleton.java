@@ -16,6 +16,7 @@ import mu.edu.c.logger.GSON.GsonAdapter;
 import mu.edu.c.weapons.IWeapon;
 import mu.edu.c.weapons.MagicWeapon;
 import mu.edu.c.weapons.SwordWeapon;
+import mu.edu.c.weapons.WeaponFactoryMethod;
 import mu.edu.c.weapons.WeaponType;
 
 import org.json.*;
@@ -90,6 +91,8 @@ public class CharacterLoggerSingleton {
 
 	}
 	
+
+	
 	/**
 	 * creates a player object based on a Json string
 	 * @param jsontxt string to turn into a player
@@ -135,59 +138,15 @@ public class CharacterLoggerSingleton {
 			return null;
 		}
 		
+		//Gets the weapon
+		WeaponFactoryMethod weaponFactory = new WeaponFactoryMethod();
+		IWeapon weapon = weaponFactory.parseCharacterWeapon(jsonParser);
 		
-
-		//parse weapon strategy
-		WeaponType weaponType;
-		String WeaponName;
-		int simpleDmg;
-		int specialDamage;
-		float scaler;
-		try {
-			JSONObject weaponJson = jsonParser.getJSONObject("weaponStrategy");
-		
-		//get weapon name 
-		WeaponName =weaponJson.getString("name");
-		//get weapon simple damage
-		simpleDmg = weaponJson.getInt("simpleDamage");
-		//get weapon special damage
-		specialDamage = weaponJson.getInt("specialDamage");
-		//get weapon scalar
-		scaler = weaponJson.getFloat("scaler");
-		//get weapon type
-		weaponType =weaponJson.getEnum(WeaponType.class, "weapontype");
-		}catch (JSONException e){
-			//set weapon values to null and -1 to indicate nothing had been read in
-			weaponType = null;
-			WeaponName = null;
-			simpleDmg = -1;
-			specialDamage =-1;
-			scaler=-1;
-		}
-		
-		
-		//builds the weapon from the json
-		//TODO maybe make a weapon factory for this instead???
-		IWeapon weapon;
-		if(weaponType !=null) {
-		
-			if(weaponType.equals(weaponType.SWORD)) {
-				weapon = new SwordWeapon(WeaponName, simpleDmg, specialDamage, scaler);
-			}
-			else if (weaponType.equals(weaponType.MAGIC)){
-				weapon = new MagicWeapon(WeaponName, simpleDmg, specialDamage, scaler);
-			}
-			else {
-				weapon = null;
-			}
-		}else {
-			weapon = null;
-		}
 		
 		//create player
 		Player player =null;
 		EntityFactoryMethod entityFactory = new EntityFactoryMethod();
-		if(weapon!=null) {//if weapon is not null, create a player with the weapo
+		if(weapon!=null) {//if weapon is not null, create a player with the weapon
 			player= entityFactory.createPlayerWithWeapon(maxHP, strength, defense, brains, name, weapon);
 		}
 		else { //if no weapon is found, create a player without the weapon

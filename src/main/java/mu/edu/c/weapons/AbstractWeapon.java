@@ -19,33 +19,45 @@ public abstract class AbstractWeapon implements IWeapon {
 		return name;
 	}
 
-	public void setName(String name) {
+	public String setName(String name) {
 		this.name = name;
+		return this.name;
 	}
 
 	public int getSimpleDamage() {
 		return simpleDamage;
 	}
 
-	public void setSimpleDamage(int simpleDamage) {
+	public int setSimpleDamage(int simpleDamage) {
 		this.simpleDamage = simpleDamage;
+		return this.simpleDamage;
 	}
 
 	public int getSpecialDamage() {
 		return specialDamage;
 	}
 
-	public void setSpecialDamage(int specialDamage) {
+	public int setSpecialDamage(int specialDamage) {
 		this.specialDamage = specialDamage;
+		return this.specialDamage;
 	}
 
 	public float getScaler() {
 		return scaler;
 	}
 
-	public void setScaler(float scaler) {
+	public float setScaler(float scaler) {
 		this.scaler = scaler;
+		return this.scaler;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Name: "+getName() +", Simple DMG: "+ getSimpleDamage() + ", Special DMG: "+ getSpecialDamage() + ", Scaler: "+ getScaler();
+	}
+	
+	
 	
 	
 }
