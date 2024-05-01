@@ -12,7 +12,6 @@ public abstract class Entity {
 	protected int strength;
 	protected int defense; 
 	protected int brains;
-	protected String Name;
 	
 	//TODO add weapon 
 	protected IWeapon weaponStrategy = new SwordWeapon("Excalibur", 10, 20, 2);
@@ -51,7 +50,7 @@ public abstract class Entity {
 		this.brains = brains;
 		this.xp = 0;
 		
-		this.Name = name;
+		this.name = name;
 		
 		//set the weapon strategy
 		this.weaponStrategy=weaponStrategy;
@@ -170,11 +169,11 @@ public abstract class Entity {
 	
 	//getters and setters for all the fields
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		this.Name = name;
+		this.name = name;
 	}
 
 	public float getHp() {
@@ -237,7 +236,7 @@ public abstract class Entity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Name: " +Name
+		return "name: " +name
 				+ " HP: " + maxHP;
 	}
 	

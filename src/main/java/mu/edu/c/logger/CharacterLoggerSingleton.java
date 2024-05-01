@@ -79,7 +79,6 @@ public class CharacterLoggerSingleton {
 		GsonAdapter adapter = new GsonAdapter();
 //		Gson gson = new Gson();
 		
-		
 		//gets the jsontxt
 		String jsontxt =adapter.readJson(logFilePath);
 		Player player =readCharacter(jsontxt);
@@ -102,7 +101,7 @@ public class CharacterLoggerSingleton {
 		if(jsontxt ==null) { //nothing to read in
 			return null;
 		}
-		
+
 		//initialize variables for the player object
 		int attributePoints=0;
 		float hp =0;
@@ -128,9 +127,9 @@ public class CharacterLoggerSingleton {
 			strength = jsonParser.getInt("strength");
 			defense=jsonParser.getInt("defense");
 			brains = jsonParser.getInt("brains");
-			
+
 			//get name
-			name = jsonParser.getString("Name");
+			name = jsonParser.getString("name");
 			
 			//get xp
 			xp =jsonParser.getInt("xp");

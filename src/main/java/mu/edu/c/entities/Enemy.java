@@ -9,6 +9,8 @@ public class Enemy extends Entity{
 	
 	//array to hold adjectives that describes an enemy
 	ArrayList<String> descriptors;
+	
+	
 
 	/**
 	 * constructor that doesn't take any descriptors but instead applies some default descriptors
@@ -100,6 +102,48 @@ public class Enemy extends Entity{
 		}
 		this.descriptors.add(adjective);
 		return true;
+	}
+	
+	
+	/**
+	 * gets a copy of the descriptor array list
+	 * @return a copy of the descriptors array list
+	 */
+	public ArrayList<String> getDescriptors() {
+		ArrayList<String> descriptorCopy = new ArrayList<>();
+		for(String descriptor : descriptors) {
+			descriptorCopy.add(descriptor);
+			
+		}
+		return descriptorCopy;
+	}
+
+	/**
+	 * copies in all of the descriptiions from the passed in descriptors array to the object's descriptors (resetting the descriptor array)
+	 * @param descriptors the descriptor array to set the descriptors of the object to 
+	 * @return The object's new descriptor list (copy)
+	 */
+	public ArrayList<String> setDescriptors(ArrayList<String> descriptors) {
+		//Set to new array list
+		this.descriptors = new ArrayList<>();
+		//copy in the descriptions
+		for(String descriptor: descriptors) {
+			this.descriptors.add(descriptor);
+		}
+		
+		return getDescriptors();
+	}
+
+	/**
+	 * Copy constructor for enemy
+	 * @param enemy The enemy to make a copy of
+	 */
+	public Enemy(Enemy enemy) {
+		super(enemy.getMaxHP(),enemy.getStrength(),enemy.getDefense(),enemy.getBrains(),enemy.getName(),enemy.getWeaponStrategy());
+		
+		setDescriptors(enemy.getDescriptors());
+		this.xp = enemy.getXp();
+	
 	}
 	
 

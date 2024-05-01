@@ -165,7 +165,7 @@ public class EnemyLoggerSingleton {
 				brains = jsonParser.getInt("brains");
 				
 				//gets the name
-				name = jsonParser.getString("Name");
+				name = jsonParser.getString("name");
 				
 				//gets descriptors
 				JSONArray tempDescriptors = jsonParser.getJSONArray("descriptors");
