@@ -67,6 +67,11 @@ class EntityTest {
 		assertEquals(expected, player.getHp());
 	}
 	
+	@Test
+	public void testCalculateNewHP() {
+		assertEquals(player.getMaxHP(), player.calculateNewHP(400000));
+	}
+	
 	public static Stream<Object[]> provideValuesForDamageRecieved() {
 		return Stream.of(
 			new Object[]{1000, 0},
@@ -153,7 +158,7 @@ class EntityTest {
 	
 	@Test
 	void testToString() {
-		assertEquals("Name: Ryan HP: 100.0", player.toString());
+		assertEquals("name: Ryan HP: 100.0", player.toString());
 	}
 	
 

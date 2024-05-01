@@ -22,7 +22,7 @@ class EnemyTest {
 	// This method will be invoked for each test method
 	@BeforeEach
 	void setUp() throws Exception {
-		enemy1 = new Enemy(100, 20, 20, 20, "Goblin");
+		
 		
 		WeaponFactoryMethod weaponFactory = new WeaponFactoryMethod();
 		IWeapon weapon = weaponFactory.createWeapon(WeaponType.MAGIC, "Magic Fairy wand", 1, 2, 1);
@@ -33,10 +33,18 @@ class EnemyTest {
 		descriptors.add("EVILEST");
 		IWeapon weapon2 = weaponFactory.createWeapon(WeaponType.SWORD, "Excalibur", 2, 4, 2);
 		
-		enemy2 = new Enemy(100, 20, 20, 20, "Goblin", descriptors);
-		enemy3 = new Enemy(100, 20, 20, 20, "Goblin", weapon);
-		enemy4 = new Enemy(100, 20, 20, 20, "Goblin", descriptors,weapon);
-		enemy5 = new Enemy(96, 25, 25, 25, "Gremlin", descriptors2, weapon2 );
+		EntityFactoryMethod entityFactory =new EntityFactoryMethod();
+		enemy1 =entityFactory.createEnemy(100, 20, 20, 20, "Goblin");
+		enemy2 = entityFactory.createEnemy(100, 20, 20, 20, "Goblin", descriptors);
+		enemy3= entityFactory.createEnemy(100, 20, 20, 20, "Goblin", weapon);
+		enemy4= entityFactory.createEnemy(100, 20, 20, 20, "Goblin", descriptors,weapon);
+		enemy5= entityFactory.createEnemy(96, 25, 25, 25, "Gremlin", descriptors2, weapon2);
+//		
+//		enemy1 = new Enemy(100, 20, 20, 20, "Goblin");
+//		enemy2 = new Enemy(100, 20, 20, 20, "Goblin", descriptors);
+//		enemy3 = new Enemy(100, 20, 20, 20, "Goblin", weapon);
+//		enemy4 = new Enemy(100, 20, 20, 20, "Goblin", descriptors,weapon);
+//		enemy5 = new Enemy(96, 25, 25, 25, "Gremlin", descriptors2, weapon2 );
 	}
 	
 	@Test

@@ -12,7 +12,9 @@ class PlayerTest {
 	// This method will be invoked for each test method
 	@BeforeEach
 	void setUp() throws Exception {
-		player = new Player(100, 20, 20, 20, "Ryan");
+		EntityFactoryMethod entityFactory = new EntityFactoryMethod();
+		player =entityFactory.createPlayer(100, 20, 20, 20, "Ryan");
+//		player = new Player(100, 20, 20, 20, "Ryan");
 	}
 	
 	@Test
