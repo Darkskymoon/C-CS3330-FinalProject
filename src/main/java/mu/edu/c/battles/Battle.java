@@ -161,7 +161,7 @@ public class Battle {
 		this.CurrentEnemy=PossibleEnemies.get(index);
 		
 		return true;
-	}
+	} 
 	
 	/**
 	 * sets the current enemy based on a passed enemy	
@@ -201,9 +201,11 @@ public class Battle {
 	/**
 	 * Sets the current enemy's current hp 
 	 * @param newValue the value to set the current enemy's hp
+	 * @return the new hp value
 	 */
-	public void setCurrentEnemyCurrentHP(float newValue) {
+	public float setCurrentEnemyCurrentHP(float newValue) {
 		this.CurrentEnemy.setHp(newValue);
+		return getCurrentEnemyCurrentHP();
 		
 	}
 	
