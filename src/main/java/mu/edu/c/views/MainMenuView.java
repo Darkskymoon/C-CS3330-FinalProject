@@ -27,7 +27,7 @@ public class MainMenuView extends ParentView {
 	private JButton btnInfo;
 	
 	public MainMenuView(){
-			AudioPlayer.stopAllAudio();
+			AudioPlayer.stopAudio();
 			
 			GridBagConstraints gbc = new GridBagConstraints();
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;

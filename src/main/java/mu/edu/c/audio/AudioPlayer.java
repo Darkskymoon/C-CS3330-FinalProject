@@ -12,7 +12,7 @@ public class AudioPlayer {
 	static Clip backgroundTrack;
 	static float sysVolume = -40;
 	static ArrayList<Clip> currentSounds;
-	
+	static String backgroundTrackName;
 	/**
 	 * Initializes the AudioPlayer. 
 	 * Only needs to be ran once across the program.
@@ -53,9 +53,12 @@ public class AudioPlayer {
 	public static void setTrack(String audioFile) {
         try {
         	if(backgroundTrack != null) {
+        		if(backgroundTrackName.equals(audioFile) && backgroundTrack.isRunning()) {
+        			return;
+        		}
         		backgroundTrack.close();
         	}
-        	
+        	backgroundTrackName =  audioFile;
             File file = new File("./src/main/resources/audio/"+audioFile+".wav");
             backgroundTrack = AudioSystem.getClip();
             backgroundTrack.open(AudioSystem.getAudioInputStream(file));
@@ -65,6 +68,7 @@ public class AudioPlayer {
         } catch (Exception e) {
             System.err.println(e);
     		backgroundTrack = null;
+    		backgroundTrackName = null;
         }
     }
 	
