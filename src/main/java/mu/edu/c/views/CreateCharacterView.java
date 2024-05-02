@@ -65,7 +65,7 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridy = 0;
-        gbc.insets = new Insets(0, 0, 100, 0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         this.add(createTitle("Character Creation"), gbc);
         
         //////////// Form elements ////////////
@@ -122,7 +122,7 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         attributePanel.add(brainsPointsLabel);
         attributePanel.add(brainsSlider);
         
-        attributePanel.setPreferredSize(new Dimension(400, 300));
+        attributePanel.setPreferredSize(new Dimension(400, 250));
         gbc.gridy = 1;
         gbc.gridx = 2;
         gbc.anchor = GridBagConstraints.LINE_END;
