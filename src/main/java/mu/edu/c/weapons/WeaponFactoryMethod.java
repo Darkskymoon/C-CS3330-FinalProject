@@ -27,12 +27,9 @@ public class WeaponFactoryMethod {
 			if(weaponType.equals(WeaponType.SWORD)) {
 				weapon = createSwordWeapon(weaponName, simpleDmg, specialDamage, scaler);
 			}
-			else if (weaponType.equals(WeaponType.MAGIC)){ //Weapon is a magic weapon
+			else{ //Weapon is a magic weapon
 				weapon = createMagicWeapon(weaponName, simpleDmg, specialDamage, scaler);
-			}
-			else { //Weapon doesn't conform to one of the above types
-				weapon = null;
-			}
+			} 
 		}else { //The weapon type doesn't exist
 			weapon = null;
 		}
@@ -61,7 +58,7 @@ public class WeaponFactoryMethod {
 		try {
 			//Read in the values of the weapon
 			JSONObject weaponJson = jsonToRead.getJSONObject("weaponStrategy");
-		
+			System.out.println(weaponJson);
 			//get weapon name 
 			weaponName =weaponJson.getString("name");
 			//get weapon simple damage
