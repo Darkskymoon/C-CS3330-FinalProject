@@ -22,9 +22,9 @@ import mu.edu.c.audio.AudioPlayer;
 
 public class MainMenuView extends ParentView {
 	
-	private JButton btnStartGame;
-	private JButton btnCredits;
-	private JButton btnInfo;
+	protected JButton btnStartGame;
+	protected JButton btnCredits;
+	protected JButton btnInfo;
 	
 	public MainMenuView(){
 			AudioPlayer.stopAudio();
@@ -87,4 +87,20 @@ public class MainMenuView extends ParentView {
 		public void addCreditButtonListener(ActionListener listener) {
 			btnCredits.addActionListener(listener);
 		}
+
+		public JButton getBtnStartGame() {
+			return btnStartGame;
+		}
+
+		public JButton getBtnCredits() {
+			return btnCredits;
+		}
+
+		public JButton getBtnInfo() {
+			return btnInfo;
+		}
+		
+		
+		
+		
 }

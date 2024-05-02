@@ -2,6 +2,8 @@ package mu.edu.c.controller;
 
 import java.awt.Container;
 
+import javax.swing.JPanel;
+
 import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
@@ -107,6 +109,14 @@ public class MainControllerExtendedTester extends MainController {
 		this.currentEnemy = currentEnemy;
 	}
 	
+	public void SwitchPanel(JPanel panel) {
+		switchPanel(panel);
+	}
+	
+	public void Inititate() {
+		refreshMainMenuView();
+		switchPanel(mainMenuView);
+	}
 	
 	
 	

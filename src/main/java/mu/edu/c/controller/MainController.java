@@ -20,11 +20,9 @@ import mu.edu.c.views.BattleMenuView;
 import mu.edu.c.views.CreateCharacterView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
-import mu.edu.c.views.LoseScreenView;
 import mu.edu.c.views.MainFrame;
 import mu.edu.c.views.MainMenuView;
 import mu.edu.c.views.StartGameView;
-import mu.edu.c.views.WinScreenView;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
@@ -41,8 +39,6 @@ public class MainController {
 	protected CreditMenuView creditMenuView;
 	protected BattleMenuView battleMenuView;
 	protected CreateCharacterView createCharacterView;
-	protected WinScreenView winScreenView;
-	protected LoseScreenView loseScreenView;
 	// add the new class here
 	
 	//Models
@@ -51,21 +47,16 @@ public class MainController {
 	protected Player currentPlayer;
 	protected Enemy currentEnemy;
 	
-	//TODO
-	//implement event triggers that cause the screen to switch to win/lose screen
-	
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
 	 * @param mainFrame
-	 * @param mainMenuView
+	 * @param creditMenuView
 	 */
 	public MainController() {
 		new AudioPlayer();
 		mainFrame = new MainFrame();
 		mainMenuView = new MainMenuView();
 		this.contentPane = mainFrame.getContentPane();
-		
-		refreshMainMenuView();
 	}
 	
 	/**
@@ -162,23 +153,6 @@ public class MainController {
     //	add refresh view and then underneath add button listeners
 	
 	/**
-	 * Refreshes WinScreenView by recreating object and adding button listeners to view
-	 */
-	protected void refreshWinScreenView() {
-		this.winScreenView = new WinScreenView();
-		winScreenView.addRestartButtonListener(new SwitchScreenToCreateCaracter());
-		winScreenView.addRetireButtonListener(new SwitchScreenToMainMenuView());
-	}
-	
-	/**
-	 * Refreshes LoseScreenView by recreating object and adding button listeners to view
-	 */
-	protected void refreshLoseScreenView() {
-		this.loseScreenView = new LoseScreenView();
-		loseScreenView.addRestartButtonListener(new SwitchScreenToCreateCaracter());
-		loseScreenView.addGiveUpButtonListener(new CreateCharacterSubmit());
-	}
-	/**
 	 * Refreshes MainMenuView and switches current panel to it
 	 */
 	protected class SwitchScreenToMainMenuView implements ActionListener {
@@ -254,32 +228,6 @@ public class MainController {
 			switchPanel(createCharacterView);
 		}
 	
-	}
-	
-	/**
-	 * Refreshes MainMenuView and switches current panel to it
-	 */
-	protected class SwitchScreenToLoseScreenView implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			refreshMainMenuView();
-			switchPanel(loseScreenView);
-		}
-		
-	}
-	
-	/**
-	 * Refreshes MainMenuView and switches current panel to it
-	 */
-	protected class SwitchScreenToWinScreenView implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			refreshMainMenuView();
-			switchPanel(winScreenView);
-		}
-		
 	}
 	
 	/**
@@ -384,13 +332,11 @@ public class MainController {
 	public void initiate() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {	
+				refreshMainMenuView();
 				switchPanel(mainMenuView);
 				mainFrame.setVisible(true);
 			}
 		});
 	}
-	
-
-
 
 }
