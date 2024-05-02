@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import mu.edu.c.controller.MainControllerExtendedTester;
 
-class GameInfoViewTest {
+class StartGameViewTest {
 
 	MainMenuView mainMenuView;
-	GameInfoView gameInfoView;
+	StartGameView startGameView;
 	MainControllerExtendedTester mainController;
 
 	@BeforeEach
@@ -20,15 +20,32 @@ class GameInfoViewTest {
 		mainController = new MainControllerExtendedTester();
 		mainController.Inititate();
 		mainMenuView = (MainMenuView) mainController.getContentPane().getComponent(0);
-		mainMenuView.getBtnInfo().doClick();
-		gameInfoView = (GameInfoView) mainController.getContentPane().getComponent(0);
+		mainMenuView.getBtnStartGame().doClick();
+		startGameView = (StartGameView) mainController.getContentPane().getComponent(0);
 	}
 	
 	@Test
 	void testBtnBack() {
-		gameInfoView.getBtnBack().doClick();
+		startGameView.getBtnBack().doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
 		
 		assertTrue(newPanel instanceof MainMenuView);
 	}
+	
+	@Test
+	void testBtnNewChar() {
+		startGameView.getBtnNewChar().doClick();
+		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
+		
+		assertTrue(newPanel instanceof CreateCharacterView);
+	}
+	
+	@Test
+	void testBtnLoad1() {
+		startGameView.getBtnLoad1().doClick();
+		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
+		
+		assertTrue(newPanel instanceof BattleMenuView);
+	}
+
 }

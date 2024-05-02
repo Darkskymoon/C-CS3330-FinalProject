@@ -24,7 +24,7 @@ public class CreditMenuViewTest {
 	}
 	
 	@Test
-	void testBtnStartGame() {
+	void testBtnBack() {
 		creditMenuView.getBtnBack().doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
 		

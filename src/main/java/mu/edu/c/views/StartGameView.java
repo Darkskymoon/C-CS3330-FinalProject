@@ -127,5 +127,19 @@ public class StartGameView extends ParentView{
 		public void setNewCharEnable() {
 			this.BtnNewChar.setEnabled(true);
 		}
+
+		public JButton getBtnLoad1() {
+			return btnLoad1;
+		}
+
+		public JButton getBtnNewChar() {
+			return BtnNewChar;
+		}
+
+		public JButton getBtnBack() {
+			return btnBack;
+		}
+		
+		
 }
 
