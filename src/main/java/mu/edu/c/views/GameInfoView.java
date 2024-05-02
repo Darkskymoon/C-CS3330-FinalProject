@@ -87,5 +87,12 @@ public class GameInfoView extends ParentView {
 		public void addBackButtonListener(ActionListener listener) {
 			btnBack.addActionListener(listener);
 		}
+
+
+		public JButton getBtnBack() {
+			return btnBack;
+		}
+		
+		
 }
 

@@ -50,7 +50,7 @@ public class MainController {
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
 	 * @param mainFrame
-	 * @param creditMenuView
+	 * @param gameInfoView
 	 */
 	public MainController() {
 		new AudioPlayer();
