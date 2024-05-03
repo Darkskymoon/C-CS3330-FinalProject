@@ -15,7 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -25,12 +27,12 @@ import mu.edu.c.entities.Player;
 
 public class BattleMenuView extends ParentView {
 	
-	private JButton btnCharacterName;
-	private JTextPane btnBattleText;
-	private JButton btnEnemyName;
-	private JButton btnCharacterHP;
-	private JButton btnEnemyHP;
+	private JLabel labelCharacterName;
+	private JLabel labelBattleText;
+	private JLabel labelEnemyName;
+	private JLabel labelCharacterHP;
 	private JButton btnSurrender;
+	private JLabel labelEnemyHP;
 	private JButton btnNormalAttack;
 	private JButton btnSpecialAttack;
 	
@@ -49,11 +51,22 @@ public class BattleMenuView extends ParentView {
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
 	        
-	        btnBattleText = new JTextPane();
+	        labelCharacterName = new JLabel("", SwingConstants.CENTER);
+	        labelBattleText = new JLabel("", SwingConstants.CENTER);
+	        labelEnemyName = new JLabel("", SwingConstants.CENTER);
+	        labelCharacterHP = new JLabel("", SwingConstants.CENTER);
+	        labelEnemyHP = new JLabel("", SwingConstants.CENTER);
+	        
 	        
 	        //initialize Buttons (start and credits)
 			initializeButtons(gbc);
-			SetUpTextPane(btnBattleText);
+			SetUpLabel(labelCharacterName);
+			SetUpLabel(labelBattleText);
+			SetUpLabel(labelEnemyName);
+			SetUpLabel(labelCharacterHP);
+			SetUpLabel(labelEnemyHP);
+			
+			labelBattleText.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 20));
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
@@ -67,12 +80,12 @@ public class BattleMenuView extends ParentView {
 		    GridBagConstraints gbc4 = new GridBagConstraints();
 		    gbc4.insets = new Insets(10, 10, 10, 10);
 		    
-		    buttons.add(btnCharacterName, gbc4);
-	        buttons.add(btnBattleText, gbc4);
-	        buttons.add(btnEnemyName, gbc2);
-	        buttons.add(btnCharacterHP, gbc4);
+		    buttons.add(labelCharacterName, gbc4);
+	        buttons.add(labelBattleText, gbc4);
+	        buttons.add(labelEnemyName, gbc2);
+	        buttons.add(labelCharacterHP, gbc4);
 	        buttons.add(btnSurrender, gbc4);
-	        buttons.add(btnEnemyHP, gbc2);
+	        buttons.add(labelEnemyHP, gbc2);
 	        
 	        add(buttons, gbc);
 	        
@@ -97,10 +110,10 @@ public class BattleMenuView extends ParentView {
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnCharacterName = new JButton("charName");
-			btnEnemyName = new JButton("Enemy");
-			btnCharacterHP = new JButton("TEMPHP");
-			btnEnemyHP = new JButton("HP: 97");
+//			btnCharacterName = new JButton("charName");
+//			btnEnemyName = new JButton("Enemy");
+//			btnCharacterHP = new JButton("TEMPHP");
+//			btnEnemyHP = new JButton("HP: 97");
 			btnSurrender = new JButton("Surrender");
 			btnNormalAttack = new JButton("Normal Attack");
 			btnSpecialAttack = new JButton("Special Attack");
@@ -109,15 +122,15 @@ public class BattleMenuView extends ParentView {
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			double displayScaler = 1.4;
+			double displayScaler = 1.6;
 			double attackScaler = 1.6;
 			
-			SetUpButtonCustomSize(btnCharacterName, displayScaler);
+//			SetUpButtonCustomSize(btnCharacterName, displayScaler);
 //			SetUpButtonCustomSize(btnBattleText, displayScaler);
-			SetUpButtonCustomSize(btnEnemyName, displayScaler);
+//			SetUpButtonCustomSize(btnEnemyName, displayScaler);
 			
-			SetUpButtonCustomSize(btnCharacterHP, displayScaler);
-			SetUpButtonCustomSize(btnEnemyHP, displayScaler);
+//			SetUpButtonCustomSize(btnCharacterHP, displayScaler);
+//			SetUpButtonCustomSize(btnEnemyHP, displayScaler);
 			SetUpButtonCustomSize(btnSurrender, displayScaler);
 			
 			SetUpButtonCustomSize(btnNormalAttack, attackScaler);
@@ -126,20 +139,20 @@ public class BattleMenuView extends ParentView {
 			
 		}
 		
-		private void SetUpTextPane(JTextPane textPane) {
-			StyledDocument doc = textPane.getStyledDocument();
-			SimpleAttributeSet center = new SimpleAttributeSet();
-			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-			doc.setParagraphAttributes(0, doc.getLength(), center, false);
+		private void SetUpLabel(JLabel label) {
 			
-			textPane.setText("Battle Beginning...");
-			textPane.setBackground(new Color(45, 44, 65));
-			textPane.setBorder(BorderFactory.createEmptyBorder());
 			
-			Font textPaneFont= new Font("Yu Gothic Medium", Font.PLAIN, 26);
-			textPane.setFont(textPaneFont);
+		    label.setPreferredSize(new Dimension(320, 160));
 			
-			textPane.setForeground(Color.white);
+		    String myString = new String("A fierce enemy\napproaches...");
+		    label.setText("<html>" + myString.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
+		    label.setBackground(new Color(45, 44, 65));
+		    label.setBorder(BorderFactory.createBevelBorder(1));
+			
+			Font textPaneFont= new Font("Yu Gothic Medium", Font.PLAIN, 32);
+			label.setFont(textPaneFont);
+			
+			label.setForeground(Color.white);
 		}
 		
 		
@@ -172,24 +185,24 @@ public class BattleMenuView extends ParentView {
 			this.LabelRoll.setText(String.valueOf(roll));
 		}
 		public void setbtnEnemyName(String name) {
-			this.btnEnemyName.setText(String.valueOf(name));
+			this.labelEnemyName.setText(String.valueOf(name));
 		}
 		
 		public void setbtnEnemyHP(float hp, float max) {
-			this.btnEnemyHP.setText(String.valueOf(hp+ "/"+max));
+			this.labelEnemyHP.setText(String.valueOf(hp+ "/"+max));
 		}
 		
-		public void setBtnBattleText(String battleText) {
-			this.btnBattleText.setText(String.valueOf(battleText));
+		public void setBtnBattleText(String myString) {
+			labelBattleText.setText("<html>" + myString.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
 		}
 
 
 		public void setbtnCharacterName(String name) {
-			this.btnCharacterName.setText(String.valueOf(name));
+			this.labelCharacterName.setText(String.valueOf(name));
 		}
 		
 		public void setbtnCharacterHP(float charHP, float charMaxHP) {
-			this.btnCharacterHP.setText(String.valueOf(charHP+ "/"+charMaxHP));
+			this.labelCharacterHP.setText(String.valueOf(charHP+ "/"+charMaxHP));
 		}
 
 
