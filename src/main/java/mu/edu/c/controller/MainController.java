@@ -260,7 +260,7 @@ public class MainController {
 			
 			//creates the character/player object
 			//TODO: temporarily sets the other stats to placeholder values
-			Player characterObj = new Player(10, 2, 3, 4, name);
+			Player characterObj = new Player(10, createCharacterView.getStrengthStat(), createCharacterView.getDefenseStat(), createCharacterView.getBrainsStat(), name);
 			//gets the logger instance and writes the characterObj to the file.
 			CharacterLoggerSingleton logger =CharacterLoggerSingleton.getInstance();
 			logger.logCharacterData(characterObj);
