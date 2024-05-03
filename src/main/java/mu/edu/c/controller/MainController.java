@@ -396,7 +396,9 @@ public class MainController {
 			return roll;
 		}
 		
-		//TODO not sure if this should go in controller, I think it should go in the model?
+		/**
+		 *  checks to see if the screen should be changed to another screen or if the hp should be changed
+		 */
 		protected void updateHealth() {
 	        if(battleModel.getCurrentEnemyCurrentHP() == 0) {
 				refreshWinScreenView();
@@ -408,37 +410,29 @@ public class MainController {
 	        
 			battleMenuView.setbtnCharacterHP(battleModel.getPlayerHP(), battleModel.getPlayerMaxHP());
 			battleMenuView.setbtnEnemyHP(battleModel.getCurrentEnemyCurrentHP(), battleModel.getCurrentEnemyMaxHP());
-//			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
-//			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
 		}
 		
+		/**
+		 * Updates the battleText()
+		 */
 		protected void updateBattleText() {
 			float playerDamageDealt = oldEnemyHealth - battleModel.getCurrentEnemyCurrentHP();
 			float enemyDamageDealt = oldPlayerHealth - battleModel.getPlayerHP();
 			battleMenuView.setBtnBattleText("Player dealt " + playerDamageDealt + " damage!\n"
 										  + "Enemy dealt " + enemyDamageDealt + " damage!");
-//			float playerDamageDealt = oldEnemyHealth - currentEnemy.getHp();
-//			float enemyDamageDealt = oldPlayerHealth - currentPlayer.getHp();
-//			battleMenuView.setBtnBattleText("Player dealt " + playerDamageDealt + " damage!\n"
-//										  + "Enemy dealt " + enemyDamageDealt + " damage!");
 			
 		}
 		
-		//TODO moved to battle 
-//		protected void enemyAttack() {
-//			Random rand = new Random();
-//			if(rand.nextInt(2) == 0) {
-//				currentEnemy.simpleAttack(currentPlayer);
-//			} else {
-//				currentEnemy.specialAttack(currentPlayer);
-//			}
-//		}
-
+		/**
+		 * temporarily saves the old hit points so that the text on the screen can be updated
+		 * 
+		 */
 		protected void saveOldHealth() {
 			this.oldPlayerHealth = battleModel.getPlayerHP();
 			this.oldEnemyHealth = battleModel.getCurrentEnemyCurrentHP();
 		}
 	}
+	
 	
 	/**
 	 * the action listener for the Normal attack button listener
@@ -452,10 +446,8 @@ public class MainController {
 			int rollResults = roll();
 			saveOldHealth();
 			//TODO moved to battle
-			battleModel.characterSimpleAttack(rollResults, currentEnemy);
+			battleModel.characterSimpleAttack(rollResults, battleModel.getCurrentEnemy());
 			battleModel.enemyAttack();
-//			currentPlayer.simpleAttack(currentEnemy);
-//			enemyAttack();
 			updateHealth();
 			updateBattleText();
 			
@@ -473,11 +465,9 @@ public class MainController {
 			//Roll for current battle
 			int rollResult = roll();
 			saveOldHealth();
-			//TODO need to move to battle still
-			battleModel.characterSpecialAttack(rollResult, currentEnemy);
+			//character performs special attack followed by enemy attack
+			battleModel.characterSpecialAttack(rollResult,battleModel.getCurrentEnemy());
 			battleModel.enemyAttack();
-//			currentPlayer.specialAttack(currentEnemy);
-//			enemyAttack();
 			updateHealth();
 			updateBattleText();
 			
