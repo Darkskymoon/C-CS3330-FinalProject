@@ -27,6 +27,8 @@ import mu.edu.c.views.MainMenuView;
 import mu.edu.c.views.PreviousBattlesView;
 import mu.edu.c.views.StartGameView;
 import mu.edu.c.views.WinScreenView;
+import mu.edu.c.weapons.AbstractWeapon;
+import mu.edu.c.weapons.IWeapon;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
@@ -169,10 +171,12 @@ public class MainController {
 	
 	protected void refreshWinScreenView() {
 		this.winScreenView = new WinScreenView();
-		winScreenView.addRetireButtonListener(new SwitchScreenToMainMenuView());
-		winScreenView.addRestartButtonListener(new SwitchScreenToBattleMenuView());
+		winScreenView.addKeepCurrentWeaponListener(new SwitchScreenToBattleMenuView());
+		winScreenView.addPickNewWeaponListener(new setNewCharacterWeapon());
+		AbstractWeapon droppedWeapon = (AbstractWeapon) currentEnemy.getWeaponStrategy();
+		winScreenView.setWeaponLabel("<html>" + "Name: " + droppedWeapon.getName()+ " " + "<br>Simple DMG: " + droppedWeapon.getSimpleDamage() + "<br>Special DMG: " + droppedWeapon.getSpecialDamage() + "<html/>");
 	}
-	
+
 	/**
 	 * Refreshes CreateCharacterView by recreating object and adding button listeners to view
 	 */
@@ -182,6 +186,24 @@ public class MainController {
 		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
 	}
     //	add refresh view and then underneath add button listeners
+	
+	
+	/**
+	 * sets character weapon to defeated enemies' weapons, then starts a new battle
+	 */
+	protected class setNewCharacterWeapon implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			AbstractWeapon droppedWeapon = (AbstractWeapon) currentEnemy.getWeaponStrategy();
+			currentPlayer.setWeaponStrategy(droppedWeapon);
+			refreshBattleMenuView();
+			switchPanel(battleMenuView);
+			CharacterLoggerSingleton characterLogger = CharacterLoggerSingleton.getInstance();
+			characterLogger.logCharacterData(currentPlayer);
+		 }
+	}
+	
 	
 	/**
 	 * Refreshes MainMenuView and switches current panel to it
@@ -279,7 +301,9 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			//Gets the character name TODO create getter for this
 			String name = createCharacterView.getNameField().getText();
-			
+			if (name.equals("")) {
+				name = "Ekin";
+			}
 			//creates the character/player object
 			//TODO: temporarily sets the other stats to placeholder values
 			Player characterObj = new Player(10, createCharacterView.getStrengthStat(), createCharacterView.getDefenseStat(), createCharacterView.getBrainsStat(), name);
