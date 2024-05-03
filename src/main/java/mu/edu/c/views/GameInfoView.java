@@ -23,6 +23,7 @@ public class GameInfoView extends ParentView {
 	private JButton btnViewWeapons;
 	private JButton btnViewEnemies;
 	private JButton btnViewCharacters;
+	private JButton btnViewPreviousBattles;
 	private JButton btnBack;
 	
 	public GameInfoView(){
@@ -51,6 +52,7 @@ public class GameInfoView extends ParentView {
 	        buttons.add(btnViewWeapons, gbc2);
 	        buttons.add(btnViewEnemies, gbc2);
 	        buttons.add(btnViewCharacters, gbc2);
+	        buttons.add(btnViewPreviousBattles, gbc2);
 	        buttons.add(btnBack, gbc2);
 	        
 	        gbc.weighty = 1;
@@ -71,6 +73,7 @@ public class GameInfoView extends ParentView {
 			btnViewWeapons = new JButton("View All Weapons");
 			btnViewEnemies = new JButton("View All Enemies");
 			btnViewCharacters = new JButton("View All Characters");
+			btnViewPreviousBattles = new JButton("Previous Battles");
 			btnBack = new JButton("Back");
 			
 			////////////////////Set visuals for buttons////////////////////
@@ -79,6 +82,7 @@ public class GameInfoView extends ParentView {
 			SetUpButton(btnViewWeapons);
 			SetUpButton(btnViewCharacters);
 			SetUpButton(btnViewEnemies);
+			SetUpButton(btnViewPreviousBattles);
 			SetUpButton(btnBack);
 			
 		}
@@ -88,7 +92,10 @@ public class GameInfoView extends ParentView {
 			btnBack.addActionListener(listener);
 		}
 
-
+		public void addPreviousBattlesButtonListener(ActionListener listener) {
+			btnViewPreviousBattles.addActionListener(listener);
+		}
+		
 		public JButton getBtnBack() {
 			return btnBack;
 		}

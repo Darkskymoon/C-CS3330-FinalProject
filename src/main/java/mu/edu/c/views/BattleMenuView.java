@@ -46,7 +46,7 @@ public class BattleMenuView extends ParentView {
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
 	        gbc.anchor = GridBagConstraints.NORTH;
 
-	        gbc.insets = new Insets(50, 30, 0, 30);
+	        gbc.insets = new Insets(50, 30, 30, 30);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -73,19 +73,19 @@ public class BattleMenuView extends ParentView {
 			
 			GridBagConstraints gbc2 = new GridBagConstraints();
 			gbc2.gridwidth = GridBagConstraints.REMAINDER;
-			gbc2.insets = new Insets(10, 10, 10, 10);
+			gbc2.insets = new Insets(20, 20, 20, 20);
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.HORIZONTAL;
 		    
 		    GridBagConstraints gbc4 = new GridBagConstraints();
-		    gbc4.insets = new Insets(10, 10, 10, 10);
+		    gbc4.insets = new Insets(20, 30, 30, 20);
 		    
 		    buttons.add(labelCharacterName, gbc4);
-	        buttons.add(labelBattleText, gbc4);
+	        buttons.add(labelBattleText);
 	        buttons.add(labelEnemyName, gbc2);
-	        buttons.add(labelCharacterHP, gbc4);
-	        buttons.add(btnSurrender, gbc4);
-	        buttons.add(labelEnemyHP, gbc2);
+	        buttons.add(labelCharacterHP);
+	        buttons.add(btnSurrender);
+	        buttons.add(labelEnemyHP);
 	        
 	        add(buttons, gbc);
 	        
@@ -93,15 +93,22 @@ public class BattleMenuView extends ParentView {
 	        LabelContainer.setVisible(false);
 	        LabelRoll=new JLabel("roll to hit");
 	        LabelRoll.setForeground(Color.black);
-	        LabelContainer.add(LabelRoll, gbc2);
-	        add(LabelContainer, gbc);
+	        LabelContainer.add(LabelRoll);
+	        add(LabelContainer);
 	        
+	        
+	        GridBagConstraints gbc3 = new GridBagConstraints();
+			gbc3.gridwidth = GridBagConstraints.REMAINDER;
+			gbc3.insets = new Insets(0, 20, 0,20);
+			gbc3.anchor = GridBagConstraints.CENTER;
+		    gbc3.fill = GridBagConstraints.HORIZONTAL;
+		    
 	        JPanel buttons2 = new JPanel(new GridBagLayout());
 			buttons2.setBackground(new Color(45, 44, 65));
 			
-			buttons2.add(btnNormalAttack, gbc4);
-			buttons2.add(btnSpecialAttack, gbc4);
-			add(buttons2, gbc);
+			buttons2.add(btnNormalAttack);
+			buttons2.add(btnSpecialAttack, gbc3);
+			add(buttons2);
 			
 			
 		}
@@ -122,8 +129,8 @@ public class BattleMenuView extends ParentView {
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			double displayScaler = 1.6;
-			double attackScaler = 1.6;
+			double displayScaler = 1.4;
+			double attackScaler = 1.4;
 			
 //			SetUpButtonCustomSize(btnCharacterName, displayScaler);
 //			SetUpButtonCustomSize(btnBattleText, displayScaler);
@@ -142,7 +149,7 @@ public class BattleMenuView extends ParentView {
 		private void SetUpLabel(JLabel label) {
 			
 			
-		    label.setPreferredSize(new Dimension(320, 160));
+		    label.setPreferredSize(new Dimension(280, 140));
 			
 		    String myString = new String("A fierce enemy\napproaches...");
 		    label.setText("<html>" + myString.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");

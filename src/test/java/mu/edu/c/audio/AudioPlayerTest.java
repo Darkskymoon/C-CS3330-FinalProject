@@ -36,29 +36,29 @@ public class AudioPlayerTest {
 	void testSetTrack() {
 		AudioPlayer.setTrack("MainGameSound");
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(100);
+			assertNotNull(AudioPlayer.backgroundTrack);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		assertNotNull(AudioPlayer.backgroundTrack);
 	}
 
 	@Test
 	void testSetTrack2() {
 		AudioPlayer.setTrack("StartGameSound");
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(100);
+			assertNotNull(AudioPlayer.backgroundTrack);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		assertNotNull(AudioPlayer.backgroundTrack);
 	}
 	
 	@Test
 	void testSetTrackBadInput() {
 		AudioPlayer.setTrack("badInput");
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

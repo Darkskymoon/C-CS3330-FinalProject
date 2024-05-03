@@ -24,6 +24,7 @@ import mu.edu.c.views.GameInfoView;
 import mu.edu.c.views.LoseScreenView;
 import mu.edu.c.views.MainFrame;
 import mu.edu.c.views.MainMenuView;
+import mu.edu.c.views.PreviousBattlesView;
 import mu.edu.c.views.StartGameView;
 import mu.edu.c.views.WinScreenView;
 import mu.edu.c.logger.CharacterLoggerSingleton;
@@ -38,6 +39,7 @@ public class MainController {
 	protected Container contentPane;
 	protected MainMenuView mainMenuView;
 	protected GameInfoView gameInfoView;
+	protected PreviousBattlesView previousBattlesView;
 	protected StartGameView startGameView;
 	protected CreditMenuView creditMenuView;
 	protected BattleMenuView battleMenuView;
@@ -80,6 +82,16 @@ public class MainController {
 	protected void refreshGameInfoView() {
 		this.gameInfoView = new GameInfoView();
 		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		gameInfoView.addPreviousBattlesButtonListener(new SwitchScreenToPreviousBattlesView());
+
+	}
+	
+	/**
+	 * Refreshes PreviousBattlesView by recreating object and adding button listeners to view
+	 */
+	protected void refreshPreviousBattlesView() {
+		this.previousBattlesView = new PreviousBattlesView();
+		previousBattlesView.addBackButtonListener(new SwitchScreenToGameInfoView());
 	}
 	
 	/**
@@ -124,6 +136,7 @@ public class MainController {
 	 * Refreshes BattleMenuView by recreating object and adding button listeners to view
 	 */
 	protected void refreshBattleMenuView() {
+		currentPlayer.setHp(currentPlayer.getMaxHP());
 		this.battleModel = new Battle(this.currentPlayer);
 		this.battleMenuView = new BattleMenuView();
 		
@@ -151,13 +164,13 @@ public class MainController {
 	protected void refreshLoseScreenView() {
 		this.loseScreenView = new LoseScreenView();
 		loseScreenView.addGiveUpButtonListener(new SwitchScreenToMainMenuView());
-		loseScreenView.addRestartButtonListener(new SwitchScreenToMainMenuView());
+		loseScreenView.addRestartButtonListener(new SwitchScreenToBattleMenuView());
 	}
 	
 	protected void refreshWinScreenView() {
 		this.winScreenView = new WinScreenView();
 		winScreenView.addRetireButtonListener(new SwitchScreenToMainMenuView());
-		winScreenView.addRestartButtonListener(new SwitchScreenToMainMenuView());
+		winScreenView.addRestartButtonListener(new SwitchScreenToBattleMenuView());
 	}
 	
 	/**
@@ -179,6 +192,16 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			refreshMainMenuView();
 			switchPanel(mainMenuView);
+		}
+		
+	}
+	
+	protected class SwitchScreenToPreviousBattlesView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshPreviousBattlesView();
+			switchPanel(previousBattlesView);
 		}
 		
 	}
@@ -259,7 +282,7 @@ public class MainController {
 			
 			//creates the character/player object
 			//TODO: temporarily sets the other stats to placeholder values
-			Player characterObj = new Player(10, 2, 3, 4, name);
+			Player characterObj = new Player(10, createCharacterView.getStrengthStat(), createCharacterView.getDefenseStat(), createCharacterView.getBrainsStat(), name);
 			//gets the logger instance and writes the characterObj to the file.
 			CharacterLoggerSingleton logger =CharacterLoggerSingleton.getInstance();
 			logger.logCharacterData(characterObj);
