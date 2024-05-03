@@ -128,7 +128,7 @@ public class StartGameView extends ParentView{
 			this.BtnNewChar.setEnabled(true);
 		}
 
-		public JButton getBtnLoad1() {
+		public JButton getBtnLoadCharacter() {
 			return btnLoadCharacter;
 		}
 
@@ -138,6 +138,10 @@ public class StartGameView extends ParentView{
 
 		public JButton getBtnBack() {
 			return btnBack;
+		}
+		
+		public void setLoadCharacterHide() {
+			this.btnLoadCharacter.setVisible(false);
 		}
 		
 		

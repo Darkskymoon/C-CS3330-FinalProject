@@ -42,7 +42,7 @@ class StartGameViewTest {
 	
 	@Test
 	void testBtnLoad1() {
-		startGameView.getBtnLoad1().doClick();
+		startGameView.getBtnLoadCharacter().doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
 		
 		assertTrue(newPanel instanceof BattleMenuView);

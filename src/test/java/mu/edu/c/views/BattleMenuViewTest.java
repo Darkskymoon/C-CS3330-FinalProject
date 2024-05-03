@@ -24,7 +24,7 @@ class BattleMenuViewTest {
 		mainMenuView = (MainMenuView) mainController.getContentPane().getComponent(0);
 		mainMenuView.getBtnStartGame().doClick();
 		startGameView = (StartGameView) mainController.getContentPane().getComponent(0);
-		startGameView.getBtnLoad1().doClick();
+		startGameView.getBtnLoadCharacter().doClick();
 		battleMenuView = (BattleMenuView) mainController.getContentPane().getComponent(0);
 	}
 	
