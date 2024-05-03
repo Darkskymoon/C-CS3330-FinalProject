@@ -21,9 +21,11 @@ import mu.edu.c.views.BattleMenuView;
 import mu.edu.c.views.CreateCharacterView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
+import mu.edu.c.views.LoseScreenView;
 import mu.edu.c.views.MainFrame;
 import mu.edu.c.views.MainMenuView;
 import mu.edu.c.views.StartGameView;
+import mu.edu.c.views.WinScreenView;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
@@ -40,6 +42,8 @@ public class MainController {
 	protected CreditMenuView creditMenuView;
 	protected BattleMenuView battleMenuView;
 	protected CreateCharacterView createCharacterView;
+	protected LoseScreenView loseScreenView;
+	protected WinScreenView winScreenView;
 	// add the new class here
 	
 	//Models
@@ -141,6 +145,14 @@ public class MainController {
 		battleMenuView.addSurrenderButtonListener(new BattleMenuSurrenderButtonListener());
 		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
+	}
+	
+	protected void refreshLoseScreenView() {
+		this.loseScreenView = new LoseScreenView();
+	}
+	
+	protected void refreshWinScreenView() {
+		this.winScreenView = new WinScreenView();
 	}
 	
 	/**
@@ -279,6 +291,13 @@ public class MainController {
 		}
 		
 		protected void updateHealth() {
+	        if(currentEnemy.getHp() == 0) {
+				refreshWinScreenView();
+				switchPanel(winScreenView);
+			} else if(currentPlayer.getHp() == 0) {
+				refreshLoseScreenView();
+				switchPanel(loseScreenView);
+			}
 			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
 			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
 		}
