@@ -149,10 +149,14 @@ public class MainController {
 	
 	protected void refreshLoseScreenView() {
 		this.loseScreenView = new LoseScreenView();
+		loseScreenView.addGiveUpButtonListener(new SwitchScreenToMainMenuView());
+		loseScreenView.addRestartButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
 	protected void refreshWinScreenView() {
 		this.winScreenView = new WinScreenView();
+		winScreenView.addRetireButtonListener(new SwitchScreenToMainMenuView());
+		winScreenView.addRestartButtonListener(new SwitchScreenToMainMenuView());
 	}
 	
 	/**
@@ -298,6 +302,7 @@ public class MainController {
 				refreshLoseScreenView();
 				switchPanel(loseScreenView);
 			}
+	        
 			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
 			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
 		}
