@@ -267,37 +267,52 @@ public class MainController {
 		}
 	}
 	
+	protected class AttackButtonListener {
+		protected void roll() {
+			int roll = battleModel.roll();
+			battleMenuView.setRollLabel(roll);
+		}
+		
+		protected void updateHealth() {
+			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
+			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
+		}
+		
+		protected void updateBattleText() {
+			battleMenuView.setBtnBattleText("Attack!");
+		}
+	}
+	
 	/**
 	 * the action listener for the Normal attack button listener
 	 */
-	protected class BattleMenuNormalAttackButtonListener implements ActionListener{
+	protected class BattleMenuNormalAttackButtonListener extends AttackButtonListener implements ActionListener{
 		/**
 		 * Rolls a number then sets the roll Label equal to that result
 		 */
 		public void actionPerformed(ActionEvent e) {
 			//Roll for current battle
-			int roll = battleModel.roll();
-			battleMenuView.setRollLabel(roll);
+			roll();
 			currentPlayer.simpleAttack(currentEnemy);
-			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
-			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
+			updateHealth();
+			updateBattleText();
+			
 		}
 	}
 	
 	/**
 	 * the action listener for the special attack button listener
 	 */
-	protected class BattleMenuSpecialAttackButtonListener implements ActionListener{
+	protected class BattleMenuSpecialAttackButtonListener extends AttackButtonListener implements ActionListener{
 		/**
 		 * Rolls a number then sets the roll Label equal to that result
 		 */
 		public void actionPerformed(ActionEvent e) {
 			//Roll for current battle
-			int roll = battleModel.roll();
-			battleMenuView.setRollLabel(roll);
+			roll();
 			currentPlayer.specialAttack(currentEnemy);
-			battleMenuView.setbtnCharacterHP(currentPlayer.getHp(), currentPlayer.getMaxHP());
-			battleMenuView.setbtnEnemyHP(currentEnemy.getHp(), currentEnemy.getMaxHP());
+			updateHealth();
+			updateBattleText();
 			
 		}
 	}

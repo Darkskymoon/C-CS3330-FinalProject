@@ -157,6 +157,11 @@ public class BattleMenuView extends ParentView {
 			this.btnEnemyHP.setText(String.valueOf(hp+ "/"+max));
 		}
 		
+		public void setBtnBattleText(String battleText) {
+			this.btnBattleText.setText(String.valueOf(battleText));
+		}
+
+
 		public void setbtnCharacterName(String name) {
 			this.btnCharacterName.setText(String.valueOf(name));
 		}
