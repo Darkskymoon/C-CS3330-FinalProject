@@ -97,6 +97,7 @@ public class MainController {
 		if(this.currentPlayer == null) {
 			startGameView.setLoadCharacterText("Create a New Character");
 			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCaracter());
+			startGameView.setNewCharHide();
 			startGameView.setLoadCharacterHide();
 			
 		}else { //Otherwise, if the first player does exist, set the load button to route to battle with that character
@@ -258,7 +259,7 @@ public class MainController {
 			
 			//creates the character/player object
 			//TODO: temporarily sets the other stats to placeholder values
-			Player characterObj = new Player(1, 2, 3, 4, name);
+			Player characterObj = new Player(10, 2, 3, 4, name);
 			//gets the logger instance and writes the characterObj to the file.
 			CharacterLoggerSingleton logger =CharacterLoggerSingleton.getInstance();
 			logger.logCharacterData(characterObj);

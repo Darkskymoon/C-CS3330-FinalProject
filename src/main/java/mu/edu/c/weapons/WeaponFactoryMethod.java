@@ -58,7 +58,7 @@ public class WeaponFactoryMethod {
 		try {
 			//Read in the values of the weapon
 			JSONObject weaponJson = jsonToRead.getJSONObject("weaponStrategy");
-			System.out.println(weaponJson);
+//			System.out.println(weaponJson);
 			//get weapon name 
 			weaponName =weaponJson.getString("name");
 			//get weapon simple damage

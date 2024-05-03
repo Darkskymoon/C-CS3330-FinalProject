@@ -1,1 +1,1 @@
-{"attributePoints":0,"name":"Ryan","hp":1.0,"maxHP":1.0,"strength":2,"defense":3,"brains":4,"weaponStrategy":{"name":"Basic Sword","simpleDamage":1,"specialDamage":2,"scaler":1.0,"weapontype":"SWORD"},"xp":0}
+{"attributePoints":0,"name":"Ryan","hp":10.0,"maxHP":10.0,"strength":2,"defense":3,"brains":4,"weaponStrategy":{"name":"Basic Sword","simpleDamage":1,"specialDamage":2,"scaler":1.0,"weapontype":"SWORD"},"xp":0}
