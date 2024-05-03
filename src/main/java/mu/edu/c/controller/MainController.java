@@ -55,6 +55,7 @@ public class MainController {
 	//TODO- Is this right?
 	protected Player currentPlayer;
 	protected Enemy currentEnemy;
+	protected boolean isPreviousBattle;
 	
 	/**
 	 * Constructer which requires MainFrame and MainMenuView objects. 
@@ -66,6 +67,7 @@ public class MainController {
 		mainFrame = new MainFrame();
 		mainMenuView = new MainMenuView();
 		this.contentPane = mainFrame.getContentPane();
+		this.isPreviousBattle = false;
 	}
 	
 	/**
@@ -92,8 +94,22 @@ public class MainController {
 	 * Refreshes PreviousBattlesView by recreating object and adding button listeners to view
 	 */
 	protected void refreshPreviousBattlesView() {
+		this.isPreviousBattle = false;
 		this.previousBattlesView = new PreviousBattlesView();
 		previousBattlesView.addBackButtonListener(new SwitchScreenToGameInfoView());
+		previousBattlesView.addPlayPreviousBattleButtonListener(new replayPreviousBattle());
+	}
+	
+	protected class replayPreviousBattle implements ActionListener{
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Battle battle = previousBattlesView.getBattlesList().getSelectedValue();
+			System.out.println(battle);
+			refreshBattleMenuView(battle);
+			switchPanel(battleMenuView);
+		}
+		
 	}
 	
 	/**
@@ -162,6 +178,37 @@ public class MainController {
 		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
 	}
+
+	/**
+	 * Refreshes BattleMenuView with a previous battle
+	 */
+	protected void refreshBattleMenuView(Battle battle) {
+		this.isPreviousBattle = true;
+		currentPlayer = battle.getPlayer();
+
+		this.battleModel = battle;
+		currentPlayer.setHp(currentPlayer.getMaxHP());
+		this.battleMenuView = new BattleMenuView();
+		
+		//initialize enemies
+		this.currentEnemy = this.battleModel.getCurrentEnemy();
+
+		//save the battle at the beginning
+		BattleLoggerSingleton battleLogger = BattleLoggerSingleton.getInstance();
+		battleLogger.logBattleData(this.battleModel);
+		
+		//set the buttons
+		this.battleMenuView.setbtnCharacterName(this.battleModel.getPlayerName());
+		this.battleMenuView.setbtnEnemyName(this.battleModel.getCurrentEnemyName());
+		this.battleMenuView.setbtnCharacterHP(this.battleModel.getPlayerHP(), this.battleModel.getPlayerMaxHP());
+		this.battleMenuView.setbtnEnemyHP(this.battleModel.getCurrentEnemyCurrentHP(), this.battleModel.getCurrentEnemyMaxHP());
+		
+		
+		//add listeners
+		battleMenuView.addSurrenderButtonListener(new BattleMenuSurrenderButtonListener());
+		battleMenuView.addbtnNormalAttackListener(new BattleMenuNormalAttackButtonListener());
+		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
+	}
 	
 	protected void refreshLoseScreenView() {
 		this.loseScreenView = new LoseScreenView();
@@ -199,8 +246,10 @@ public class MainController {
 			currentPlayer.setWeaponStrategy(droppedWeapon);
 			refreshBattleMenuView();
 			switchPanel(battleMenuView);
-			CharacterLoggerSingleton characterLogger = CharacterLoggerSingleton.getInstance();
-			characterLogger.logCharacterData(currentPlayer);
+			if(!isPreviousBattle) {
+				CharacterLoggerSingleton characterLogger = CharacterLoggerSingleton.getInstance();
+				characterLogger.logCharacterData(currentPlayer);
+			}
 		 }
 	}
 	

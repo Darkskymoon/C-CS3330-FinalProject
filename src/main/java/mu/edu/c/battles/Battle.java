@@ -45,6 +45,15 @@ public class Battle {
 	}
 	
 	/**
+	 * Gets the player in combat
+	 * @return
+	 */
+	public Player getPlayer() {
+		return this.player;
+
+	}
+	
+	/**
 	 * Gets the name of the player in combat
 	 * @return
 	 */
