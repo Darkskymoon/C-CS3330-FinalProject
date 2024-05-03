@@ -26,9 +26,6 @@ import mu.edu.c.audio.AudioPlayer;
 
 public class CreateCharacterView extends ParentView implements ChangeListener{
 	
-    //TODO
-    // attribute points remaining 
-    // str, def, brains incrementor, decrements attr points
     
     Border border = BorderFactory.createLineBorder(Color.red, 5);
 
@@ -39,7 +36,6 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
 	private int attributePointsLeft = 50;
 	
 	private Font attributeHeaderFont =  new Font("Consolas", Font.PLAIN, 30);
-	Boolean isEmpty = false;
 	
 	//labels
 	JLabel attributePointsLabel = new JLabel("Points Left: " + attributePointsLeft);
