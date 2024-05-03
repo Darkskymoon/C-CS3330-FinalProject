@@ -22,6 +22,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import mu.edu.c.audio.AudioPlayer;
 import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
 
@@ -40,8 +41,9 @@ public class BattleMenuView extends ParentView {
 	
 	
 	public BattleMenuView(){
-			
-			
+			AudioPlayer.stopAudio();
+			AudioPlayer.setTrack("414214__sirkoto51__anime-fight-music-loop-1");
+
 			GridBagConstraints gbc = new GridBagConstraints();
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
 	        gbc.anchor = GridBagConstraints.NORTH;
