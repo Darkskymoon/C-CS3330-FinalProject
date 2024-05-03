@@ -13,6 +13,8 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -37,12 +39,15 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
 	private int attributePointsLeft = 50;
 	
 	private Font attributeHeaderFont =  new Font("Consolas", Font.PLAIN, 30);
+	Boolean isEmpty = false;
 	
 	//labels
 	JLabel attributePointsLabel = new JLabel("Points Left: " + attributePointsLeft);
     JLabel strPointsLabel = new JLabel("strength: 0");
     JLabel defPointsLabel = new JLabel("defense: 0");
     JLabel brainsPointsLabel = new JLabel("brains: 0");
+    JLabel alertLabel;
+    JLabel nameLabel = new JLabel();
     
 	//sliders
 	private JSlider strSlider = new JSlider(0, 50, 0);
@@ -69,18 +74,24 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         this.add(createTitle("Character Creation"), gbc);
         
         //////////// Form elements ////////////
-        JPanel namePanel = new JPanel();
-        JLabel nameLabel = new JLabel();
+    	JPanel namePanel = new JPanel();
+        nameLabel = new JLabel();
+        alertLabel = new JLabel("");
+        
         namePanel.setLayout(new BorderLayout());
         nameLabel.setText("Name:");
         nameLabel.setForeground(Color.black);
         nameLabel.setFont(attributeHeaderFont);
         
+        alertLabel.setForeground(Color.red);
+        
         nameField.setPreferredSize(new Dimension(100, 50));
         nameField.setFont(new Font("Consolas", Font.PLAIN, 16));
         
+        namePanel.add(alertLabel, BorderLayout.SOUTH);
         namePanel.add(nameLabel, BorderLayout.NORTH);
         namePanel.add(nameField);
+        
         gbc.anchor = GridBagConstraints.LINE_START;
         
         gbc.insets = new Insets(0, 0, 50, 0);
@@ -159,11 +170,10 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         strPointsLabel.setText("strength: " + strPts);
         defPointsLabel.setText("defense: " + defPts);
         brainsPointsLabel.setText("brains: " + braPts);
-        
-        return ;
+        return;
 		}
 	}
-
+	
     private void initializeButtons() {
         // Make button variables
         btnSubmit = new JButton("Create character");
@@ -172,21 +182,19 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         // Set visuals for buttons
         SetUpButton(btnSubmit);
         SetUpButton(btnBack);
-        
+                
         // Add action listeners
         btnSubmit.addActionListener(e -> {
-            // Handle submit button action here
         });
+        
         btnBack.addActionListener(e -> {
             // Handle back button action here
         });
     }
     
-    
     public void addBackButtonListener(ActionListener listener) {
         btnBack.addActionListener(listener);
     }
-    
     
     /**
      * Action listener for when the submit button gets pressed.
@@ -200,14 +208,17 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
 		int strPts = strSlider.getValue();
     	return strPts;
     }
+    
     public int getDefenseStat() {
 		int defPts = defSlider.getValue();
     	return defPts;
     }
+    
     public int getBrainsStat() {
 		int braPts = brainsSlider.getValue();
     	return braPts;
     }
+    
 	public JTextField getNameField() {
 		return nameField;
 	}
