@@ -10,33 +10,40 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mu.edu.c.audio.AudioPlayer;
 
 public class WinScreenView extends ParentView implements ActionListener {
 	
-	JButton btnRestart;
-	JButton btnRetire;
+	JButton btnNewWeapon;
+	JButton btnContinue;
+	JLabel newWeaponLabel;
 	
 	public WinScreenView() {
 		AudioPlayer.stopAllAudio();
 		setBackground(new Color(45, 44, 65));
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblNewLabel = new JLabel("VICTORY!");
+		JLabel lblNewLabel = new JLabel("New weapon found!");
 		lblNewLabel.setForeground(new Color(255, 255, 0));
-		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Cooper Black", Font.PLAIN, 22));
 		add(lblNewLabel);
+		
+		newWeaponLabel = new JLabel("wa");
+		newWeaponLabel.setFont(new Font("Cantor", Font.BOLD, 30));
+		newWeaponLabel.setForeground(new Color(255, 255, 0));
+		newWeaponLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		add(newWeaponLabel);
 		
 		initializeButtons();
 		
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setBackground(new Color(45, 44, 65));
-		buttonsPanel.add(btnRestart);
-		buttonsPanel.add(btnRetire);
+		buttonsPanel.add(btnNewWeapon);
+		buttonsPanel.add(btnContinue);
 		add(buttonsPanel);
 		buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	
@@ -47,18 +54,18 @@ public class WinScreenView extends ParentView implements ActionListener {
      */
     private void initializeButtons() {
         // Make button variables
-    	btnRestart = new JButton("Start Again");
-    	btnRetire = new JButton("Retire");
+    	btnNewWeapon = new JButton("Pick up new weapon");
+    	btnContinue = new JButton("Keep current weapon");
         
         // Set visuals for buttons
-        SetUpButton(btnRestart);
-        SetUpButton(btnRetire);
+        SetUpButton(btnNewWeapon);
+        SetUpButton(btnContinue);
         
         // Add action listeners
-        btnRestart.addActionListener(e -> {
+        btnNewWeapon.addActionListener(e -> {
             // Handle submit button action here
         });
-        btnRetire.addActionListener(e -> {
+        btnContinue.addActionListener(e -> {
             // Handle back button action here
         });
     }
@@ -67,21 +74,26 @@ public class WinScreenView extends ParentView implements ActionListener {
      * Action listener for game restart button
      * @param listener
      */
-    public void addRestartButtonListener(ActionListener listener) {
-    	btnRestart.addActionListener(listener);
+    public void addPickNewWeaponListener(ActionListener listener) {
+    	btnNewWeapon.addActionListener(listener);
     }
     
     /**
      * Action listener for close game button
      * @param listener
      */
-    public void addRetireButtonListener(ActionListener listener) {
-    	btnRetire.addActionListener(listener);
+    public void addKeepCurrentWeaponListener(ActionListener listener) {
+    	btnContinue.addActionListener(listener);
     }
+    
+    public void setWeaponLabel(String newWeaponLabel) {
+		this.newWeaponLabel.setText(newWeaponLabel);
+	}
     
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
