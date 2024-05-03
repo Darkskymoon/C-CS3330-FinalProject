@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -268,6 +269,10 @@ public class MainController {
 	}
 	
 	protected class AttackButtonListener {
+		
+		private float oldPlayerHealth;
+		private float oldEnemyHealth;
+		
 		protected void roll() {
 			int roll = battleModel.roll();
 			battleMenuView.setRollLabel(roll);
@@ -279,7 +284,25 @@ public class MainController {
 		}
 		
 		protected void updateBattleText() {
-			battleMenuView.setBtnBattleText("Attack!");
+			float playerDamageDealt = oldEnemyHealth - currentEnemy.getHp();
+			float enemyDamageDealt = oldPlayerHealth - currentPlayer.getHp();
+			battleMenuView.setBtnBattleText("Player dealt " + playerDamageDealt + " damage!\n"
+										  + "Enemy dealt " + enemyDamageDealt + " damage!");
+			
+		}
+		
+		protected void enemyAttack() {
+			Random rand = new Random();
+			if(rand.nextInt(2) == 0) {
+				currentEnemy.simpleAttack(currentPlayer);
+			} else {
+				currentEnemy.specialAttack(currentPlayer);
+			}
+		}
+
+		protected void saveOldHealth() {
+			this.oldPlayerHealth = currentPlayer.getHp();
+			this.oldEnemyHealth = currentEnemy.getHp();
 		}
 	}
 	
@@ -293,7 +316,9 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			//Roll for current battle
 			roll();
+			saveOldHealth();
 			currentPlayer.simpleAttack(currentEnemy);
+			enemyAttack();
 			updateHealth();
 			updateBattleText();
 			
@@ -310,7 +335,9 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			//Roll for current battle
 			roll();
+			saveOldHealth();
 			currentPlayer.specialAttack(currentEnemy);
+			enemyAttack();
 			updateHealth();
 			updateBattleText();
 			

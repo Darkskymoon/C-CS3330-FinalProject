@@ -14,7 +14,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Player;
@@ -22,7 +26,7 @@ import mu.edu.c.entities.Player;
 public class BattleMenuView extends ParentView {
 	
 	private JButton btnCharacterName;
-	private JButton btnBattleText;
+	private JTextPane btnBattleText;
 	private JButton btnEnemyName;
 	private JButton btnCharacterHP;
 	private JButton btnEnemyHP;
@@ -45,8 +49,11 @@ public class BattleMenuView extends ParentView {
 	        gbc.anchor = GridBagConstraints.CENTER;
 	        gbc.fill = GridBagConstraints.HORIZONTAL;
 	        
+	        btnBattleText = new JTextPane();
+	        
 	        //initialize Buttons (start and credits)
 			initializeButtons(gbc);
+			SetUpTextPane(btnBattleText);
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
 			buttons.setBackground(new Color(45, 44, 65));
@@ -91,7 +98,6 @@ public class BattleMenuView extends ParentView {
 			
 			//make button variables
 			btnCharacterName = new JButton("charName");
-			btnBattleText = new JButton("END OF DAYS");
 			btnEnemyName = new JButton("Enemy");
 			btnCharacterHP = new JButton("TEMPHP");
 			btnEnemyHP = new JButton("HP: 97");
@@ -107,7 +113,7 @@ public class BattleMenuView extends ParentView {
 			double attackScaler = 1.6;
 			
 			SetUpButtonCustomSize(btnCharacterName, displayScaler);
-			SetUpButtonCustomSize(btnBattleText, displayScaler);
+//			SetUpButtonCustomSize(btnBattleText, displayScaler);
 			SetUpButtonCustomSize(btnEnemyName, displayScaler);
 			
 			SetUpButtonCustomSize(btnCharacterHP, displayScaler);
@@ -118,6 +124,22 @@ public class BattleMenuView extends ParentView {
 			SetUpButtonCustomSize(btnSpecialAttack, attackScaler);
 			
 			
+		}
+		
+		private void SetUpTextPane(JTextPane textPane) {
+			StyledDocument doc = textPane.getStyledDocument();
+			SimpleAttributeSet center = new SimpleAttributeSet();
+			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+			doc.setParagraphAttributes(0, doc.getLength(), center, false);
+			
+			textPane.setText("Battle Beginning...");
+			textPane.setBackground(new Color(45, 44, 65));
+			textPane.setBorder(BorderFactory.createEmptyBorder());
+			
+			Font textPaneFont= new Font("Yu Gothic Medium", Font.PLAIN, 26);
+			textPane.setFont(textPaneFont);
+			
+			textPane.setForeground(Color.white);
 		}
 		
 		
