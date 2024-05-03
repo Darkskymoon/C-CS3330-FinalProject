@@ -122,8 +122,8 @@ public class BattleMenuView extends ParentView {
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			double displayScaler = 1.6;
-			double attackScaler = 1.6;
+			double displayScaler = 1.4;
+			double attackScaler = 1.4;
 			
 //			SetUpButtonCustomSize(btnCharacterName, displayScaler);
 //			SetUpButtonCustomSize(btnBattleText, displayScaler);
@@ -142,7 +142,7 @@ public class BattleMenuView extends ParentView {
 		private void SetUpLabel(JLabel label) {
 			
 			
-		    label.setPreferredSize(new Dimension(320, 160));
+		    label.setPreferredSize(new Dimension(280, 140));
 			
 		    String myString = new String("A fierce enemy\napproaches...");
 		    label.setText("<html>" + myString.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
