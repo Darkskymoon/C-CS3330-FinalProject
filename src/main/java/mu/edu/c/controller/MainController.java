@@ -24,6 +24,7 @@ import mu.edu.c.views.GameInfoView;
 import mu.edu.c.views.LoseScreenView;
 import mu.edu.c.views.MainFrame;
 import mu.edu.c.views.MainMenuView;
+import mu.edu.c.views.PreviousBattlesView;
 import mu.edu.c.views.StartGameView;
 import mu.edu.c.views.WinScreenView;
 import mu.edu.c.logger.CharacterLoggerSingleton;
@@ -38,6 +39,7 @@ public class MainController {
 	protected Container contentPane;
 	protected MainMenuView mainMenuView;
 	protected GameInfoView gameInfoView;
+	protected PreviousBattlesView previousBattlesView;
 	protected StartGameView startGameView;
 	protected CreditMenuView creditMenuView;
 	protected BattleMenuView battleMenuView;
@@ -80,6 +82,16 @@ public class MainController {
 	protected void refreshGameInfoView() {
 		this.gameInfoView = new GameInfoView();
 		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		gameInfoView.addPreviousBattlesButtonListener(new SwitchScreenToPreviousBattlesView());
+
+	}
+	
+	/**
+	 * Refreshes PreviousBattlesView by recreating object and adding button listeners to view
+	 */
+	protected void refreshPreviousBattlesView() {
+		this.previousBattlesView = new PreviousBattlesView();
+		previousBattlesView.addBackButtonListener(new SwitchScreenToGameInfoView());
 	}
 	
 	/**
@@ -180,6 +192,16 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			refreshMainMenuView();
 			switchPanel(mainMenuView);
+		}
+		
+	}
+	
+	protected class SwitchScreenToPreviousBattlesView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshPreviousBattlesView();
+			switchPanel(previousBattlesView);
 		}
 		
 	}
