@@ -124,6 +124,7 @@ public class MainController {
 	 * Refreshes BattleMenuView by recreating object and adding button listeners to view
 	 */
 	protected void refreshBattleMenuView() {
+		currentPlayer.setHp(currentPlayer.getMaxHP());
 		this.battleModel = new Battle(this.currentPlayer);
 		this.battleMenuView = new BattleMenuView();
 		
@@ -151,13 +152,13 @@ public class MainController {
 	protected void refreshLoseScreenView() {
 		this.loseScreenView = new LoseScreenView();
 		loseScreenView.addGiveUpButtonListener(new SwitchScreenToMainMenuView());
-		loseScreenView.addRestartButtonListener(new SwitchScreenToMainMenuView());
+		loseScreenView.addRestartButtonListener(new SwitchScreenToBattleMenuView());
 	}
 	
 	protected void refreshWinScreenView() {
 		this.winScreenView = new WinScreenView();
 		winScreenView.addRetireButtonListener(new SwitchScreenToMainMenuView());
-		winScreenView.addRestartButtonListener(new SwitchScreenToMainMenuView());
+		winScreenView.addRestartButtonListener(new SwitchScreenToBattleMenuView());
 	}
 	
 	/**
