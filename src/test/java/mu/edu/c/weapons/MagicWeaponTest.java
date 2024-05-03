@@ -30,7 +30,7 @@ class MagicWeaponTest {
 		player.setWeaponStrategy(weapon);
 		
 		float health1 = enemy.getHp();
-		player.simpleAttack(enemy);
+		player.simpleAttack(enemy, 100);
 		float health2 = enemy.getHp();
 		
 		assertEquals(expected, health1 - health2);
@@ -53,7 +53,7 @@ class MagicWeaponTest {
 		player.setWeaponStrategy(weapon);
 		
 		float health1 = enemy.getHp();
-		player.specialAttack(enemy);
+		player.specialAttack(enemy, 100);
 		float health2 = enemy.getHp();
 		
 		assertEquals(expected, health1 - health2);

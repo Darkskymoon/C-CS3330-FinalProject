@@ -10,15 +10,17 @@ public class MagicWeapon extends AbstractWeapon {
 	}
 
 	@Override
-	public void simpleAttack(Entity attacker, Entity target) {
-		float damage = getScaler() * attacker.calculateBrainsModifier() + getSimpleDamage();
+	public float simpleAttack(Entity attacker, Entity target, int roll) {
+		float damage = (getScaler() * attacker.calculateBrainsModifier())+1 + getSimpleDamage();
 		target.damageRecieved(damage);
+		return damage;
 	}
 
 	@Override
-	public void specialAttack(Entity attacker, Entity target) {
-		float damage = getScaler() * attacker.calculateBrainsModifier() + getSpecialDamage();
+	public float specialAttack(Entity attacker, Entity target, int roll) {
+		float damage = (getScaler() * attacker.calculateBrainsModifier())+1 + getSpecialDamage();
 		target.damageRecieved(damage);
+		return damage;
 	}
 	
 }

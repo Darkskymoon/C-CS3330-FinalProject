@@ -119,7 +119,7 @@ public abstract class Entity {
 	 * Takes the value of the damage passed in and calculates the negative value 
 	 * Then adjusts the entities hp.
 	 * @param damageValue value that the entities hp should be adjusted
-	 * @return 
+	 * @return the new hp of the target
 	 */
 	public float damageRecieved(float damageValue) {
 		//gets the absolute value of the damage passed in
@@ -152,18 +152,21 @@ public abstract class Entity {
 	
 	/**
 	 * Performs simple attack on enemy using weapon
-	 * @param enemy
+	 * @param enemy what the player is attacking
+	 * @param roll value of a roll to see if the player hit
+	 * @return value o
 	 */
-	public void simpleAttack(Entity enemy) {
-		weaponStrategy.simpleAttack(this, enemy);
+	public float simpleAttack(Entity enemy, int roll) {
+		return weaponStrategy.simpleAttack(this, enemy, roll);
 	}
 	
 	/**
 	 * Performs special attack on enemy using weapon
-	 * @param enemy
+	 * @param enemy the enemy that the player is attacking
+	 * @param roll value of a roll to see if the player hit
 	 */
-	public void specialAttack(Entity enemy) {
-		weaponStrategy.specialAttack(this, enemy);
+	public float specialAttack(Entity enemy, int roll) {
+		return weaponStrategy.specialAttack(this, enemy, roll);
 	}
 	
 	

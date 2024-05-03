@@ -9,12 +9,12 @@ public interface IWeapon {
 	 * @param attacker
 	 * @param target
 	 */
-	void simpleAttack(Entity attacker, Entity target);
+	float simpleAttack(Entity attacker, Entity target, int roll);
 	
 	/**
 	 * Special attack where attacker inflicts damage on target utilizing current weapon
 	 * @param attacker
 	 * @param target
 	 */
-	void specialAttack(Entity attacker, Entity target);
+	float specialAttack(Entity attacker, Entity target, int roll);
 }

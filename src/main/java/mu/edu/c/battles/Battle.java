@@ -88,8 +88,34 @@ public class Battle {
 		return true;
 	}
 	
-	
 
+	/**
+	 * enemy tries to attack the player
+	 * @return the damage dealt by the enemy
+	 */
+	public float enemyAttack() {
+		Random rand = new Random();
+		if(rand.nextInt(2) ==0) {
+			//current enemy attacks the player with simple attack
+			return this.CurrentEnemy.simpleAttack(this.player, this.roll());
+		}else { //current enemy attacks the player with special attack
+			return this.CurrentEnemy.specialAttack(this.player, this.roll());
+		}
+	}
+	
+	public float characterSimpleAttack(int roll, Enemy enemy) {
+		return this.player.simpleAttack(enemy, roll);
+		
+		
+	}
+	
+	public float characterSpecialAttack(int roll, Enemy enemy) {
+		return this.player.specialAttack(enemy, roll);
+	}
+
+	
+	
+	
 	////////////////////////////////////////////////
 	//Setters and Getters
 	/////////////////////////////////////////////////

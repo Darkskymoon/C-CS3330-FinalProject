@@ -8,17 +8,31 @@ public class SwordWeapon extends AbstractWeapon implements IWeapon {
 		super(name, simpleDamage, specialDamage, scaler);
 		this.weapontype = WeaponType.SWORD;
 	}
+	
+	
 
 	@Override
-	public void simpleAttack(Entity attacker, Entity target) {
-		float damage = getScaler() * attacker.calculateStrengthModifier() + getSimpleDamage();
+	public float simpleAttack(Entity attacker, Entity target, int roll) {
+		boolean hitOrMiss= calculateHitOrMiss(roll, attacker.calculateStrengthModifier(), target.getDefense());
+		if(hitOrMiss ==false) { //attacker missed
+			return 0;
+		}
+		float damage = getScaler() + getSimpleDamage();
 		target.damageRecieved(damage);
+		return damage;
 	}
 
 	@Override
-	public void specialAttack(Entity attacker, Entity target) {
-		float damage = getScaler() * attacker.calculateStrengthModifier() + getSpecialDamage();
+	public float specialAttack(Entity attacker, Entity target, int roll) {
+		//calculates if the attack hit or miss
+		boolean hitOrMiss= calculateHitOrMiss(roll, attacker.calculateStrengthModifier(), target.getDefense());
+		if(hitOrMiss ==false) { //attacker missed
+			return 0;
+		}
+		//attacker hit
+		float damage = getScaler()  + getSpecialDamage();
 		target.damageRecieved(damage);
+		return damage;
 	}
 
 }

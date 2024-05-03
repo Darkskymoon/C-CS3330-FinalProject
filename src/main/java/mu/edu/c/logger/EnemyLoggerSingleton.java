@@ -206,14 +206,14 @@ public class EnemyLoggerSingleton {
 		private boolean ResetEnemyFile() {
 			//create the base enemy objects
 			Enemy Enemy[]= {new Enemy(1, 2, 3, 4, "Zombie"),
-					new Enemy(2, 5, 10, 15, "Vampire"),
-					new Enemy(14, 8, 3, 4, "Skeleton"),
-					new Enemy(12, 10, 5, 11, "Orc"),
-					new Enemy(1,2,3,4, "Goblin"),
-					new Enemy(12,12,12,12, "Dragon"),
-					new Enemy(16, 5,5,5, "Warlock"),
-					new Enemy(12, 14, 2, 2, "Bear"),
-					new Enemy(10, 5, 2,3, "Killer Rabbit"),
+					new Enemy(15, 5, 15, 15, "Vampire"),
+					new Enemy(14, 8, 12, 4, "Skeleton"),
+					new Enemy(12, 10, 10, 11, "Orc"),
+					new Enemy(1,2,8,8, "Goblin"),
+					new Enemy(12,12,20,12, "Dragon"),
+					new Enemy(16, 5,13,5, "Warlock"),
+					new Enemy(12, 14, 13, 2, "Bear"),
+					new Enemy(10, 5, 8,3, "Killer Rabbit"),
 					new Enemy(12, 10, 10, 10, "Werewolf")};
 			
 			//put the enemy objects in the logger
