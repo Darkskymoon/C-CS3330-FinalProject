@@ -164,7 +164,7 @@ public class MainController {
 	 */
 	protected void refreshCreateCharacterView() {
 		this.createCharacterView = new CreateCharacterView();
-		createCharacterView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		createCharacterView.addBackButtonListener(new SwitchScreenToStartGameView());
 		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
 	}
     //	add refresh view and then underneath add button listeners
