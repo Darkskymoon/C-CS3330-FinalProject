@@ -22,7 +22,7 @@ import mu.edu.c.audio.AudioPlayer;
 
 public class StartGameView extends ParentView{
 	
-	private JButton btnLoad1;
+	private JButton btnLoadCharacter;
 	private JButton BtnNewChar;
 	private JButton btnBack;
 	
@@ -33,7 +33,7 @@ public class StartGameView extends ParentView{
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
 	        gbc.anchor = GridBagConstraints.NORTH;
 
-	        gbc.insets = new Insets(50, 30, 0, 30);
+	        gbc.insets = new Insets(50, 0, 50, 0);
 	        this.add(createTitle("Start Game"), gbc);
 
 	        gbc.anchor = GridBagConstraints.CENTER;
@@ -46,17 +46,16 @@ public class StartGameView extends ParentView{
 			buttons.setBackground(new Color(45, 44, 65));
 			
 			GridBagConstraints gbc2 = new GridBagConstraints();
-			gbc2.gridwidth = GridBagConstraints.REMAINDER;
-			gbc2.insets = new Insets(0, 0, 0, 0);
+			gbc2.insets = new Insets(30, 10, 30, 10);
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.BOTH;
 		    
 		    
-		    buttons.add(btnLoad1);
+		    buttons.add(btnLoadCharacter, gbc2);
 		    
-		    buttons.add(BtnNewChar);
+		    buttons.add(BtnNewChar, gbc2);
 	        
-	        gbc.weighty = 1;
+	        gbc.weighty = 0;
 	        add(buttons, gbc);
 	        
 	        add(btnBack);
@@ -68,17 +67,18 @@ public class StartGameView extends ParentView{
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnLoad1 = new JButton("Load 1");
+			btnLoadCharacter = new JButton("Load Character");
 			btnBack = new JButton("Back");
-			BtnNewChar = new JButton("Create another character");
+			BtnNewChar = new JButton("Create new character");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
+			double biggerSize = 1.3;
 			
-			SetUpButton(btnLoad1);
-			SetUpButton(btnBack);
-			SetUpButton(BtnNewChar);
+			SetUpButtonCustomSize(btnLoadCharacter, biggerSize);
+			SetUpButtonCustomSize(btnBack, biggerSize);
+			SetUpButtonCustomSize(BtnNewChar, biggerSize);
 			
 		}
 		
@@ -90,8 +90,8 @@ public class StartGameView extends ParentView{
 			btnBack.addActionListener(listener);
 		}
 		
-		public void addLoad1ButtonListener(ActionListener listener) {
-			btnLoad1.addActionListener(listener);
+		public void addLoadCharacterButtonListener(ActionListener listener) {
+			btnLoadCharacter.addActionListener(listener);
 		}
 		
 //		public void addLoad2Listener(ActionListener listener) {
@@ -112,8 +112,8 @@ public class StartGameView extends ParentView{
 		 * Sets the text on the load 1 button
 		 * @param Text text to set the button to
 		 */
-		public void setLoad1Text(String Text) {
-			this.btnLoad1.setText(Text);
+		public void setLoadCharacterText(String Text) {
+			this.btnLoadCharacter.setText(Text);
 			
 		}
 		
@@ -129,7 +129,7 @@ public class StartGameView extends ParentView{
 		}
 
 		public JButton getBtnLoad1() {
-			return btnLoad1;
+			return btnLoadCharacter;
 		}
 
 		public JButton getBtnNewChar() {
