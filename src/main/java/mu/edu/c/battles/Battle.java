@@ -40,7 +40,6 @@ public class Battle {
 	 */
 	public Battle(Player player) {
 		this.player = player;
-//		System.out.println(player);
 		//TODO this should read in all saved enemies and set the current enemy
 		setCurrentEnemy();
 		
@@ -56,21 +55,6 @@ public class Battle {
 	}
 	
 	/**
-	 * Gets the name of the player in combat
-	 * @return
-	 */
-	public String getPlayerName() {
-		return player.getName();
-	}
-	public float getPlayerMaxHP() {
-		return player.getMaxHP();
-	}
-	public float getPlayerHP() {
-		return player.getHp();
-	}
-	
-	
-	/**
 	 * Rolls a number between 1 and 20
 	 * @return a number between 1 and 20
 	 */
@@ -84,21 +68,14 @@ public class Battle {
 	 * @return
 	 */
 	public boolean initializeEnemies() {
-		//set all possible enemies
-		//createPossibleEnemies();
-		
 		//sets the current enemy
 		boolean CurrentEnemyFlag = setCurrentEnemy();
 		if(CurrentEnemyFlag == false) { //setting the current enemy failed.
 			return false;
 		}
 		
-		
-		
-		
 		return true;
 	}
-	
 
 	/**
 	 * enemy tries to attack the player
@@ -114,38 +91,29 @@ public class Battle {
 		}
 	}
 	
+	/**
+	 * Performs simple attack on enemy
+	 * 
+	 * @param roll
+	 * @param enemy
+	 * @return
+	 */
 	public float characterSimpleAttack(int roll, Enemy enemy) {
 		return this.player.simpleAttack(enemy, roll);
 		
 		
 	}
 	
+	/**
+	 * Performs special attack on enemy
+	 * 
+	 * @param roll
+	 * @param enemy
+	 * @return
+	 */
 	public float characterSpecialAttack(int roll, Enemy enemy) {
 		return this.player.specialAttack(enemy, roll);
 	}
-
-	
-	
-	
-	////////////////////////////////////////////////
-	//Setters and Getters
-	/////////////////////////////////////////////////
-	
-//	/**
-//	 * Gets all possible enemies that could have occurred in the battle
-//	 * @return arraylist of all enemies
-//	 */
-//	public ArrayList<Enemy> getPossibleEnemies() {
-//		return PossibleEnemies;
-//	}
-//
-//	/**
-//	 * sets all possible enemies that can occur in the battle
-//	 * @param possibleEnemies the enemies that can occur in the battle
-//	 */
-//	public void setPossibleEnemies(ArrayList<Enemy> possibleEnemies) {
-//		PossibleEnemies = possibleEnemies;
-//	}
 	
 	/**
 	 * Sets all possible enemies that can occur in battle from reading in from the file.
@@ -161,6 +129,10 @@ public class Battle {
 		//setPossibleEnemies(enemies);
 		return enemies;
 	}
+	
+	////////////////////////////////////////////////
+	//Setters and Getters
+	/////////////////////////////////////////////////
 	
 
 	/**
@@ -252,6 +224,30 @@ public class Battle {
 		this.CurrentEnemy.setHp(newValue);
 		return getCurrentEnemyCurrentHP();
 		
+	}
+	
+	/**
+	 * Gets the name of the player in combat
+	 * @return
+	 */
+	public String getPlayerName() {
+		return player.getName();
+	}
+	
+	/**
+	 * Gets the max HP of the player in combat
+	 * @return
+	 */
+	public float getPlayerMaxHP() {
+		return player.getMaxHP();
+	}
+	
+	/**
+	 * Gets the HP of the player in combat
+	 * @return
+	 */
+	public float getPlayerHP() {
+		return player.getHp();
 	}
 	
 	@Override

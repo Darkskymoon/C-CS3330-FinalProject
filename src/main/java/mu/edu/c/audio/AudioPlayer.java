@@ -7,7 +7,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.*;
 
-
+/**
+ * Class with functionality to play audio throughout the game's execution
+ */
 public class AudioPlayer {
 	static Clip backgroundTrack;
 	static float sysVolume = -40;
