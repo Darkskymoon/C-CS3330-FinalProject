@@ -44,11 +44,14 @@ public class BattleLoggerSingleton {
 		 * @return TODO
 		 */
 		public boolean logBattleData(Battle battle) {
-			
+			if(battle == null) { //makes sure battle isn't null
+				return false;
+			}
 			//convert the object to json string
 			Gson gson = new Gson();
 			String jsonString= gson.toJson(battle);
-			
+//			System.out.println(jsonString);
+
 			GsonAdapter adapter = new GsonAdapter();
 			
 			//append to all battles
@@ -79,11 +82,13 @@ public class BattleLoggerSingleton {
 			//Iterates through the arraylist to turn all the strings into enemies
 			Iterator<String> battleIterator =battleStrings.iterator();
 			while(battleIterator.hasNext()) {
-				battleObjects.add(readSingleBattle(battleIterator.next()));
+				Battle temp = readSingleBattle(battleIterator.next());
+				if(temp != null) {
+					battleObjects.add(temp);
+				}
 				//BattleObjects.add(gson.fromJson(BattleIterator.next(), Battle.class));
 				
 			}
-			
 			//If the arraylist is empty, then return null to indicate error
 			if(battleObjects.isEmpty()) { //failure
 				return null;

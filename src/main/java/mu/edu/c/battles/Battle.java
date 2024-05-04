@@ -260,5 +260,4 @@ public class Battle {
 		return this.getPlayerName() + " vs " + this.getCurrentEnemyName();
 	}
 	
-	
 }
