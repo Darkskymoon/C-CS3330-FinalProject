@@ -229,7 +229,9 @@ public class MainController {
 		winScreenView.addKeepCurrentWeaponListener(new SwitchScreenToBattleMenuView());
 		winScreenView.addPickNewWeaponListener(new setNewCharacterWeapon());
 		AbstractWeapon droppedWeapon = (AbstractWeapon) currentEnemy.getWeaponStrategy();
-		winScreenView.setWeaponLabel("<html>" + "Name: " + droppedWeapon.getName()+ " " + "<br>Simple DMG: " + droppedWeapon.getSimpleDamage() + "<br>Special DMG: " + droppedWeapon.getSpecialDamage() + "<html/>");
+		AbstractWeapon currentWeapon = (AbstractWeapon) currentPlayer.getWeaponStrategy();
+		String oldWeapon = ("<html>" + "Current Weapon<br>Name: " + currentWeapon.getName()+ " " + "<br>Simple DMG: " + currentWeapon.getSimpleDamage() + "<br>Special DMG: " + currentWeapon.getSpecialDamage() + "<br><br><html/>");
+		winScreenView.setWeaponLabel(oldWeapon + "<html>" +"New Weapon<br>Name: " + droppedWeapon.getName()+ " " + "<br>Simple DMG: " + droppedWeapon.getSimpleDamage() + "<br>Special DMG: " + droppedWeapon.getSpecialDamage() + "<html/>");
 	}
 	
 	protected void refreshCreateCustomContentView() {

@@ -33,7 +33,7 @@ public class WinScreenView extends ParentView implements ActionListener {
 		add(lblNewLabel);
 		
 		newWeaponLabel = new JLabel("wa");
-		newWeaponLabel.setFont(new Font("Cantor", Font.BOLD, 30));
+		newWeaponLabel.setFont(new Font("Cantor", Font.BOLD, 15));
 		newWeaponLabel.setForeground(new Color(255, 255, 0));
 		newWeaponLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(newWeaponLabel);
