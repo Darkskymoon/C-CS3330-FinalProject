@@ -149,8 +149,10 @@ public class Battle {
 	
 	/**
 	 * Sets all possible enemies that can occur in battle from reading in from the file.
+	 * protected for testing purposes
+	 * @return an array list of the read in enemies
 	 */
-	private ArrayList<Enemy> createPossibleEnemies() {
+	protected ArrayList<Enemy> createPossibleEnemies() {
 		ArrayList<Enemy> enemies = EnemyLoggerSingleton.getInstance().readAllEnemyData();
 		if(enemies == null) { //reading failed
 			return null;

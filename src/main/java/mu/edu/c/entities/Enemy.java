@@ -8,6 +8,11 @@ import mu.edu.c.weapons.IWeapon;
 public class Enemy extends Entity{
 	
 	//array to hold adjectives that describes an enemy
+	//Note that this feature was something we planned on adding, but ran out of time
+	//the ability to add and get all the descriptors is fully implemented, 
+	//but not hooked up with the battle feature.
+	//we planned on giving enemies a random descriptor in their battle text.
+	//It could be easily implemented at a later point. 
 	ArrayList<String> descriptors;
 	
 	

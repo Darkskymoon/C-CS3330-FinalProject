@@ -117,8 +117,12 @@ public abstract class AbstractWeapon implements IWeapon {
 		if(totalRoll <0) { //below 0 will never hit
 			return false; 
 		}
-		if(totalRoll<opponentDefense) { //If roll is below the opposing side, then the attack doesn't hit
-			return false;
+		if(totalRoll<opponentDefense) {//If roll is below the opposing side,then the attack most likely won't hit
+			Random rand = new Random();
+			if(rand.nextInt(2) ==0) { //gives a 50% chance to hit regardless of missing
+				return true;
+			}
+			return false; //attack misses
 		}
 		return true;
 		
