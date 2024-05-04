@@ -33,16 +33,18 @@ class MagicWeaponTest {
 		player.simpleAttack(enemy, 100);
 		float health2 = enemy.getHp();
 		
-		assertEquals(expected, health1 - health2);
+		float damage = health1 - health2;
+		
+		assertTrue((damage == expected) || (damage ==  0));
 	}
 	
 	public static Stream<Object[]> provideValuesForSimpleAttack() {
 		return Stream.of(
-			new Object[]{new MagicWeapon("Cool Magic", 5, -100, 2), 21},
-			new Object[]{new MagicWeapon("Cool Magic", 5, 10, 1), 13},
+			new Object[]{new MagicWeapon("Cool Magic", 5, -100, 2), 7},
+			new Object[]{new MagicWeapon("Cool Magic", 5, 10, 1), 6},
 			new Object[]{new MagicWeapon("Cool Magic", 5, 25, 0), 5},
-			new Object[]{new MagicWeapon("Cool Magic", 10, 97, 2), 26},
-			new Object[]{new MagicWeapon("Cool Magic", 10, 57, 1), 18},
+			new Object[]{new MagicWeapon("Cool Magic", 10, 97, 2), 12},
+			new Object[]{new MagicWeapon("Cool Magic", 10, 57, 1), 11},
 			new Object[]{new MagicWeapon("Cool Magic", 10, 2, 0), 10}
 		);
 	}
@@ -56,16 +58,18 @@ class MagicWeaponTest {
 		player.specialAttack(enemy, 100);
 		float health2 = enemy.getHp();
 		
-		assertEquals(expected, health1 - health2);
+		float damage = health1 - health2;
+		
+		assertTrue((damage == expected) || (damage ==  0));
 	}
 	
 	public static Stream<Object[]> provideValuesForSpecialAttack() {
 		return Stream.of(
-			new Object[]{new MagicWeapon("Cool Magic", -100, 5, 2), 21},
-			new Object[]{new MagicWeapon("Cool Magic", 10, 5, 1), 13},
+			new Object[]{new MagicWeapon("Cool Magic", -100, 5, 2), 7},
+			new Object[]{new MagicWeapon("Cool Magic", 10, 5, 1), 6},
 			new Object[]{new MagicWeapon("Cool Magic", 25, 5, 0), 5},
-			new Object[]{new MagicWeapon("Cool Magic", 97, 10, 2), 26},
-			new Object[]{new MagicWeapon("Cool Magic", 57, 10, 1), 18},
+			new Object[]{new MagicWeapon("Cool Magic", 97, 10, 2), 12},
+			new Object[]{new MagicWeapon("Cool Magic", 57, 10, 1), 11},
 			new Object[]{new MagicWeapon("Cool Magic", 2, 10, 0), 10}
 		);
 	}

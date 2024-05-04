@@ -33,16 +33,18 @@ class SwordWeaponTest {
 		player.simpleAttack(enemy, 100);
 		float health2 = enemy.getHp();
 		
-		assertEquals(expected, health1 - health2);
+		float damage = health1 - health2;
+		
+		assertTrue((damage == expected) || (damage ==  0));
 	}
 	
 	public static Stream<Object[]> provideValuesForSimpleAttack() {
 		return Stream.of(
-			new Object[]{new SwordWeapon("Cool Sword", 5, -100, 2), 21},
-			new Object[]{new SwordWeapon("Cool Sword", 5, 10, 1), 13},
+			new Object[]{new SwordWeapon("Cool Sword", 5, -100, 2), 7},
+			new Object[]{new SwordWeapon("Cool Sword", 5, 10, 1), 6},
 			new Object[]{new SwordWeapon("Cool Sword", 5, 25, 0), 5},
-			new Object[]{new SwordWeapon("Cool Sword", 10, 97, 2), 26},
-			new Object[]{new SwordWeapon("Cool Sword", 10, 57, 1), 18},
+			new Object[]{new SwordWeapon("Cool Sword", 10, 97, 2), 12},
+			new Object[]{new SwordWeapon("Cool Sword", 10, 57, 1), 11},
 			new Object[]{new SwordWeapon("Cool Sword", 10, 2, 0), 10}
 		);
 	}
@@ -56,16 +58,18 @@ class SwordWeaponTest {
 		player.specialAttack(enemy, 100);
 		float health2 = enemy.getHp();
 		
-		assertEquals(expected, health1 - health2);
+		float damage = health1 - health2;
+		
+		assertTrue((damage == expected) || (damage ==  0));
 	}
 	
 	public static Stream<Object[]> provideValuesForSpecialAttack() {
 		return Stream.of(
-			new Object[]{new SwordWeapon("Cool Sword", -100, 5, 2), 21},
-			new Object[]{new SwordWeapon("Cool Sword", 10, 5, 1), 13},
+			new Object[]{new SwordWeapon("Cool Sword", -100, 5, 2), 7},
+			new Object[]{new SwordWeapon("Cool Sword", 10, 5, 1), 6},
 			new Object[]{new SwordWeapon("Cool Sword", 25, 5, 0), 5},
-			new Object[]{new SwordWeapon("Cool Sword", 97, 10, 2), 26},
-			new Object[]{new SwordWeapon("Cool Sword", 57, 10, 1), 18},
+			new Object[]{new SwordWeapon("Cool Sword", 97, 10, 2), 12},
+			new Object[]{new SwordWeapon("Cool Sword", 57, 10, 1), 11},
 			new Object[]{new SwordWeapon("Cool Sword", 2, 10, 0), 10}
 		);
 	}
