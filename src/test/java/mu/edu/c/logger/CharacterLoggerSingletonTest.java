@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileWriter;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +34,8 @@ class CharacterLoggerSingletonTest {
 		}catch(Exception e) {
 			throw e;
 		}
+		//repopulate the character file with a temporary file
+		logger.logCharacterData(this.player);
 	}
 	/**
 	 * 
@@ -52,7 +55,8 @@ class CharacterLoggerSingletonTest {
 		}catch(Exception e) {
 			throw e;
 		}
-		
+		//repopulate the character file with a temporary file
+		logger.logCharacterData(this.player);
 		
 	}
 	
@@ -66,11 +70,20 @@ class CharacterLoggerSingletonTest {
 		playerString = "{\"attributePoints\":0,\"name\":\"TEST character\",\"hp\":20.0,\"maxHP\":20.0,\"strength\":22,\"defense\":24,\"brains\":26,\"xp\":0}";
 		Player playerReadWithoutWeapon = logger.readCharacter(playerString);
 		assertEquals(true, playerReadWithoutWeapon.equals(this.player));
-		
+		//repopulate the character file with a temporary file
+		logger.logCharacterData(this.player);
 	}
 	
 	@Test
 	public void testReadCharacterData() throws Exception {
+		try {
+			//clears the log
+			FileWriter overwriter = new FileWriter("src/main/resources/characterLogger.json");
+			overwriter.write("");
+			overwriter.close();
+		}catch(Exception e) {
+			throw e;
+		}
 		//test for nothing in the json file
 		assertEquals(null, logger.readCharacterData());
 		
@@ -86,7 +99,11 @@ class CharacterLoggerSingletonTest {
 		}catch(Exception e) {
 			throw e;
 		}
-		
+		//repopulate the character file with a temporary file
+		logger.logCharacterData(this.player);
 	}
+	
+
+
 
 }
