@@ -25,6 +25,7 @@ public class MainMenuView extends ParentView {
 	protected JButton btnStartGame;
 	protected JButton btnCredits;
 	protected JButton btnInfo;
+	protected JButton btnCustomContent;
 	
 	public MainMenuView(){
 			AudioPlayer.stopAudio();
@@ -51,6 +52,7 @@ public class MainMenuView extends ParentView {
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.HORIZONTAL;
 	        buttons.add(btnStartGame, gbc2);
+	        buttons.add(btnCustomContent, gbc2);
 	        buttons.add(btnCredits, gbc2);
 	        buttons.add(btnInfo, gbc2);
 
@@ -66,6 +68,7 @@ public class MainMenuView extends ParentView {
 			btnStartGame = new JButton("Start Game");
 			btnCredits = new JButton("Credits");
 			btnInfo = new JButton("Game Info");
+			btnCustomContent = new JButton("Custom Content");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
@@ -73,6 +76,7 @@ public class MainMenuView extends ParentView {
 			SetUpButton(btnStartGame);
 			SetUpButton(btnInfo);
 			SetUpButton(btnCredits);
+			SetUpButton(btnCustomContent);
 			
 		}
 		
@@ -87,7 +91,11 @@ public class MainMenuView extends ParentView {
 		public void addCreditButtonListener(ActionListener listener) {
 			btnCredits.addActionListener(listener);
 		}
-
+		
+		public void addCreateCustomContentButtonListener(ActionListener listener) {
+			btnCustomContent.addActionListener(listener);
+		}
+		
 		public JButton getBtnStartGame() {
 			return btnStartGame;
 		}
@@ -100,7 +108,9 @@ public class MainMenuView extends ParentView {
 			return btnInfo;
 		}
 		
-		
+		public JButton getBtnCustomContent() {
+			return btnCustomContent;
+		}
 		
 		
 }
