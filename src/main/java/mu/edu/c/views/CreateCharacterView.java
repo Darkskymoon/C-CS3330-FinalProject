@@ -211,6 +211,9 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         // Set visuals for buttons
         SetUpButton(btnSubmit);
         SetUpButton(btnBack);
+        
+        // initialize button to false since name input is false
+        btnSubmit.setEnabled(false);
                 
         // Add action listeners
         btnSubmit.addActionListener(e -> {
