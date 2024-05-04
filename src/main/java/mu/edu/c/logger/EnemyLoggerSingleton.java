@@ -51,6 +51,9 @@ public class EnemyLoggerSingleton {
 		 * @return
 		 */
 		public boolean logEnemyData(Enemy enemy) {
+			if(enemy == null) {
+				return false;
+			}
 			
 			//convert the object to json string
 			Gson gson = new Gson();
@@ -68,21 +71,21 @@ public class EnemyLoggerSingleton {
 			return true;
 		}
 		
-		/**
-		 * This reads in the first enemy from the logged Enemy file. It uses the code discussed in class
-		 * @return false if unsuccessful, true if successful
-		 */
-		public Enemy readFirstEnemyData() {
-			GsonAdapter adapter = new GsonAdapter();
-			Gson gson = new Gson();
-			//gets the jsontxt
-			String jsontxt =adapter.readJson(logFilePath);
-			
-			//creates a player object from the json
-			Enemy enemy = gson.fromJson(jsontxt, Enemy.class);
-			return enemy;
-
-		}
+//		/**
+//		 * This reads in the first enemy from the logged Enemy file. It uses the code discussed in class
+//		 * @return false if unsuccessful, true if successful
+//		 */
+//		public Enemy readFirstEnemyData() {
+//			GsonAdapter adapter = new GsonAdapter();
+//			Gson gson = new Gson();
+//			//gets the jsontxt
+//			String jsontxt =adapter.readJson(logFilePath);
+//			
+//			//creates a enemy object from the json
+//			Enemy enemy = gson.fromJson(jsontxt, Enemy.class);
+//			return enemy;
+//
+//		}
 		
 		/**
 		 * Reads in all of the enemies stored in a file and converts them to objects
