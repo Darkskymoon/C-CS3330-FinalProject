@@ -19,6 +19,8 @@ import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
 import mu.edu.c.views.BattleMenuView;
 import mu.edu.c.views.CreateCharacterView;
+import mu.edu.c.views.CreateCustomContentView;
+import mu.edu.c.views.CreateWeaponView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
 import mu.edu.c.views.LoseScreenView;
@@ -46,6 +48,8 @@ public class MainController {
 	protected CreditMenuView creditMenuView;
 	protected BattleMenuView battleMenuView;
 	protected CreateCharacterView createCharacterView;
+	protected CreateWeaponView createWeaponView;
+	protected CreateCustomContentView createCustomContentView;
 	protected LoseScreenView loseScreenView;
 	protected WinScreenView winScreenView;
 	// add the new class here
@@ -76,6 +80,7 @@ public class MainController {
 	protected void refreshMainMenuView() {
 		this.mainMenuView = new MainMenuView();
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
+		mainMenuView.addCreateCustomContentButtonListener(new SwitchScreenToCreateCustomContentView());
 		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
 		mainMenuView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 	}
@@ -126,7 +131,7 @@ public class MainController {
 		//If the first player doesn't exist, just set it to create a character
 		if(this.currentPlayer == null) {
 			startGameView.setLoadCharacterText("Create a New Character");
-			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCaracter());
+			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCaracterView());
 			startGameView.setNewCharHide();
 			startGameView.setLoadCharacterHide();
 			
@@ -134,7 +139,7 @@ public class MainController {
 			//sets the button to the character's name
 			startGameView.setLoadCharacterText(this.currentPlayer.getName());
 			startGameView.addLoadCharacterButtonListener(new SwitchScreenToBattleMenuView());
-			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCaracter());
+			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCaracterView());
 			
 		}
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -223,7 +228,15 @@ public class MainController {
 		AbstractWeapon droppedWeapon = (AbstractWeapon) currentEnemy.getWeaponStrategy();
 		winScreenView.setWeaponLabel("<html>" + "Name: " + droppedWeapon.getName()+ " " + "<br>Simple DMG: " + droppedWeapon.getSimpleDamage() + "<br>Special DMG: " + droppedWeapon.getSpecialDamage() + "<html/>");
 	}
-
+	
+	protected void refreshCreateCustomContentView() {
+		this.createCustomContentView = new CreateCustomContentView();
+		createCustomContentView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		//TODO
+		// create switchscreen to create enemy
+		createCustomContentView.addCreateNewEnemyListener(null);
+		createCustomContentView.addCreateNewWeaponListener(new SwitchScreenToCreateWeaponView());
+	}
 	/**
 	 * Refreshes CreateCharacterView by recreating object and adding button listeners to view
 	 */
@@ -232,6 +245,17 @@ public class MainController {
 		createCharacterView.addBackButtonListener(new SwitchScreenToStartGameView());
 		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
 	}
+	/**
+	 * Refreshes CreateWeapon by recreating object and adding button listeners to view
+	 */
+	protected void refreshCreateWeaponView() {
+		this.createWeaponView = new CreateWeaponView();
+		createWeaponView.addBackButtonListener(new SwitchScreenToCreateCustomContentView());
+		// TODO 
+		// add method to append new weapons
+		createWeaponView.addSubmitButtonListener(null);
+	}
+	
     //	add refresh view and then underneath add button listeners
 	
 	
@@ -332,12 +356,38 @@ public class MainController {
 	/**
 	 * Refreshes CreateCharacterView and switches current panel to it
 	 */
-	protected class SwitchScreenToCreateCaracter implements ActionListener {
+	protected class SwitchScreenToCreateCaracterView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			refreshCreateCharacterView();
 			switchPanel(createCharacterView);
+		}
+	
+	}
+	
+	/**
+	 * Refreshes CreateWeaponView and switches current panel to it
+	 */
+	protected class SwitchScreenToCreateWeaponView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshCreateWeaponView();
+			switchPanel(createWeaponView);
+		}
+	
+	}
+	
+	/**
+	 * Refreshes CreateCharacterView and switches current panel to it
+	 */
+	protected class SwitchScreenToCreateCustomContentView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshCreateCustomContentView();
+			switchPanel(createCustomContentView);
 		}
 	
 	}
