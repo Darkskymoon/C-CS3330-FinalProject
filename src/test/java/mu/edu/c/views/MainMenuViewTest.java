@@ -16,7 +16,7 @@ public class MainMenuViewTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		mainController = new MainControllerExtendedTester();
-		mainController.Inititate();
+		mainController.inititateInterface();
 		mainMenuView = (MainMenuView) mainController.getContentPane().getComponent(0);
 	}
 	

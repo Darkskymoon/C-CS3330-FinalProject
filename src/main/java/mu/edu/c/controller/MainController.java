@@ -135,7 +135,6 @@ public class MainController {
 		if(this.currentPlayer == null) {
 			startGameView.setLoadCharacterText("Create a New Character");
 			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCaracterView());
-			startGameView.setNewCharHide();
 			startGameView.setLoadCharacterHide();
 			
 		}else { //Otherwise, if the first player does exist, set the load button to route to battle with that character
@@ -146,8 +145,6 @@ public class MainController {
 			
 		}
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
-		
-//		startGameView.addLoad2Listener(new SwitchScreenToBattleMenuView());
 	}
 	
 	/**
@@ -218,12 +215,18 @@ public class MainController {
 		battleMenuView.addbtnSpecialAttackListener(new BattleMenuSpecialAttackButtonListener());
 	}
 	
+	/**
+	 * Refreshes LoseScreenView by recreating object and adding button listeners to view
+	 */
 	protected void refreshLoseScreenView() {
 		this.loseScreenView = new LoseScreenView();
 		loseScreenView.addGiveUpButtonListener(new SwitchScreenToMainMenuView());
 		loseScreenView.addRestartButtonListener(new SwitchScreenToBattleMenuView());
 	}
 	
+	/**
+	 * Refreshes WinScreenView by recreating object and adding button listeners to view
+	 */
 	protected void refreshWinScreenView() {
 		this.winScreenView = new WinScreenView();
 		winScreenView.addKeepCurrentWeaponListener(new SwitchScreenToBattleMenuView());
@@ -234,6 +237,9 @@ public class MainController {
 		winScreenView.setWeaponLabel(oldWeapon + "<html>" +"New Weapon<br>Name: " + droppedWeapon.getName()+ " " + "<br>Simple DMG: " + droppedWeapon.getSimpleDamage() + "<br>Special DMG: " + droppedWeapon.getSpecialDamage() + "<html/>");
 	}
 	
+	/**
+	 * Refreshes CreateCustomContentView by recreating object and adding button listeners to view
+	 */
 	protected void refreshCreateCustomContentView() {
 		this.createCustomContentView = new CreateCustomContentView();
 		createCustomContentView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -308,6 +314,9 @@ public class MainController {
 		
 	}
 	
+	/**
+	 * Refreshes PreviousBattlesView and switches current panel to it
+	 */
 	protected class SwitchScreenToPreviousBattlesView implements ActionListener {
 
 		@Override
@@ -454,6 +463,9 @@ public class MainController {
 	//                  BATTLE MENU LISTENERS                         //
 	////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * Refreshes and switches screen to MainMenuView
+	 */
 	protected class BattleMenuSurrenderButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			refreshMainMenuView();
@@ -461,6 +473,9 @@ public class MainController {
 		}
 	}
 	
+	/**
+	 * Superclass with controller attack logic
+	 */
 	protected class AttackButtonListener {
 		
 		private float oldPlayerHealth;

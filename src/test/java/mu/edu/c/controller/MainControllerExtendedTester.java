@@ -171,11 +171,14 @@ public class MainControllerExtendedTester extends MainController {
 		this.isPreviousBattle = isPreviousBattle;
 	}
 	
-	public void Inititate() {
+	public void inititateInterface() {
 		refreshMainMenuView();
 		switchPanel(mainMenuView);
 	}
 	
+	public void switchPanelInterface(JPanel panel) {
+		switchPanel(panel);
+	}
 	
 	
 	

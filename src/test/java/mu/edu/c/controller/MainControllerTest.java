@@ -20,10 +20,10 @@ import mu.edu.c.views.CreateWeaponView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
 import mu.edu.c.views.LoseScreenView;
+import mu.edu.c.views.WinScreenView;
 import mu.edu.c.views.MainMenuView;
 import mu.edu.c.views.PreviousBattlesView;
 import mu.edu.c.views.StartGameView;
-import mu.edu.c.views.WinScreenView;
 
 class MainControllerTest {
 	
@@ -194,7 +194,7 @@ class MainControllerTest {
 			fail("MainFrame contentPane should have no components yet");
 		} catch(Exception e) {}
 		
-		mainController.switchPanel(new MainMenuView());
+		mainController.switchPanelInterface(new MainMenuView());
 		
 		try {
 			mainController.getMainFrame().getContentPane().getComponent(0);
