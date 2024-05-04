@@ -56,15 +56,7 @@ public abstract class Entity {
 		this.weaponStrategy=weaponStrategy;
 		
 	}
-	
-	/**
-	 * Gets the total damage dealt from weapon damage
-	 * @return
-	 */
-	public float calculateTotalDamageDealt() {
-		//TODO: going to be a call to weapondamage()??
-		return 0;
-	}
+
 	
 	public int calculateDefenseModifier() {
 		return calculateModifierValue(defense);

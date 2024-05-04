@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import mu.edu.c.weapons.IWeapon;
+import mu.edu.c.weapons.WeaponFactoryMethod;
+import mu.edu.c.weapons.WeaponType;
+
 class EntityTest {
 	
 	private Player player = null;
@@ -21,10 +25,7 @@ class EntityTest {
 		enemy = new Enemy(100, 20, 20, 20, "Goblin");
 	}
 	
-	@Test
-	void testCalculateTotalDamageDealt() {
-		fail("Not yet implemented");
-	}
+
 	
 	@ParameterizedTest
 	@MethodSource("provideValuesForModifiers")
@@ -161,5 +162,42 @@ class EntityTest {
 		assertEquals("name: Ryan HP: 100.0", player.toString());
 	}
 	
-
+	/**
+	 * tests to make sure simple attack works for an entity
+	 */
+	@Test
+	void testSimpleAttack() {
+		WeaponFactoryMethod weaponFactory = new WeaponFactoryMethod();
+		IWeapon sword =weaponFactory.createWeapon(WeaponType.SWORD, "Sample sword weapon", 2, 3, 1);
+		player.setWeaponStrategy(sword);
+		//Tests using sword weapon
+		assertEquals(3,player.simpleAttack(enemy, 100)); //sucessfully hit
+		assertEquals(0, player.simpleAttack(enemy, -100)); //miss
+		
+		
+		//test using magic weapon
+		player.setWeaponStrategy(weaponFactory.createWeapon(WeaponType.MAGIC, "Sample magic weapon", 4, 5, 1));
+		assertEquals(5, player.simpleAttack(enemy, 100)); //success
+		assertEquals(0, player.simpleAttack(enemy, -100));//failure
+	}
+	
+	/**
+	 * Tests to make sure special attack works for an entity
+	 */
+	@Test
+	void testSpecialAttack() {
+		WeaponFactoryMethod weaponFactory = new WeaponFactoryMethod();
+		IWeapon sword =weaponFactory.createWeapon(WeaponType.SWORD, "Sample sword weapon", 2, 3, 1);
+		player.setWeaponStrategy(sword);
+		//Tests using sword weapon
+		assertEquals(4,player.specialAttack(enemy, 100)); //sucessfully hit
+		assertEquals(0, player.specialAttack(enemy, -100)); //miss
+		
+		
+		//test using magic weapon
+		player.setWeaponStrategy(weaponFactory.createWeapon(WeaponType.MAGIC, "Sample magic weapon", 4, 5, 1));
+		assertEquals(6, player.specialAttack(enemy, 100)); //success
+		assertEquals(0, player.specialAttack(enemy, -100));//failure
+		
+	}
 }
