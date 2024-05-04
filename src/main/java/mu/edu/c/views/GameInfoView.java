@@ -13,9 +13,6 @@ import javax.swing.JPanel;
 public class GameInfoView extends ParentView {
 	
 	private static final long serialVersionUID = 175114423651489364L;
-	private JButton btnViewWeapons;
-	private JButton btnViewEnemies;
-	private JButton btnViewCharacters;
 	private JButton btnViewPreviousBattles;
 	private JButton btnBack;
 	
@@ -42,18 +39,12 @@ public class GameInfoView extends ParentView {
 			gbc2.insets = new Insets(0, 0, 20, 0);
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.HORIZONTAL;
-	        buttons.add(btnViewWeapons, gbc2);
-	        buttons.add(btnViewEnemies, gbc2);
-	        buttons.add(btnViewCharacters, gbc2);
 	        buttons.add(btnViewPreviousBattles, gbc2);
 	        buttons.add(btnBack, gbc2);
 	        
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
 			
-	        applyEnteredExitedActions(btnViewCharacters);
-	        applyEnteredExitedActions(btnViewEnemies);
-	        applyEnteredExitedActions(btnViewWeapons);
 			applyEnteredExitedActions(btnBack);
 			
 			
@@ -63,18 +54,12 @@ public class GameInfoView extends ParentView {
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-			btnViewWeapons = new JButton("View All Weapons");
-			btnViewEnemies = new JButton("View All Enemies");
-			btnViewCharacters = new JButton("View All Characters");
 			btnViewPreviousBattles = new JButton("Previous Battles");
 			btnBack = new JButton("Back");
 			
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			SetUpButton(btnViewWeapons);
-			SetUpButton(btnViewCharacters);
-			SetUpButton(btnViewEnemies);
 			SetUpButton(btnViewPreviousBattles);
 			SetUpButton(btnBack);
 			
