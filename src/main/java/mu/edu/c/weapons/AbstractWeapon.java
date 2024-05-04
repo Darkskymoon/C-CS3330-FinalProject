@@ -1,4 +1,5 @@
 package mu.edu.c.weapons;
+import java.util.Random;
 
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
@@ -16,6 +17,56 @@ public abstract class AbstractWeapon implements IWeapon {
 		this.simpleDamage = simpleDamage;
 		this.specialDamage = specialDamage;
 		this.scaler = scaler;
+	}
+
+	public AbstractWeapon(String name) {
+		super();
+		Random rand = new Random();
+		this.name = name;
+		this.simpleDamage = rand.nextInt(1, 5);
+		this.specialDamage = simpleDamage + rand.nextInt(4);
+		this.scaler = 1;
+		
+		String namePrefix;
+		int key = this.getSimpleDamage();
+		switch (key) {
+			case 1: {
+				namePrefix = "Rusty";
+				break;
+			}
+			case 2: {
+				namePrefix = "Basic";
+				break;
+			}
+			case 3: {
+				namePrefix = "Superior";
+				break;
+			}
+			case 4: {
+				namePrefix = "Lethal";
+				break;
+			}
+			default:{
+				namePrefix = "Unknown";
+			}
+		}
+		
+		String nameSuffix;
+		key = this.getSpecialDamage()-this.getSimpleDamage();
+		switch (key) {
+			case 0: {
+				nameSuffix = "of Wasted Potential";
+				break;
+			}
+			case 3: {
+				nameSuffix = "of Unleashed Potential";
+				break;
+			}
+			default:{
+				nameSuffix = "";
+			}
+		}
+		this.setName(namePrefix + " " + name + " "+ nameSuffix);
 	}
 
 	public String getName() {

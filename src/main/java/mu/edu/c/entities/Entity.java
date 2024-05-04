@@ -19,7 +19,7 @@ public abstract class Entity {
 	protected int xp;
 	
 	/**
-	 * This constructor constructs a player without a weapon strategy and auto-creates a default weapon
+	 * This constructor constructs a player without a weapon strategy and auto-creates a starter sword
 	 * @param maxHP
 	 * @param strength
 	 * @param defense
@@ -28,8 +28,8 @@ public abstract class Entity {
 	 */
 	public Entity(float maxHP, int strength, int defense, int brains, String Name) {
 		
-		//call alternate constructor with default weapon
-		this(maxHP, strength, defense, brains, Name, new SwordWeapon("Basic Sword", 1, 2, 1));
+		//call alternate constructor with a starter weapon
+		this(maxHP, strength, defense, brains, Name, new SwordWeapon("Sword of Beginnings", 1, 2, 1));
 	}
 	
 	/**

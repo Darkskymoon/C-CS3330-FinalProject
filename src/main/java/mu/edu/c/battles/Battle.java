@@ -7,6 +7,8 @@ import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
+import mu.edu.c.weapons.MagicWeapon;
+import mu.edu.c.weapons.SwordWeapon;
 /**
  * This class represents a battle 
  */
@@ -194,6 +196,12 @@ public class Battle {
 		
 		//gets a random enemy
 		this.CurrentEnemy=PossibleEnemies.get(index);
+		if (rand.nextInt(2)==0){
+			this.CurrentEnemy.setWeaponStrategy(new SwordWeapon("Sword"));
+		}
+		else{
+			this.CurrentEnemy.setWeaponStrategy(new MagicWeapon("Wand"));
+		}
 		
 		return true;
 	} 

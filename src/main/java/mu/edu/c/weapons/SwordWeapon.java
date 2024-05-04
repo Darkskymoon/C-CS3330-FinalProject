@@ -9,6 +9,11 @@ public class SwordWeapon extends AbstractWeapon implements IWeapon {
 		this.weapontype = WeaponType.SWORD;
 	}
 	
+	public SwordWeapon(String name) {
+		super(name);
+		this.weapontype = WeaponType.SWORD;
+	}
+	
 	
 
 	@Override
