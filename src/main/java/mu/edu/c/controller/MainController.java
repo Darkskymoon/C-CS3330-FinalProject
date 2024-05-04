@@ -1,12 +1,8 @@
 package mu.edu.c.controller;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -16,7 +12,6 @@ import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
-import mu.edu.c.logger.EnemyLoggerSingleton;
 import mu.edu.c.models.CreateEnemyModel;
 import mu.edu.c.models.CreateWeaponViewModel;
 import mu.edu.c.views.BattleMenuView;
@@ -33,7 +28,6 @@ import mu.edu.c.views.PreviousBattlesView;
 import mu.edu.c.views.StartGameView;
 import mu.edu.c.views.WinScreenView;
 import mu.edu.c.weapons.AbstractWeapon;
-import mu.edu.c.weapons.IWeapon;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**

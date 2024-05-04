@@ -1,6 +1,5 @@
 package mu.edu.c.views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -26,11 +25,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import mu.edu.c.audio.AudioPlayer;
-import mu.edu.c.weapons.WeaponType;
 
 public class CreateWeaponView extends ParentView implements ChangeListener , ActionListener{
     
-    Border border = BorderFactory.createLineBorder(Color.red, 5);
+    private static final long serialVersionUID = 1689825974938316622L;
+
+	Border border = BorderFactory.createLineBorder(Color.red, 5);
 
 	//Global values that have to exported, textfields, buttons, inputs
 	

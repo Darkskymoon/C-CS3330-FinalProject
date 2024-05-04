@@ -4,19 +4,18 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mu.edu.c.audio.AudioPlayer;
 
 public class WinScreenView extends ParentView {
 	
+	private static final long serialVersionUID = 3752206612369621279L;
 	JButton btnNewWeapon;
 	JButton btnContinue;
 	JLabel newWeaponLabel;

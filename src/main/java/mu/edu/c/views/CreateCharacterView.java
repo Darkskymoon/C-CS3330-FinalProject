@@ -9,16 +9,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
@@ -29,7 +24,9 @@ import mu.edu.c.audio.AudioPlayer;
 public class CreateCharacterView extends ParentView implements ChangeListener{
 	
     
-    Border border = BorderFactory.createLineBorder(Color.red, 5);
+    private static final long serialVersionUID = 2055378118598961284L;
+
+	Border border = BorderFactory.createLineBorder(Color.red, 5);
 
 	//Global values that have to exported, textfields, buttons, inputs
 	

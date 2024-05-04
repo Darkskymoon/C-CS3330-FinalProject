@@ -5,7 +5,6 @@ import java.util.Random;
 
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
-import mu.edu.c.logger.BattleLoggerSingleton;
 import mu.edu.c.logger.EnemyLoggerSingleton;
 import mu.edu.c.weapons.MagicWeapon;
 import mu.edu.c.weapons.SwordWeapon;

@@ -8,17 +8,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.EntityFactoryMethod;
-import mu.edu.c.entities.Player;
 import mu.edu.c.logger.GSON.GsonAdapter;
 import mu.edu.c.weapons.IWeapon;
-import mu.edu.c.weapons.MagicWeapon;
-import mu.edu.c.weapons.SwordWeapon;
 import mu.edu.c.weapons.WeaponFactoryMethod;
-import mu.edu.c.weapons.WeaponType;
 
 public class EnemyLoggerSingleton {
 	//creates a single instance of the logger

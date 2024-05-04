@@ -1,27 +1,18 @@
 package mu.edu.c.views;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import mu.edu.c.audio.AudioPlayer;
 
 public class StartGameView extends ParentView{
-	
+	private static final long serialVersionUID = -1258049489477776650L;
 	private JButton btnLoadCharacter;
 	private JButton BtnNewChar;
 	private JButton btnBack;

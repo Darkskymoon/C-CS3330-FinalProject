@@ -1,23 +1,12 @@
 package mu.edu.c.logger;
 
-import java.io.IOException;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
-import mu.edu.c.entities.Enemy;
-import mu.edu.c.entities.Entity;
 import mu.edu.c.entities.EntityFactoryMethod;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.GSON.GsonAdapter;
 import mu.edu.c.weapons.IWeapon;
-import mu.edu.c.weapons.MagicWeapon;
-import mu.edu.c.weapons.SwordWeapon;
 import mu.edu.c.weapons.WeaponFactoryMethod;
-import mu.edu.c.weapons.WeaponType;
 
 import org.json.*;
 

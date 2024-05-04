@@ -1,7 +1,5 @@
 package mu.edu.c.views;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -11,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import mu.edu.c.battles.Battle;
@@ -21,6 +18,7 @@ import javax.swing.JList;
 
 public class PreviousBattlesView extends ParentView {
 
+	private static final long serialVersionUID = -894881519175756841L;
 	private JButton btnBack;
 	private JButton replayButton;
 	private JList<Battle> battlesList;

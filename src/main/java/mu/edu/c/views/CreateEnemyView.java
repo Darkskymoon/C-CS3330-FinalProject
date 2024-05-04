@@ -28,7 +28,9 @@ import mu.edu.c.audio.AudioPlayer;
 public class CreateEnemyView extends ParentView implements ChangeListener{
 	
     
-    Border border = BorderFactory.createLineBorder(Color.red, 5);
+    private static final long serialVersionUID = 4479215770944484503L;
+
+	Border border = BorderFactory.createLineBorder(Color.red, 5);
 
 	//Global values that have to exported, textfields, buttons, inputs
 	

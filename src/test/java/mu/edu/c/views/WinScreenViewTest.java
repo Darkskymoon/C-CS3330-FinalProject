@@ -8,11 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import mu.edu.c.controller.MainControllerExtendedTester;
-import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.EntityFactoryMethod;
-import mu.edu.c.entities.Player;
 import mu.edu.c.weapons.SwordWeapon;
-import mu.edu.c.weapons.WeaponFactoryMethod;
 
 class WinScreenViewTest {
 

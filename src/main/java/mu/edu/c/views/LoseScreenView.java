@@ -17,6 +17,7 @@ import javax.swing.JButton;
 
 public class LoseScreenView extends ParentView implements ActionListener{
 	
+	private static final long serialVersionUID = 1152872396771568015L;
 	JButton btnRestart;
 	JButton btnGiveUp;
 	
