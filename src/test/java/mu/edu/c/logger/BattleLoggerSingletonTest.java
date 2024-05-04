@@ -72,7 +72,7 @@ class BattleLoggerSingletonTest {
 		System.out.println(battle);
 		assertEquals(true, this.battle.equals(battles.get(0)));
 		try {
-			//clears the battle logger
+			//writes random stuff to the battle data 
 			FileWriter overwriter = new FileWriter("src/main/resources/battleLogger.json");
 			overwriter.write("asdfkasdjflkajt; esoj random garbaget text");
 			overwriter.close();
@@ -81,6 +81,15 @@ class BattleLoggerSingletonTest {
 		}
 		//tests case in which no battles could be read in
 		assertEquals(null, logger.readAllBattleData());
+		
+		try {
+			//clears the battle logger
+			FileWriter overwriter = new FileWriter("src/main/resources/battleLogger.json");
+			overwriter.write("");
+			overwriter.close();
+		}catch(Exception e) {
+			throw e;
+		}
 	}
 	
 //	@AfterAll
