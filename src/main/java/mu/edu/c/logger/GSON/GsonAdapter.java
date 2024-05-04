@@ -110,7 +110,7 @@ public class GsonAdapter{
 			writer.close();
 			return true;
 		}catch (JsonIOException | IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 			
 		}

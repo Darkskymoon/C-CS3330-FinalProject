@@ -53,6 +53,8 @@ class GsonAdapterTest {
 			throw e;
 		}
 		assertEquals(true, adapter.readJson(testGsonPath).equals("This is a test of the reader"));
+		//test failure 
+		assertEquals(null, adapter.readJson("src/test/resources/testGsonFailure"));
 	}
 	
 	@Test
@@ -85,6 +87,19 @@ class GsonAdapterTest {
 		assertEquals(true, allJson.get(0).equals("This is a test of the reader"));
 		assertEquals(true, allJson.get(1).equals("This is the second line"));
 		assertEquals(true, allJson.get(2).equals("This is the third line"));
+		
+		assertEquals(null, adapter.readAllJson("src/test/resources/testGsonFailure"));
+	}
+	
+	@Test
+	public void testWriteJson() throws Exception{
+//		writeJson(String fileName, String jsonContent, int option
+		//test overwrite
+		assertEquals(true, adapter.writeJson(testGsonPath, "This is a test", 0));
+		assertEquals(true, adapter.writeJson(testGsonPath, "Test 1 - append", 1));
+		assertEquals(true, adapter.writeJson(testGsonPath, "Test 2 - append", 1));
+		assertEquals(true, adapter.writeJson(testGsonPath, "Test 3 - append", 1));
+		assertEquals(false, adapter.writeJson("src/test/resources/testGsonFailure", "This should fail", 0));
 	}
 	
 
