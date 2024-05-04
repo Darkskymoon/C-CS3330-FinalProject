@@ -68,8 +68,8 @@ class BattleLoggerSingletonTest {
 		assertEquals(null, logger.readAllBattleData());
 		logger.logBattleData(battle);
 		ArrayList<Battle> battles = logger.readAllBattleData();
-		System.out.println(battles.get(0));
-		System.out.println(battle);
+//		System.out.println(battles.get(0));
+//		System.out.println(battle);
 		assertEquals(true, this.battle.equals(battles.get(0)));
 		try {
 			//writes random stuff to the battle data 
