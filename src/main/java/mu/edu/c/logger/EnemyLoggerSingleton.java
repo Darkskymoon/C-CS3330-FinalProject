@@ -131,7 +131,6 @@ public class EnemyLoggerSingleton {
 		}
 		
 		
-		//TODO this is such a LONG LONG method, fix it
 		/**
 		 * converts a json string to an enemy.
 		 * @param jsontxt the text to convert
@@ -139,7 +138,7 @@ public class EnemyLoggerSingleton {
 		 */
 		public Enemy readEnemyFromJson(String jsontxt) {
 			//json is null or empty - automatic failure
-			if(jsontxt.equals(null) || jsontxt.length()==0) {
+			if(jsontxt ==(null) || jsontxt.length()==0) {
 				return null;
 			}
 			
@@ -200,6 +199,8 @@ public class EnemyLoggerSingleton {
 			
 			return enemy;
 		}
+		
+		
 		
 		/**
 		 * Resets the enemy Json file to contain all of the base monsters

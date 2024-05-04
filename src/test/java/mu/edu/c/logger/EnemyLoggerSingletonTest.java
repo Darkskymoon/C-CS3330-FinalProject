@@ -100,6 +100,23 @@ class EnemyLoggerSingletonTest {
 		
 	
 	}
+	/**
+	 * tests readEnemyFrom Json
+	 * @throws Exception may throw an exception from reading/writing a file
+	 */
+	@Test 
+	public void testReadEnemyFromJson() throws Exception{
+		assertEquals(true, logger.logEnemyData(this.enemy));
+		//null case
+		assertEquals(null ,logger.readEnemyFromJson(null));
+		
+		//empty case
+		assertEquals(null, logger.readEnemyFromJson(""));
+		
+		//correct scenario
+		assertEquals(true ,logger.readEnemyFromJson("{\"descriptors\":[\"evil\",\"devious\",\"plotting\"],\"name\":\"TEST ENEMY\",\"hp\":110.0,\"maxHP\":110.0,\"strength\":102,\"defense\":103,\"brains\":100,\"weaponStrategy\":{\"name\":\"Sword of Beginnings\",\"simpleDamage\":1,\"specialDamage\":2,\"scaler\":1.0,\"weapontype\":\"SWORD\"},\"xp\":0}").equals(this.enemy));
+		
+	}
 	
 	
 }
