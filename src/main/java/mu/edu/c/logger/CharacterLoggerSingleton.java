@@ -48,7 +48,6 @@ public class CharacterLoggerSingleton {
 		return instance;
 	}
 	
-	
 	/**
 	 * creates json objects of the character and writes that to the file.
 	 * @param character
@@ -67,10 +66,7 @@ public class CharacterLoggerSingleton {
 		
 		//overwrite previous character
 		boolean flag = adapter.writeJson(logFilePath, jsonString, 0);
-		if(flag == false) {
-			return false;
-		}
-		return true;
+		return flag;
 	}
 	
 	/**
@@ -80,20 +76,12 @@ public class CharacterLoggerSingleton {
 	 */
 	public Player readCharacterData() {
 		GsonAdapter adapter = new GsonAdapter();
-//		Gson gson = new Gson();
 		
 		//gets the jsontxt
 		String jsontxt =adapter.readJson(logFilePath);
 		Player player =readCharacter(jsontxt);
 		return player;
-		
-	
-
-		
-
 	}
-	
-
 	
 	/**
 	 * creates a player object based on a Json string

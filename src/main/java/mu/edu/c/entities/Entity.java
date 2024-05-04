@@ -231,7 +231,7 @@ public abstract class Entity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "name: " +name
+		return "name: " + name
 				+ " HP: " + maxHP;
 	}
 	

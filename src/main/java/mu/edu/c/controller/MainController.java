@@ -432,7 +432,7 @@ public class MainController {
 	}
 	
 	/**
-	 * Writes a character to the character file. TODO: 
+	 * Writes a character to the character file.
 	 */
 	protected class CreateCharacterSubmit implements ActionListener{
 		@Override
@@ -450,11 +450,8 @@ public class MainController {
 			logger.logCharacterData(characterObj);
 			
 			//Switch to battle screen and use character just created
-			
 			refreshStartGameView();
-			switchPanel(startGameView);
-//			refreshBattleMenuView(characterObj);
-//			switchPanel(battleMenuView);	
+			switchPanel(startGameView);	
 		}
 		
 	}

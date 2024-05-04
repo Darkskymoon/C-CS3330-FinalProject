@@ -14,7 +14,7 @@ import mu.edu.c.entities.Player;
 import mu.edu.c.logger.GSON.GsonAdapter;
 
 public class BattleLoggerSingleton {
-	//creates a single instance of the logger
+		//creates a single instance of the logger
 		private static BattleLoggerSingleton instance = null;
 		
 		//Creates a filepath for the logger file
@@ -37,7 +37,6 @@ public class BattleLoggerSingleton {
 			return instance;
 		}
 		
-		
 		/**
 		 * creates json objects of the battle and writes that to the file.
 		 * @param character
@@ -50,17 +49,14 @@ public class BattleLoggerSingleton {
 			//convert the object to json string
 			Gson gson = new Gson();
 			String jsonString= gson.toJson(battle);
-//			System.out.println(jsonString);
 
 			GsonAdapter adapter = new GsonAdapter();
 			
 			//append to all battles
 			boolean flag = adapter.writeJson(logFilePath, jsonString, 1);
-			if(flag == false) {
-				return false;
-			}
-			return true;
+			return flag;
 		}
+		
 		/**
 		 * Reads in all of the battle stored in a file and converts them to objects
 		 * @return an arraylist of battle objects representing the JSON battle log

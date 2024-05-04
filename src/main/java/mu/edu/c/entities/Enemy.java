@@ -14,8 +14,6 @@ public class Enemy extends Entity{
 	//we planned on giving enemies a random descriptor in their battle text.
 	//It could be easily implemented at a later point. 
 	ArrayList<String> descriptors;
-	
-	
 
 	/**
 	 * constructor that doesn't take any descriptors but instead applies some default descriptors
