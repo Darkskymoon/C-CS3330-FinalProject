@@ -260,4 +260,12 @@ public class Battle {
 		return this.getPlayerName() + " vs " + this.getCurrentEnemyName();
 	}
 	
+	public boolean equals(Battle battle2) {
+		if(this.getCurrentEnemy().equals(battle2.getCurrentEnemy()) &&
+				this.getPlayer().equals(battle2.getPlayer())) {
+			return true;
+		}
+		return false;
+	}
+	
 }

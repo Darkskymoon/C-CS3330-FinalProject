@@ -127,6 +127,22 @@ public abstract class AbstractWeapon implements IWeapon {
 		return true;
 		
 	}
+	
+	/**
+	 * Tests to see if two weapons are equal
+	 * @return
+	 */
+	public boolean equals(IWeapon weapon) {
+		AbstractWeapon weapontemp = (AbstractWeapon) weapon;
+		if(this.name.equals(weapontemp.getName()) &&
+				this.scaler==weapontemp.getScaler() &&
+				this.simpleDamage == weapontemp.getSimpleDamage() &&
+				this.specialDamage == weapontemp.getSpecialDamage() &&
+				this.weapontype.equals(weapontemp.weapontype)) {
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

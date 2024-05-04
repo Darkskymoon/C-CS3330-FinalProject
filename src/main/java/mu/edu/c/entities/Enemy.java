@@ -156,13 +156,13 @@ public class Enemy extends Entity{
 	 * @param other the enemy to test if equal to the current enemy
 	 * @return true if equal, false if not equal
 	 */
-	public boolean equals(Enemy other) {		
+	public boolean equals(Enemy other) {
 		if(other.brains == this.brains &&
 				other.defense ==this.defense &&
 				other.maxHP == this.maxHP &&
 				other.name.equals(this.name) &&
 				other.strength == this.strength &&
-				other.weaponStrategy ==this.weaponStrategy &&
+				other.weaponStrategy.equals(this.weaponStrategy) &&
 				other.xp ==this.xp && 
 				other.getDescriptors().equals(this.getDescriptors())
 				) {

@@ -42,6 +42,27 @@ public class Player extends Entity {
 		this.attributePoints = attributePoints;
 	}
 	
+	/**
+	 * Tests to see if two players are equal
+	 * @param player the player to test equality
+	 * @return true if equal, false if not equal
+	 */
+	public boolean equals(Player player) {
+		if(player.brains == this.brains &&
+				player.getAttributePoints() == this.attributePoints &&
+				player.getDefense() == this.defense &&
+				player.getHp() == this.getHp() &&
+				player.getMaxHP() == this.getMaxHP() &&
+				player.getName().equals(this.name) &&
+				player.getStrength() ==this.strength &&
+				player.weaponStrategy.equals(this.weaponStrategy) &&
+				player.xp == this.xp) {
+			return true;
+			
+		}
+		return false;
+	}
+	
 	
 	
 

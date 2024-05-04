@@ -19,4 +19,10 @@ public interface IWeapon {
 	 * @return total damage dealt
 	 */
 	float specialAttack(Entity attacker, Entity target, int roll);
+	/**
+	 * Tests if two weapons are equal
+	 * @param weapon the weapon to compare against the current Iweapon
+	 * @return true if equal, false if not
+	 */
+	public boolean equals(IWeapon weapon);
 }
