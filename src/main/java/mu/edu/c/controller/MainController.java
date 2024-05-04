@@ -135,7 +135,6 @@ public class MainController {
 		if(this.currentPlayer == null) {
 			startGameView.setLoadCharacterText("Create a New Character");
 			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCaracterView());
-			startGameView.setNewCharHide();
 			startGameView.setLoadCharacterHide();
 			
 		}else { //Otherwise, if the first player does exist, set the load button to route to battle with that character
