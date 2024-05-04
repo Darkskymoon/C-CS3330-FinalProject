@@ -1,6 +1,5 @@
 package mu.edu.c.models;
 
-import mu.edu.c.entities.Entity;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 import mu.edu.c.weapons.IWeapon;

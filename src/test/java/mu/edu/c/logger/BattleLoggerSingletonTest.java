@@ -2,11 +2,9 @@ package mu.edu.c.logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

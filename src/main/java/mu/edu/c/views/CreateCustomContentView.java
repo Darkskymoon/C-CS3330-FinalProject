@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class CreateCustomContentView extends ParentView implements ActionListener{
+	private static final long serialVersionUID = -7617276032050941344L;
 	JButton btnCreateNewWeapon;
 	JButton btnCreateNewEnemy;
 	JButton btnBack;

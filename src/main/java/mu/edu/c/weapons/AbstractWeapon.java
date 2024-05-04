@@ -1,8 +1,6 @@
 package mu.edu.c.weapons;
 import java.util.Random;
 
-import mu.edu.c.entities.Enemy;
-import mu.edu.c.entities.Player;
 
 public abstract class AbstractWeapon implements IWeapon {
 	private String name;

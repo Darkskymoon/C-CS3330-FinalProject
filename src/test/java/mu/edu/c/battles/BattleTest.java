@@ -3,7 +3,6 @@ package mu.edu.c.battles;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import org.junit.jupiter.api.BeforeEach;

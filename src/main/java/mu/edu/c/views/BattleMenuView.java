@@ -7,27 +7,18 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 import mu.edu.c.audio.AudioPlayer;
-import mu.edu.c.battles.Battle;
-import mu.edu.c.entities.Player;
 
 public class BattleMenuView extends ParentView {
 	
+	private static final long serialVersionUID = -1797587602595723843L;
 	private JLabel labelCharacterName;
 	private JLabel labelBattleText;
 	private JLabel labelEnemyName;

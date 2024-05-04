@@ -1,12 +1,8 @@
 package mu.edu.c.controller;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -16,7 +12,6 @@ import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
-import mu.edu.c.logger.EnemyLoggerSingleton;
 import mu.edu.c.models.CreateEnemyModel;
 import mu.edu.c.models.CreateWeaponViewModel;
 import mu.edu.c.views.BattleMenuView;
@@ -33,7 +28,6 @@ import mu.edu.c.views.PreviousBattlesView;
 import mu.edu.c.views.StartGameView;
 import mu.edu.c.views.WinScreenView;
 import mu.edu.c.weapons.AbstractWeapon;
-import mu.edu.c.weapons.IWeapon;
 import mu.edu.c.logger.CharacterLoggerSingleton;
 
 /**
@@ -291,18 +285,7 @@ public class MainController {
 		this.createWeaponView = new CreateWeaponView();
 		createWeaponView.addBackButtonListener(new SwitchScreenToCreateCustomContentView());
 		createWeaponView.addSubmitButtonListener(new SetCustomWeaponToCharacter());
-		
-		// TODO
-		// add new enemy to the database
-		// go to weapon logger
-		// check if file is empty
-		// if empty, display error
-		// else go to character
-		// use the logger to grab character
-		// change weapon using factory ands inputs
-		// use model to store new weapon
-		// save the character with weapon to the file using logger
-	}
+		}
 	
 
 	// add refresh view and then underneath add button listeners
@@ -330,7 +313,8 @@ public class MainController {
 			
 			// performing code execution and saving a flag to indicate if the view should display an error
 			Boolean equipCharacterWithWeaponSuccessFlag = createWeaponViewModel.equipCharacterWithWeapon();
-		
+			refreshCreateWeaponView();
+			switchPanel(createCustomContentView);
 		}
 	}
 	/**

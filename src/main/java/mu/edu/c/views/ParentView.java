@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 public class ParentView extends JPanel {
 	
+	private static final long serialVersionUID = -5922908702050364497L;
 	// Button Colors
 	protected final Color buttonColor = Color.white;
 	protected final Color buttonColorPressed = new Color(226, 221, 250);
