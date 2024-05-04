@@ -256,7 +256,7 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
     	return scalerPts;
     }
     
-    // returns the selected weapon ENUM
+    // returns the selected weapon ENUM's index
     public int getWeaponTypeIndex() {
     	int typeIndex = weaponComboBox.getSelectedIndex();
     	return typeIndex;

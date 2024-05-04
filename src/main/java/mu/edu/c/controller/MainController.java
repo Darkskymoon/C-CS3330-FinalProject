@@ -285,18 +285,7 @@ public class MainController {
 		this.createWeaponView = new CreateWeaponView();
 		createWeaponView.addBackButtonListener(new SwitchScreenToCreateCustomContentView());
 		createWeaponView.addSubmitButtonListener(new SetCustomWeaponToCharacter());
-		
-		// TODO
-		// add new enemy to the database
-		// go to weapon logger
-		// check if file is empty
-		// if empty, display error
-		// else go to character
-		// use the logger to grab character
-		// change weapon using factory ands inputs
-		// use model to store new weapon
-		// save the character with weapon to the file using logger
-	}
+		}
 	
 
 	// add refresh view and then underneath add button listeners
@@ -324,7 +313,8 @@ public class MainController {
 			
 			// performing code execution and saving a flag to indicate if the view should display an error
 			Boolean equipCharacterWithWeaponSuccessFlag = createWeaponViewModel.equipCharacterWithWeapon();
-		
+			refreshCreateWeaponView();
+			switchPanel(createCustomContentView);
 		}
 	}
 	/**
