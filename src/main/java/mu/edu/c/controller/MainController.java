@@ -20,6 +20,7 @@ import mu.edu.c.logger.EnemyLoggerSingleton;
 import mu.edu.c.views.BattleMenuView;
 import mu.edu.c.views.CreateCharacterView;
 import mu.edu.c.views.CreateCustomContentView;
+import mu.edu.c.views.CreateEnemyView;
 import mu.edu.c.views.CreateWeaponView;
 import mu.edu.c.views.CreditMenuView;
 import mu.edu.c.views.GameInfoView;
@@ -49,6 +50,7 @@ public class MainController {
 	protected BattleMenuView battleMenuView;
 	protected CreateCharacterView createCharacterView;
 	protected CreateWeaponView createWeaponView;
+	protected CreateEnemyView createEnemyView;
 	protected CreateCustomContentView createCustomContentView;
 	protected LoseScreenView loseScreenView;
 	protected WinScreenView winScreenView;
@@ -234,7 +236,7 @@ public class MainController {
 		createCustomContentView.addBackButtonListener(new SwitchScreenToMainMenuView());
 		//TODO
 		// create switchscreen to create enemy
-		createCustomContentView.addCreateNewEnemyListener(null);
+		createCustomContentView.addCreateNewEnemyListener(new SwitchScreenToCreateEnemyView());
 		createCustomContentView.addCreateNewWeaponListener(new SwitchScreenToCreateWeaponView());
 	}
 	/**
@@ -245,6 +247,18 @@ public class MainController {
 		createCharacterView.addBackButtonListener(new SwitchScreenToStartGameView());
 		createCharacterView.addSubmitButtonListener(new CreateCharacterSubmit());
 	}
+	
+	/**
+	 * Refreshes CreateEnemyView by recreating object and adding button listeners to view
+	 */
+	protected void refreshCreateEnemyView() {
+		this.createEnemyView = new CreateEnemyView();
+		createEnemyView.addBackButtonListener(new SwitchScreenToCreateCustomContentView());
+		//TODO
+		// add new enemy to the database
+		createEnemyView.addSubmitButtonListener(null);
+	}
+	
 	/**
 	 * Refreshes CreateWeapon by recreating object and adding button listeners to view
 	 */
@@ -362,6 +376,19 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			refreshCreateCharacterView();
 			switchPanel(createCharacterView);
+		}
+	
+	}
+	
+	/**
+	 * Refreshes CreateWeaponView and switches current panel to it
+	 */
+	protected class SwitchScreenToCreateEnemyView implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			refreshCreateEnemyView();
+			switchPanel(createEnemyView);
 		}
 	
 	}

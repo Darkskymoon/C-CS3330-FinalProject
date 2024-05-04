@@ -93,8 +93,7 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
         namePanel.add(nameField);
         
         gbc.anchor = GridBagConstraints.LINE_START;
-        
-        gbc.insets = new Insets(0, 0, 50, 0);
+        gbc.insets = new Insets(0, 0, 0, 200);
         gbc.gridy = 1;
         gbc.gridx = 1;
         this.add(namePanel, gbc);
@@ -140,7 +139,8 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
         attributePanel.add(brainsPointsLabel);
         attributePanel.add(brainsSlider);
         
-        attributePanel.setPreferredSize(new Dimension(400, 280));
+        attributePanel.setPreferredSize(new Dimension(400, 350));
+        gbc.insets = new Insets(0, 200, 0, 0);
         gbc.gridy = 1;
         gbc.gridx = 2;
         gbc.anchor = GridBagConstraints.LINE_END;
@@ -159,6 +159,7 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
         
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 0, 0, 0);
         gbc.gridy = 2;
         this.add(buttonsPanel, gbc);
     }
