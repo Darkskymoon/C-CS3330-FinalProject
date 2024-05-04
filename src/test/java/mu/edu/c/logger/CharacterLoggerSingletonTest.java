@@ -38,11 +38,54 @@ class CharacterLoggerSingletonTest {
 	 * 
 	 */
 	@Test
-	public void testLogCharacterData() {
+	public void testLogCharacterData() throws Exception {
 		//test null case
 		assertEquals(false, logger.logCharacterData(null));
 		assertEquals(true, logger.logCharacterData(this.player));
 		
+		//file reset
+		try {
+			//clears the log
+			FileWriter overwriter = new FileWriter("src/main/resources/characterLogger.json");
+			overwriter.write("");
+			overwriter.close();
+		}catch(Exception e) {
+			throw e;
+		}
+		
+		
+	}
+	
+	@Test
+	public void testReadCharacter() {
+		assertEquals(null, logger.readCharacter(null));
+		String playerString = "{\"attributePoints\":0,\"name\":\"TEST character\",\"hp\":20.0,\"maxHP\":20.0,\"strength\":22,\"defense\":24,\"brains\":26,\"weaponStrategy\":{\"name\":\"Sword of Beginnings\",\"simpleDamage\":1,\"specialDamage\":2,\"scaler\":1.0,\"weapontype\":\"SWORD\"},\"xp\":0}";
+		Player playerRead = logger.readCharacter(playerString);
+		assertEquals(true, playerRead.equals(this.player));
+		
+		playerString = "{\"attributePoints\":0,\"name\":\"TEST character\",\"hp\":20.0,\"maxHP\":20.0,\"strength\":22,\"defense\":24,\"brains\":26,\"xp\":0}";
+		Player playerReadWithoutWeapon = logger.readCharacter(playerString);
+		assertEquals(true, playerReadWithoutWeapon.equals(this.player));
+		
+	}
+	
+	@Test
+	public void testReadCharacterData() throws Exception {
+		//test for nothing in the json file
+		assertEquals(null, logger.readCharacterData());
+		
+		logger.logCharacterData(player);
+		//test after a character has been created
+		assertEquals(true, logger.readCharacterData().equals(player));
+		//file reset
+		try {
+			//clears the log
+			FileWriter overwriter = new FileWriter("src/main/resources/characterLogger.json");
+			overwriter.write("");
+			overwriter.close();
+		}catch(Exception e) {
+			throw e;
+		}
 		
 	}
 
