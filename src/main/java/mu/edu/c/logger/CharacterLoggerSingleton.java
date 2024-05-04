@@ -55,6 +55,9 @@ public class CharacterLoggerSingleton {
 	 * @return
 	 */
 	public boolean logCharacterData(Player player) {
+		if(player == null) {
+			return false;
+		}
 		
 		//convert the object to json string
 		Gson gson = new Gson();
