@@ -18,7 +18,7 @@ class GameInfoViewTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		mainController = new MainControllerExtendedTester();
-		mainController.Inititate();
+		mainController.inititateInterface();
 		mainMenuView = (MainMenuView) mainController.getContentPane().getComponent(0);
 		mainMenuView.getBtnInfo().doClick();
 		gameInfoView = (GameInfoView) mainController.getContentPane().getComponent(0);

@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 
 import mu.edu.c.audio.AudioPlayer;
 
-public class WinScreenView extends ParentView implements ActionListener {
+public class WinScreenView extends ParentView {
 	
 	JButton btnNewWeapon;
 	JButton btnContinue;
@@ -88,12 +88,6 @@ public class WinScreenView extends ParentView implements ActionListener {
     
     public void setWeaponLabel(String newWeaponLabel) {
 		this.newWeaponLabel.setText(newWeaponLabel);
-	}
-    
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }
