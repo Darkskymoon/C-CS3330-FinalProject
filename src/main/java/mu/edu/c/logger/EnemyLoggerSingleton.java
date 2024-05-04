@@ -62,13 +62,8 @@ public class EnemyLoggerSingleton {
 			GsonAdapter adapter = new GsonAdapter();
 			
 			//append the Json to the file
-			boolean flag =adapter.writeJson(logFilePath, jsonString, 1);
-			if(flag ==false) {
-				return false;
-			}
-			
-			
-			return true;
+			boolean flag = adapter.writeJson(logFilePath, jsonString, 1);
+			return flag;
 		}
 		
 //		/**
@@ -181,9 +176,6 @@ public class EnemyLoggerSingleton {
 					}
 				}
 
-	
-				
-
 			}catch(JSONException e) {
 				return null;
 			}
@@ -228,10 +220,7 @@ public class EnemyLoggerSingleton {
 				}
 				
 			}
-			return true;
-
-			
-			
+			return true;	
 			
 		}
 

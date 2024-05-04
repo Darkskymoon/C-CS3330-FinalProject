@@ -178,7 +178,6 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
 		
 	}
 	
-	
 	private void initializeNameFields() {
 		nameField = new JTextField(20);
 		nameField.setPreferredSize(new Dimension(100, 50));
@@ -258,13 +257,13 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
     }
     
     // returns the selected weapon ENUM
-    public WeaponType getWeaponTypeIndex() {
+    public int getWeaponTypeIndex() {
     	int typeIndex = weaponComboBox.getSelectedIndex();
-    	return WeaponType.values()[typeIndex];
+    	return typeIndex;
     }
     
-	public JTextField getNameField() {
-		return nameField;
+	public String getName() {
+		return nameField.getText();
 	}
 
 	public void setNameField(JTextField nameField) {

@@ -51,14 +51,17 @@ public class EntityFactoryMethod {
 	}
 	
 	/**
-	 * Constructs a player instance
+	 * Constructs a player instance w/o specific weapon (gets default weapon)
 	 * @return instance of player
 	 */
 	public Player createPlayer(float maxHP, int strength, int defense, int brains, String Name) {
 		return new Player(maxHP, strength, defense, brains, Name);
 	}
 	
-
+	/**
+	 * Constructs a player instance with weapon
+	 * @return instance of player
+	 */
 	public Player createPlayerWithWeapon(float maxHP, int strength, int defense, int brains, String Name, IWeapon strategy) {
 		return new Player(maxHP, strength, defense, brains, Name, strategy);
 	}
