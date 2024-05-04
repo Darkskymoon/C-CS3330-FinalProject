@@ -85,7 +85,6 @@ public class MainController {
 		mainMenuView.addInfoButtonListener(new SwitchScreenToGameInfoView());
 		mainMenuView.addCreateCustomContentButtonListener(new SwitchScreenToCreateCustomContentView());
 		mainMenuView.addStartGameButtonListener(new SwitchScreenToStartGameView());
-		mainMenuView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 	}
 
 	/**
@@ -96,6 +95,7 @@ public class MainController {
 		this.gameInfoView = new GameInfoView();
 		gameInfoView.addBackButtonListener(new SwitchScreenToMainMenuView());
 		gameInfoView.addPreviousBattlesButtonListener(new SwitchScreenToPreviousBattlesView());
+		gameInfoView.addCreditButtonListener(new SwitchScreenToCreditMenuView());
 
 	}
 
@@ -159,7 +159,7 @@ public class MainController {
 	 */
 	protected void refreshCreditMenuView() {
 		this.creditMenuView = new CreditMenuView();
-		creditMenuView.addBackButtonListener(new SwitchScreenToMainMenuView());
+		creditMenuView.addBackButtonListener(new SwitchScreenToGameInfoView());
 	}
 
 	/**

@@ -29,14 +29,6 @@ public class MainMenuViewTest {
 		
 	}
 	
-	@Test
-	void testBtnCredits() {
-		mainMenuView.getBtnCredits().doClick();
-		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
-		
-		assertTrue(newPanel instanceof CreditMenuView);
-		
-	}
 	
 	@Test
 	void testBtnInfo() {

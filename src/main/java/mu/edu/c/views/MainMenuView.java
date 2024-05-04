@@ -16,7 +16,6 @@ public class MainMenuView extends ParentView {
 	
 	private static final long serialVersionUID = 4203134853721648456L;
 	protected JButton btnStartGame;
-	protected JButton btnCredits;
 	protected JButton btnInfo;
 	protected JButton btnCustomContent;
 	
@@ -46,7 +45,6 @@ public class MainMenuView extends ParentView {
 		    gbc2.fill = GridBagConstraints.HORIZONTAL;
 	        buttons.add(btnStartGame, gbc2);
 	        buttons.add(btnCustomContent, gbc2);
-	        buttons.add(btnCredits, gbc2);
 	        buttons.add(btnInfo, gbc2);
 
 	        gbc.weighty = 1;
@@ -59,7 +57,6 @@ public class MainMenuView extends ParentView {
 			
 			//make button variables
 			btnStartGame = new JButton("Start Game");
-			btnCredits = new JButton("Credits");
 			btnInfo = new JButton("Game Info");
 			btnCustomContent = new JButton("Custom Content");
 			
@@ -68,7 +65,6 @@ public class MainMenuView extends ParentView {
 			
 			SetUpButton(btnStartGame);
 			SetUpButton(btnInfo);
-			SetUpButton(btnCredits);
 			SetUpButton(btnCustomContent);
 			
 		}
@@ -81,9 +77,6 @@ public class MainMenuView extends ParentView {
 			btnStartGame.addActionListener(listener);
 		}
 		
-		public void addCreditButtonListener(ActionListener listener) {
-			btnCredits.addActionListener(listener);
-		}
 		
 		public void addCreateCustomContentButtonListener(ActionListener listener) {
 			btnCustomContent.addActionListener(listener);
@@ -93,9 +86,6 @@ public class MainMenuView extends ParentView {
 			return btnStartGame;
 		}
 
-		public JButton getBtnCredits() {
-			return btnCredits;
-		}
 
 		public JButton getBtnInfo() {
 			return btnInfo;

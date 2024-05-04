@@ -11,6 +11,7 @@ import mu.edu.c.controller.MainControllerExtendedTester;
 public class CreditMenuViewTest {
 	
 	MainMenuView mainMenuView;
+	GameInfoView gameInfoView;
 	CreditMenuView creditMenuView;
 	MainControllerExtendedTester mainController;
 
@@ -19,7 +20,9 @@ public class CreditMenuViewTest {
 		mainController = new MainControllerExtendedTester();
 		mainController.inititateInterface();
 		mainMenuView = (MainMenuView) mainController.getContentPane().getComponent(0);
-		mainMenuView.getBtnCredits().doClick();
+		mainMenuView.getBtnInfo().doClick();
+		gameInfoView = (GameInfoView) mainController.getContentPane().getComponent(0);
+		gameInfoView.getBtnCredits().doClick();
 		creditMenuView = (CreditMenuView) mainController.getContentPane().getComponent(0);
 	}
 	
@@ -28,7 +31,7 @@ public class CreditMenuViewTest {
 		creditMenuView.getBtnBack().doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
 		
-		assertTrue(newPanel instanceof MainMenuView);
+		assertTrue(newPanel instanceof GameInfoView);
 	}
 	
 	

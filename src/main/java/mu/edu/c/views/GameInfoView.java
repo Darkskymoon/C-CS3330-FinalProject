@@ -14,6 +14,7 @@ public class GameInfoView extends ParentView {
 	
 	private static final long serialVersionUID = 175114423651489364L;
 	private JButton btnViewPreviousBattles;
+	protected JButton btnCredits;
 	private JButton btnBack;
 	
 	public GameInfoView(){
@@ -40,7 +41,9 @@ public class GameInfoView extends ParentView {
 			gbc2.anchor = GridBagConstraints.CENTER;
 		    gbc2.fill = GridBagConstraints.HORIZONTAL;
 	        buttons.add(btnViewPreviousBattles, gbc2);
+	        buttons.add(btnCredits, gbc2);
 	        buttons.add(btnBack, gbc2);
+	        
 	        
 	        gbc.weighty = 1;
 	        add(buttons, gbc);
@@ -56,16 +59,20 @@ public class GameInfoView extends ParentView {
 			//make button variables
 			btnViewPreviousBattles = new JButton("Previous Battles");
 			btnBack = new JButton("Back");
-			
+			btnCredits = new JButton("Credits");
+
 			////////////////////Set visuals for buttons////////////////////
 			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
 			SetUpButton(btnViewPreviousBattles);
+			SetUpButton(btnCredits);
 			SetUpButton(btnBack);
 			
 		}
 		
-		
+		public void addCreditButtonListener(ActionListener listener) {
+			btnCredits.addActionListener(listener);
+		}
 		public void addBackButtonListener(ActionListener listener) {
 			btnBack.addActionListener(listener);
 		}
@@ -76,6 +83,10 @@ public class GameInfoView extends ParentView {
 		
 		public JButton getBtnBack() {
 			return btnBack;
+		}
+		
+		public JButton getBtnCredits() {
+			return btnCredits;
 		}
 		
 		

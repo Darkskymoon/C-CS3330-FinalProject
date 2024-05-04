@@ -31,4 +31,13 @@ class GameInfoViewTest {
 		
 		assertTrue(newPanel instanceof MainMenuView);
 	}
+	
+	@Test
+	void testBtnCredits() {
+		gameInfoView.getBtnCredits().doClick();
+		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
+		
+		assertTrue(newPanel instanceof CreditMenuView);
+		
+	}
 }
