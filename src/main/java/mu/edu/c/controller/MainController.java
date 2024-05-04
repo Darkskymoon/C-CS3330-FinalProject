@@ -313,8 +313,14 @@ public class MainController {
 			
 			// performing code execution and saving a flag to indicate if the view should display an error
 			Boolean equipCharacterWithWeaponSuccessFlag = createWeaponViewModel.equipCharacterWithWeapon();
-			refreshCreateWeaponView();
-			switchPanel(createCustomContentView);
+			createWeaponView.setWeaponEquipedFlag(equipCharacterWithWeaponSuccessFlag);
+			
+			if (equipCharacterWithWeaponSuccessFlag) {
+				refreshCreateWeaponView();
+				switchPanel(createCustomContentView);
+			} else {
+			createWeaponView.displayError();
+			}
 		}
 	}
 	/**
