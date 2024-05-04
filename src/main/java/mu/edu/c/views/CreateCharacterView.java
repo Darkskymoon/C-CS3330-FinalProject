@@ -21,6 +21,8 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import mu.edu.c.audio.AudioPlayer;
 
@@ -51,7 +53,7 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
 	private JSlider brainsSlider = new JSlider(0, 50, 0);
 	
 	//textfields
-    private JTextField nameField = new JTextField(20);
+    private JTextField nameField;
     
     //buttons
     private JButton btnSubmit;
@@ -71,6 +73,7 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         
         //////////// Form elements ////////////
     	JPanel namePanel = new JPanel();
+    	initializeNameFields();
         nameLabel = new JLabel();
         alertLabel = new JLabel("");
         
@@ -169,7 +172,37 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
         return;
 		}
 	}
-	
+	private void initializeNameFields() {
+		nameField = new JTextField(20);
+		nameField.setPreferredSize(new Dimension(100, 50));
+        nameField.setFont(new Font("Consolas", Font.PLAIN, 16));
+
+        // add listener that reacts to changes
+        // disables buttons when field is empty
+        nameField.getDocument().addDocumentListener(new DocumentListener() {        	
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				if (!nameField.getText().isEmpty()) {
+					btnSubmit.setEnabled(true);
+				} else {
+					btnSubmit.setEnabled(false);
+				}
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				if (!nameField.getText().isEmpty()) {
+					btnSubmit.setEnabled(true);
+				} else {
+					btnSubmit.setEnabled(false);
+				}
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+			}
+		});
+	}
     private void initializeButtons() {
         // Make button variables
         btnSubmit = new JButton("Create character");
