@@ -187,11 +187,10 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
         // add listener that reacts to changes
         // disables buttons when field is empty
         nameField.getDocument().addDocumentListener(new DocumentListener() {
-        	Boolean fieldIsEmpty = !nameField.getText().isEmpty();
         	
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				if (fieldIsEmpty) {
+				if (!nameField.getText().isEmpty()) {
 					btnSubmit.setEnabled(true);
 				} else {
 					btnSubmit.setEnabled(false);
