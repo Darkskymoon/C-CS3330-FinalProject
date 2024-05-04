@@ -48,10 +48,12 @@ public class PreviousBattlesView extends ParentView {
         ArrayList<Battle> testArray = new ArrayList<Battle>();
 		BattleLoggerSingleton battleLogger = BattleLoggerSingleton.getInstance();
 		testArray = battleLogger.readAllBattleData();
+		if(testArray != null) {
 		Battle[] array = testArray.reversed().toArray(new Battle[testArray.size()]);
 		DefaultListCellRenderer renderer =  (DefaultListCellRenderer)battlesList.getCellRenderer();  
 	    renderer.setHorizontalAlignment(JLabel.CENTER);
 	    battlesList.setListData(array);
+		}
         
         replayButton = new JButton("Replay Selected Battle");
         GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
