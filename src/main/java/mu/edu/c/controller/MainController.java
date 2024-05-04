@@ -112,9 +112,10 @@ public class MainController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Battle battle = previousBattlesView.getBattlesList().getSelectedValue();
-			System.out.println(battle);
-			refreshBattleMenuView(battle);
-			switchPanel(battleMenuView);
+			if(battle != null) {
+				refreshBattleMenuView(battle);
+				switchPanel(battleMenuView);
+			}
 		}
 		
 	}
