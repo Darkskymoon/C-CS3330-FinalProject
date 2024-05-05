@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Action;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -12,7 +13,7 @@ import mu.edu.c.battles.Battle;
 import mu.edu.c.entities.Enemy;
 import mu.edu.c.entities.Player;
 import mu.edu.c.logger.BattleLoggerSingleton;
-import mu.edu.c.models.CreateEnemyModel;
+import mu.edu.c.models.CreateEnemyViewModel;
 import mu.edu.c.models.CreateWeaponViewModel;
 import mu.edu.c.views.BattleMenuView;
 import mu.edu.c.views.CreateCharacterView;
@@ -56,7 +57,7 @@ public class MainController {
 	// Models
 	protected Battle battleModel;
 	protected CreateWeaponViewModel createWeaponViewModel = new CreateWeaponViewModel();
-	protected CreateEnemyModel createEnemyModel;
+	protected CreateEnemyViewModel createEnemyViewModel = new CreateEnemyViewModel();
 	// TODO- Is this right?
 	protected Player currentPlayer;
 	protected Enemy currentEnemy;
@@ -240,6 +241,7 @@ public class MainController {
 				+ "<br>Simple DMG: " + droppedWeapon.getSimpleDamage() + "<br>Special DMG: "
 				+ droppedWeapon.getSpecialDamage() + "<html/>");
 	}
+	
 	protected void refreshCreateCustomContentView() {
 		this.createCustomContentView = new CreateCustomContentView();
 		createCustomContentView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -264,17 +266,7 @@ public class MainController {
 	protected void refreshCreateEnemyView() {
 		this.createEnemyView = new CreateEnemyView();
 		createEnemyView.addBackButtonListener(new SwitchScreenToCreateCustomContentView());
-		// TODO
-		// add new enemy to the database
-		// go to weapon logger
-		// check if file is empty
-		// if empty, display error
-		// else go to character
-		// use the logger to grab character
-		// change weapon using factory ands inputs
-		// use model to store new weapon
-		// save the character with weapon to the file using logger
-		createEnemyView.addSubmitButtonListener(null);
+		createEnemyView.addSubmitButtonListener(new AddCustomEnemyToGame());
 	}
 
 	/**
@@ -289,7 +281,30 @@ public class MainController {
 	
 
 	// add refresh view and then underneath add button listeners
-	
+	/**
+	 *	Adds custom created Enemy to list of possible enemies
+	 */
+	protected class AddCustomEnemyToGame implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			// variable setup
+			String enemyName = createEnemyView.getName();
+			int enemyHp = createEnemyView.getMaxHp();
+			int enemyStrength = createEnemyView.getStrengthStat();
+			int enemyDefense = createEnemyView.getDefenseStat();
+			int enemyBrains = createEnemyView.getBrainsStat();
+			
+			createEnemyViewModel.setEnemyName(enemyName);
+			createEnemyViewModel.setMaxHp(enemyHp);
+			createEnemyViewModel.setStrength(enemyStrength);
+			createEnemyViewModel.setDefense(enemyDefense);
+			createEnemyViewModel.setBrains(enemyBrains);
+			
+			createEnemyViewModel.addCustomEnemyToGame();
+		}
+	}
 	/**
 	 * equips character with a custom weapon
 	 */
