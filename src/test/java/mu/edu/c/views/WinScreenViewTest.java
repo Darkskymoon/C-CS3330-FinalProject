@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import mu.edu.c.controller.MainControllerExtendedTester;
 import mu.edu.c.entities.EntityFactoryMethod;
+import mu.edu.c.weapons.IWeapon;
 import mu.edu.c.weapons.SwordWeapon;
 
 class WinScreenViewTest {
@@ -30,11 +31,9 @@ class WinScreenViewTest {
 		mainMenuView = (MainMenuView) mainController.getContentPane().getComponent(0);
 		mainMenuView.getBtnStartGame().doClick();
 		startGameView = (StartGameView) mainController.getContentPane().getComponent(0);
-		
-		mainController.setCurrentPlayer(entityFactory.createPlayerWithWeapon(1000, 1000, 1000, 1000, "Ryan", new SwordWeapon("Ryan", 1000, 1000, 1000)));
-		
 		startGameView.getBtnLoadCharacter().doClick();
 		battleMenuView = (BattleMenuView) mainController.getContentPane().getComponent(0);
+		mainController.getCurrentEnemy().setHp(0);
 		battleMenuView.getBtnNormalAttack().doClick();
 		
 		winScreenView = (WinScreenView) mainController.getContentPane().getComponent(0);
@@ -42,11 +41,22 @@ class WinScreenViewTest {
 	
 	@Test
 	public void testBtnContinue() {
+		IWeapon weapon1 = mainController.getCurrentPlayer().getWeaponStrategy();
 		winScreenView.btnContinue.doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
-		System.out.println(newPanel);
+		IWeapon weapon2 = mainController.getCurrentPlayer().getWeaponStrategy();
 		
-		assertTrue(newPanel instanceof BattleMenuView);
+		assertTrue(newPanel instanceof BattleMenuView && (weapon1 == weapon2));
+	}
+	
+	@Test
+	public void testBtnNewWeapon() {
+		IWeapon weapon1 = mainController.getCurrentPlayer().getWeaponStrategy();
+		winScreenView.btnNewWeapon.doClick();
+		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
+		IWeapon weapon2 = mainController.getCurrentPlayer().getWeaponStrategy();
+		
+		assertTrue((newPanel instanceof BattleMenuView) && (weapon1 != weapon2));
 	}
 
 }
