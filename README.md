@@ -20,7 +20,7 @@ Adapter design pattern was used for GSON.
 Designed all of the logging mechanisms including battle, enemy, character, and the GSON adapter. Besides the logging mechanisms, they designed the Battles class and helped implement actual combat. They also worked on entities, enemies, weaponFactoryMethod, AbstractWeapon, MagicWeapon, and SwordWeapon. Furthermore, they wrote the readme. Ultimately they helped on almost every part of the project except for audio and the views.
 - Ryan:
 -------------------------------
-Designed the MainController, Player, and the battle view. Also set up combat to actually attack the opponent. Helped with a little bit of everything on the project. TODO
+Designed the MainController and many of the views such as the MainMenuView, CreditMenuView, and others. Additionally, implemented the weapon code which would utilize a strategy design pattern with the entities. Also set up combat to actually attack the opponent. Helped with a little bit of everything on the project. Additionally wrote a lot of tests for the main controller and views. 
 - Ando:
 --------------------------------
 Audio design, previous battles, TODO
