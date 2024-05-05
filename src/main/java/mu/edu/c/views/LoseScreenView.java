@@ -15,7 +15,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 
-public class LoseScreenView extends ParentView implements ActionListener{
+public class LoseScreenView extends ParentView{
 	
 	private static final long serialVersionUID = 1152872396771568015L;
 	JButton btnRestart;
@@ -80,9 +80,4 @@ public class LoseScreenView extends ParentView implements ActionListener{
     public void addGiveUpButtonListener(ActionListener listener) {
     	btnGiveUp.addActionListener(listener);
     }
-    
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//TODO UNIMPLEMENTED
-	}
 }

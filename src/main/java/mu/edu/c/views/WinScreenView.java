@@ -85,6 +85,10 @@ public class WinScreenView extends ParentView {
     	btnContinue.addActionListener(listener);
     }
     
+    /**
+     * Sets weapon label to given string
+     * @param newWeaponLabel
+     */
     public void setWeaponLabel(String newWeaponLabel) {
 		this.newWeaponLabel.setText(newWeaponLabel);
 	}

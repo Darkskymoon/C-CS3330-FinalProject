@@ -85,10 +85,6 @@ public class StartGameView extends ParentView{
 			btnLoadCharacter.addActionListener(listener);
 		}
 		
-//		public void addLoad2Listener(ActionListener listener) {
-//			btnLoad2.addActionListener(listener);
-//		}
-		
 		public void addBtnNewCharListener(ActionListener listener) {
 			BtnNewChar.addActionListener(listener);
 		}
@@ -108,15 +104,11 @@ public class StartGameView extends ParentView{
 			
 		}
 		
-		public void setNewCharHide() {
-			this.BtnNewChar.setVisible(false);
-			setNewCharDisable();
-		}
-		public void setNewCharDisable() {
-			this.BtnNewChar.setEnabled(false);
-		}
-		public void setNewCharEnable() {
-			this.BtnNewChar.setEnabled(true);
+		/**
+		 * Hides LoadCharacter button
+		 */
+		public void setLoadCharacterHide() {
+			this.btnLoadCharacter.setVisible(false);
 		}
 
 		public JButton getBtnLoadCharacter() {
@@ -129,10 +121,6 @@ public class StartGameView extends ParentView{
 
 		public JButton getBtnBack() {
 			return btnBack;
-		}
-		
-		public void setLoadCharacterHide() {
-			this.btnLoadCharacter.setVisible(false);
 		}
 		
 		

@@ -110,27 +110,16 @@ public class BattleMenuView extends ParentView {
 		private void initializeButtons(GridBagConstraints gbc) {
 			
 			//make button variables
-//			btnCharacterName = new JButton("charName");
-//			btnEnemyName = new JButton("Enemy");
-//			btnCharacterHP = new JButton("TEMPHP");
-//			btnEnemyHP = new JButton("HP: 97");
 			btnSurrender = new JButton("Surrender");
 			btnNormalAttack = new JButton("Normal Attack");
 			btnSpecialAttack = new JButton("Special Attack");
 			
 			
-			////////////////////Set visuals for buttons////////////////////
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
+			////////////////////Set visuals for buttons////////////////////;
 			
 			double displayScaler = 1.4;
 			double attackScaler = 1.4;
 			
-//			SetUpButtonCustomSize(btnCharacterName, displayScaler);
-//			SetUpButtonCustomSize(btnBattleText, displayScaler);
-//			SetUpButtonCustomSize(btnEnemyName, displayScaler);
-			
-//			SetUpButtonCustomSize(btnCharacterHP, displayScaler);
-//			SetUpButtonCustomSize(btnEnemyHP, displayScaler);
 			SetUpButtonCustomSize(btnSurrender, displayScaler);
 			
 			SetUpButtonCustomSize(btnNormalAttack, attackScaler);
@@ -180,6 +169,7 @@ public class BattleMenuView extends ParentView {
 	    /////////////////////////////////////////////////////////////////
 	    // Getters and Setters
 	    /////////////////////////////////////////////////////////////////
+	    
 		public void setRollLabel(int roll) {
 			this.LabelRoll.setText(String.valueOf(roll));
 		}

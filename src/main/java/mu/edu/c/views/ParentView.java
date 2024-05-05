@@ -93,6 +93,11 @@ public class ParentView extends JPanel {
 		button.setFont(buttonFont);
 	}
 	
+	/**
+	 * Creates JLabel for panel
+	 * @param title - string for title
+	 * @return
+	 */
 	protected JLabel createTitle(String title) {
 		JLabel TitleLabel = new JLabel(title);
 		TitleLabel.setForeground(new Color(255, 255, 255));
