@@ -59,5 +59,8 @@ public class CreateWeaponViewModel {
 	public void setWeaponName(String weaponName) {
 		this.weaponName = weaponName;
 	}
-
+	
+	public void setPopulated(Boolean flag) {
+		this.loggerIsPopulated = flag;
+	}
 }

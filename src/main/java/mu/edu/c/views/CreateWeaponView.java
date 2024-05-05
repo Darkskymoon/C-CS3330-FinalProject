@@ -226,13 +226,6 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
         SetUpButton(btnSubmit);
         SetUpButton(btnBack);
                 
-        // Add action listeners
-        btnSubmit.addActionListener(e -> {
-        });
-        
-        btnBack.addActionListener(e -> {
-            // Handle back button action here
-        });
     }
     
     public void addBackButtonListener(ActionListener listener) {
