@@ -18,7 +18,6 @@ public class CreateEnemyViewModel {
 	 * adds enemy to the list of possible enemies in a game
 	 */
 	public void addCustomEnemyToGame() {
-		System.out.println(enemyName);
 		Enemy newEnemy = entityFactoryMethod.createEnemy(maxHp, strength, defense, brains, enemyName);
 		logger.logEnemyData(newEnemy);
 	}
