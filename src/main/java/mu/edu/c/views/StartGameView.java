@@ -60,16 +60,15 @@ public class StartGameView extends ParentView{
 			//make button variables
 			btnLoadCharacter = new JButton("Load Character");
 			btnBack = new JButton("Back");
-			BtnNewChar = new JButton("Create new character");
+			BtnNewChar = new JButton("Create New Character");
 			
 			////////////////////Set visuals for buttons////////////////////
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
-			double biggerSize = 1.3;
+			double scaleUp = 1.3;
 			
-			SetUpButtonCustomSize(btnLoadCharacter, biggerSize);
-			SetUpButtonCustomSize(btnBack, biggerSize);
-			SetUpButtonCustomSize(BtnNewChar, biggerSize);
+			SetUpButtonCustomSize(btnLoadCharacter, scaleUp);
+			SetUpButtonCustomSize(btnBack, scaleUp);
+			SetUpButtonCustomSize(BtnNewChar, scaleUp);
 			
 		}
 		
@@ -96,7 +95,7 @@ public class StartGameView extends ParentView{
 		//////////////////////////////////////////////////////////////////////////
 		
 		/**
-		 * Sets the text on the load 1 button
+		 * Sets the text on the loadCharacter button
 		 * @param Text text to set the button to
 		 */
 		public void setLoadCharacterText(String Text) {
