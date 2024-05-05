@@ -273,12 +273,33 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
     	return nameField.getText();
     }
     
-	public JTextField getNameField() {
-		return nameField;
-	}
+    public void setMaxHp(int maxHp) {
+        maxHpSlider.setValue(maxHp);
+    }
 
+    public void setStrengthStat(int strengthStat) {
+        strSlider.setValue(strengthStat);
+    }
+
+    public void setDefenseStat(int defenseStat) {
+        defSlider.setValue(defenseStat);
+    }
+
+    public void setBrainsStat(int brainsStat) {
+        brainsSlider.setValue(brainsStat);
+    }
+
+    public void setName(String name) {
+        nameField.setText(name);
+    }
+    
+	public String getNameField() {
+		return nameField.getText();
+	}
+	
 	public void setNameField(JTextField nameField) {
 		this.nameField = nameField;
 	}
+
 
 }
