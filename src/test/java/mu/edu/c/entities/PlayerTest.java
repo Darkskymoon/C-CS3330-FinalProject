@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import mu.edu.c.weapons.SwordWeapon;
+
 class PlayerTest {
 
 	private Player player = null;
@@ -26,6 +28,13 @@ class PlayerTest {
 	void testSetAttributePoints() {
 		player.setAttributePoints(97);
 		assertEquals(97, player.getAttributePoints());
+	}
+	
+	@Test
+	void testIncorrectEqual() {
+		EntityFactoryMethod entityFactory = new EntityFactoryMethod();
+		Player player2 =entityFactory.createPlayer(100, 20, 20, 20, "Not Ryan");
+		assertFalse(player.equals(player2));
 	}
 	
 	
