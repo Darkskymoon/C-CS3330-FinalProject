@@ -255,5 +255,21 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
 	public void setNameField(JTextField nameField) {
 		this.nameField = nameField;
 	}
+	
+    public void setStrengthStat(int str) {
+		strSlider.setValue(str);
+    }
+    
+    public void setDefenseStat(int def) {
+		defSlider.setValue(def);
+    }
+    
+    public void setBrainsStat(int brains) {
+		brainsSlider.setValue(brains);
+    }
+    
+	public void setName(String name) {
+		nameField.setText(name);
+	}
 
 }

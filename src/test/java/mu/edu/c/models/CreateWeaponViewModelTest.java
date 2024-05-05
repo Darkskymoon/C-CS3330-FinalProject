@@ -40,10 +40,13 @@ public class CreateWeaponViewModelTest {
     }
     
     @Test
-    void testEquipCharacterWithWeaponEmptyCharacter() {
+    void testEquipEmptyCharacterWithWeapon() {
+    	// Assert
     	viewModel.setCurrentPlayer(null);
-        Boolean result = viewModel.equipCharacterWithWeapon();
-        assertFalse(result);
+    	Boolean result = viewModel.equipCharacterWithWeapon();
+    	
+    	// Assert
+    	assertFalse(result);
     }
     
     @Test
