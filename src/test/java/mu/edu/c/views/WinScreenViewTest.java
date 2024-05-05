@@ -31,7 +31,7 @@ class WinScreenViewTest {
 		mainMenuView.getBtnStartGame().doClick();
 		startGameView = (StartGameView) mainController.getContentPane().getComponent(0);
 		
-		mainController.setCurrentPlayer(entityFactory.createPlayerWithWeapon(100, 100, 100, 100, "Ryan", new SwordWeapon("Ryan", 100, 100, 100)));
+		mainController.setCurrentPlayer(entityFactory.createPlayerWithWeapon(1000, 1000, 1000, 1000, "Ryan", new SwordWeapon("Ryan", 1000, 1000, 1000)));
 		
 		startGameView.getBtnLoadCharacter().doClick();
 		battleMenuView = (BattleMenuView) mainController.getContentPane().getComponent(0);
