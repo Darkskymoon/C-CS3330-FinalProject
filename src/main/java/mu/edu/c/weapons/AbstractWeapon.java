@@ -30,7 +30,7 @@ public abstract class AbstractWeapon implements IWeapon {
 		this.specialDamage = simpleDamage + rand.nextInt(4);
 		this.scaler = 1;
 		
-		String namePrefix;
+		String namePrefix = null;;
 		int key = this.getSimpleDamage();
 		switch (key) {
 			case 1: {
@@ -49,9 +49,6 @@ public abstract class AbstractWeapon implements IWeapon {
 				namePrefix = "Lethal";
 				break;
 			}
-			default:{
-				namePrefix = "Unknown";
-			}
 		}
 		
 		String nameSuffix;
@@ -66,10 +63,19 @@ public abstract class AbstractWeapon implements IWeapon {
 				break;
 			}
 			default:{
-				nameSuffix = "";
+				nameSuffix = null;
 			}
 		}
-		this.setName(namePrefix + " " + name + " "+ nameSuffix);
+		
+		String completeName = name;;
+		if (namePrefix != null) {
+			completeName+= namePrefix + " " + name;
+		}
+		if (nameSuffix != null) {
+			completeName += " " + nameSuffix;
+		}
+		this.setName(completeName);
+		
 	}
 
 	public String getName() {
