@@ -140,7 +140,7 @@ public class MainController {
 		// If the first player doesn't exist, just set it to create a character
 		if (this.currentPlayer == null) {
 			startGameView.setLoadCharacterText("Create a New Character");
-			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCaracterView());
+			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCharacterView());
 			startGameView.setLoadCharacterHide();
 
 		} else { // Otherwise, if the first player does exist, set the load button to route to
@@ -148,7 +148,7 @@ public class MainController {
 			// sets the button to the character's name
 			startGameView.setLoadCharacterText(this.currentPlayer.getName());
 			startGameView.addLoadCharacterButtonListener(new SwitchScreenToBattleMenuView());
-			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCaracterView());
+			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCharacterView());
 
 		}
 		startGameView.addBackButtonListener(new SwitchScreenToMainMenuView());
@@ -441,7 +441,7 @@ public class MainController {
 	/**
 	 * Refreshes CreateCharacterView and switches current panel to it
 	 */
-	protected class SwitchScreenToCreateCaracterView implements ActionListener {
+	protected class SwitchScreenToCreateCharacterView implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -497,7 +497,7 @@ public class MainController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// Gets the character name TODO: Changed the getter for this, someone check this?
-			String name = createCharacterView.getNameField();
+			String name = createCharacterView.getName();
 
 			// creates the character/player object
 			Player characterObj = new Player(10, createCharacterView.getStrengthStat(),
