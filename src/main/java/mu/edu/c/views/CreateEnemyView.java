@@ -218,7 +218,7 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
 	}
     private void initializeButtons() {
         // Make button variables
-        btnSubmit = new JButton("Create character");
+        btnSubmit = new JButton("Create Enemy");
         btnBack = new JButton("Back");
         
         // Set visuals for buttons
@@ -267,6 +267,10 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
     public int getBrainsStat() {
 		int braPts = brainsSlider.getValue();
     	return braPts;
+    }
+    
+    public String getName() {
+    	return nameField.getText();
     }
     
 	public JTextField getNameField() {
