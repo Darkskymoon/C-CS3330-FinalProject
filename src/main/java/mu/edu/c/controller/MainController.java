@@ -490,9 +490,7 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			// Gets the character name TODO create getter for this
 			String name = createCharacterView.getNameField().getText();
-			if (name.equals("")) {
-				name = "Ekin";
-			}
+
 			// creates the character/player object
 			// TODO: temporarily sets the other stats to placeholder values
 			Player characterObj = new Player(10, createCharacterView.getStrengthStat(),
