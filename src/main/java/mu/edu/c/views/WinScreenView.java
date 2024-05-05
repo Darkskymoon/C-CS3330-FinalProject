@@ -22,7 +22,7 @@ public class WinScreenView extends ParentView {
 	
 	public WinScreenView() {
 		AudioPlayer.stopAllAudio();
-		setBackground(new Color(45, 44, 65));
+		setBackground(backgroundColor);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("New weapon found!");
@@ -40,7 +40,7 @@ public class WinScreenView extends ParentView {
 		initializeButtons();
 		
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBackground(new Color(45, 44, 65));
+		buttonsPanel.setBackground(backgroundColor);
 		buttonsPanel.add(btnNewWeapon);
 		buttonsPanel.add(btnContinue);
 		add(buttonsPanel);

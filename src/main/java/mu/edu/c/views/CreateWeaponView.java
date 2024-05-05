@@ -82,7 +82,7 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
         weaponComboBox = new JComboBox<String>(choices);
         
         nameTypePanel.setLayout(new FlowLayout(100));
-        nameTypePanel.setBackground(new Color(45, 44, 65));
+        nameTypePanel.setBackground(backgroundColor);
         weaponNameLabel.setText("Name:");
         weaponNameLabel.setForeground(Color.white);
         weaponNameLabel.setFont(attributeHeaderFont);
@@ -154,7 +154,7 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new FlowLayout());
-        buttonsPanel.setBackground(new Color(45, 44, 65));
+        buttonsPanel.setBackground(backgroundColor);
 
         buttonsPanel.add(btnSubmit);
         buttonsPanel.add(btnBack);

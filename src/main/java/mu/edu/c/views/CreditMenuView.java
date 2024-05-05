@@ -22,7 +22,7 @@ public class CreditMenuView extends ParentView {
 	public CreditMenuView(){
 			
 			
-			this.setBackground(new Color(45, 44, 65));
+			this.setBackground(backgroundColor);
 			
 			GridBagConstraints gbc = new GridBagConstraints();
 	        gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -49,7 +49,6 @@ public class CreditMenuView extends ParentView {
 			textPane = new JTextPane();
 			
 			////////////////////Set visuals for buttons////////////////////
-			Font buttonFont= new Font("Yu Gothic Medium", Font.PLAIN, 16);
 			
 			SetUpButton(btnBack);
 			SetUpTextPane(textPane);
@@ -63,7 +62,7 @@ public class CreditMenuView extends ParentView {
 			doc.setParagraphAttributes(0, doc.getLength(), center, false);
 			
 			textPane.setText("John Lin\nAndo Pepe\nZoe Strassner\nRyan Wahle");
-			textPane.setBackground(new Color(45, 44, 65));
+			textPane.setBackground(backgroundColor);
 			textPane.setBorder(BorderFactory.createEmptyBorder());
 			
 			Font textPaneFont= new Font("Yu Gothic Medium", Font.PLAIN, 26);

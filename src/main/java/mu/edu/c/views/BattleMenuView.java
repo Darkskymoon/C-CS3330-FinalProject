@@ -62,7 +62,7 @@ public class BattleMenuView extends ParentView {
 			labelBattleText.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 20));
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
-			buttons.setBackground(new Color(45, 44, 65));
+			buttons.setBackground(backgroundColor);
 			
 			GridBagConstraints gbc2 = new GridBagConstraints();
 			gbc2.gridwidth = GridBagConstraints.REMAINDER;
@@ -97,7 +97,7 @@ public class BattleMenuView extends ParentView {
 		    gbc3.fill = GridBagConstraints.HORIZONTAL;
 		    
 	        JPanel buttons2 = new JPanel(new GridBagLayout());
-			buttons2.setBackground(new Color(45, 44, 65));
+			buttons2.setBackground(backgroundColor);
 			
 			buttons2.add(btnNormalAttack);
 			buttons2.add(btnSpecialAttack, gbc3);
@@ -115,7 +115,7 @@ public class BattleMenuView extends ParentView {
 			btnSpecialAttack = new JButton("Special Attack");
 			
 			
-			////////////////////Set visuals for buttons////////////////////;
+			////////////////////Set visuals for buttons////////////////////
 			
 			double displayScaler = 1.4;
 			double attackScaler = 1.4;
@@ -135,7 +135,7 @@ public class BattleMenuView extends ParentView {
 			
 		    String myString = new String("A fierce enemy\napproaches...");
 		    label.setText("<html>" + myString.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
-		    label.setBackground(new Color(45, 44, 65));
+		    label.setBackground(backgroundColor);
 		    label.setBorder(BorderFactory.createBevelBorder(1));
 			
 			Font textPaneFont= new Font("Yu Gothic Medium", Font.PLAIN, 32);

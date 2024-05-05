@@ -141,7 +141,7 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new FlowLayout());
-        buttonsPanel.setBackground(new Color(45, 44, 65));
+        buttonsPanel.setBackground(backgroundColor);
 
         buttonsPanel.add(btnSubmit);
         buttonsPanel.add(btnBack);

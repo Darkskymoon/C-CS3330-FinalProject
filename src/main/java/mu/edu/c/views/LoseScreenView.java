@@ -23,7 +23,7 @@ public class LoseScreenView extends ParentView{
 	
 	public LoseScreenView() {
 		AudioPlayer.stopAllAudio();
-		setBackground(new Color(45, 44, 65));
+		setBackground(backgroundColor);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("GAME OVER");
@@ -36,7 +36,7 @@ public class LoseScreenView extends ParentView{
 		initializeButtons();
 		
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBackground(new Color(45, 44, 65));
+		buttonsPanel.setBackground(backgroundColor);
 		buttonsPanel.add(btnRestart);
 		buttonsPanel.add(btnGiveUp);
 		add(buttonsPanel);

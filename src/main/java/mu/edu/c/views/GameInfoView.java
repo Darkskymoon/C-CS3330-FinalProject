@@ -33,7 +33,7 @@ public class GameInfoView extends ParentView {
 			initializeButtons(gbc);
 			
 			JPanel buttons = new JPanel(new GridBagLayout());
-			buttons.setBackground(new Color(45, 44, 65));
+			buttons.setBackground(backgroundColor);
 			
 			GridBagConstraints gbc2 = new GridBagConstraints();
 			gbc2.gridwidth = GridBagConstraints.REMAINDER;

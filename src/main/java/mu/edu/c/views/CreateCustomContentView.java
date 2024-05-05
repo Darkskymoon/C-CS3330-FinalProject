@@ -17,18 +17,18 @@ public class CreateCustomContentView extends ParentView implements ActionListene
 	JButton btnBack;
 
 	public CreateCustomContentView() {
-		setBackground(new Color(45, 44, 65));
+		setBackground(backgroundColor);
 		setLayout(new GridLayout(3, 0));
 		
 		JLabel lblNewLabel = new JLabel("Custom Content Creator");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBackground(new Color(45, 44, 65));
+		lblNewLabel.setBackground(backgroundColor);
 		lblNewLabel.setFont(new Font("Cantor", Font.BOLD, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(45, 44, 65));
+		panel.setBackground(backgroundColor);
 		add(panel);
 		initializeButtons();
 		
@@ -36,7 +36,7 @@ public class CreateCustomContentView extends ParentView implements ActionListene
 		panel.add(btnCreateNewWeapon);
 		
 		JPanel backPanel = new JPanel();
-		backPanel.setBackground(new Color(45, 44, 65));
+		backPanel.setBackground(backgroundColor);
 		add(backPanel);
 		
 		backPanel.add(btnBack);
