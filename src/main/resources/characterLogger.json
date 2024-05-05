@@ -1,1 +1,1 @@
-{"attributePoints":0,"name":"TEST character","hp":20.0,"maxHP":20.0,"strength":22,"defense":24,"brains":26,"weaponStrategy":{"name":"SwordLethal Sword of Wasted Potential","simpleDamage":4,"specialDamage":4,"scaler":1.0,"weapontype":"SWORD"},"xp":0}
+{"attributePoints":0,"name":"TEST character","hp":20.0,"maxHP":20.0,"strength":22,"defense":24,"brains":26,"weaponStrategy":{"name":"SwordSuperior Sword of Unleashed Potential","simpleDamage":3,"specialDamage":6,"scaler":1.0,"weapontype":"SWORD"},"xp":0}

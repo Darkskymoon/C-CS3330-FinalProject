@@ -11,12 +11,12 @@ import mu.edu.c.controller.MainControllerExtendedTester;
 import mu.edu.c.entities.EntityFactoryMethod;
 import mu.edu.c.weapons.IWeapon;
 
-class WinScreenViewTest {
+class LoseScreenViewTest {
 
 	MainMenuView mainMenuView;
 	StartGameView startGameView;
 	BattleMenuView battleMenuView;
-	WinScreenView winScreenView;
+	LoseScreenView loseScreenView;
 	MainControllerExtendedTester mainController;
 	
 	EntityFactoryMethod entityFactory;
@@ -32,30 +32,28 @@ class WinScreenViewTest {
 		startGameView = (StartGameView) mainController.getContentPane().getComponent(0);
 		startGameView.getBtnLoadCharacter().doClick();
 		battleMenuView = (BattleMenuView) mainController.getContentPane().getComponent(0);
-		mainController.getCurrentEnemy().setHp(0);
+		mainController.getCurrentEnemy().setHp(10000);
+		mainController.getCurrentPlayer().setHp(0);
 		battleMenuView.getBtnNormalAttack().doClick();
 		
-		winScreenView = (WinScreenView) mainController.getContentPane().getComponent(0);
+		loseScreenView = (LoseScreenView) mainController.getContentPane().getComponent(0);
 	}
 	
 	@Test
-	public void testBtnContinue() {
-		IWeapon weapon1 = mainController.getCurrentPlayer().getWeaponStrategy();
-		winScreenView.btnContinue.doClick();
+	public void testBtnRestart() {
+		loseScreenView.btnRestart.doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
-		IWeapon weapon2 = mainController.getCurrentPlayer().getWeaponStrategy();
 		
-		assertTrue(newPanel instanceof BattleMenuView && (weapon1 == weapon2));
+		assertTrue(newPanel instanceof BattleMenuView);
 	}
 	
 	@Test
-	public void testBtnNewWeapon() {
-		IWeapon weapon1 = mainController.getCurrentPlayer().getWeaponStrategy();
-		winScreenView.btnNewWeapon.doClick();
+	public void testBtnGiveUp() {
+		loseScreenView.btnGiveUp.doClick();
 		JPanel newPanel = (JPanel) mainController.getContentPane().getComponent(0);
-		IWeapon weapon2 = mainController.getCurrentPlayer().getWeaponStrategy();
 		
-		assertTrue((newPanel instanceof BattleMenuView) && (weapon1 != weapon2));
+		assertTrue(newPanel instanceof MainMenuView);
 	}
 
 }
+
