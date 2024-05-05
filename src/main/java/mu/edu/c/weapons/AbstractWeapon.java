@@ -69,7 +69,7 @@ public abstract class AbstractWeapon implements IWeapon {
 		
 		String completeName = name;;
 		if (namePrefix != null) {
-			completeName+= namePrefix + " " + name;
+			completeName = namePrefix + " " + name;
 		}
 		if (nameSuffix != null) {
 			completeName += " " + nameSuffix;
