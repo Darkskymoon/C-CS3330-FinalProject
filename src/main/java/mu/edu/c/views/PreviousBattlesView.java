@@ -23,11 +23,10 @@ public class PreviousBattlesView extends ParentView {
 	private JButton replayButton;
 	private JList<Battle> battlesList;
 	
-	public JList<Battle> getBattlesList() {
-		return battlesList;
-	}
-
-
+	/**
+	 * Makes the menu for previous battle with a clickable interface that 
+	 * restarts the selected battle when clicked
+	 */
 	public PreviousBattlesView() {
 		GridBagLayout gridBagLayout = (GridBagLayout) getLayout();
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0};
@@ -42,7 +41,6 @@ public class PreviousBattlesView extends ParentView {
         gbc_list.gridy = 1;
         
         add(new JScrollPane(battlesList), gbc_list);
-//        battlesList.setEnabled(false);
         ArrayList<Battle> testArray = new ArrayList<Battle>();
 		BattleLoggerSingleton battleLogger = BattleLoggerSingleton.getInstance();
 		testArray = battleLogger.readAllBattleData();
@@ -79,6 +77,9 @@ public class PreviousBattlesView extends ParentView {
 		replayButton.addActionListener(listener);
 	}
 
+	public JList<Battle> getBattlesList() {
+		return battlesList;
+	}
 
 	public JButton getBtnBack() {
 		return btnBack;

@@ -16,7 +16,12 @@ public abstract class AbstractWeapon implements IWeapon {
 		this.specialDamage = specialDamage;
 		this.scaler = scaler;
 	}
-
+	
+	/**
+	 * Takes a basic name for a weapon and makes a weapon with a random weapon and attatches
+	 * a prefix and suffix to the name accordingly.
+	 * @param name
+	 */
 	public AbstractWeapon(String name) {
 		super();
 		Random rand = new Random();

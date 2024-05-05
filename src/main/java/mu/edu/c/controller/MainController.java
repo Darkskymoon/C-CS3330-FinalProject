@@ -103,6 +103,7 @@ public class MainController {
 	/**
 	 * Refreshes PreviousBattlesView by recreating object and adding button
 	 * listeners to view
+	 * sets isPreviousBattle to false so that the the character is saved after battle
 	 */
 	protected void refreshPreviousBattlesView() {
 		this.isPreviousBattle = false;
@@ -111,6 +112,7 @@ public class MainController {
 		previousBattlesView.addPlayPreviousBattleButtonListener(new replayPreviousBattle());
 	}
 
+	
 	protected class replayPreviousBattle implements ActionListener {
 
 		@Override
@@ -194,7 +196,10 @@ public class MainController {
 	}
 
 	/**
-	 * Refreshes BattleMenuView with a previous battle
+	 * Refreshes BattleMenuView by recreating object and adding button
+	 * listeners to view
+	 * sets isPreviousBattle to true so that the the character is not saved after battle
+	 * @param battle The battle to be replayed
 	 */
 	protected void refreshBattleMenuView(Battle battle) {
 		this.isPreviousBattle = true;
@@ -368,6 +373,9 @@ public class MainController {
 		}
 
 	}
+	/**
+	 * Refreshes PreviousBattlesView and switches current panel to it
+	 */
 	protected class SwitchScreenToPreviousBattlesView implements ActionListener {
 
 		@Override

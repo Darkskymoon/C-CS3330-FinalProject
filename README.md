@@ -23,10 +23,14 @@ Designed all of the logging mechanisms including battle, enemy, character, and t
 Designed the MainController and many of the views such as the MainMenuView, CreditMenuView, and others. Additionally, implemented the weapon code which would utilize a strategy design pattern with the entities. Also set up combat to actually attack the opponent. Helped with a little bit of everything on the project. Additionally wrote a lot of tests for the main controller and views. 
 - Ando:
 --------------------------------
-Audio design, previous battles, TODO
+Designed an audio player that wraps the Clip and AudioSystem library to play music or sounds and stop them on demand. Designed  GameInfoView and PreviousBattlesView along with the logic to queue a previous battle bot not overwrite the character save. Randomizing enemy weapons. Additionally helped a little with the win screen and pick up weapon logic.
 - John:
 --------------------------------
 Create custom character, create custom weapon, win screen, lose screen, TODO
 
 # Audio Attributions
-Anime Fight Music Loop #1 by Sirkoto51 -- https://freesound.org/s/414214/ -- License: Attribution 4.0
+- Battle Music: Anime Fight Music Loop #1 by Sirkoto51 -- https://freesound.org/s/414214/ -- License: Attribution 4.0
+
+- Main Game Music: BAS-23022014 - Game Loop 2.mp3 by B_Lamerichs -- https://freesound.org/s/220325/ -- License: Creative Commons 0 
+
+- Character Menu Sound: Smixkit-medieval-show-fanfare-announcement-226  -- https://mixkit.co/free-sound-effects/game/?page=2
