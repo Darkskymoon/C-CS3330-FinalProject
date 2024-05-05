@@ -17,7 +17,7 @@ public class WeaponFactoryMethod {
 	 * @param weaponName The name of the weapon
 	 * @param simpleDmg The simple damage amount of a weapon
 	 * @param specialDamage The special damage amount of a weapon
-	 * @param scaler TODO: What is scaler
+	 * @param scaler value to adjust damage by slightly
 	 * @return The newly created weapon or null on failure
 	 */
 	public IWeapon createWeapon(WeaponType weaponType, String weaponName, int simpleDmg, int specialDamage, float scaler ) {
@@ -91,7 +91,7 @@ public class WeaponFactoryMethod {
 	 * @param weaponName the name of the weapon
 	 * @param simpleDmg the simple damage value 
 	 * @param specialDamage the special damage value
-	 * @param scaler TODO What is scaler
+	 * @param scaler value to adjust damage by
 	 * @return The newly created sword
 	 */
 	private IWeapon createSwordWeapon(String weaponName, int simpleDmg, int specialDamage, float scaler) {
@@ -103,7 +103,7 @@ public class WeaponFactoryMethod {
 	 * @param name The name of the weapon
 	 * @param simpleDamage the simple damage value
 	 * @param specialDamage the special damage value
-	 * @param scaler TODO what is scaler
+	 * @param scaler value to adjust damage by 
 	 * @return the newly created magic weapon
 	 */
 	private IWeapon createMagicWeapon(String name, int simpleDamage, int specialDamage, float scaler) {

@@ -158,7 +158,6 @@ public class BattleMenuView extends ParentView {
 		
 
 		
-		//TODO remove roll button
 	    public void addSurrenderButtonListener(ActionListener listener) {
 	        btnSurrender.addActionListener(listener);
 	    }

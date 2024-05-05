@@ -39,7 +39,6 @@ public class Battle {
 	 */
 	public Battle(Player player) {
 		this.player = player;
-		//TODO this should read in all saved enemies and set the current enemy
 		setCurrentEnemy();
 		
 	}
@@ -251,7 +250,6 @@ public class Battle {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return this.getPlayerName() + " vs " + this.getCurrentEnemyName();
 	}
 	

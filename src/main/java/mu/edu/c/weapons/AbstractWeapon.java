@@ -143,7 +143,6 @@ public abstract class AbstractWeapon implements IWeapon {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "Name: "+getName() +", Simple DMG: "+ getSimpleDamage() + ", Special DMG: "+ getSpecialDamage() + ", Scaler: "+ getScaler();
 	}
 	

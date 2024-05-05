@@ -83,7 +83,6 @@ public class LoseScreenView extends ParentView implements ActionListener{
     
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		//TODO UNIMPLEMENTED
 	}
 }

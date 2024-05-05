@@ -40,7 +40,7 @@ public class BattleLoggerSingleton {
 		/**
 		 * creates json objects of the battle and writes that to the file.
 		 * @param character
-		 * @return TODO
+		 * @return true if read successfully, false if not 
 		 */
 		public boolean logBattleData(Battle battle) {
 			if(battle == null) { //makes sure battle isn't null

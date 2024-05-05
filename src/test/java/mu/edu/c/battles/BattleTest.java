@@ -42,7 +42,6 @@ class BattleTest{
 		}
 	}
 	
-	//TODO: how to test to make sure file throws the exception
 	@Test
 	public void testInitializeEnemies() {
 		File battlelog = new File("src/main/resources/enemyLogger.json");

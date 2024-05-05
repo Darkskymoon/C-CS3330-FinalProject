@@ -58,7 +58,7 @@ public class MainController {
 	protected Battle battleModel;
 	protected CreateWeaponViewModel createWeaponViewModel = new CreateWeaponViewModel();
 	protected CreateEnemyViewModel createEnemyViewModel = new CreateEnemyViewModel();
-	// TODO- Is this right?
+	// TODO: Someone should check if we are leaving the current player and current enemy fields
 	protected Player currentPlayer;
 	protected Enemy currentEnemy;
 	protected boolean isPreviousBattle;
@@ -131,7 +131,7 @@ public class MainController {
 	protected void refreshStartGameView() {
 		this.startGameView = new StartGameView();
 
-		// reads in the current save (if it exists) TODO: try catch
+		// reads in the current save (if it exists) 
 		CharacterLoggerSingleton logger = CharacterLoggerSingleton.getInstance();
 		this.currentPlayer = logger.readCharacterData();
 
@@ -483,16 +483,15 @@ public class MainController {
 	}
 
 	/**
-	 * Writes a character to the character file. TODO:
+	 * Takes care of all the necessary actions when submitting a character
 	 */
 	protected class CreateCharacterSubmit implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// Gets the character name TODO create getter for this
-			String name = createCharacterView.getNameField().getText();
+			// Gets the character name TODO: Changed the getter for this, someone check this?
+			String name = createCharacterView.getNameField();
 
 			// creates the character/player object
-			// TODO: temporarily sets the other stats to placeholder values
 			Player characterObj = new Player(10, createCharacterView.getStrengthStat(),
 					createCharacterView.getDefenseStat(), createCharacterView.getBrainsStat(), name);
 			// gets the logger instance and writes the characterObj to the file.
@@ -582,7 +581,6 @@ public class MainController {
 			// Roll for current battle
 			int rollResults = roll();
 			saveOldHealth();
-			// TODO moved to battle
 			battleModel.characterSimpleAttack(rollResults, battleModel.getCurrentEnemy());
 			battleModel.enemyAttack();
 			updateHealth();

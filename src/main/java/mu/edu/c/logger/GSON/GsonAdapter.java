@@ -54,7 +54,6 @@ public class GsonAdapter{
 	
 	/**
 	 * This method reads in all of the Json in the file
-	 * TODO:implement
 	 * @param fileName the filepath string
 	 * @return arraylist of all of the json objects (as strings), null on failure
 	 */
