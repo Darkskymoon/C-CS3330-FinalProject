@@ -275,9 +275,26 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
 		return nameField.getText();
 	}
 
-	public void setNameField(JTextField nameField) {
-		this.nameField = nameField;
+	public void setName(String name) {
+		this.nameField.setText(name);
 	}
+	
+    public void setSimpleDamageStat(int damageStat) {
+		simpleDamageSlider.setValue(damageStat);
+    }
+    
+    public void setSpecialDamageStat(int specialDamageStat) {
+		specialDamageSlider.setValue(specialDamageStat);
+    }
+    
+    public void setScalerStat(int scalerStat) {
+		scalerSlider.setValue(scalerStat);
+    }
+    
+    // returns the selected weapon ENUM's index
+    public void setWeaponTypeIndex(int index) {
+    	weaponComboBox.setSelectedIndex(index);
+    }
 
 	public void setWeaponEquipedFlag(Boolean weaponEquipedFlag) {
 		this.weaponEquipedFlag = weaponEquipedFlag;
