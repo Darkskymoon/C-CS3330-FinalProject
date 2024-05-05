@@ -41,6 +41,15 @@ public class CreateWeaponViewModelTest {
     
     @Test
     void testEquipCharacterWithWeaponEmptyCharacter() {
+    	viewModel.setCurrentPlayer(null);
+        Boolean result = viewModel.equipCharacterWithWeapon();
+        assertFalse(result);
     }
+    
+    @Test
+	void testSetPopulated() {
+    	viewModel.setPopulated(true);
+		assertTrue(viewModel.getPopulated());
+	}
 
 }
