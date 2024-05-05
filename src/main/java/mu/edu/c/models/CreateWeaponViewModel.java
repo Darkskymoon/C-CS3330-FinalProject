@@ -63,4 +63,8 @@ public class CreateWeaponViewModel {
 	public void setPopulated(Boolean flag) {
 		this.loggerIsPopulated = flag;
 	}
+	
+	public void setCurrentPlayer(Player player) {
+		this.currentPlayer = player;
+	}
 }
