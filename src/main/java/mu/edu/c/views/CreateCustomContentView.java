@@ -54,17 +54,6 @@ public class CreateCustomContentView extends ParentView implements ActionListene
 	    SetUpButton(btnCreateNewWeapon);
 	    SetUpButton(btnCreateNewEnemy);
 	    SetUpButton(btnBack);
-	    
-	    // Add action listeners
-	    btnCreateNewWeapon.addActionListener(e -> {
-	        // Handle submit button action here
-	    });
-	    btnCreateNewEnemy.addActionListener(e -> {
-	        
-	    });
-	    btnBack.addActionListener(e-> {
-	    	// Handle back button action here
-	    });
 
 	}
 	
@@ -82,7 +71,6 @@ public class CreateCustomContentView extends ParentView implements ActionListene
     
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
     
