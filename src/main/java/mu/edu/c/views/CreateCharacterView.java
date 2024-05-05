@@ -248,7 +248,7 @@ public class CreateCharacterView extends ParentView implements ChangeListener{
     	return braPts;
     }
     
-	public String getNameField() {
+	public String getName() {
 		return nameField.getText();
 	}
 
