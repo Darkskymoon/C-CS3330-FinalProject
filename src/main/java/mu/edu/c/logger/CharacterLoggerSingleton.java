@@ -61,7 +61,7 @@ public class CharacterLoggerSingleton {
 	/**
 	 *
 	 * This reads the current character from the logged character file.
-	 * @return null if failed, player is successful
+	 * @return null if failed, player if successful
 	 */
 	public Player readCharacterData() {
 		GsonAdapter adapter = new GsonAdapter();

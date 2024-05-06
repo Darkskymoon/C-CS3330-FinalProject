@@ -35,7 +35,6 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
 	//Global values that have to exported, textfields, buttons, inputs
 	
 	//global attributes
-	private Boolean weaponEquipedFlag; 
 	private Font attributeHeaderFont =  new Font("Consolas", Font.PLAIN, 30);
 	
 	//combo boxes (drop downs)
@@ -48,7 +47,6 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
 	private JLabel specialDamageLabel = new JLabel("Special Damage: 0");
 	private JLabel scalerLabel = new JLabel("scaler: 0");
 	private JLabel weaponNameLabel = new JLabel();
-	private JLabel errorLabel = new JLabel();
     
 	//sliders
 	private JSlider simpleDamageSlider = new JSlider(0, 50, 0);
@@ -92,11 +90,6 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
         nameTypePanel.add(weaponNameLabel);
         nameTypePanel.add(nameField);
         nameTypePanel.add(weaponComboBox);
-        
-        errorLabel.setForeground(Color.red);
-        errorLabel.setFont(new Font("Consolas", Font.ITALIC, 15));
-        errorLabel.setPreferredSize(new Dimension(300, 50));
-        nameTypePanel.add(errorLabel);
         
         gbc.anchor = GridBagConstraints.LINE_START;
         
@@ -232,17 +225,8 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
         btnBack.addActionListener(listener);
     }
     
-    
-    public void displayError() {
-    	if (!weaponEquipedFlag) {
-    		btnSubmit.setEnabled(false);
-    		errorLabel.setText("Please Create A Character First");
-    	} else {
-    		errorLabel.setText("");
-    	}
-    }
-    
-    /**
+
+	/**
      * Action listener for when the submit button gets pressed.
      * @param listener
      */
@@ -274,6 +258,14 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
 	public String getName() {
 		return nameField.getText();
 	}
+	
+    public JButton getBtnSubmit() {
+		return btnSubmit;
+	}
+
+	public JButton getBtnBack() {
+		return btnBack;
+	}
 
 	public void setName(String name) {
 		this.nameField.setText(name);
@@ -295,9 +287,5 @@ public class CreateWeaponView extends ParentView implements ChangeListener , Act
     public void setWeaponTypeIndex(int index) {
     	weaponComboBox.setSelectedIndex(index);
     }
-
-	public void setWeaponEquipedFlag(Boolean weaponEquipedFlag) {
-		this.weaponEquipedFlag = weaponEquipedFlag;
-	}
 
 }

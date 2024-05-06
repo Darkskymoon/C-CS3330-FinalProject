@@ -13,35 +13,30 @@ public class CreateWeaponViewModel {
 	private int weaponSpecialDamage;
 	private float weaponScaler;
 	private Boolean loggerIsPopulated = false;
-	
+
 	// checks if the character logger is empty
 	private CharacterLoggerSingleton logger = CharacterLoggerSingleton.getInstance();
 	private Player currentPlayer = logger.readCharacterData();
 	private WeaponFactoryMethod weaponFactoryWeapon = new WeaponFactoryMethod();
-		
+
 	/**
-	 * @return returns false if character data is empty, true if operation was a success
-	 * */
+	 * @return returns false if character data is empty, true if operation was a
+	 *         success
+	 */
 	public Boolean equipCharacterWithWeapon() {
 		currentPlayer = logger.readCharacterData();
-		if (currentPlayer != null) {
-			//gets weapon type enum from the weapon index returned by view
-			WeaponType weaponType = WeaponType.values()[weaponTypeIndex];
-			// create a new weapon
-			IWeapon newWeapon = weaponFactoryWeapon.createWeapon(weaponType, weaponName, weaponSimpleDamage, weaponSpecialDamage, weaponScaler);
-			// adds weapon to current player
-			currentPlayer.setWeaponStrategy(newWeapon);
-			//saves character data
-			logger.logCharacterData(currentPlayer);
-			// returns a flag indicating that the operation was a success
-			loggerIsPopulated = true;
-			return loggerIsPopulated;
-		}
-		// returns a flag indicating that the character page is empty and that a character has to be created
-		loggerIsPopulated = false;
-		return loggerIsPopulated;
+		// gets weapon type enum from the weapon index returned by view
+		WeaponType weaponType = WeaponType.values()[weaponTypeIndex];
+		// create a new weapon
+		IWeapon newWeapon = weaponFactoryWeapon.createWeapon(weaponType, weaponName, weaponSimpleDamage,
+				weaponSpecialDamage, weaponScaler);
+		// adds weapon to current player
+		currentPlayer.setWeaponStrategy(newWeapon);
+		// saves character data
+		logger.logCharacterData(currentPlayer);
+		return true;
 	}
-	
+
 	public void setWeaponTypeIndex(int weaponTypeIndex) {
 		this.weaponTypeIndex = weaponTypeIndex;
 	}
@@ -61,18 +56,17 @@ public class CreateWeaponViewModel {
 	public void setWeaponName(String weaponName) {
 		this.weaponName = weaponName;
 	}
-	
+
 	public void setPopulated(Boolean flag) {
 		this.loggerIsPopulated = flag;
 	}
-	
+
 	public boolean getPopulated() {
 		return this.loggerIsPopulated;
 	}
-	
 
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
-	
+
 }
