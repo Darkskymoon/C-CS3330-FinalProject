@@ -12,7 +12,7 @@ public class CreateWeaponViewModel {
 	private int weaponSimpleDamage;
 	private int weaponSpecialDamage;
 	private float weaponScaler;
-	private Boolean loggerIsPopulated = true;
+	private Boolean loggerIsPopulated = false;
 	
 	// checks if the character logger is empty
 	private CharacterLoggerSingleton logger = CharacterLoggerSingleton.getInstance();
@@ -23,6 +23,8 @@ public class CreateWeaponViewModel {
 	 * @return returns false if character data is empty, true if operation was a success
 	 * */
 	public Boolean equipCharacterWithWeapon() {
+		currentPlayer = logger.readCharacterData();
+		System.out.println(currentPlayer);
 		if (currentPlayer != null) {
 			//gets weapon type enum from the weapon index returned by view
 			WeaponType weaponType = WeaponType.values()[weaponTypeIndex];
@@ -33,6 +35,7 @@ public class CreateWeaponViewModel {
 			//saves character data
 			logger.logCharacterData(currentPlayer);
 			// returns a flag indicating that the operation was a success
+			loggerIsPopulated = true;
 			return loggerIsPopulated;
 		}
 		// returns a flag indicating that the character page is empty and that a character has to be created
