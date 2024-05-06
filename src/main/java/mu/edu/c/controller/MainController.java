@@ -58,7 +58,6 @@ public class MainController {
 	protected Battle battleModel;
 	protected CreateWeaponViewModel createWeaponViewModel = new CreateWeaponViewModel();
 	protected CreateEnemyViewModel createEnemyViewModel = new CreateEnemyViewModel();
-	// TODO: Someone should check if we are leaving the current player and current enemy fields
 	protected Player currentPlayer;
 	protected Enemy currentEnemy;
 	protected boolean isPreviousBattle;
@@ -496,7 +495,7 @@ public class MainController {
 	protected class CreateCharacterSubmit implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// Gets the character name TODO: Changed the getter for this, someone check this?
+			// Gets the character name 
 			String name = createCharacterView.getName();
 
 			// creates the character/player object

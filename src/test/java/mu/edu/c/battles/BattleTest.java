@@ -112,12 +112,7 @@ class BattleTest{
 		int roll = battle.roll();
 		assertTrue(roll >= 1 && roll <= 20);
 	}
-	
-	//TODO: not really sure how to test this 
-	@Test
-	public void testEnemyAttack() {
-		
-	}
+	 
 	
 	@Test
 	public void testCharacterSimpleAttack() {
