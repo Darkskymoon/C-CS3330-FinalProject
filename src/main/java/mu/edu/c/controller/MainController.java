@@ -140,7 +140,7 @@ public class MainController {
 		// If the first player doesn't exist, just set it to create a character
 		if (this.currentPlayer == null) {
 			startGameView.setLoadCharacterText("Create a New Character");
-			startGameView.addLoadCharacterButtonListener(new SwitchScreenToCreateCharacterView());
+			startGameView.addBtnNewCharListener(new SwitchScreenToCreateCharacterView());
 			startGameView.setLoadCharacterHide();
 
 		} else { // Otherwise, if the first player does exist, set the load button to route to
