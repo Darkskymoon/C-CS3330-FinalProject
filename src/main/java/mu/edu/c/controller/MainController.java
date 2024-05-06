@@ -330,16 +330,10 @@ public class MainController {
 			createWeaponViewModel.setWeaponSpecialDamage(weaponSpecialDamage);
 			createWeaponViewModel.setWeaponScaler(weaponScalerDamage);
 			
-			// performing code execution and saving a flag to indicate if the view should display an error
-			Boolean equipCharacterWithWeaponSuccessFlag = createWeaponViewModel.equipCharacterWithWeapon();
-			createWeaponView.setWeaponEquipedFlag(equipCharacterWithWeaponSuccessFlag);
 			
-			if (equipCharacterWithWeaponSuccessFlag) {
-				refreshCreateWeaponView();
-				switchPanel(createCustomContentView);
-			} else {
-			createWeaponView.displayError();
-			}
+			// performing code execution and saving a flag to indicate if the view should display an error
+			createWeaponViewModel.equipCharacterWithWeapon();
+			
 		}
 	}
 	/**

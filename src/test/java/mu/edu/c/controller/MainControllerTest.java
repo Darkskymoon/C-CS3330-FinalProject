@@ -180,8 +180,6 @@ class MainControllerTest {
 		
 	}
 	
-	
-	
 	@Test 
 	void testSwitchPanel(){
 		
