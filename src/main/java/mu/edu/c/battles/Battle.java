@@ -163,7 +163,6 @@ public class Battle {
 		}
 		//Generates a random number using rand(max-min) +min formula
 		int max = PossibleEnemies.size()-1;
-		System.out.println(max);
 		int min = 0;
 		int index =rand.nextInt(max-min)+min;
 		
