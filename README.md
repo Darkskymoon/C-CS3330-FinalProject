@@ -26,7 +26,7 @@ Designed the MainController and many of the views such as the MainMenuView, Cred
 Designed an audio player that wraps the Clip and AudioSystem library to play music or sounds and stop them on demand. Designed  GameInfoView and PreviousBattlesView along with the logic to queue a previous battle bot not overwrite the character save. Randomizing enemy weapons. Additionally helped a little with the win screen and pick up weapon logic.
 - John:
 --------------------------------
-Create custom character, create custom weapon, win screen, lose screen, TODO
+Create character screen, create custom weapon screen, create custom enemy screen, win screen, lose screen, Built models to manage and update custom weapons and enemies, Added logic to prevent data being parsed incompletely. 
 
 # Audio Attributions
 - Battle Music: Anime Fight Music Loop #1 by Sirkoto51 -- https://freesound.org/s/414214/ -- License: Attribution 4.0
