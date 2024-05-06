@@ -72,7 +72,7 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 0, 0);
-        this.add(createTitle("Enemy Creatior"), gbc);
+        this.add(createTitle("Enemy Creator"), gbc);
         
         //////////// Form elements ////////////
     	JPanel namePanel = new JPanel();
