@@ -6,13 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import mu.edu.c.logger.CharacterLoggerSingleton;
+
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 
-public class CreateCustomContentView extends ParentView implements ActionListener{
+public class CreateCustomContentView extends ParentView {
 	private static final long serialVersionUID = -7617276032050941344L;
 	JButton btnCreateNewWeapon;
+
 	JButton btnCreateNewEnemy;
 	JButton btnBack;
 
@@ -54,7 +58,11 @@ public class CreateCustomContentView extends ParentView implements ActionListene
 	    SetUpButton(btnCreateNewWeapon);
 	    SetUpButton(btnCreateNewEnemy);
 	    SetUpButton(btnBack);
-
+	    
+	    CharacterLoggerSingleton logger = CharacterLoggerSingleton.getInstance();
+	    if (logger.readCharacterData() == null) {
+	    	btnCreateNewWeapon.setEnabled(false);
+	    }
 	}
 	
 	public void addCreateNewWeaponListener(ActionListener listener) {
@@ -69,10 +77,14 @@ public class CreateCustomContentView extends ParentView implements ActionListene
         btnBack.addActionListener(listener);
     }
     
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+	public JButton getBtnCreateNewWeapon() {
+		return btnCreateNewWeapon;
+	}
+	public JButton getBtnCreateNewEnemy() {
+		return btnCreateNewEnemy;
+	}
+	public JButton getBtnBack() {
+		return btnBack;
 	}
     
-	
 }
