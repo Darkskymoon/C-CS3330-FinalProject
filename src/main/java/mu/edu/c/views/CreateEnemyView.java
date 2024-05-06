@@ -293,13 +293,15 @@ public class CreateEnemyView extends ParentView implements ChangeListener{
         nameField.setText(name);
     }
     
-	public String getNameField() {
-		return nameField.getText();
-	}
-	
-	public void setNameField(JTextField nameField) {
-		this.nameField = nameField;
+
+	public JButton getBtnSubmit() {
+		return btnSubmit;
 	}
 
+	public JButton getBtnBack() {
+		return btnBack;
+	}
+	
+	
 
 }
