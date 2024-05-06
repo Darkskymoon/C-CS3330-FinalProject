@@ -20,7 +20,7 @@ public class PreviousBattlesView extends ParentView {
 
 	private static final long serialVersionUID = -894881519175756841L;
 	private JButton btnBack;
-	private JButton replayButton;
+	private JButton btnReplay;
 	private JList<Battle> battlesList;
 	
 	/**
@@ -51,14 +51,14 @@ public class PreviousBattlesView extends ParentView {
 	    battlesList.setListData(array);
 		}
         
-        replayButton = new JButton("Replay Selected Battle");
+        btnReplay = new JButton("Replay Selected Battle");
         GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
         gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
         gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
         gbc_btnNewButton.gridx = 0;
         gbc_btnNewButton.gridy = 2;
-        SetUpButtonCustomSize(replayButton, 1);
-        add(replayButton, gbc_btnNewButton);
+        SetUpButtonCustomSize(btnReplay, 1);
+        add(btnReplay, gbc_btnNewButton);
 
         btnBack = new JButton("Back");
         SetUpButton(btnBack);
@@ -74,7 +74,7 @@ public class PreviousBattlesView extends ParentView {
 	}
 	
 	public void addPlayPreviousBattleButtonListener(ActionListener listener) {
-		replayButton.addActionListener(listener);
+		btnReplay.addActionListener(listener);
 	}
 
 	public JList<Battle> getBattlesList() {
@@ -83,6 +83,10 @@ public class PreviousBattlesView extends ParentView {
 
 	public JButton getBtnBack() {
 		return btnBack;
+	}
+	
+	public JButton getBtnReplay() {
+		return btnReplay;
 	}
 	
 

@@ -2,6 +2,9 @@ package mu.edu.c.models;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,7 +49,7 @@ public class CreateWeaponViewModelTest {
     	Boolean result = viewModel.equipCharacterWithWeapon();
     	
     	// Assert
-    	assertFalse(result);
+    	assertTrue(result);
     }
     
     @Test

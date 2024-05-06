@@ -89,6 +89,10 @@ public class GameInfoView extends ParentView {
 			return btnCredits;
 		}
 		
+		public JButton getBtnViewPreviousBattles() {
+			return btnViewPreviousBattles;
+		}
+		
 		
 }
 

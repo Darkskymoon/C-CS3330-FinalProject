@@ -24,7 +24,6 @@ public class CreateWeaponViewModel {
 	 * */
 	public Boolean equipCharacterWithWeapon() {
 		currentPlayer = logger.readCharacterData();
-		System.out.println(currentPlayer);
 		if (currentPlayer != null) {
 			//gets weapon type enum from the weapon index returned by view
 			WeaponType weaponType = WeaponType.values()[weaponTypeIndex];
